@@ -1,5 +1,4 @@
 import 'package:flame/components.dart';
-import 'package:flame/events.dart';
 import 'package:flutter/services.dart';
 import 'dart:developer';
 
@@ -150,7 +149,7 @@ void startGridMove(Vector2 dir) {
       }
     }
   }
-  
+
   @override
   void update(double dt) {
     super.update(dt);
