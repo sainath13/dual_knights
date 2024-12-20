@@ -12,7 +12,8 @@ class DualKnights extends FlameGame{
   @override
   Color backgroundColor()  => const Color(0xFF211F30);
   @override
-  FutureOr<void> onLoad() {
+  FutureOr<void> onLoad() async{
+    await images.loadAllImages();
     cam = CameraComponent.withFixedResolution(world: world, width: 1280, height: 960);
     cam.viewfinder.anchor = Anchor.topLeft;
     addAll([cam,world]);
