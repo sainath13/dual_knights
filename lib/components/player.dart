@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import 'package:flame/components.dart';
-import 'package:flame/events.dart';
 import 'package:flutter/services.dart';
 
 class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler {

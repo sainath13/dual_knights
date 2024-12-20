@@ -1,3 +1,5 @@
+// ignore_for_file: implementation_imports, unnecessary_import
+
 import 'dart:async';
 import 'dart:developer';
 import 'dart:ui';
@@ -57,6 +59,7 @@ class DualKnights extends FlameGame with KeyboardEvents{
       log("Found component: ${component.runtimeType}");
       if (component is KeyboardHandler) {
         log("Component is KeyboardHandler");
+        // ignore: unnecessary_cast
         (component as KeyboardHandler).onKeyEvent(event, keysPressed);
       }
     });
