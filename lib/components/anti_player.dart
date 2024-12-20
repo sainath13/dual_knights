@@ -1,18 +1,15 @@
+import 'package:flame/components.dart';
+import 'package:flame/events.dart';
+import 'package:flutter/services.dart';
 import 'dart:developer';
 
-import 'package:flame/components.dart';
-import 'package:flutter/services.dart';
-
-class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler {
-  // Define the size of each frame
+class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandler {
   static const double frameWidth = 192;
   static const double frameHeight = 192;
-
-  // Grid movement settings
-  static const double gridSize = 64.0; // Size of each grid cell
-  bool isMoving = false; // Flag to track if player is currently moving
+  static const double gridSize = 64.0;
+  
+  bool isMoving = false;
   Vector2 targetPosition = Vector2.zero();
-
 
   // Animations
   late SpriteAnimation idleAnimation;
@@ -21,26 +18,18 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler {
   late SpriteAnimation moveLeftAnimation;
   late SpriteAnimation moveRightAnimation;
 
-  // Movement speed
-  final double speed = 150.0;
+  final double speed = 300.0;
   Vector2 direction = Vector2.zero();
-  
 
-  // Keep track of pressed keys
-  final Set<LogicalKeyboardKey> _pressedKeys = {};
-
-  Player() : super(size: Vector2(frameWidth, frameHeight)) {
+  AntiPlayer() : super(size: Vector2(frameWidth, frameHeight)) {
     targetPosition = position.clone();
   }
-  
+
   @override
   Future<void> onLoad() async {
-    super.onLoad();
-
-    // Load the sprite sheet
-    final spriteSheet = await gameRef.images.load('Factions/Knights/Troops/Warrior/Blue/Warrior_Blue.png');
-
-    // Define animations
+    final spriteSheet = await gameRef.images.load('Factions/Knights/Troops/Warrior/Red/Warrior_Red.png');
+    // Use the same animation setup as Player but with red warrior sprites
+    
     idleAnimation = SpriteAnimation.fromFrameData(
       spriteSheet,
       SpriteAnimationData.sequenced(
@@ -96,35 +85,52 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler {
       ),
     );
 
-    // Set initial animation
     animation = idleAnimation;
+  }
+
+  void moveOpposite(Vector2 playerDirection) {
+    if (!isMoving) {
+      // Invert the direction
+      direction = playerDirection * -1;
+      targetPosition = position + (direction * gridSize);
+      isMoving = true;
+      
+      // Set appropriate animation based on inverted direction
+      if (direction.y < 0) {
+        animation = moveUpAnimation;
+      } else if (direction.y > 0) {
+        animation = moveDownAnimation;
+      } else if (direction.x < 0) {
+        animation = moveLeftAnimation;
+      } else if (direction.x > 0) {
+        animation = moveRightAnimation;
+      }
+    }
   }
 
   @override
   bool onKeyEvent(KeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
-    if (isMoving) return true; // Ignore input if already moving
+    if (isMoving) return true;
 
-    _pressedKeys.clear();
-    _pressedKeys.addAll(keysPressed);
-    
-    // Handle only one direction at a time
+    // Use the same keys as Player but move in opposite direction
     if (keysPressed.contains(LogicalKeyboardKey.keyW) || 
         keysPressed.contains(LogicalKeyboardKey.arrowUp)) {
-      startGridMove(Vector2(0, -1));
+      startGridMove(Vector2(0, 1));  // Player goes up, AntiPlayer goes down
     } else if (keysPressed.contains(LogicalKeyboardKey.keyS) || 
         keysPressed.contains(LogicalKeyboardKey.arrowDown)) {
-      startGridMove(Vector2(0, 1));
+      startGridMove(Vector2(0, -1));  // Player goes down, AntiPlayer goes up
     } else if (keysPressed.contains(LogicalKeyboardKey.keyA) || 
         keysPressed.contains(LogicalKeyboardKey.arrowLeft)) {
-      startGridMove(Vector2(-1, 0));
+      startGridMove(Vector2(1, 0));  // Player goes left, AntiPlayer goes right
     } else if (keysPressed.contains(LogicalKeyboardKey.keyD) || 
         keysPressed.contains(LogicalKeyboardKey.arrowRight)) {
-      startGridMove(Vector2(1, 0));
+      startGridMove(Vector2(-1, 0));  // Player goes right, AntiPlayer goes left
     }
 
     return true;
   }
-  void startGridMove(Vector2 dir) {
+
+void startGridMove(Vector2 dir) {
     log("Player : Starting grid movement");
     if (!isMoving) {
       log("Player : startGridMove -> Player is not moving currently, Lets move him");
@@ -144,29 +150,24 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler {
       }
     }
   }
+  
   @override
   void update(double dt) {
     super.update(dt);
-    // log("Player : Update is called ");
+
     if (isMoving) {
-      // log("Player : Update -> player is moving");
-      // Calculate distance to move this frame
       final movement = direction * speed * dt;
-      
-      // Check if we would overshoot the target
       final distanceToTarget = targetPosition - position;
       final distanceThisFrame = movement.length;
       
       if (distanceThisFrame >= distanceToTarget.length) {
-        // Snap to target position and stop moving
         position = targetPosition;
         isMoving = false;
         direction = Vector2.zero();
         animation = idleAnimation;
       } else {
-        // Continue moving towards target
         position += movement;
       }
     }
-    }
+  }
 }

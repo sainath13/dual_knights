@@ -53,12 +53,12 @@ class DualKnights extends FlameGame with KeyboardEvents{
     KeyEvent event,
     Set<LogicalKeyboardKey> keysPressed,
   ) {
-    log("Dual Knights: key event received");
+    // log("Dual Knights: key event received");
     
     world.children.forEach((component) {
-      log("Found component: ${component.runtimeType}");
+      // log("Found component: ${component.runtimeType}");
       if (component is KeyboardHandler) {
-        log("Component is KeyboardHandler");
+        // log("Component is KeyboardHandler");
         // ignore: unnecessary_cast
         (component as KeyboardHandler).onKeyEvent(event, keysPressed);
       }
