@@ -1,12 +1,10 @@
-import 'package:flame/collisions.dart';
+import 'dart:developer';
+
 import 'package:flame/components.dart';
-import 'package:flame/geometry.dart';
-import 'package:flame/input.dart';
-import 'package:flame/sprite.dart';
-import 'package:flutter/material.dart';
+import 'package:flame/events.dart';
 import 'package:flutter/services.dart';
 
-class Player extends SpriteAnimationComponent with HasGameRef {
+class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler {
   // Define the size of each frame
   static const double frameWidth = 192;
   static const double frameHeight = 192;
@@ -22,6 +20,9 @@ class Player extends SpriteAnimationComponent with HasGameRef {
   final double speed = 150.0;
   Vector2 direction = Vector2.zero();
 
+  // Keep track of pressed keys
+  final Set<LogicalKeyboardKey> _pressedKeys = {};
+
   Player() : super(size: Vector2(frameWidth, frameHeight));
 
   @override
@@ -30,7 +31,6 @@ class Player extends SpriteAnimationComponent with HasGameRef {
 
     // Load the sprite sheet
     final spriteSheet = await gameRef.images.load('Factions/Knights/Troops/Warrior/Blue/Warrior_Blue.png');
-    
 
     // Define animations
     idleAnimation = SpriteAnimation.fromFrameData(
@@ -51,7 +51,7 @@ class Player extends SpriteAnimationComponent with HasGameRef {
         textureSize: Vector2(frameWidth, frameHeight),
         stepTime: 0.1,
         loop: true,
-        texturePosition: Vector2(0, frameHeight * 1), // Second row
+        texturePosition: Vector2(0, frameHeight * 1),
       ),
     );
 
@@ -62,7 +62,7 @@ class Player extends SpriteAnimationComponent with HasGameRef {
         textureSize: Vector2(frameWidth, frameHeight),
         stepTime: 0.1,
         loop: true,
-        texturePosition: Vector2(0, frameHeight * 2), // Third row
+        texturePosition: Vector2(0, frameHeight * 2),
       ),
     );
 
@@ -73,7 +73,7 @@ class Player extends SpriteAnimationComponent with HasGameRef {
         textureSize: Vector2(frameWidth, frameHeight),
         stepTime: 0.1,
         loop: true,
-        texturePosition: Vector2(0, frameHeight * 3), // Fourth row
+        texturePosition: Vector2(0, frameHeight * 3),
       ),
     );
 
@@ -84,7 +84,7 @@ class Player extends SpriteAnimationComponent with HasGameRef {
         textureSize: Vector2(frameWidth, frameHeight),
         stepTime: 0.1,
         loop: true,
-        texturePosition: Vector2(0, frameHeight * 4), // Fifth row
+        texturePosition: Vector2(0, frameHeight * 4),
       ),
     );
 
@@ -93,25 +93,53 @@ class Player extends SpriteAnimationComponent with HasGameRef {
   }
 
   @override
+  bool onKeyEvent(KeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
+    _pressedKeys.clear();
+    _pressedKeys.addAll(keysPressed);
+    log("Player : Key is pressed");
+
+    // Update direction based on pressed keys
+    direction = Vector2.zero();
+    
+    if (_pressedKeys.contains(LogicalKeyboardKey.keyW) || 
+        _pressedKeys.contains(LogicalKeyboardKey.arrowUp)) {
+      direction.y = -100;
+    }
+    if (_pressedKeys.contains(LogicalKeyboardKey.keyS) || 
+        _pressedKeys.contains(LogicalKeyboardKey.arrowDown)) {
+      direction.y = 100;
+    }
+    if (_pressedKeys.contains(LogicalKeyboardKey.keyA) || 
+        _pressedKeys.contains(LogicalKeyboardKey.arrowLeft)) {
+      direction.x = -100;
+    }
+    if (_pressedKeys.contains(LogicalKeyboardKey.keyD) || 
+        _pressedKeys.contains(LogicalKeyboardKey.arrowRight)) {
+      direction.x = 100;
+    }
+
+    return super.onKeyEvent(event, keysPressed);
+  }
+
+  @override
   void update(double dt) {
     super.update(dt);
 
-    // if (direction != Vector2.zero()) {
-    //   position += direction.normalized() * speed * dt;
+    if (direction != Vector2.zero()) {
+      position += direction.normalized() * speed * dt;
 
-    //   // Switch animation based on direction
-    //   if (direction.y < 0) {
-    //     animation = moveUpAnimation;
-    //   } else if (direction.y > 0) {
-    //     animation = moveDownAnimation;
-    //   } else if (direction.x < 0) {
-    //     animation = moveLeftAnimation;
-    //   } else if (direction.x > 0) {
-    //     animation = moveRightAnimation;
-    //   }
-    // } else {
-    //   animation = idleAnimation;
-    // }
-    animation = idleAnimation;
+      // Switch animation based on direction
+      if (direction.y < 0) {
+        animation = moveUpAnimation;
+      } else if (direction.y > 0) {
+        animation = moveDownAnimation;
+      } else if (direction.x < 0) {
+        animation = moveLeftAnimation;
+      } else if (direction.x > 0) {
+        animation = moveRightAnimation;
+      }
+    } else {
+      animation = idleAnimation;
+    }
   }
 }
