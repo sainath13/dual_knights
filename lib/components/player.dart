@@ -53,7 +53,7 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
     idleAnimation = SpriteAnimation.fromFrameData(
       spriteSheet,
       SpriteAnimationData.sequenced(
-        texturePosition: Vector2.all(10),
+        texturePosition: Vector2.all(10), ////TODO WHAT IS THIS SAINATH
         amount: 6,
         textureSize: Vector2(frameWidth, frameHeight),
         stepTime: 0.1,

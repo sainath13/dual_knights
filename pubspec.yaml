@@ -66,6 +66,8 @@ flutter:
     - assets/images/Factions/Knights/Troops/Warrior/Blue/
     - assets/images/Factions/Knights/Troops/Warrior/Red/
     - assets/images/Factions/Goblins/Troops/Barrel/Red/
+    - assets/images/Factions/Knights/Troops/Dead/
+    
     # - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
