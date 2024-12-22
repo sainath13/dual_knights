@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="64" tileheight="64" infinite="0" nextlayerid="3" nextobjectid="5">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="64" tileheight="64" infinite="0" nextlayerid="3" nextobjectid="10">
  <tileset firstgid="1" source="Terrain.tsx"/>
  <layer id="1" name="Background" width="20" height="15">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,1,2,3,0,0,31,2,3,0,0,0,1,2,3,0,0,0,
-0,0,0,11,12,12,3,0,0,11,13,0,0,1,12,12,13,0,0,0,
-0,0,0,21,12,12,12,2,2,12,12,2,2,12,12,22,23,0,0,0,
-0,0,0,0,11,12,12,12,12,12,12,12,12,12,23,0,0,0,0,0,
-0,0,0,0,11,12,12,12,12,12,12,12,12,13,0,0,0,0,0,0,
-0,0,0,0,11,12,12,12,12,12,12,12,12,12,2,2,33,0,0,0,
-0,0,0,1,12,12,12,12,12,12,12,12,12,12,22,23,0,0,0,0,
-0,0,0,21,12,12,12,22,22,12,12,12,12,13,0,0,0,0,0,0,
+0,0,0,1,0,3,0,0,31,2,3,0,0,0,1,2,3,0,0,0,
+0,0,0,0,0,12,3,0,0,11,13,0,0,1,12,12,13,0,0,0,
+0,0,0,21,12,12,0,0,0,12,12,2,2,12,12,22,23,0,0,0,
+0,0,0,0,11,12,0,12,0,12,12,12,12,12,23,0,0,0,0,0,
+0,0,0,0,11,12,0,0,0,12,12,0,0,0,0,0,0,0,0,0,
+0,0,0,0,11,12,12,0,0,0,12,0,12,0,2,2,33,0,0,0,
+0,0,0,1,12,12,12,0,12,0,12,0,0,0,22,23,0,0,0,0,
+0,0,0,21,12,12,12,0,0,0,12,12,12,13,0,0,0,0,0,0,
 0,0,0,0,11,12,23,0,0,21,22,22,22,22,2,2,3,0,0,0,
 0,0,0,0,21,23,0,0,34,0,0,0,0,0,0,21,23,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -21,9 +21,9 @@
 </data>
  </layer>
  <objectgroup id="2" name="Spawnpoints">
-  <object id="1" name="Player" type="Player" x="319.558" y="449.088" width="64" height="64"/>
-  <object id="2" name="AntiPlayer" type="AntiPlayer" x="770" y="512" width="64" height="64"/>
-  <object id="3" name="Barrel" type="Barrel" x="512.877" y="575.044" width="64" height="64"/>
-  <object id="4" name="Barrel" type="Barrel" x="446.464" y="384.297" width="64" height="64"/>
+  <object id="1" name="Player" type="Player" x="192" y="192" width="64" height="64"/>
+  <object id="2" name="AntiPlayer" type="AntiPlayer" x="768" y="512" width="64" height="64"/>
+  <object id="3" name="Barrel" type="Barrel" x="512" y="576" width="64" height="64"/>
+  <object id="4" name="Barrel" type="Barrel" x="448" y="384" width="64" height="64"/>
  </objectgroup>
 </map>

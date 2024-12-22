@@ -23,19 +23,19 @@ class Level extends World with HasCollisionDetection{
         switch (spawnPoint.class_) {
           case 'Player' :
             // final player = Player();
-            player.position = Vector2(spawnPoint.x -25, spawnPoint.y-20);
-            player.scale.x = 0.666667;
-            player.scale.y = 0.666667;
+            player.position = Vector2(spawnPoint.x - 30, spawnPoint.y - 30);
+            player.scale.x = 2/3;
+            player.scale.y = 2/3;
             add(player);
             break;
           case 'AntiPlayer' :
-            antiPlayer.position = Vector2(spawnPoint.x -25, spawnPoint.y-20);
+            antiPlayer.position = Vector2(spawnPoint.x - 30, spawnPoint.y-30);
             antiPlayer.scale.x = 0.666667;
             antiPlayer.scale.y = 0.666667;
             add(antiPlayer);
             break;
           case 'Barrel' :
-            final barrel = Barrel(position: Vector2(spawnPoint.x -25, spawnPoint.y-20))..debugMode = true;
+            final barrel = Barrel(position: Vector2(spawnPoint.x - 10, spawnPoint.y-10))..debugMode = true;
             barrel.scale.x = 0.666667;
             barrel.scale.y = 0.666667;
             add(barrel);
