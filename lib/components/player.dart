@@ -39,10 +39,10 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
     super.onLoad();
 
     final hitbox = RectangleHitbox(
-      size: Vector2(gridSize, gridSize),
+      size: Vector2(gridSize*1.2, gridSize*1.2),
       position: Vector2(
-        (frameWidth - gridSize) / 2,
-        (frameHeight - gridSize) / 2,
+        (frameWidth - gridSize) / 2.5,
+        (frameHeight - gridSize) / 2.5
       ),
     );
     add(hitbox);

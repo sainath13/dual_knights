@@ -16,6 +16,7 @@ enum BarrelState {
   goingBackToIdle,
   awakeWaiting,
   readyToExplode,
+  exploding,
   dying,
   vanishing,
   dead
@@ -34,6 +35,7 @@ class Barrel extends SpriteAnimationComponent with HasGameRef, CollisionCallback
 
   late final RectangleHitbox wakeRangeHitbox;
   late final RectangleHitbox explodeRangeHitbox;
+  late final RectangleHitbox deadRangeHitbox;
   double randomLookTimer = 0;
   static const double randomLookInterval = 3.0;
   
@@ -47,6 +49,7 @@ class Barrel extends SpriteAnimationComponent with HasGameRef, CollisionCallback
   Future<void> onLoad() async {
     final spriteSheet = await gameRef.images.load('Factions/Goblins/Troops/Barrel/Red/Barrel_Red.png');
     final deathSheet = await gameRef.images.load('Factions/Knights/Troops/Dead/Dead.png');
+    final explosionSheet = await gameRef.images.load('Effects/Explosion/Explosions.png');
     
     // Load all animations
     animations = {
@@ -110,6 +113,16 @@ class Barrel extends SpriteAnimationComponent with HasGameRef, CollisionCallback
           texturePosition: Vector2(0, frameHeight * 5),
         ),
       ),
+      BarrelState.exploding: SpriteAnimation.fromFrameData(
+        explosionSheet,
+        SpriteAnimationData.sequenced(
+          amount: 9,
+          textureSize: Vector2(192,192),
+          stepTime: 0.1,
+          loop: false,
+          // texturePosition: Vector2(0, 0),
+        ),
+      ),
       // Add death animations
       BarrelState.dying: SpriteAnimation.fromFrameData(
         deathSheet,
@@ -149,50 +162,71 @@ class Barrel extends SpriteAnimationComponent with HasGameRef, CollisionCallback
       collisionType: CollisionType.passive,
     );
 
-    wakeRangeHitbox.debugColor = Color(0x8800FF00);
-    explodeRangeHitbox.debugColor = Color.fromARGB(135, 0, 0, 0);
+    deadRangeHitbox = RectangleHitbox(
+      size: Vector2(gridSize * 1.5, gridSize * 1.5),
+      position: Vector2(frameWidth/2 - gridSize/2, frameHeight/2 - gridSize/2),
+      isSolid: false,
+      collisionType: CollisionType.passive,
+    );
+
+    // wakeRangeHitbox.debugColor = Color(0x8800FF00);
+    // explodeRangeHitbox.debugColor = Color(0x88FF0000);
+    // deadRangeHitbox.debugColor = Colors.black38;
     
     await add(wakeRangeHitbox);
     await add(explodeRangeHitbox);
-    await add(RectangleHitbox(
-      size: Vector2(frameWidth, frameHeight),
-      collisionType: CollisionType.passive,
-    ));
+    await add(deadRangeHitbox);
+    // await add(RectangleHitbox(
+    //   size: Vector2(frameWidth, frameHeight),
+    //   collisionType: CollisionType.passive,
+    // ));
   }
 
-  void explode() {
-    if (!isExploding) {
-      isExploding = true;
-      currentState = BarrelState.dying;
-      animation = animations[currentState];
-      animationTicker?.reset();
-    }
-  }
+  // void explode() {
+  //   if (!isExploding) {
+  //     isExploding = true;
+  //     currentState = BarrelState.dying;
+  //     animation = animations[currentState];
+  //     animationTicker?.reset();
+  //   }
+  // }
 
   @override
   void onCollisionStart(
     Set<Vector2> intersectionPoints,
     PositionComponent other,
   ) {
-    developer.log("Barrel : Collision is started");
+    //developer.log("Barrel : Collision is started");
     super.onCollisionStart(intersectionPoints, other);
     
     if (other is Player || other is AntiPlayer) {
-      developer.log("Barrel : other is player or antiplayer");
+      //developer.log("Barrel : other is player or antiplayer");
       final Vector2 otherCenter = other.position + (other.size / 2);
       final Vector2 barrelCenter = position + (size / 2);
       final double distance = (otherCenter - barrelCenter).length;
-      developer.log("Barrel : distance is $distance");
+      //developer.log("Barrel : distance is $distance");
       if (distance <= gridSize * 3) {
         knightsInWakeRange.add(other);
       }
       
       if (distance <= gridSize) {
-        developer.log("Barrel : distance is less than gridSize");
         knightsInExplodeRange.add(other);
-        developer.log("Barrel : Current state is $currentState");
-        if (currentState == BarrelState.readyToExplode) {
-          explode();
+      }
+
+      Vector2 deadCenter = deadRangeHitbox.aabb.center;
+
+      double deadDistance = (deadCenter - otherCenter).length;
+      if (deadDistance <= deadRangeHitbox.size.x / 3) {
+        // developer.log("Barrel : Dead Distance-based check passed!");
+        if (other.parent != null) {
+         other.parent!.remove(other);
+        }
+        if (currentState != BarrelState.exploding) {
+          // developer.log("Explosion is happening!!!!!");
+          currentState = BarrelState.exploding;
+          animation = animations[BarrelState.exploding];
+          animationTicker?.reset();
+          isExploding = true;
         }
       }
     }
@@ -212,17 +246,47 @@ class Barrel extends SpriteAnimationComponent with HasGameRef, CollisionCallback
     if (currentState == BarrelState.dead) return;
     
     if (isExploding) {
-      if (currentState == BarrelState.dying && animationTicker?.done() == true) {
-        currentState = BarrelState.vanishing;
-        animation = animations[currentState];
-        animationTicker?.reset();
-      } else if (currentState == BarrelState.vanishing && animationTicker?.done() == true) {
-        currentState = BarrelState.dead;
-        // You might want to remove the barrel from the game here
-        // gameRef.remove(this);
+      // developer.log("isExploding is $isExploding with state $currentState");
+      // developer.log("animationTicker is ${animationTicker?.isLastFrame}");
+      if (animationTicker?.isLastFrame ?? false) {
+      // Handle transitions between animation states
+        switch (currentState) {
+          case BarrelState.goingBackToIdle:
+            // developer.log("Handling for goingBackToIdle state");
+            currentState = BarrelState.exploding;
+            animation = animations[BarrelState.exploding];
+            animationTicker?.reset();
+            break;
+
+          case BarrelState.exploding:
+            // developer.log("Handling for exploding state");
+            currentState = BarrelState.dying;
+            animation = animations[BarrelState.dying];
+            animationTicker?.reset();
+            // // currentState = BarrelState.goingBackToIdle;
+            // animation = animations[BarrelState.exploding];
+            // animationTicker?.reset();
+            break;
+
+          case BarrelState.dying:
+            // developer.log("Handling for vanishing state");
+            currentState = BarrelState.vanishing;
+            animation = animations[BarrelState.vanishing];
+            animationTicker?.reset();
+            break;
+
+          case BarrelState.vanishing:
+            currentState = BarrelState.dead;
+            removeFromParent(); // Remove the entity
+            break;
+
+          default:
+            break;
+        }
+        return;
       }
-      return;
     }
+    
 
     BarrelState newState = currentState;
     

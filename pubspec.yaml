@@ -67,6 +67,7 @@ flutter:
     - assets/images/Factions/Knights/Troops/Warrior/Red/
     - assets/images/Factions/Goblins/Troops/Barrel/Red/
     - assets/images/Factions/Knights/Troops/Dead/
+    - assets/images/Effects/Explosion/
     
     # - images/a_dot_ham.jpeg
 

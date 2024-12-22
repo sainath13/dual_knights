@@ -14,8 +14,8 @@ class Level extends World with HasCollisionDetection{
   FutureOr<void> onLoad() async{
     level = await TiledComponent.load('Level-01.tmx', Vector2(64, 64));
     add(level);
-    final player = Player()..debugMode = true;
-    final antiPlayer = AntiPlayer()..debugMode = true;
+    final player = Player();//..debugMode = true;
+    final antiPlayer = AntiPlayer();//..debugMode = true;
     final spawnPointsLayer = level.tileMap.getLayer<ObjectGroup>('Spawnpoints');
     if(spawnPointsLayer != null){
       // log('Level : spawnPointslayer is not null');
@@ -35,7 +35,7 @@ class Level extends World with HasCollisionDetection{
             add(antiPlayer);
             break;
           case 'Barrel' :
-            final barrel = Barrel(position: Vector2(spawnPoint.x - 10, spawnPoint.y-10))..debugMode = true;
+            final barrel = Barrel(position: Vector2(spawnPoint.x - 10, spawnPoint.y-10));//..debugMode = true;
             // final barrel = Barrel(position: Vector2(spawnPoint.x - 10, spawnPoint.y-10));
             barrel.scale.x = 0.666667;
             barrel.scale.y = 0.666667;
