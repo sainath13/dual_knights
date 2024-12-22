@@ -2,25 +2,26 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:dual_knights/components/anti_player.dart';
+import 'package:dual_knights/components/barrel.dart';
 import 'package:dual_knights/components/player.dart';
 import 'package:flame/components.dart';
 import 'package:flame_tiled/flame_tiled.dart';
 
-class Level extends World {
+class Level extends World with HasCollisionDetection{
   late TiledComponent level;
 
   @override
   FutureOr<void> onLoad() async{
     level = await TiledComponent.load('Level-01.tmx', Vector2(64, 64));
     add(level);
-
+    final player = Player()..debugMode = true;
+    final antiPlayer = AntiPlayer()..debugMode = true;
     final spawnPointsLayer = level.tileMap.getLayer<ObjectGroup>('Spawnpoints');
     if(spawnPointsLayer != null){
       // log('Level : spawnPointslayer is not null');
       for(final spawnPoint in spawnPointsLayer.objects){
         switch (spawnPoint.class_) {
           case 'Player' :
-            final player = Player()..debugMode = true;
             // final player = Player();
             player.position = Vector2(spawnPoint.x -25, spawnPoint.y-20);
             player.scale.x = 0.666667;
@@ -28,13 +29,17 @@ class Level extends World {
             add(player);
             break;
           case 'AntiPlayer' :
-            final antiPlayer = AntiPlayer()..debugMode = true;
-            // final player = Player();
             antiPlayer.position = Vector2(spawnPoint.x -25, spawnPoint.y-20);
             antiPlayer.scale.x = 0.666667;
             antiPlayer.scale.y = 0.666667;
             add(antiPlayer);
-            break;  
+            break;
+          case 'Barrel' :
+            final barrel = Barrel(position: Vector2(spawnPoint.x -25, spawnPoint.y-20))..debugMode = true;
+            barrel.scale.x = 0.666667;
+            barrel.scale.y = 0.666667;
+            add(barrel);
+            break;    
           default:  
         }
       }

@@ -1,8 +1,9 @@
+import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/services.dart';
 import 'dart:developer';
 
-class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandler {
+class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, CollisionCallbacks {
   static const double frameWidth = 192;
   static const double frameHeight = 192;
   static const double gridSize = 64.0;
@@ -17,7 +18,7 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
   late SpriteAnimation moveLeftAnimation;
   late SpriteAnimation moveRightAnimation;
 
-  final double speed = 300.0;
+  final double speed = 150.0;
   Vector2 direction = Vector2.zero();
 
   AntiPlayer() : super(size: Vector2(frameWidth, frameHeight)) {
@@ -26,6 +27,16 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
 
   @override
   Future<void> onLoad() async {
+    super.onLoad();
+
+    final hitbox = RectangleHitbox(
+      size: Vector2(gridSize, gridSize),
+      position: Vector2(
+        (frameWidth - gridSize) / 2,
+        (frameHeight - gridSize) / 2,
+      ),
+    );
+    await add(hitbox);
     final spriteSheet = await gameRef.images.load('Factions/Knights/Troops/Warrior/Red/Warrior_Red.png');
     // Use the same animation setup as Player but with red warrior sprites
     
@@ -130,9 +141,9 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
   }
 
 void startGridMove(Vector2 dir) {
-    log("Player : Starting grid movement");
+    // log("Player : Starting grid movement");
     if (!isMoving) {
-      log("Player : startGridMove -> Player is not moving currently, Lets move him");
+      // log("Player : startGridMove -> Player is not moving currently, Lets move him");
       direction = dir;
       targetPosition = position + (direction * gridSize);
       isMoving = true;

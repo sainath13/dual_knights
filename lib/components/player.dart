@@ -1,9 +1,10 @@
 import 'dart:developer';
 
+import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/services.dart';
 
-class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler {
+class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, CollisionCallbacks {
   // Define the size of each frame
   static const double frameWidth = 192;
   static const double frameHeight = 192;
@@ -37,6 +38,14 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler {
   Future<void> onLoad() async {
     super.onLoad();
 
+    final hitbox = RectangleHitbox(
+      size: Vector2(gridSize, gridSize),
+      position: Vector2(
+        (frameWidth - gridSize) / 2,
+        (frameHeight - gridSize) / 2,
+      ),
+    );
+    add(hitbox);
     // Load the sprite sheet
     final spriteSheet = await gameRef.images.load('Factions/Knights/Troops/Warrior/Blue/Warrior_Blue.png');
 
@@ -125,9 +134,9 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler {
     return true;
   }
   void startGridMove(Vector2 dir) {
-    log("Player : Starting grid movement");
+    // log("Player : Starting grid movement");
     if (!isMoving) {
-      log("Player : startGridMove -> Player is not moving currently, Lets move him");
+      // log("Player : startGridMove -> Player is not moving currently, Lets move him");
       direction = dir;
       targetPosition = position + (direction * gridSize);
       isMoving = true;
