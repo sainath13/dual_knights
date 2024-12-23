@@ -186,10 +186,7 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
     }
   }
 
-  bool wouldCollide(Vector2 newPosition) {
-    // Get the player's hitbox
-    final playerHitbox = children.query<RectangleHitbox>().first;
-    
+  bool wouldCollide(Vector2 newPosition) {  
     // Calculate the future bounds of the player
     double futureLeft = newPosition.x + (frameWidth - gridSize) / 2.5;
     double futureRight = futureLeft + gridSize * 1.2;
@@ -221,7 +218,7 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
     PositionComponent other,
   ) {
     super.onCollisionStart(intersectionPoints, other);
-    if (other is CollisionBlock) {
+    if (other is CollisionBlock) { //This wont happen
       // Handle collision start if needed
       log("Player : COllision detected with colliion block");
     }
