@@ -5,6 +5,8 @@ import 'package:flame/components.dart';
 
 import 'dart:developer' as developer;
 
+import 'package:flutter/material.dart';
+
 
 enum BarrelState {
   idle,
@@ -26,6 +28,7 @@ class Barrel extends SpriteAnimationComponent with HasGameRef, CollisionCallback
   
   late final Map<BarrelState, SpriteAnimation> animations;
   BarrelState currentState = BarrelState.idle;
+  Vector2 currentPosition = Vector2.zero();
   
   final Set<Component> knightsInWakeRange = {};
   final Set<Component> knightsInExplodeRange = {};
@@ -41,6 +44,7 @@ class Barrel extends SpriteAnimationComponent with HasGameRef, CollisionCallback
   Barrel({required Vector2 position}) : super(size: Vector2(frameWidth, frameHeight)) {
     developer.log("Barrel is created");
     this.position = position;
+    currentPosition = position.clone();
   }
 
   @override
@@ -147,25 +151,28 @@ class Barrel extends SpriteAnimationComponent with HasGameRef, CollisionCallback
     animation = animations[BarrelState.idle];
 
     wakeRangeHitbox = RectangleHitbox(
-      size: Vector2(gridSize * 6, gridSize * 6),
-      position: Vector2(frameWidth/2 - gridSize * 3, frameHeight/2 - gridSize * 3),
+      position: Vector2(-96, -96),
+      size: Vector2(gridSize * 5, gridSize * 5),
       isSolid: false,
       collisionType: CollisionType.passive,
-    )..debugMode = true;
+    )..debugColor = Colors.deepOrange
+    ..debugMode = true;
     
     explodeRangeHitbox = RectangleHitbox(
-      size: Vector2(gridSize * 2, gridSize * 2),
-      position: Vector2(frameWidth/2 - gridSize, frameHeight/2 - gridSize),
+      position: Vector2(-32,-32),
+      size: Vector2(gridSize * 3, gridSize * 3),
       isSolid: false,
       collisionType: CollisionType.passive,
-    )..debugMode = true;
+    )..debugColor = Colors.yellowAccent
+    ..debugMode = true;
 
     deadRangeHitbox = RectangleHitbox(
-      size: Vector2(gridSize * 1.5, gridSize * 1.5),
-      position: Vector2(frameWidth/2 - gridSize/2, frameHeight/2 - gridSize/2),
+      size: Vector2(gridSize, gridSize),
+      position: Vector2(32,32),
       isSolid: false,
       collisionType: CollisionType.passive,
-    )..debugMode = true;
+    )..debugColor = Colors.black
+    ..debugMode = true;
 
     // wakeRangeHitbox.debugColor = Color(0x8800FF00);
     // explodeRangeHitbox.debugColor = Color(0x88FF0000);

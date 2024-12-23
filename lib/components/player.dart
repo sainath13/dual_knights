@@ -203,12 +203,17 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
     PositionComponent other,
   ) {
     super.onCollisionStart(intersectionPoints, other);
-    if (other is CollisionBlock) { //This wont happen
+    // if (other is CollisionBlock) { //This wont happen
       // Handle collision start if needed
-      log("Player : COllision detected with colliion block");
-    }
+      log("Player : Collision detected with $other");
+    // }
   }
 
+  @override
+  void onCollisionEnd(PositionComponent other) {
+    super.onCollisionEnd(other);
+      log("Player: Collision ended with $other");
+    }
 
   @override
   void update(double dt) {

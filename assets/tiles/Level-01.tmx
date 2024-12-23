@@ -25,20 +25,20 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="3" name="Collisionblocks">
+ <objectgroup id="3" name="Collisionblocks" visible="0">
   <object id="11" name="Block" type="Block" x="1088" y="192" width="64" height="640"/>
   <object id="18" name="Block" type="Block" x="192" y="832" width="896" height="64"/>
   <object id="19" name="Block" type="Block" x="192" y="128" width="896" height="64"/>
   <object id="20" name="Block" type="Block" x="125.949" y="195.277" width="64" height="640"/>
  </objectgroup>
- <objectgroup id="4" name="Checkpoints">
-  <object id="14" name="PlayerCheckpoint" type="PlayerCheckpoint" x="640" y="320" width="64" height="64"/>
-  <object id="15" name="AntiPlayerCheckpoint" type="AntiPlayerCheckpoint" x="640" y="640" width="64" height="64"/>
+ <objectgroup id="4" name="Checkpoints" visible="0">
+  <object id="14" name="PlayerCheckpoint" type="PlayerCheckpoint" x="960" y="320" width="64" height="64"/>
+  <object id="15" name="AntiPlayerCheckpoint" type="AntiPlayerCheckpoint" x="960" y="640" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="2" name="Spawnpoints">
   <object id="1" name="Player" type="Player" x="192" y="192" width="64" height="64"/>
-  <object id="2" name="AntiPlayer" type="AntiPlayer" x="768" y="512" width="64" height="64"/>
-  <object id="3" name="Barrel" type="Barrel" x="512" y="576" width="64" height="64"/>
+  <object id="2" name="AntiPlayer" type="AntiPlayer" x="1086.49" y="833.077" width="64" height="64"/>
+  <object id="3" name="Barrel" type="Barrel" x="-2.58933" y="894.488" width="64" height="64"/>
   <object id="4" name="Barrel" type="Barrel" x="448" y="384" width="64" height="64"/>
  </objectgroup>
 </map>

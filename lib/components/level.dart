@@ -63,7 +63,8 @@ class Level extends World with HasCollisionDetection{
             add(antiPlayer);
             break;
           case 'Barrel' :
-            final barrel = Barrel(position: Vector2(spawnPoint.x+32, spawnPoint.y+32))..debugMode = true;
+            final barrel = Barrel(position: Vector2(spawnPoint.x-32, spawnPoint.y-32))..debugMode = true;
+            // log("Created barrel at x = ${spawnPoint.x-32} and y = ${spawnPoint.y-32}");
             antiPlayer.anchor = Anchor.center;
             // final barrel = Barrel(position: Vector2(spawnPoint.x - 10, spawnPoint.y-10));
             // barrel.scale.x = 0.666667;
