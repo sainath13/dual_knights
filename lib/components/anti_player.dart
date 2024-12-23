@@ -135,8 +135,8 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
   bool wouldCollide(Vector2 newPosition) {  
     // Calculate the future bounds of the player
     // log("new position would be $newPosition");
-    double futureX = newPosition.x + frameWidth/2;
-    double futureY = newPosition.y + frameWidth/2;
+    double futureX = newPosition.x;
+    double futureY = newPosition.y;
   
     // log("position of future is $futureLeft $futureRight $futureTop $futureBottom");
     // Check collision with all collision blocks

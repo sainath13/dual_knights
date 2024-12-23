@@ -87,7 +87,7 @@ class Level extends World with HasCollisionDetection{
           case 'Block' :
             final block = CollisionBlock(
               position: Vector2(collisionBlock.x, collisionBlock.y),
-              size: Vector2(collisionBlock.width, collisionBlock.x),
+              size: Vector2(collisionBlock.width, collisionBlock.height),
             )..debugMode = true;
             add(block);
             collisionBlocks.add(block);

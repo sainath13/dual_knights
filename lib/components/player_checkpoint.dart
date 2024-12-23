@@ -34,7 +34,9 @@ class PlayerCheckpoint extends SpriteAnimationComponent
         amount: 1,
         textureSize: Vector2.all(gridSize),
         stepTime: 0.1,
-        loop: true,
+        loop: false,
+        texturePosition: Vector2(0, -7)
+
       ),
     );
 
@@ -44,7 +46,8 @@ class PlayerCheckpoint extends SpriteAnimationComponent
         amount: 1,
         textureSize: Vector2.all(gridSize),
         stepTime: 0.1,
-        loop: true,
+        loop: false,
+        texturePosition: Vector2(0, -7)
       ),
     );
 
