@@ -15,7 +15,7 @@ class Level extends World with HasCollisionDetection{
   FutureOr<void> onLoad() async{
     level = await TiledComponent.load('Level-01.tmx', Vector2(64, 64));
     add(level);
-    final player = Player();//..debugMode = true;
+    final player = Player();//  ..debugMode = true;
     final antiPlayer = AntiPlayer();//..debugMode = true;
     final spawnPointsLayer = level.tileMap.getLayer<ObjectGroup>('Spawnpoints');
     if(spawnPointsLayer != null){
@@ -60,7 +60,7 @@ class Level extends World with HasCollisionDetection{
           final block = CollisionBlock(
             position: Vector2(collisionBlock.x, collisionBlock.y),
             size: Vector2(collisionBlock.width, collisionBlock.height),
-          )..debugMode = true;
+          );//..debugMode = true;
           add(block);
           collisionBlocks.add(block);
           //create a new block.

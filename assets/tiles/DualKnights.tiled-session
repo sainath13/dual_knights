@@ -20,16 +20,24 @@
             "scale": 0.3862,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 469.9637493526671,
-                "y": 324.9611600207146
+                "x": 633.0916623511134,
+                "y": 138.52925945106176
             }
         },
         "Terrain.tsx": {
             "scaleInDock": 0.305,
             "scaleInEditor": 1
+        },
+        "Tower_Blue.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Tower_Red.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         }
     },
-    "last.imagePath": "/Users/sainathlatkar/Downloads/Tiny Swords (Update 010)/Factions/Goblins/Troops/Barrel/Red",
+    "last.imagePath": "/Users/sainathlatkar/personal/flame/dual_knights/assets/images/Deco",
     "map.height": 15,
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 64,
@@ -38,10 +46,14 @@
     "openFiles": [
         "Level-01.tmx",
         "Terrain.tsx",
-        "EnemySingle.tsx"
+        "EnemySingle.tsx",
+        "Tower_Blue.tsx",
+        "Tower_Red.tsx"
     ],
     "project": "DualKnights.tiled-project",
     "recentFiles": [
+        "Tower_Red.tsx",
+        "Tower_Blue.tsx",
         "EnemySingle.tsx",
         "Terrain.tsx",
         "Level-01.tmx",
