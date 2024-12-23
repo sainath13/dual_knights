@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:dual_knights/components/collision_block.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/services.dart';
@@ -15,6 +16,12 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
   Vector2 targetPosition = Vector2.zero();
 
 
+  // Add a list to store collision blocks
+  List<CollisionBlock> collisionBlocks = [];
+
+  void setCollisionBlocks(List<CollisionBlock> blocks) {
+    collisionBlocks = blocks;
+  }
   // Animations
   late SpriteAnimation idleAnimation;
   late SpriteAnimation moveUpAnimation;
@@ -133,26 +140,94 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
 
     return true;
   }
-  void startGridMove(Vector2 dir) {
-    // log("Player : Starting grid movement");
-    if (!isMoving) {
-      // log("Player : startGridMove -> Player is not moving currently, Lets move him");
-      direction = dir;
-      targetPosition = position + (direction * gridSize);
-      isMoving = true;
+  // void startGridMove(Vector2 dir) {
+  //   // log("Player : Starting grid movement");
+  //   if (!isMoving) {
+  //     // log("Player : startGridMove -> Player is not moving currently, Lets move him");
+  //     direction = dir;
+  //     targetPosition = position + (direction * gridSize);
+  //     isMoving = true;
       
-      // Set appropriate animation
-      if (direction.y < 0) {
-        animation = moveUpAnimation;
-      } else if (direction.y > 0) {
-        animation = moveDownAnimation;
-      } else if (direction.x < 0) {
-        animation = moveLeftAnimation;
-      } else if (direction.x > 0) {
-        animation = moveRightAnimation;
+  //     // Set appropriate animation
+  //     if (direction.y < 0) {
+  //       animation = moveUpAnimation;
+  //     } else if (direction.y > 0) {
+  //       animation = moveDownAnimation;
+  //     } else if (direction.x < 0) {
+  //       animation = moveLeftAnimation;
+  //     } else if (direction.x > 0) {
+  //       animation = moveRightAnimation;
+  //     }
+  //   }
+  // }
+
+  void startGridMove(Vector2 dir) {
+    if (!isMoving) {
+      direction = dir;
+      // Calculate the potential target position
+      Vector2 potentialTarget = position + (direction * gridSize);
+      
+      // Check if the move would result in a collision
+      if (!wouldCollide(potentialTarget)) {
+        targetPosition = potentialTarget;
+        isMoving = true;
+        
+        // Set appropriate animation
+        if (direction.y < 0) {
+          animation = moveUpAnimation;
+        } else if (direction.y > 0) {
+          animation = moveDownAnimation;
+        } else if (direction.x < 0) {
+          animation = moveLeftAnimation;
+        } else if (direction.x > 0) {
+          animation = moveRightAnimation;
+        }
       }
     }
   }
+
+  bool wouldCollide(Vector2 newPosition) {
+    // Get the player's hitbox
+    final playerHitbox = children.query<RectangleHitbox>().first;
+    
+    // Calculate the future bounds of the player
+    double futureLeft = newPosition.x + (frameWidth - gridSize) / 2.5;
+    double futureRight = futureLeft + gridSize * 1.2;
+    double futureTop = newPosition.y + (frameHeight - gridSize) / 2.5;
+    double futureBottom = futureTop + gridSize * 1.2;
+
+    // Check collision with all collision blocks
+    for (final block in collisionBlocks) {
+      double blockLeft = block.position.x;
+      double blockRight = blockLeft + block.size.x;
+      double blockTop = block.position.y;
+      double blockBottom = blockTop + block.size.y;
+
+      // Basic rectangle collision detection
+      if (futureLeft < blockRight &&
+          futureRight > blockLeft &&
+          futureTop < blockBottom &&
+          futureBottom > blockTop) {
+        return true;
+      }
+    }
+    
+    return false;
+  }
+
+  @override
+  void onCollisionStart(
+    Set<Vector2> intersectionPoints,
+    PositionComponent other,
+  ) {
+    super.onCollisionStart(intersectionPoints, other);
+    if (other is CollisionBlock) {
+      // Handle collision start if needed
+      log("Player : COllision detected with colliion block");
+    }
+  }
+
+
   @override
   void update(double dt) {
     super.update(dt);

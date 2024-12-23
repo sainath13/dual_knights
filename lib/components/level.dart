@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:dual_knights/components/anti_player.dart';
 import 'package:dual_knights/components/barrel.dart';
+import 'package:dual_knights/components/collision_block.dart';
 import 'package:dual_knights/components/player.dart';
 import 'package:flame/components.dart';
 import 'package:flame_tiled/flame_tiled.dart';
@@ -49,6 +50,28 @@ class Level extends World with HasCollisionDetection{
       log('Level : Sadly spawnPointslayer is null');
     }
 
+    List<CollisionBlock> collisionBlocks = [];
+    final collisionBlocksLayer = level.tileMap.getLayer<ObjectGroup>('Collisionblocks');
+    if(collisionBlocksLayer != null){
+      log("Collision blocks layer is not null");
+      for(final collisionBlock in collisionBlocksLayer.objects){
+        switch(collisionBlock.class_){
+          case 'Block' :
+          final block = CollisionBlock(
+            position: Vector2(collisionBlock.x, collisionBlock.y),
+            size: Vector2(collisionBlock.width, collisionBlock.height),
+          )..debugMode = true;
+          add(block);
+          collisionBlocks.add(block);
+          //create a new block.
+        }
+      }
+    }
+    else {
+      log("Collision blocks layer is sadly null");
+    }
+
+    player.setCollisionBlocks(collisionBlocks);
 
     return super.onLoad();
   }

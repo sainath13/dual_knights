@@ -21,7 +21,7 @@
 </data>
  </layer>
  <objectgroup id="3" name="Collisionblocks">
-  <object id="11" name="block" type="block" x="128" y="192" width="64" height="192"/>
+  <object id="11" name="Block" type="Block" x="128" y="192" width="64" height="192"/>
  </objectgroup>
  <objectgroup id="2" name="Spawnpoints">
   <object id="1" name="Player" type="Player" x="192" y="192" width="64" height="64"/>
