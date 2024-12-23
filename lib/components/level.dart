@@ -16,6 +16,7 @@ class Level extends World with HasCollisionDetection{
   @override
   FutureOr<void> onLoad() async{
     level = await TiledComponent.load('Level-01.tmx', Vector2(64, 64));
+    level.debugMode = true;
     add(level);
 
     final checkpointLayer = level.tileMap.getLayer<ObjectGroup>('Checkpoints');
@@ -24,13 +25,12 @@ class Level extends World with HasCollisionDetection{
       for(final checkpoint in checkpointLayer.objects){
         switch (checkpoint.class_) {
           case 'PlayerCheckpoint' :
-            final playerCheckpoint = PlayerCheckpoint();//..debugMode = true;
+            final playerCheckpoint = PlayerCheckpoint()..debugMode = true;
             playerCheckpoint.position = Vector2(checkpoint.x, checkpoint.y);
-            
             add(playerCheckpoint);
           case 'AntiPlayerCheckpoint' :
-            final antiPlayerCheckpoint = AntiPlayerCheckpoint();//..debugMode = true;
-            antiPlayerCheckpoint.position = Vector2(checkpoint.x, checkpoint.y-64);
+            final antiPlayerCheckpoint = AntiPlayerCheckpoint()..debugMode = true;
+            antiPlayerCheckpoint.position = Vector2(checkpoint.x, checkpoint.y);
             add(antiPlayerCheckpoint);
           default:  
         }
@@ -40,8 +40,8 @@ class Level extends World with HasCollisionDetection{
       log('Level : Sadly spawnPointslayer is null');
     }
 
-    final player = Player();//  ..debugMode = true;
-    final antiPlayer = AntiPlayer();//..debugMode = true;
+    final player = Player()..debugMode = true;
+    final antiPlayer = AntiPlayer()..debugMode = true;
     final spawnPointsLayer = level.tileMap.getLayer<ObjectGroup>('Spawnpoints');
     if(spawnPointsLayer != null){
       // log('Level : spawnPointslayer is not null');
@@ -49,22 +49,25 @@ class Level extends World with HasCollisionDetection{
         switch (spawnPoint.class_) {
           case 'Player' :
             // final player = Player();
-            player.position = Vector2(spawnPoint.x, spawnPoint.y);
+            player.position = Vector2(spawnPoint.x + 32, spawnPoint.y + 32);
+            player.anchor = Anchor.center;
             // player.scale.x = 2/3;
             // player.scale.y = 2/3;
             add(player);
             break;
           case 'AntiPlayer' :
-            antiPlayer.position = Vector2(spawnPoint.x - 30, spawnPoint.y-30);
-            antiPlayer.scale.x = 0.666667;
-            antiPlayer.scale.y = 0.666667;
+            antiPlayer.position = Vector2(spawnPoint.x+32, spawnPoint.y+32);
+            antiPlayer.anchor = Anchor.center;
+            // antiPlayer.scale.x = 0.666667;
+            // antiPlayer.scale.y = 0.666667;
             add(antiPlayer);
             break;
           case 'Barrel' :
-            final barrel = Barrel(position: Vector2(spawnPoint.x - 10, spawnPoint.y-10));//..debugMode = true;
+            final barrel = Barrel(position: Vector2(spawnPoint.x+32, spawnPoint.y+32))..debugMode = true;
+            antiPlayer.anchor = Anchor.center;
             // final barrel = Barrel(position: Vector2(spawnPoint.x - 10, spawnPoint.y-10));
-            barrel.scale.x = 0.666667;
-            barrel.scale.y = 0.666667;
+            // barrel.scale.x = 0.666667;
+            // barrel.scale.y = 0.666667;
             add(barrel);
             break;    
           default:  
@@ -84,8 +87,8 @@ class Level extends World with HasCollisionDetection{
           case 'Block' :
             final block = CollisionBlock(
               position: Vector2(collisionBlock.x, collisionBlock.y),
-              size: Vector2(collisionBlock.width, collisionBlock.height),
-            );//..debugMode = true;
+              size: Vector2(collisionBlock.width, collisionBlock.x),
+            )..debugMode = true;
             add(block);
             collisionBlocks.add(block);
             //create a new block.

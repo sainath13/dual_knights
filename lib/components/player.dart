@@ -15,7 +15,6 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
   bool isMoving = false; // Flag to track if player is currently moving
   Vector2 targetPosition = Vector2.zero();
 
-
   // Add a list to store collision blocks
   List<CollisionBlock> collisionBlocks = [];
 
@@ -52,7 +51,7 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
         64
       ),
     )..debugMode = true;
-    await add(hitbox);
+    add(hitbox);
     // Load the sprite sheet
     final spriteSheet = await gameRef.images.load('Factions/Knights/Troops/Warrior/Blue/Warrior_Blue.png');
 
@@ -60,7 +59,7 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
     idleAnimation = SpriteAnimation.fromFrameData(
       spriteSheet,
       SpriteAnimationData.sequenced(
-        texturePosition: Vector2.all(10), ////TODO WHAT IS THIS SAINATH
+        texturePosition: Vector2.all(0),
         amount: 6,
         textureSize: Vector2(frameWidth, frameHeight),
         stepTime: 0.1,
@@ -168,23 +167,24 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
 
   bool wouldCollide(Vector2 newPosition) {  
     // Calculate the future bounds of the player
-    double futureLeft = newPosition.x + (frameWidth - gridSize) / 2.5;
-    double futureRight = futureLeft + gridSize * 1.2;
-    double futureTop = newPosition.y + (frameHeight - gridSize) / 2.5;
-    double futureBottom = futureTop + gridSize * 1.2;
-
+    // log("new position would be $newPosition");
+    double futureX = newPosition.x + frameWidth/2;
+    double futureY = newPosition.y + frameWidth/2;
+  
+    // log("position of future is $futureLeft $futureRight $futureTop $futureBottom");
     // Check collision with all collision blocks
     for (final block in collisionBlocks) {
       double blockLeft = block.position.x;
       double blockRight = blockLeft + block.size.x;
       double blockTop = block.position.y;
       double blockBottom = blockTop + block.size.y;
-
+      // log("Block size is bounded by $blockLeft $blockRight $blockTop $blockBottom");
       // Basic rectangle collision detection
-      if (futureLeft < blockRight &&
-          futureRight > blockLeft &&
-          futureTop < blockBottom &&
-          futureBottom > blockTop) {
+      if (futureX < blockRight &&
+          futureX > blockLeft &&
+          futureY < blockBottom &&
+          futureY > blockTop) {
+            // log("You can not move here");
         return true;
       }
     }

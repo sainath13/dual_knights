@@ -27,7 +27,8 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
 
   final double speed = 150.0;
   Vector2 direction = Vector2.zero();
-  
+  // Keep track of pressed keys
+  final Set<LogicalKeyboardKey> _pressedKeys = {};
 
   AntiPlayer() : super(size: Vector2(frameWidth, frameHeight)) {
     targetPosition = position.clone();
@@ -38,20 +39,20 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
     super.onLoad();
 
     final hitbox = RectangleHitbox(
-      size: Vector2(gridSize, gridSize),
+      size: Vector2(64-4, 64-4),
       position: Vector2(
-        (frameWidth - gridSize) / 2,
-        (frameHeight - gridSize) / 2,
+        64,
+        64
       ),
     )..debugMode = true;
-    await add(hitbox);
+    add(hitbox);
     final spriteSheet = await gameRef.images.load('Factions/Knights/Troops/Warrior/Red/Warrior_Red.png');
     // Use the same animation setup as Player but with red warrior sprites
     
     idleAnimation = SpriteAnimation.fromFrameData(
       spriteSheet,
       SpriteAnimationData.sequenced(
-        texturePosition: Vector2.all(10),
+        texturePosition: Vector2.all(0),
         amount: 6,
         textureSize: Vector2(frameWidth, frameHeight),
         stepTime: 0.1,
@@ -102,6 +103,7 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
         texturePosition: Vector2(0, frameHeight * 4),
       ),
     );
+    // Set initial animation
 
     animation = idleAnimation;
   }
@@ -109,7 +111,8 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
   @override
   bool onKeyEvent(KeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
     if (isMoving) return true;
-
+    _pressedKeys.clear();
+    _pressedKeys.addAll(keysPressed);
     // Use the same keys as Player but move in opposite direction
     if (keysPressed.contains(LogicalKeyboardKey.keyW) || 
         keysPressed.contains(LogicalKeyboardKey.arrowUp)) {
@@ -128,25 +131,26 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
     return true;
   }
 
-bool wouldCollide(Vector2 newPosition) {  
+  bool wouldCollide(Vector2 newPosition) {  
     // Calculate the future bounds of the player
-    double futureLeft = newPosition.x + (frameWidth - gridSize) / 2.5;
-    double futureRight = futureLeft + gridSize * 1.2;
-    double futureTop = newPosition.y + (frameHeight - gridSize) / 2.5;
-    double futureBottom = futureTop + gridSize * 1.2;
-
+    // log("new position would be $newPosition");
+    double futureX = newPosition.x + frameWidth/2;
+    double futureY = newPosition.y + frameWidth/2;
+  
+    // log("position of future is $futureLeft $futureRight $futureTop $futureBottom");
     // Check collision with all collision blocks
     for (final block in collisionBlocks) {
       double blockLeft = block.position.x;
       double blockRight = blockLeft + block.size.x;
       double blockTop = block.position.y;
       double blockBottom = blockTop + block.size.y;
-
+      // log("Block size is bounded by $blockLeft $blockRight $blockTop $blockBottom");
       // Basic rectangle collision detection
-      if (futureLeft < blockRight &&
-          futureRight > blockLeft &&
-          futureTop < blockBottom &&
-          futureBottom > blockTop) {
+      if (futureX < blockRight &&
+          futureX > blockLeft &&
+          futureY < blockBottom &&
+          futureY > blockTop) {
+            // log("You can not move here");
         return true;
       }
     }

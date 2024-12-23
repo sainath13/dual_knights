@@ -1,37 +1,80 @@
+import 'dart:developer';
+
+import 'package:dual_knights/components/anti_player.dart';
+import 'package:dual_knights/components/player.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 
-class AntiPlayerCheckpoint extends SpriteAnimationComponent with HasGameRef, CollisionCallbacks {
-  static const double frameWidth = 64;
-  static const double frameHeight = 192;
+class AntiPlayerCheckpoint extends SpriteAnimationComponent
+    with HasGameRef, CollisionCallbacks {
   static const double gridSize = 64.0;
 
-  late SpriteAnimation idleAnimation;
+  late SpriteAnimation pressedAnimation;
+  late SpriteAnimation unpressedAnimation;
+
+  bool isPressed = false;
 
   @override
   Future<void> onLoad() async {
     super.onLoad();
-    final hitbox = RectangleHitbox(
-          size: Vector2(gridSize, gridSize),
-          position: Vector2(
-            (frameWidth - gridSize) / 2,
-            (frameHeight - gridSize) / 2,
-          ),
-        );
-    await add(hitbox);
-    final antiPlayerCheckpointSheet = await gameRef.images.load('UI/Buttons/Button_Blue.png');
 
-    idleAnimation = SpriteAnimation.fromFrameData(
-      antiPlayerCheckpointSheet,
+    // Define the hitbox
+    final hitbox = RectangleHitbox(
+      size: Vector2(64-2, 64-2),
+      position: Vector2.all(1),
+    )..debugMode = true;
+    await add(hitbox);
+
+    // Load button animations
+    final buttonPressedImage = await gameRef.images.load('UI/Buttons/Button_Red_Pressed.png');
+    final buttonUnpressedImage = await gameRef.images.load('UI/Buttons/Button_Red.png');
+
+    pressedAnimation = SpriteAnimation.fromFrameData(
+      buttonPressedImage,
       SpriteAnimationData.sequenced(
-        // texturePosition: Vector2.all(10),
         amount: 1,
-        textureSize: Vector2(frameWidth, frameHeight),
+        textureSize: Vector2.all(gridSize),
         stepTime: 0.1,
         loop: true,
       ),
     );
 
-    animation = idleAnimation;
+    unpressedAnimation = SpriteAnimation.fromFrameData(
+      buttonUnpressedImage,
+      SpriteAnimationData.sequenced(
+        amount: 1,
+        textureSize: Vector2.all(gridSize),
+        stepTime: 0.1,
+        loop: true,
+      ),
+    );
+
+    // Set the default animation
+    animation = unpressedAnimation;
+  }
+
+  @override
+  void onCollisionStart(
+    Set<Vector2> intersectionPoints,
+    PositionComponent other,
+  ) {
+    super.onCollisionStart(intersectionPoints, other);
+
+    if (other is AntiPlayer) {
+      isPressed = true;
+      animation = pressedAnimation;
+      log("AntiPlayerCheckpoint: AntiPlayer reached checkpoint");
+    }
+  }
+
+  @override
+  void onCollisionEnd(PositionComponent other) {
+    super.onCollisionEnd(other);
+
+    if (other is AntiPlayer) {
+      isPressed = false;
+      animation = unpressedAnimation;
+      log("AntiPlayerCheckpoint: AntiPlayer left checkpoint");
+    }
   }
 }

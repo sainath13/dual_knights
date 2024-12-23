@@ -25,8 +25,8 @@ class PlayerCheckpoint extends SpriteAnimationComponent
     await add(hitbox);
 
     // Load button animations
-    final buttonPressedImage = await gameRef.images.load('UI/Buttons/Button_Red_Pressed.png');
-    final buttonUnpressedImage = await gameRef.images.load('UI/Buttons/Button_Red.png');
+    final buttonPressedImage = await gameRef.images.load('UI/Buttons/Button_Blue_Pressed.png');
+    final buttonUnpressedImage = await gameRef.images.load('UI/Buttons/Button_Blue.png');
 
     pressedAnimation = SpriteAnimation.fromFrameData(
       buttonPressedImage,
