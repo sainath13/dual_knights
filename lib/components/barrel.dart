@@ -218,15 +218,15 @@ class Barrel extends SpriteAnimationComponent with HasGameRef, CollisionCallback
       double deadDistance = (deadCenter - otherCenter).length;
       if (deadDistance <= deadRangeHitbox.size.x / 3) {
         // developer.log("Barrel : Dead Distance-based check passed!");
-        if (other.parent != null) {
-         other.parent!.remove(other);
-        }
         if (currentState != BarrelState.exploding) {
-          // developer.log("Explosion is happening!!!!!");
+          developer.log("Explosion is happening!!!!!");
           currentState = BarrelState.exploding;
           animation = animations[BarrelState.exploding];
-          animationTicker?.reset();
+          // animationTicker?.reset();
           isExploding = true;
+        }
+        if (other.parent != null) {
+         other.parent!.remove(other);
         }
       }
     }
@@ -313,8 +313,9 @@ class Barrel extends SpriteAnimationComponent with HasGameRef, CollisionCallback
       }
     }
     else {
-      if (currentState == BarrelState.awakeWaiting || 
-          currentState == BarrelState.readyToExplode) {
+      if (currentState == BarrelState.awakeWaiting 
+      || currentState == BarrelState.readyToExplode
+          ) {
         newState = BarrelState.goingBackToIdle;
       }
       else if (currentState == BarrelState.goingBackToIdle && 
