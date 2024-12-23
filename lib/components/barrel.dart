@@ -1,10 +1,7 @@
-import 'dart:math';
-
 import 'package:dual_knights/components/anti_player.dart';
 import 'package:dual_knights/components/player.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
-import 'package:flutter/material.dart';
 
 import 'dart:developer' as developer;
 
@@ -42,6 +39,7 @@ class Barrel extends SpriteAnimationComponent with HasGameRef, CollisionCallback
   bool isExploding = false;
   
   Barrel({required Vector2 position}) : super(size: Vector2(frameWidth, frameHeight)) {
+    developer.log("Barrel is created");
     this.position = position;
   }
 

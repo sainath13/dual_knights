@@ -21,6 +21,7 @@ class DualKnights extends FlameGame with KeyboardEvents{
   @override
   FutureOr<void> onLoad() async{
     await images.loadAllImages();
+    log("Trying to start a new game");
     cam = CameraComponent.withFixedResolution(world: world, width: 1280, height: 960);
     cam.viewfinder.anchor = Anchor.topLeft;
     addAll([cam,world]);

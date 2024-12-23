@@ -32,6 +32,7 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
 
   AntiPlayer() : super(size: Vector2(frameWidth, frameHeight)) {
     targetPosition = position.clone();
+    log("player is created");
   }
 
   @override

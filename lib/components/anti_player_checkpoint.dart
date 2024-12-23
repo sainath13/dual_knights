@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import 'package:dual_knights/components/anti_player.dart';
-import 'package:dual_knights/components/player.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 
