@@ -1,3 +1,4 @@
+import 'package:dual_knights/components/collision_block.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/services.dart';
@@ -11,6 +12,12 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
   bool isMoving = false;
   Vector2 targetPosition = Vector2.zero();
 
+// Add a list to store collision blocks
+  List<CollisionBlock> collisionBlocks = [];
+
+  void setCollisionBlocks(List<CollisionBlock> blocks) {
+    collisionBlocks = blocks;
+  }
   // Animations
   late SpriteAnimation idleAnimation;
   late SpriteAnimation moveUpAnimation;
@@ -20,6 +27,7 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
 
   final double speed = 150.0;
   Vector2 direction = Vector2.zero();
+  
 
   AntiPlayer() : super(size: Vector2(frameWidth, frameHeight)) {
     targetPosition = position.clone();
@@ -97,27 +105,7 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
 
     animation = idleAnimation;
   }
-
-  void moveOpposite(Vector2 playerDirection) {
-    if (!isMoving) {
-      // Invert the direction
-      direction = playerDirection * -1;
-      targetPosition = position + (direction * gridSize);
-      isMoving = true;
-      
-      // Set appropriate animation based on inverted direction
-      if (direction.y < 0) {
-        animation = moveUpAnimation;
-      } else if (direction.y > 0) {
-        animation = moveDownAnimation;
-      } else if (direction.x < 0) {
-        animation = moveLeftAnimation;
-      } else if (direction.x > 0) {
-        animation = moveRightAnimation;
-      }
-    }
-  }
-
+  
   @override
   bool onKeyEvent(KeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
     if (isMoving) return true;
@@ -140,23 +128,53 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
     return true;
   }
 
-void startGridMove(Vector2 dir) {
-    // log("Player : Starting grid movement");
+bool wouldCollide(Vector2 newPosition) {  
+    // Calculate the future bounds of the player
+    double futureLeft = newPosition.x + (frameWidth - gridSize) / 2.5;
+    double futureRight = futureLeft + gridSize * 1.2;
+    double futureTop = newPosition.y + (frameHeight - gridSize) / 2.5;
+    double futureBottom = futureTop + gridSize * 1.2;
+
+    // Check collision with all collision blocks
+    for (final block in collisionBlocks) {
+      double blockLeft = block.position.x;
+      double blockRight = blockLeft + block.size.x;
+      double blockTop = block.position.y;
+      double blockBottom = blockTop + block.size.y;
+
+      // Basic rectangle collision detection
+      if (futureLeft < blockRight &&
+          futureRight > blockLeft &&
+          futureTop < blockBottom &&
+          futureBottom > blockTop) {
+        return true;
+      }
+    }
+    
+    return false;
+  }
+
+  void startGridMove(Vector2 dir) {
     if (!isMoving) {
-      // log("Player : startGridMove -> Player is not moving currently, Lets move him");
       direction = dir;
-      targetPosition = position + (direction * gridSize);
-      isMoving = true;
+      // Calculate the potential target position
+      Vector2 potentialTarget = position + (direction * gridSize);
       
-      // Set appropriate animation
-      if (direction.y < 0) {
-        animation = moveUpAnimation;
-      } else if (direction.y > 0) {
-        animation = moveDownAnimation;
-      } else if (direction.x < 0) {
-        animation = moveLeftAnimation;
-      } else if (direction.x > 0) {
-        animation = moveRightAnimation;
+      // Check if the move would result in a collision
+      if (!wouldCollide(potentialTarget)) {
+        targetPosition = potentialTarget;
+        isMoving = true;
+        
+        // Set appropriate animation
+        if (direction.y < 0) {
+          animation = moveUpAnimation;
+        } else if (direction.y > 0) {
+          animation = moveDownAnimation;
+        } else if (direction.x < 0) {
+          animation = moveLeftAnimation;
+        } else if (direction.x > 0) {
+          animation = moveRightAnimation;
+        }
       }
     }
   }

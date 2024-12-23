@@ -72,6 +72,7 @@ class Level extends World with HasCollisionDetection{
     }
 
     player.setCollisionBlocks(collisionBlocks);
+    antiPlayer.setCollisionBlocks(collisionBlocks);
 
     return super.onLoad();
   }

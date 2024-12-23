@@ -140,26 +140,6 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
 
     return true;
   }
-  // void startGridMove(Vector2 dir) {
-  //   // log("Player : Starting grid movement");
-  //   if (!isMoving) {
-  //     // log("Player : startGridMove -> Player is not moving currently, Lets move him");
-  //     direction = dir;
-  //     targetPosition = position + (direction * gridSize);
-  //     isMoving = true;
-      
-  //     // Set appropriate animation
-  //     if (direction.y < 0) {
-  //       animation = moveUpAnimation;
-  //     } else if (direction.y > 0) {
-  //       animation = moveDownAnimation;
-  //     } else if (direction.x < 0) {
-  //       animation = moveLeftAnimation;
-  //     } else if (direction.x > 0) {
-  //       animation = moveRightAnimation;
-  //     }
-  //   }
-  // }
 
   void startGridMove(Vector2 dir) {
     if (!isMoving) {
