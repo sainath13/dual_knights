@@ -46,13 +46,13 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
     super.onLoad();
 
     final hitbox = RectangleHitbox(
-      size: Vector2(gridSize*1.2, gridSize*1.2),
+      size: Vector2(64-4, 64-4),
       position: Vector2(
-        (frameWidth - gridSize) / 2.5,
-        (frameHeight - gridSize) / 2.5
+        64,
+        64
       ),
-    );
-    add(hitbox);
+    )..debugMode = true;
+    await add(hitbox);
     // Load the sprite sheet
     final spriteSheet = await gameRef.images.load('Factions/Knights/Troops/Warrior/Blue/Warrior_Blue.png');
 

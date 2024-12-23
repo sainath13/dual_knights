@@ -153,21 +153,21 @@ class Barrel extends SpriteAnimationComponent with HasGameRef, CollisionCallback
       position: Vector2(frameWidth/2 - gridSize * 3, frameHeight/2 - gridSize * 3),
       isSolid: false,
       collisionType: CollisionType.passive,
-    );
+    )..debugMode = true;
     
     explodeRangeHitbox = RectangleHitbox(
       size: Vector2(gridSize * 2, gridSize * 2),
       position: Vector2(frameWidth/2 - gridSize, frameHeight/2 - gridSize),
       isSolid: false,
       collisionType: CollisionType.passive,
-    );
+    )..debugMode = true;
 
     deadRangeHitbox = RectangleHitbox(
       size: Vector2(gridSize * 1.5, gridSize * 1.5),
       position: Vector2(frameWidth/2 - gridSize/2, frameHeight/2 - gridSize/2),
       isSolid: false,
       collisionType: CollisionType.passive,
-    );
+    )..debugMode = true;
 
     // wakeRangeHitbox.debugColor = Color(0x8800FF00);
     // explodeRangeHitbox.debugColor = Color(0x88FF0000);

@@ -69,6 +69,9 @@ flutter:
     - assets/images/Factions/Knights/Troops/Dead/
     - assets/images/Effects/Explosion/
     - assets/images/Factions/Knights/Buildings/Tower/
+    - assets/images/Deco/
+    - assets/images/Terrain/Water/Foam/
+    - assets/images/UI/Buttons/
     
     # - images/a_dot_ham.jpeg
 

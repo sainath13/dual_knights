@@ -5,6 +5,8 @@ import 'package:dual_knights/components/anti_player.dart';
 import 'package:dual_knights/components/barrel.dart';
 import 'package:dual_knights/components/collision_block.dart';
 import 'package:dual_knights/components/player.dart';
+import 'package:dual_knights/components/player_checkpoint.dart';
+import 'package:dual_knights/components/anti_player_checkpoint.dart';
 import 'package:flame/components.dart';
 import 'package:flame_tiled/flame_tiled.dart';
 
@@ -15,6 +17,29 @@ class Level extends World with HasCollisionDetection{
   FutureOr<void> onLoad() async{
     level = await TiledComponent.load('Level-01.tmx', Vector2(64, 64));
     add(level);
+
+    final checkpointLayer = level.tileMap.getLayer<ObjectGroup>('Checkpoints');
+    if(checkpointLayer != null){
+      // log('Level : spawnPointslayer is not null');
+      for(final checkpoint in checkpointLayer.objects){
+        switch (checkpoint.class_) {
+          case 'PlayerCheckpoint' :
+            final playerCheckpoint = PlayerCheckpoint();//..debugMode = true;
+            playerCheckpoint.position = Vector2(checkpoint.x, checkpoint.y);
+            
+            add(playerCheckpoint);
+          case 'AntiPlayerCheckpoint' :
+            final antiPlayerCheckpoint = AntiPlayerCheckpoint();//..debugMode = true;
+            antiPlayerCheckpoint.position = Vector2(checkpoint.x, checkpoint.y-64);
+            add(antiPlayerCheckpoint);
+          default:  
+        }
+      }
+    }
+    else{
+      log('Level : Sadly spawnPointslayer is null');
+    }
+
     final player = Player();//  ..debugMode = true;
     final antiPlayer = AntiPlayer();//..debugMode = true;
     final spawnPointsLayer = level.tileMap.getLayer<ObjectGroup>('Spawnpoints');
@@ -24,9 +49,9 @@ class Level extends World with HasCollisionDetection{
         switch (spawnPoint.class_) {
           case 'Player' :
             // final player = Player();
-            player.position = Vector2(spawnPoint.x - 30, spawnPoint.y - 30);
-            player.scale.x = 2/3;
-            player.scale.y = 2/3;
+            player.position = Vector2(spawnPoint.x, spawnPoint.y);
+            // player.scale.x = 2/3;
+            // player.scale.y = 2/3;
             add(player);
             break;
           case 'AntiPlayer' :
@@ -53,17 +78,19 @@ class Level extends World with HasCollisionDetection{
     List<CollisionBlock> collisionBlocks = [];
     final collisionBlocksLayer = level.tileMap.getLayer<ObjectGroup>('Collisionblocks');
     if(collisionBlocksLayer != null){
-      log("Collision blocks layer is not null");
+      // log("Collision blocks layer is not null");
       for(final collisionBlock in collisionBlocksLayer.objects){
         switch(collisionBlock.class_){
           case 'Block' :
-          final block = CollisionBlock(
-            position: Vector2(collisionBlock.x, collisionBlock.y),
-            size: Vector2(collisionBlock.width, collisionBlock.height),
-          );//..debugMode = true;
-          add(block);
-          collisionBlocks.add(block);
-          //create a new block.
+            final block = CollisionBlock(
+              position: Vector2(collisionBlock.x, collisionBlock.y),
+              size: Vector2(collisionBlock.width, collisionBlock.height),
+            );//..debugMode = true;
+            add(block);
+            collisionBlocks.add(block);
+            //create a new block.
+            break;
+          default:   
         }
       }
     }
@@ -73,7 +100,7 @@ class Level extends World with HasCollisionDetection{
 
     player.setCollisionBlocks(collisionBlocks);
     antiPlayer.setCollisionBlocks(collisionBlocks);
-
+    
     return super.onLoad();
   }
 

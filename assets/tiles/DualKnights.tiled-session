@@ -3,11 +3,15 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "Level-01.tmx",
+    "activeFile": "",
     "expandedProjectPaths": [
         "."
     ],
     "fileStates": {
+        "17.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
         "DualKnights.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
@@ -18,10 +22,10 @@
         },
         "Level-01.tmx": {
             "scale": 0.3862,
-            "selectedLayer": 0,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 633.0916623511134,
-                "y": 138.52925945106176
+                "x": 565.7690315898498,
+                "y": 167.01191092698082
             }
         },
         "Terrain.tsx": {
@@ -44,14 +48,10 @@
     "map.tileWidth": 64,
     "map.width": 20,
     "openFiles": [
-        "Level-01.tmx",
-        "Terrain.tsx",
-        "EnemySingle.tsx",
-        "Tower_Blue.tsx",
-        "Tower_Red.tsx"
     ],
     "project": "DualKnights.tiled-project",
     "recentFiles": [
+        "17.tsx",
         "Tower_Red.tsx",
         "Tower_Blue.tsx",
         "EnemySingle.tsx",

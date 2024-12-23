@@ -43,7 +43,7 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
         (frameWidth - gridSize) / 2,
         (frameHeight - gridSize) / 2,
       ),
-    );
+    )..debugMode = true;
     await add(hitbox);
     final spriteSheet = await gameRef.images.load('Factions/Knights/Troops/Warrior/Red/Warrior_Red.png');
     // Use the same animation setup as Player but with red warrior sprites
