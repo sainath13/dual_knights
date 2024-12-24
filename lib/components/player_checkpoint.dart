@@ -21,7 +21,7 @@ class PlayerCheckpoint extends SpriteAnimationComponent
     final hitbox = RectangleHitbox(
       size: Vector2(64-2, 64-2),
       position: Vector2.all(1),
-    )..debugMode = true;
+    );//..debugMode = true;
     await add(hitbox);
 
     // Load button animations
