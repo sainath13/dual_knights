@@ -52,6 +52,15 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
       ),
     )..debugMode = true;
     add(hitbox);
+    final hitbox2 = RectangleHitbox(
+      size: Vector2(30, 30),
+      position: Vector2(
+        64+32,
+        64+32
+      ),
+    )..debugMode = true;
+    
+    add(hitbox2);
     // Load the sprite sheet
     final spriteSheet = await gameRef.images.load('Factions/Knights/Troops/Warrior/Blue/Warrior_Blue.png');
 
@@ -197,23 +206,23 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
     return false;
   }
 
-  @override
-  void onCollisionStart(
-    Set<Vector2> intersectionPoints,
-    PositionComponent other,
-  ) {
-    super.onCollisionStart(intersectionPoints, other);
-    // if (other is CollisionBlock) { //This wont happen
-      // Handle collision start if needed
-      log("Player : Collision detected with $other");
-    // }
-  }
+  // @override
+  // void onCollisionStart(
+  //   Set<Vector2> intersectionPoints,
+  //   PositionComponent other,
+  // ) {
+  //   super.onCollisionStart(intersectionPoints, other);
+  //   // if (other is CollisionBlock) { //This wont happen
+  //     // Handle collision start if needed
+  //     // log("Player : Collision detected with $other");
+  //   // }
+  // }
 
-  @override
-  void onCollisionEnd(PositionComponent other) {
-    super.onCollisionEnd(other);
-      log("Player: Collision ended with $other");
-    }
+  // @override
+  // void onCollisionEnd(PositionComponent other) {
+  //   super.onCollisionEnd(other);
+  //     // log("Player: Collision ended with $other");
+  //   }
 
   @override
   void update(double dt) {

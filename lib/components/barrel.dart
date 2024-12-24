@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:dual_knights/components/anti_player.dart';
 import 'package:dual_knights/components/player.dart';
 import 'package:flame/collisions.dart';
@@ -166,9 +168,16 @@ class Barrel extends SpriteAnimationComponent with HasGameRef, CollisionCallback
     )..debugColor = Colors.yellowAccent
     ..debugMode = true;
 
+    // deadRangeHitbox = RectangleHitbox(
+    //   size: Vector2(gridSize, gridSize),
+    //   position: Vector2(32,32),
+    //   isSolid: false,
+    //   collisionType: CollisionType.passive,
+    // )..debugColor = Colors.black
+    // ..debugMode = true;
     deadRangeHitbox = RectangleHitbox(
       size: Vector2(gridSize, gridSize),
-      position: Vector2(32,32),
+      position: Vector2(frameWidth/2 - gridSize/2, frameHeight/2 - gridSize/2), // Center the hitbox
       isSolid: false,
       collisionType: CollisionType.passive,
     )..debugColor = Colors.black
@@ -194,40 +203,103 @@ class Barrel extends SpriteAnimationComponent with HasGameRef, CollisionCallback
   //     animation = animations[currentState];
   //     animationTicker?.reset();
   //   }
-  // }
+//   // }
+// @override
+// void onCollisionStart(
+//   Set<Vector2> intersectionPoints,
+//   PositionComponent other,
+// ) {
+//   super.onCollisionStart(intersectionPoints, other);
+  
+//   if (other is Player || other is AntiPlayer) {
+//     // Check which hitbox is colliding using containsPoint
+//     for (Vector2 point in intersectionPoints) {
+//       if (wakeRangeHitbox.containsPoint(point)) {
+//         developer.log('Collision with wake range hitbox');
+//         knightsInWakeRange.add(other);
+//       }
+      
+//       if (explodeRangeHitbox.containsPoint(point)) {
+//         developer.log('Collision with explode range hitbox');
+//         knightsInExplodeRange.add(other);
+//       }
+      
+//       if (deadRangeHitbox.containsPoint(point)) {
+//         developer.log('Collision with dead range hitbox');
+//         if (currentState != BarrelState.exploding) {
+//           currentState = BarrelState.exploding;
+//           animation = animations[BarrelState.exploding];
+//           isExploding = true;
+//         }
+//         if (other.parent != null) {
+//           other.parent!.remove(other);
+//         }
+//       }
+//     }
+//   }
+// }
 
   @override
   void onCollisionStart(
     Set<Vector2> intersectionPoints,
     PositionComponent other,
   ) {
-    //developer.log("Barrel : Collision is started");
     super.onCollisionStart(intersectionPoints, other);
     
+    developer.log("collision happened at is ${other.position}");
+// Create a red circle at each collision point
+  for (final point in intersectionPoints) {
+    final collisionMarker = CircleComponent(
+      position: other.position,
+      radius: 3.0,
+      paint: Paint()
+        ..color = Colors.red
+        ..style = PaintingStyle.fill,
+    );
+    
+    // Add to game world
+    gameRef.add(collisionMarker);}
+  
+    final Vector2 barrelCenter = position+ Vector2.all(64);
+    final Vector2 otherCenter = other.position + Vector2.all(32);
+    developer.log("Barrel center position is $barrelCenter");
+    developer.log("other center position is $otherCenter");
     if (other is Player || other is AntiPlayer) {
       //developer.log("Barrel : other is player or antiplayer");
-      final Vector2 otherCenter = other.position + (other.size / 2);
-      final Vector2 barrelCenter = position + (size / 2);
+      
+      
       final double distance = (otherCenter - barrelCenter).length;
-      //developer.log("Barrel : distance is $distance");
+      // developer.log("Barrel : distance is $distance");
+      // developer.log("Barrel : distance is $distance, "
+        // "gridSize is $gridSize, "
+        // "gridSize * 3 is ${gridSize * 3}, "
+        // "gridSize * 2 is ${gridSize * 2}");
+
       if (distance <= gridSize * 3) {
+        // developer.log('${other.runtimeType} added to wake range');
         knightsInWakeRange.add(other);
+      }else{
+        knightsInWakeRange.remove(other);
       }
       
-      if (distance <= gridSize) {
+      if (distance <= gridSize *2) {
+        // developer.log('${other.runtimeType} added to explode range');
         knightsInExplodeRange.add(other);
       }
-
-      Vector2 deadCenter = deadRangeHitbox.aabb.center;
-
+      else{
+        knightsInExplodeRange.remove(other);
+      }
+      // if (distance <= gridSize) {
+        // developer.log('${other.runtimeType} exploding');
+      // Vector2 deadCenter = deadRangeHitbox.aabb.center;
+      final Vector2 deadCenter = position + Vector2.all(64);
       double deadDistance = (deadCenter - otherCenter).length;
-      if (deadDistance <= deadRangeHitbox.size.x / 3) {
+      developer.log("deadCenter $deadCenter  otherCenter is $otherCenter deadDistance $deadDistance");
+      if (deadDistance <= deadRangeHitbox.size.x) {
         // developer.log("Barrel : Dead Distance-based check passed!");
         if (currentState != BarrelState.exploding) {
-          developer.log("Explosion is happening!!!!!");
           currentState = BarrelState.exploding;
-          animation = animations[BarrelState.exploding];
-          // animationTicker?.reset();
+          animation = animations[BarrelState.goingBackToIdle];
           isExploding = true;
         }
         if (other.parent != null) {
@@ -237,15 +309,111 @@ class Barrel extends SpriteAnimationComponent with HasGameRef, CollisionCallback
     }
   }
 
+// @override
+//   void onCollisionStart(
+//     Set<Vector2> intersectionPoints,
+//     PositionComponent other,
+//   ) {
+//     super.onCollisionStart(intersectionPoints, other);
+    
+//     if (other is Player || other is AntiPlayer) {
+//       final Vector2 barrelCenter = position + Vector2(frameWidth/2, frameHeight/2);
+//       final Vector2 otherCenter = other.position + Vector2(other.width/2, other.height/2);
+      
+//       final double distance = (otherCenter - barrelCenter).length;
+      
+//       // Wake range check
+//       if (distance <= gridSize * 3) {
+//         knightsInWakeRange.add(other);
+//       } else {
+//         knightsInWakeRange.remove(other);
+//       }
+      
+//       // Explode range check
+//       if (distance <= gridSize * 2) {
+//         knightsInExplodeRange.add(other);
+//       } else {
+//         knightsInExplodeRange.remove(other);
+//       }
+      
+//       // Dead range check - simplified and more reliable
+//       if (distance <= gridSize/2) {  // Reduced range for more precise collision
+//         if (currentState != BarrelState.exploding) {
+//           currentState = BarrelState.exploding;
+//           animation = animations[BarrelState.goingBackToIdle];
+//           isExploding = true;
+//         }
+//         if (other.parent != null) {
+//           other.parent!.remove(other);
+//         }
+//       }
+//     }
+//   }
+
+
   @override
   void onCollisionEnd(PositionComponent other) {
     super.onCollisionEnd(other);
-    
+    // developer.log("Barrel : collision ended--------");
     if (other is Player || other is AntiPlayer) {
       knightsInWakeRange.remove(other);
       knightsInExplodeRange.remove(other);
+      // developer.log("Barrel : other is player or antiplayer");
+      // final Vector2 otherCenter = other.position + (other.size / 2);
+      // final Vector2 barrelCenter = position+ (size / 2);
+      // final double distance = (otherCenter - barrelCenter).length;
+      // developer.log("Barrel : distance is $distance");
+      // developer.log("Barrel : distance is $distance, "
+      //   "gridSize is $gridSize, "
+      //   "gridSize * 3 is ${gridSize * 3}, "
+      //   "gridSize * 2 is ${gridSize * 2}");
+
+      // if (distance <= gridSize * 3) {
+      //   developer.log('${other.runtimeType} added to wake range');
+      //   knightsInWakeRange.add(other);
+      // }
+      
+      // if (distance <= gridSize *2) {
+      //   developer.log('${other.runtimeType} added to explode range');
+      //   knightsInExplodeRange.add(other);
+      // }
     }
   }
+
+
+
+  // @override
+  // void onCollisionEnd(PositionComponent other) {
+  //   super.onCollisionEnd(other);
+    
+  //   if (other is Player || other is AntiPlayer) {
+  //     developer.log("Barrel : other is player or antiplayer");
+  //     final Vector2 otherCenter = other.position + Vector2.all(32);
+  //     final Vector2 barrelCenter = position + Vector2.all(32);
+  //     final double xdistance = (otherCenter.x - barrelCenter.x).abs();
+  //     final double ydistance = (otherCenter.y - barrelCenter.y).abs();
+  //     developer.log("Barrel : xdistance is $xdistance, ydistance is $ydistance");
+  //     final double distance = max(xdistance, ydistance);
+  //     // final double distance = (otherCenter - barrelCenter).length;
+  //     developer.log("Barrel : distance is $distance, "
+  //       "gridSize is $gridSize, "
+  //       "gridSize * 3 is ${gridSize * 3}, "
+  //       "gridSize * 2 is ${gridSize * 2}");
+  //     developer.log("Barrel : distance is $distance");
+
+  //     if (distance >= gridSize) {
+  //       developer.log("Barrel : ------Remove Explode Range-based check passed!");
+  //       // knightsInExplodeRange.add(other);
+  //       knightsInExplodeRange.remove(other);
+  //     }
+
+  //     if (distance >= gridSize * 1.8) {
+  //       developer.log("Barrel : Remove Wake Range-based check passed!");
+  //       // knightsInWakeRange.add(other);
+  //       knightsInWakeRange.remove(other);
+  //     }      
+  //   }
+  // }
 
   void _updateState() {
     if (currentState == BarrelState.dead) return;

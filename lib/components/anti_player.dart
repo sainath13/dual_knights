@@ -32,7 +32,7 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
 
   AntiPlayer() : super(size: Vector2(frameWidth, frameHeight)) {
     targetPosition = position.clone();
-    log("player is created");
+    // log("Antiplayer is created");
   }
 
   @override
@@ -132,32 +132,6 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
     return true;
   }
 
-  bool wouldCollide(Vector2 newPosition) {  
-    // Calculate the future bounds of the player
-    // log("new position would be $newPosition");
-    double futureX = newPosition.x;
-    double futureY = newPosition.y;
-  
-    // log("position of future is $futureLeft $futureRight $futureTop $futureBottom");
-    // Check collision with all collision blocks
-    for (final block in collisionBlocks) {
-      double blockLeft = block.position.x;
-      double blockRight = blockLeft + block.size.x;
-      double blockTop = block.position.y;
-      double blockBottom = blockTop + block.size.y;
-      // log("Block size is bounded by $blockLeft $blockRight $blockTop $blockBottom");
-      // Basic rectangle collision detection
-      if (futureX < blockRight &&
-          futureX > blockLeft &&
-          futureY < blockBottom &&
-          futureY > blockTop) {
-            // log("You can not move here");
-        return true;
-      }
-    }
-    
-    return false;
-  }
 
   void startGridMove(Vector2 dir) {
     if (!isMoving) {
@@ -183,7 +157,38 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
       }
     }
   }
-
+  
+  bool wouldCollide(Vector2 newPosition) {  
+    // Calculate the future bounds of the player
+    // log("new position would be $newPosition");
+    double futureX = newPosition.x;
+    double futureY = newPosition.y;
+  
+    // log("position of future is $futureLeft $futureRight $futureTop $futureBottom");
+    // Check collision with all collision blocks
+    for (final block in collisionBlocks) {
+      double blockLeft = block.position.x;
+      if(futureX < blockLeft) {continue;}
+      double blockRight = blockLeft + block.size.x;
+      if(futureX > blockRight) {continue;}
+      double blockTop = block.position.y;
+      if(futureY < blockTop) {continue;}
+      double blockBottom = blockTop + block.size.y;
+      if(futureY > blockBottom) {continue;}
+      return true;
+      // log("Block size is bounded by $blockLeft $blockRight $blockTop $blockBottom");
+      // Basic rectangle collision detection
+      // if (futureX < blockRight &&
+      //     futureX > blockLeft &&
+      //     futureY < blockBottom &&
+      //     futureY > blockTop) {
+      //       // log("You can not move here");
+      //   return true;
+      // }
+    }
+    
+    return false;
+  }
   @override
   void update(double dt) {
     super.update(dt);

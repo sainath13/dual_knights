@@ -37,8 +37,8 @@
  </objectgroup>
  <objectgroup id="2" name="Spawnpoints">
   <object id="1" name="Player" type="Player" x="192" y="192" width="64" height="64"/>
-  <object id="2" name="AntiPlayer" type="AntiPlayer" x="1086.49" y="833.077" width="64" height="64"/>
-  <object id="3" name="Barrel" type="Barrel" x="-2.58933" y="894.488" width="64" height="64"/>
+  <object id="2" name="AntiPlayer" type="AntiPlayer" x="1217.81" y="895.611" width="64" height="64"/>
+  <object id="3" name="Barrel" type="Barrel" x="1150.83" y="60.7229" width="64" height="64"/>
   <object id="4" name="Barrel" type="Barrel" x="448" y="384" width="64" height="64"/>
  </objectgroup>
 </map>

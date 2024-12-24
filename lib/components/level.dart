@@ -56,7 +56,7 @@ class Level extends World with HasCollisionDetection{
             add(player);
             break;
           case 'AntiPlayer' :
-            antiPlayer.position = Vector2(spawnPoint.x+32, spawnPoint.y+32);
+            antiPlayer.position = Vector2(spawnPoint.x + 32, spawnPoint.y + 32);
             antiPlayer.anchor = Anchor.center;
             // antiPlayer.scale.x = 0.666667;
             // antiPlayer.scale.y = 0.666667;

@@ -3,12 +3,16 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "Level-01.tmx",
     "expandedProjectPaths": [
         "."
     ],
     "fileStates": {
         "17.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Barrel_Red.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
@@ -22,10 +26,10 @@
         },
         "Level-01.tmx": {
             "scale": 0.3862,
-            "selectedLayer": 2,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 565.7690315898498,
-                "y": 167.01191092698082
+                "x": 664.1636457793888,
+                "y": 146.29725530813062
             }
         },
         "Terrain.tsx": {
@@ -39,6 +43,10 @@
         "Tower_Red.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
+        },
+        "Warrior_Blue.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         }
     },
     "last.imagePath": "/Users/sainathlatkar/personal/flame/dual_knights/assets/images/Factions/Goblins/Troops/Barrel/Red",
@@ -48,15 +56,21 @@
     "map.tileWidth": 64,
     "map.width": 20,
     "openFiles": [
+        "Tower_Red.tsx",
+        "Level-01.tmx",
+        "Warrior_Blue.tsx",
+        "Barrel_Red.tsx"
     ],
     "project": "DualKnights.tiled-project",
     "recentFiles": [
-        "17.tsx",
         "Tower_Red.tsx",
+        "Barrel_Red.tsx",
+        "Warrior_Blue.tsx",
+        "Level-01.tmx",
+        "17.tsx",
         "Tower_Blue.tsx",
         "EnemySingle.tsx",
         "Terrain.tsx",
-        "Level-01.tmx",
         "DualKnights.tsx"
     ],
     "tileset.lastUsedFormat": "tsx",
