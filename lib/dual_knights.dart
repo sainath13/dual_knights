@@ -21,7 +21,7 @@ class DualKnights extends FlameGame with KeyboardEvents{
   Color backgroundColor()  => const Color(0xFF211F30);
   final player = Player();//..debugMode = true;
   final antiPlayer = AntiPlayer();//..debugMode = true;
-  List<String> levelNames = ['Level-01', 'Level-01'];
+  List<String> levelNames = ['Level-02', 'Level-02'];
 
   @override
   FutureOr<void> onLoad() async{

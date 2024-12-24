@@ -3,16 +3,24 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "Level-01.tmx",
+    "activeFile": "Level-02.tmx",
     "expandedProjectPaths": [
         "."
     ],
     "fileStates": {
+        "06.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
         "17.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
         "Barrel_Red.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Castle_Red.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
@@ -25,11 +33,29 @@
             "scaleInEditor": 1
         },
         "Level-01.tmx": {
-            "scale": 0.3862,
-            "selectedLayer": 3,
+            "expandedObjectLayers": [
+                2,
+                4,
+                3
+            ],
+            "scale": 0.49,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 664.1636457793888,
-                "y": 146.29725530813062
+                "x": 639.7959183673469,
+                "y": 480.61224489795916
+            }
+        },
+        "Level-02.tmx": {
+            "expandedObjectLayers": [
+                5,
+                6,
+                4
+            ],
+            "scale": 0.51,
+            "selectedLayer": 4,
+            "viewCenter": {
+                "x": 640.1960784313726,
+                "y": 479.41176470588226
             }
         },
         "Terrain.tsx": {
@@ -49,24 +75,25 @@
             "scaleInEditor": 1
         }
     },
-    "last.imagePath": "/Users/sainathlatkar/personal/flame/dual_knights/assets/images/Factions/Goblins/Troops/Barrel/Red",
+    "last.imagePath": "/Users/sainathlatkar/personal/flame/dual_knights/assets/images/Resources/Trees",
     "map.height": 15,
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 64,
     "map.tileWidth": 64,
     "map.width": 20,
     "openFiles": [
-        "Tower_Red.tsx",
-        "Level-01.tmx",
-        "Warrior_Blue.tsx",
-        "Barrel_Red.tsx"
+        "06.tsx",
+        "Level-02.tmx"
     ],
     "project": "DualKnights.tiled-project",
     "recentFiles": [
+        "06.tsx",
+        "Level-02.tmx",
         "Tower_Red.tsx",
-        "Barrel_Red.tsx",
-        "Warrior_Blue.tsx",
         "Level-01.tmx",
+        "Warrior_Blue.tsx",
+        "Barrel_Red.tsx",
+        "Castle_Red.tsx",
         "17.tsx",
         "Tower_Blue.tsx",
         "EnemySingle.tsx",

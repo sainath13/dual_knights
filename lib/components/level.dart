@@ -20,7 +20,7 @@ class Level extends World with HasGameRef<DualKnights>, HasCollisionDetection{
   
   @override
   FutureOr<void> onLoad() async{
-    level = await TiledComponent.load('Level-01.tmx', Vector2(64, 64));
+    level = await TiledComponent.load('Level-02.tmx', Vector2(64, 64));
     // level.debugMode = true;
     add(level);
 

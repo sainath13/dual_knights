@@ -72,6 +72,8 @@ flutter:
     - assets/images/Deco/
     - assets/images/Terrain/Water/Foam/
     - assets/images/UI/Buttons/
+    - assets/images/Factions/Knights/Buildings/Castle/
+    - assets/images/Resources/Trees/
     
     # - images/a_dot_ham.jpeg
 
