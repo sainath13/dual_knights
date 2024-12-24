@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:dual_knights/components/anti_player.dart';
 import 'package:dual_knights/components/player.dart';
+import 'package:dual_knights/dual_knights.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 
@@ -11,10 +12,10 @@ import 'package:flutter/material.dart';
 
 
 enum BarrelState {
-  idle,
+  silent,
   wakingUp,
   randomLooking,
-  goingBackToIdle,
+  goingBackToSleep,
   awakeWaiting,
   readyToExplode,
   exploding,
@@ -23,41 +24,46 @@ enum BarrelState {
   dead
 }
 
-class Barrel extends SpriteAnimationComponent with HasGameRef, CollisionCallbacks {
+enum KnightRangeStatus{
+  inWakeRange,
+  inExplodeRange,
+  notInRange,
+  readyToExplode,
+}
+
+class Barrel extends SpriteAnimationComponent with HasGameRef<DualKnights>, CollisionCallbacks {
   static const double frameWidth = 128;
   static const double frameHeight = 128;
   static const double gridSize = 64.0;  
-  
+  late final Player player;
   late final Map<BarrelState, SpriteAnimation> animations;
-  BarrelState currentState = BarrelState.idle;
+  BarrelState currentState = BarrelState.silent;
   Vector2 currentPosition = Vector2.zero();
   
   final Set<Component> knightsInWakeRange = {};
   final Set<Component> knightsInExplodeRange = {};
 
-  late final RectangleHitbox wakeRangeHitbox;
-  late final RectangleHitbox explodeRangeHitbox;
-  late final RectangleHitbox deadRangeHitbox;
   double randomLookTimer = 0;
   static const double randomLookInterval = 3.0;
   
   bool isExploding = false;
-  
+  bool isAnyoneInWakeRange = false;
   Barrel({required Vector2 position}) : super(size: Vector2(frameWidth, frameHeight)) {
-    developer.log("Barrel is created");
+    // developer.log("Barrel is created");
     this.position = position;
     currentPosition = position.clone();
   }
 
   @override
   Future<void> onLoad() async {
+    player = game.player;
     final spriteSheet = await gameRef.images.load('Factions/Goblins/Troops/Barrel/Red/Barrel_Red.png');
     final deathSheet = await gameRef.images.load('Factions/Knights/Troops/Dead/Dead.png');
     final explosionSheet = await gameRef.images.load('Effects/Explosion/Explosions.png');
     
     // Load all animations
     animations = {
-      BarrelState.idle: SpriteAnimation.fromFrameData(
+      BarrelState.silent: SpriteAnimation.fromFrameData(
         spriteSheet,
         SpriteAnimationData.sequenced(
           amount: 1,
@@ -87,7 +93,7 @@ class Barrel extends SpriteAnimationComponent with HasGameRef, CollisionCallback
           texturePosition: Vector2(0, frameHeight * 2),
         ),
       ),
-      BarrelState.goingBackToIdle: SpriteAnimation.fromFrameData(
+      BarrelState.goingBackToSleep: SpriteAnimation.fromFrameData(
         spriteSheet,
         SpriteAnimationData.sequenced(
           amount: 6,
@@ -150,281 +156,47 @@ class Barrel extends SpriteAnimationComponent with HasGameRef, CollisionCallback
       ),
     };
     
-    animation = animations[BarrelState.idle];
+    animation = animations[BarrelState.silent];
 
-    wakeRangeHitbox = RectangleHitbox(
-      position: Vector2(-96, -96),
-      size: Vector2(gridSize * 5, gridSize * 5),
-      isSolid: false,
-      collisionType: CollisionType.passive,
-    )..debugColor = Colors.deepOrange
-    ..debugMode = true;
-    
-    explodeRangeHitbox = RectangleHitbox(
-      position: Vector2(-32,-32),
-      size: Vector2(gridSize * 3, gridSize * 3),
-      isSolid: false,
-      collisionType: CollisionType.passive,
-    )..debugColor = Colors.yellowAccent
-    ..debugMode = true;
-
-    // deadRangeHitbox = RectangleHitbox(
-    //   size: Vector2(gridSize, gridSize),
-    //   position: Vector2(32,32),
-    //   isSolid: false,
-    //   collisionType: CollisionType.passive,
-    // )..debugColor = Colors.black
-    // ..debugMode = true;
-    deadRangeHitbox = RectangleHitbox(
-      size: Vector2(gridSize, gridSize),
-      position: Vector2(frameWidth/2 - gridSize/2, frameHeight/2 - gridSize/2), // Center the hitbox
-      isSolid: false,
-      collisionType: CollisionType.passive,
-    )..debugColor = Colors.black
-    ..debugMode = true;
-
-    // wakeRangeHitbox.debugColor = Color(0x8800FF00);
-    // explodeRangeHitbox.debugColor = Color(0x88FF0000);
-    // deadRangeHitbox.debugColor = Colors.black38;
-    
-    await add(wakeRangeHitbox);
-    await add(explodeRangeHitbox);
-    await add(deadRangeHitbox);
-    // await add(RectangleHitbox(
-    //   size: Vector2(frameWidth, frameHeight),
-    //   collisionType: CollisionType.passive,
-    // ));
   }
-
-  // void explode() {
-  //   if (!isExploding) {
-  //     isExploding = true;
-  //     currentState = BarrelState.dying;
-  //     animation = animations[currentState];
-  //     animationTicker?.reset();
-  //   }
-//   // }
-// @override
-// void onCollisionStart(
-//   Set<Vector2> intersectionPoints,
-//   PositionComponent other,
-// ) {
-//   super.onCollisionStart(intersectionPoints, other);
   
-//   if (other is Player || other is AntiPlayer) {
-//     // Check which hitbox is colliding using containsPoint
-//     for (Vector2 point in intersectionPoints) {
-//       if (wakeRangeHitbox.containsPoint(point)) {
-//         developer.log('Collision with wake range hitbox');
-//         knightsInWakeRange.add(other);
-//       }
-      
-//       if (explodeRangeHitbox.containsPoint(point)) {
-//         developer.log('Collision with explode range hitbox');
-//         knightsInExplodeRange.add(other);
-//       }
-      
-//       if (deadRangeHitbox.containsPoint(point)) {
-//         developer.log('Collision with dead range hitbox');
-//         if (currentState != BarrelState.exploding) {
-//           currentState = BarrelState.exploding;
-//           animation = animations[BarrelState.exploding];
-//           isExploding = true;
-//         }
-//         if (other.parent != null) {
-//           other.parent!.remove(other);
-//         }
-//       }
-//     }
-//   }
-// }
-
-  @override
-  void onCollisionStart(
-    Set<Vector2> intersectionPoints,
-    PositionComponent other,
-  ) {
-    super.onCollisionStart(intersectionPoints, other);
-    
-    developer.log("collision happened at is ${other.position}");
-// Create a red circle at each collision point
-  for (final point in intersectionPoints) {
-    final collisionMarker = CircleComponent(
-      position: other.position,
-      radius: 3.0,
-      paint: Paint()
-        ..color = Colors.red
-        ..style = PaintingStyle.fill,
-    );
-    
-    // Add to game world
-    gameRef.add(collisionMarker);}
+  KnightRangeStatus getPlayerRangeStatus() {
+    // developer.log("player.scale.x is ${player.scale.x}");
+    // double playerOffset = (player.scale.x > 0) ? 0 : - 64;
+    double distanceX = (player.position.x - position.x - 64).abs();
+    double distanceY = (player.position.y - position.y - 64).abs();
+    // developer.log("DistanceX is $distanceX and DistanceY is $distanceY");
+    if(distanceX <= 10 && distanceY <= 10) {
+      // developer.log("player is in exploding range");
+      return KnightRangeStatus.readyToExplode;
+    }
+    if(distanceX <= 64 && distanceY <= 64) {
+      // developer.log("player is in exploding range");
+      return KnightRangeStatus.inExplodeRange;
+    }
+    if(distanceX <= 128 && distanceY <= 128) {
+      // developer.log("player is in wake range");
+      return KnightRangeStatus.inWakeRange;
+    }
+    return KnightRangeStatus.notInRange;
+  }
   
-    final Vector2 barrelCenter = position+ Vector2.all(64);
-    final Vector2 otherCenter = other.position + Vector2.all(32);
-    developer.log("Barrel center position is $barrelCenter");
-    developer.log("other center position is $otherCenter");
-    if (other is Player || other is AntiPlayer) {
-      //developer.log("Barrel : other is player or antiplayer");
-      
-      
-      final double distance = (otherCenter - barrelCenter).length;
-      // developer.log("Barrel : distance is $distance");
-      // developer.log("Barrel : distance is $distance, "
-        // "gridSize is $gridSize, "
-        // "gridSize * 3 is ${gridSize * 3}, "
-        // "gridSize * 2 is ${gridSize * 2}");
-
-      if (distance <= gridSize * 3) {
-        // developer.log('${other.runtimeType} added to wake range');
-        knightsInWakeRange.add(other);
-      }else{
-        knightsInWakeRange.remove(other);
-      }
-      
-      if (distance <= gridSize *2) {
-        // developer.log('${other.runtimeType} added to explode range');
-        knightsInExplodeRange.add(other);
-      }
-      else{
-        knightsInExplodeRange.remove(other);
-      }
-      // if (distance <= gridSize) {
-        // developer.log('${other.runtimeType} exploding');
-      // Vector2 deadCenter = deadRangeHitbox.aabb.center;
-      final Vector2 deadCenter = position + Vector2.all(64);
-      double deadDistance = (deadCenter - otherCenter).length;
-      developer.log("deadCenter $deadCenter  otherCenter is $otherCenter deadDistance $deadDistance");
-      if (deadDistance <= deadRangeHitbox.size.x) {
-        // developer.log("Barrel : Dead Distance-based check passed!");
-        if (currentState != BarrelState.exploding) {
-          currentState = BarrelState.exploding;
-          animation = animations[BarrelState.goingBackToIdle];
-          isExploding = true;
-        }
-        if (other.parent != null) {
-         other.parent!.remove(other);
-        }
-      }
-    }
-  }
-
-// @override
-//   void onCollisionStart(
-//     Set<Vector2> intersectionPoints,
-//     PositionComponent other,
-//   ) {
-//     super.onCollisionStart(intersectionPoints, other);
-    
-//     if (other is Player || other is AntiPlayer) {
-//       final Vector2 barrelCenter = position + Vector2(frameWidth/2, frameHeight/2);
-//       final Vector2 otherCenter = other.position + Vector2(other.width/2, other.height/2);
-      
-//       final double distance = (otherCenter - barrelCenter).length;
-      
-//       // Wake range check
-//       if (distance <= gridSize * 3) {
-//         knightsInWakeRange.add(other);
-//       } else {
-//         knightsInWakeRange.remove(other);
-//       }
-      
-//       // Explode range check
-//       if (distance <= gridSize * 2) {
-//         knightsInExplodeRange.add(other);
-//       } else {
-//         knightsInExplodeRange.remove(other);
-//       }
-      
-//       // Dead range check - simplified and more reliable
-//       if (distance <= gridSize/2) {  // Reduced range for more precise collision
-//         if (currentState != BarrelState.exploding) {
-//           currentState = BarrelState.exploding;
-//           animation = animations[BarrelState.goingBackToIdle];
-//           isExploding = true;
-//         }
-//         if (other.parent != null) {
-//           other.parent!.remove(other);
-//         }
-//       }
-//     }
-//   }
-
-
-  @override
-  void onCollisionEnd(PositionComponent other) {
-    super.onCollisionEnd(other);
-    // developer.log("Barrel : collision ended--------");
-    if (other is Player || other is AntiPlayer) {
-      knightsInWakeRange.remove(other);
-      knightsInExplodeRange.remove(other);
-      // developer.log("Barrel : other is player or antiplayer");
-      // final Vector2 otherCenter = other.position + (other.size / 2);
-      // final Vector2 barrelCenter = position+ (size / 2);
-      // final double distance = (otherCenter - barrelCenter).length;
-      // developer.log("Barrel : distance is $distance");
-      // developer.log("Barrel : distance is $distance, "
-      //   "gridSize is $gridSize, "
-      //   "gridSize * 3 is ${gridSize * 3}, "
-      //   "gridSize * 2 is ${gridSize * 2}");
-
-      // if (distance <= gridSize * 3) {
-      //   developer.log('${other.runtimeType} added to wake range');
-      //   knightsInWakeRange.add(other);
-      // }
-      
-      // if (distance <= gridSize *2) {
-      //   developer.log('${other.runtimeType} added to explode range');
-      //   knightsInExplodeRange.add(other);
-      // }
-    }
-  }
-
-
-
-  // @override
-  // void onCollisionEnd(PositionComponent other) {
-  //   super.onCollisionEnd(other);
-    
-  //   if (other is Player || other is AntiPlayer) {
-  //     developer.log("Barrel : other is player or antiplayer");
-  //     final Vector2 otherCenter = other.position + Vector2.all(32);
-  //     final Vector2 barrelCenter = position + Vector2.all(32);
-  //     final double xdistance = (otherCenter.x - barrelCenter.x).abs();
-  //     final double ydistance = (otherCenter.y - barrelCenter.y).abs();
-  //     developer.log("Barrel : xdistance is $xdistance, ydistance is $ydistance");
-  //     final double distance = max(xdistance, ydistance);
-  //     // final double distance = (otherCenter - barrelCenter).length;
-  //     developer.log("Barrel : distance is $distance, "
-  //       "gridSize is $gridSize, "
-  //       "gridSize * 3 is ${gridSize * 3}, "
-  //       "gridSize * 2 is ${gridSize * 2}");
-  //     developer.log("Barrel : distance is $distance");
-
-  //     if (distance >= gridSize) {
-  //       developer.log("Barrel : ------Remove Explode Range-based check passed!");
-  //       // knightsInExplodeRange.add(other);
-  //       knightsInExplodeRange.remove(other);
-  //     }
-
-  //     if (distance >= gridSize * 1.8) {
-  //       developer.log("Barrel : Remove Wake Range-based check passed!");
-  //       // knightsInWakeRange.add(other);
-  //       knightsInWakeRange.remove(other);
-  //     }      
-  //   }
-  // }
-
   void _updateState() {
     if (currentState == BarrelState.dead) return;
+
+    BarrelState newState = currentState;
+    KnightRangeStatus knightRangeStatus = getPlayerRangeStatus();
     
-    if (isExploding) {
+    if (knightRangeStatus == KnightRangeStatus.readyToExplode) {
+      if (player.parent != null) {
+         player.parent!.remove(player);
+        }
       // developer.log("isExploding is $isExploding with state $currentState");
       // developer.log("animationTicker is ${animationTicker?.isLastFrame}");
       if (animationTicker?.isLastFrame ?? false) {
       // Handle transitions between animation states
         switch (currentState) {
-          case BarrelState.goingBackToIdle:
+          case BarrelState.goingBackToSleep:
             // developer.log("Handling for goingBackToIdle state");
             currentState = BarrelState.exploding;
             animation = animations[BarrelState.exploding];
@@ -459,20 +231,19 @@ class Barrel extends SpriteAnimationComponent with HasGameRef, CollisionCallback
         return;
       }
     }
+    // developer.log("Checking for state change");
     
-
-    BarrelState newState = currentState;
+    // developer.log("Current state is $currentState");
+    // if ((currentState == BarrelState.wakingUp || currentState == BarrelState.goingBackToIdle) 
+    //     && animationTicker?.done() != true) {
+    //   return;
+    // }
     
-    if ((currentState == BarrelState.wakingUp || currentState == BarrelState.goingBackToIdle) 
-        && animationTicker?.done() != true) {
-      return;
-    }
-    
-    if (knightsInExplodeRange.isNotEmpty) {
+    if (knightRangeStatus == KnightRangeStatus.inExplodeRange) {
       newState = BarrelState.readyToExplode;
     }
-    else if (knightsInWakeRange.isNotEmpty) {
-      if (currentState == BarrelState.idle) {
+    else if (knightRangeStatus == KnightRangeStatus.inWakeRange) {
+      if (currentState == BarrelState.silent) {
         newState = BarrelState.wakingUp;
       }
       else if (currentState == BarrelState.wakingUp && animationTicker?.done() == true) {
@@ -489,19 +260,19 @@ class Barrel extends SpriteAnimationComponent with HasGameRef, CollisionCallback
       if (currentState == BarrelState.awakeWaiting 
       || currentState == BarrelState.readyToExplode
           ) {
-        newState = BarrelState.goingBackToIdle;
+        newState = BarrelState.goingBackToSleep;
       }
-      else if (currentState == BarrelState.goingBackToIdle && 
+      else if (currentState == BarrelState.goingBackToSleep && 
                animationTicker?.done() == true) {
-        newState = BarrelState.idle;
+        newState = BarrelState.silent;
       }
     }
-    
     if (newState != currentState) {
       currentState = newState;
       animation = animations[currentState];
-      if (currentState == BarrelState.wakingUp || 
-          currentState == BarrelState.goingBackToIdle) {
+      if (currentState == BarrelState.wakingUp 
+      || currentState == BarrelState.goingBackToSleep
+          ) {
         animationTicker?.reset();
       }
     }

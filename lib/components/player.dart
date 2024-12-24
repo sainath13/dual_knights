@@ -126,6 +126,7 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
 
   @override
   bool onKeyEvent(KeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
+    // log("Key press is detected");
     if (isMoving) return true; // Ignore input if already moving
 
     _pressedKeys.clear();

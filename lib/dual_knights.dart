@@ -4,7 +4,9 @@ import 'dart:async';
 import 'dart:developer';
 import 'dart:ui';
 
+import 'package:dual_knights/components/anti_player.dart';
 import 'package:dual_knights/components/level.dart';
+import 'package:dual_knights/components/player.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
@@ -14,18 +16,33 @@ import 'package:flutter/src/widgets/focus_manager.dart';
 
 class DualKnights extends FlameGame with KeyboardEvents{
   late final CameraComponent cam;
-  final world = Level();
+  // final world = Level();
 
   @override
   Color backgroundColor()  => const Color(0xFF211F30);
+  final player = Player()..debugMode = true;
+  final antiPlayer = AntiPlayer()..debugMode = true;
+  List<String> levelNames = ['Level-01', 'Level-01'];
+
   @override
   FutureOr<void> onLoad() async{
     await images.loadAllImages();
-    log("Trying to start a new game");
-    cam = CameraComponent.withFixedResolution(world: world, width: 1280, height: 960);
-    cam.viewfinder.anchor = Anchor.topLeft;
-    addAll([cam,world]);
+    _loadLevel();
     return super.onLoad();
+  }
+
+  void _loadLevel() {
+    Future.delayed(const Duration(seconds: 1), () {
+      Level world = Level(
+        player: player,
+        antiPlayer : antiPlayer,
+        levelName: levelNames[0],
+      );
+
+      cam = CameraComponent.withFixedResolution(world: world, width: 1280, height: 960);
+      cam.viewfinder.anchor = Anchor.topLeft;
+      addAll([cam, world]);
+    });
   }
   
 
@@ -55,16 +72,8 @@ class DualKnights extends FlameGame with KeyboardEvents{
     Set<LogicalKeyboardKey> keysPressed,
   ) {
     // log("Dual Knights: key event received");
-    
-    world.children.forEach((component) {
-      // log("Found component: ${component.runtimeType}");
-      if (component is KeyboardHandler) {
-        // log("Component is KeyboardHandler");
-        // ignore: unnecessary_cast
-        (component as KeyboardHandler).onKeyEvent(event, keysPressed);
-      }
-    });
-    
+    player.onKeyEvent(event, keysPressed);
+    // antiPlayer.onKeyEvent(event, keysPressed);
     return KeyEventResult.handled;
   }
 

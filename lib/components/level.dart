@@ -7,12 +7,17 @@ import 'package:dual_knights/components/collision_block.dart';
 import 'package:dual_knights/components/player.dart';
 import 'package:dual_knights/components/player_checkpoint.dart';
 import 'package:dual_knights/components/anti_player_checkpoint.dart';
+import 'package:dual_knights/dual_knights.dart';
 import 'package:flame/components.dart';
 import 'package:flame_tiled/flame_tiled.dart';
 
-class Level extends World with HasCollisionDetection{
+class Level extends World with HasGameRef<DualKnights>, HasCollisionDetection{
+  final String levelName;
+  final Player player;
+  final AntiPlayer antiPlayer;
+  Level({required this.levelName, required this.player, required this.antiPlayer});
   late TiledComponent level;
-
+  
   @override
   FutureOr<void> onLoad() async{
     level = await TiledComponent.load('Level-01.tmx', Vector2(64, 64));
@@ -40,7 +45,7 @@ class Level extends World with HasCollisionDetection{
       log('Level : Sadly spawnPointslayer is null');
     }
 
-    final player = Player()..debugMode = true;
+    
     final antiPlayer = AntiPlayer()..debugMode = true;
     final spawnPointsLayer = level.tileMap.getLayer<ObjectGroup>('Spawnpoints');
     if(spawnPointsLayer != null){
@@ -49,6 +54,7 @@ class Level extends World with HasCollisionDetection{
         switch (spawnPoint.class_) {
           case 'Player' :
             // final player = Player();
+            // log("Moving player to position");
             player.position = Vector2(spawnPoint.x + 32, spawnPoint.y + 32);
             player.anchor = Anchor.center;
             // player.scale.x = 2/3;
