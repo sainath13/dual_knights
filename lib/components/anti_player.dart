@@ -12,7 +12,6 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
   bool isMoving = false;
   Vector2 targetPosition = Vector2.zero();
 
-// Add a list to store collision blocks
   List<CollisionBlock> collisionBlocks = [];
 
   void setCollisionBlocks(List<CollisionBlock> blocks) {
@@ -27,12 +26,11 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
 
   final double speed = 150.0;
   Vector2 direction = Vector2.zero();
-  // Keep track of pressed keys
+
   final Set<LogicalKeyboardKey> _pressedKeys = {};
 
   AntiPlayer() : super(size: Vector2(frameWidth, frameHeight)) {
     targetPosition = position.clone();
-    // log("Antiplayer is created");
   }
 
   @override
@@ -45,11 +43,11 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
         64,
         64
       ),
-    )..debugMode = true;
+    );//..debugMode = true;
     add(hitbox);
     final spriteSheet = await gameRef.images.load('Factions/Knights/Troops/Warrior/Red/Warrior_Red.png');
-    // Use the same animation setup as Player but with red warrior sprites
-    
+  
+    log("Keeping animations loaded");
     idleAnimation = SpriteAnimation.fromFrameData(
       spriteSheet,
       SpriteAnimationData.sequenced(
@@ -114,7 +112,6 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
     if (isMoving) return true;
     _pressedKeys.clear();
     _pressedKeys.addAll(keysPressed);
-    // Use the same keys as Player but move in opposite direction
     if (keysPressed.contains(LogicalKeyboardKey.keyW) || 
         keysPressed.contains(LogicalKeyboardKey.arrowUp)) {
       startGridMove(Vector2(0, 1));  // Player goes up, AntiPlayer goes down
@@ -136,15 +133,10 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
   void startGridMove(Vector2 dir) {
     if (!isMoving) {
       direction = dir;
-      // Calculate the potential target position
       Vector2 potentialTarget = position + (direction * gridSize);
-      
-      // Check if the move would result in a collision
       if (!wouldCollide(potentialTarget)) {
         targetPosition = potentialTarget;
         isMoving = true;
-        
-        // Set appropriate animation
         if (direction.y < 0) {
           animation = moveUpAnimation;
         } else if (direction.y > 0) {
@@ -159,13 +151,8 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
   }
   
   bool wouldCollide(Vector2 newPosition) {  
-    // Calculate the future bounds of the player
-    // log("new position would be $newPosition");
     double futureX = newPosition.x;
     double futureY = newPosition.y;
-  
-    // log("position of future is $futureLeft $futureRight $futureTop $futureBottom");
-    // Check collision with all collision blocks
     for (final block in collisionBlocks) {
       double blockLeft = block.position.x;
       if(futureX < blockLeft) {continue;}
@@ -176,15 +163,6 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
       double blockBottom = blockTop + block.size.y;
       if(futureY > blockBottom) {continue;}
       return true;
-      // log("Block size is bounded by $blockLeft $blockRight $blockTop $blockBottom");
-      // Basic rectangle collision detection
-      // if (futureX < blockRight &&
-      //     futureX > blockLeft &&
-      //     futureY < blockBottom &&
-      //     futureY > blockTop) {
-      //       // log("You can not move here");
-      //   return true;
-      // }
     }
     
     return false;

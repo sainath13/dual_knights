@@ -9,8 +9,6 @@ class CollisionBlock extends PositionComponent {
     position: position,
     size: size,
   ) {
-    
-    // Add hitbox for collision detection
     add(RectangleHitbox());
   }
 }

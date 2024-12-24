@@ -36,6 +36,7 @@ class Barrel extends SpriteAnimationComponent with HasGameRef<DualKnights>, Coll
   static const double frameHeight = 128;
   static const double gridSize = 64.0;  
   late final Player player;
+  late final AntiPlayer antiPlayer;
   late final Map<BarrelState, SpriteAnimation> animations;
   BarrelState currentState = BarrelState.silent;
   Vector2 currentPosition = Vector2.zero();
@@ -49,7 +50,6 @@ class Barrel extends SpriteAnimationComponent with HasGameRef<DualKnights>, Coll
   bool isExploding = false;
   bool isAnyoneInWakeRange = false;
   Barrel({required Vector2 position}) : super(size: Vector2(frameWidth, frameHeight)) {
-    // developer.log("Barrel is created");
     this.position = position;
     currentPosition = position.clone();
   }
@@ -57,6 +57,7 @@ class Barrel extends SpriteAnimationComponent with HasGameRef<DualKnights>, Coll
   @override
   Future<void> onLoad() async {
     player = game.player;
+    antiPlayer = game.antiPlayer;
     final spriteSheet = await gameRef.images.load('Factions/Goblins/Troops/Barrel/Red/Barrel_Red.png');
     final deathSheet = await gameRef.images.load('Factions/Knights/Troops/Dead/Dead.png');
     final explosionSheet = await gameRef.images.load('Effects/Explosion/Explosions.png');
@@ -160,61 +161,66 @@ class Barrel extends SpriteAnimationComponent with HasGameRef<DualKnights>, Coll
 
   }
   
-  KnightRangeStatus getPlayerRangeStatus() {
-    // developer.log("player.scale.x is ${player.scale.x}");
-    // double playerOffset = (player.scale.x > 0) ? 0 : - 64;
-    double distanceX = (player.position.x - position.x - 64).abs();
-    double distanceY = (player.position.y - position.y - 64).abs();
-    // developer.log("DistanceX is $distanceX and DistanceY is $distanceY");
-    if(distanceX <= 10 && distanceY <= 10) {
-      // developer.log("player is in exploding range");
-      return KnightRangeStatus.readyToExplode;
-    }
-    if(distanceX <= 64 && distanceY <= 64) {
-      // developer.log("player is in exploding range");
-      return KnightRangeStatus.inExplodeRange;
-    }
-    if(distanceX <= 128 && distanceY <= 128) {
-      // developer.log("player is in wake range");
-      return KnightRangeStatus.inWakeRange;
-    }
-    return KnightRangeStatus.notInRange;
+  KnightRangeResult getKnightRangeStatus() {
+  double playerDistanceX = (player.position.x - position.x - 64).abs();
+  double playerDistanceY = (player.position.y - position.y - 64).abs();
+  double antiPlayerDistanceX = (antiPlayer.position.x - position.x - 64).abs();
+  double antiPlayerDistanceY = (antiPlayer.position.y - position.y - 64).abs();
+
+  double minDistanceX = min(playerDistanceX, antiPlayerDistanceX);
+  double minDistanceY = min(playerDistanceY, antiPlayerDistanceY);
+
+  if (minDistanceX <= 10 && minDistanceY <= 10) {
+    String triggeredBy = (playerDistanceX <= 10 && playerDistanceY <= 10) ? "player" : "antiPlayer";
+    return KnightRangeResult(KnightRangeStatus.readyToExplode, triggeredBy: triggeredBy);
   }
+
+  if (minDistanceX <= 64 && minDistanceY <= 64) {
+    return KnightRangeResult(KnightRangeStatus.inExplodeRange);
+  }
+
+  if (minDistanceX <= 128 && minDistanceY <= 128) {
+    return KnightRangeResult(KnightRangeStatus.inWakeRange);
+  }
+
+  return KnightRangeResult(KnightRangeStatus.notInRange);
+}
+
   
   void _updateState() {
     if (currentState == BarrelState.dead) return;
 
     BarrelState newState = currentState;
-    KnightRangeStatus knightRangeStatus = getPlayerRangeStatus();
+    KnightRangeResult knightRangeResult = getKnightRangeStatus();
+    KnightRangeStatus knightRangeStatus = knightRangeResult.status;
     
     if (knightRangeStatus == KnightRangeStatus.readyToExplode) {
-      if (player.parent != null) {
+      if(knightRangeResult.triggeredBy == "player") {
+        if (player.parent != null) {
          player.parent!.remove(player);
         }
-      // developer.log("isExploding is $isExploding with state $currentState");
-      // developer.log("animationTicker is ${animationTicker?.isLastFrame}");
+      }
+      else {
+        if (antiPlayer.parent != null) {
+          antiPlayer.parent!.remove(antiPlayer);
+        }
+      }
+      
       if (animationTicker?.isLastFrame ?? false) {
-      // Handle transitions between animation states
         switch (currentState) {
           case BarrelState.goingBackToSleep:
-            // developer.log("Handling for goingBackToIdle state");
             currentState = BarrelState.exploding;
             animation = animations[BarrelState.exploding];
             animationTicker?.reset();
             break;
 
           case BarrelState.exploding:
-            // developer.log("Handling for exploding state");
             currentState = BarrelState.dying;
             animation = animations[BarrelState.dying];
             animationTicker?.reset();
-            // // currentState = BarrelState.goingBackToIdle;
-            // animation = animations[BarrelState.exploding];
-            // animationTicker?.reset();
             break;
 
           case BarrelState.dying:
-            // developer.log("Handling for vanishing state");
             currentState = BarrelState.vanishing;
             animation = animations[BarrelState.vanishing];
             animationTicker?.reset();
@@ -222,7 +228,7 @@ class Barrel extends SpriteAnimationComponent with HasGameRef<DualKnights>, Coll
 
           case BarrelState.vanishing:
             currentState = BarrelState.dead;
-            removeFromParent(); // Remove the entity
+            removeFromParent();
             break;
 
           default:
@@ -231,13 +237,10 @@ class Barrel extends SpriteAnimationComponent with HasGameRef<DualKnights>, Coll
         return;
       }
     }
-    // developer.log("Checking for state change");
-    
-    // developer.log("Current state is $currentState");
-    // if ((currentState == BarrelState.wakingUp || currentState == BarrelState.goingBackToIdle) 
-    //     && animationTicker?.done() != true) {
-    //   return;
-    // }
+    if ((currentState == BarrelState.wakingUp || currentState == BarrelState.goingBackToSleep) 
+        && animationTicker?.done() != true) {
+      return;
+    }
     
     if (knightRangeStatus == KnightRangeStatus.inExplodeRange) {
       newState = BarrelState.readyToExplode;
@@ -283,4 +286,12 @@ class Barrel extends SpriteAnimationComponent with HasGameRef<DualKnights>, Coll
     super.update(dt);
     _updateState();
   }
+}
+
+
+class KnightRangeResult {
+  final KnightRangeStatus status;
+  final String? triggeredBy;
+
+  KnightRangeResult(this.status, {this.triggeredBy});
 }
