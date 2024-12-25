@@ -7,6 +7,8 @@
     "expandedProjectPaths": [
         "."
     ],
+    "exportAsImage.visibleLayersOnly": false,
+    "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
         "01.tsx": {
             "scaleInDock": 1,
@@ -66,15 +68,15 @@
         },
         "Level-01.tmx": {
             "expandedObjectLayers": [
+                4,
                 2,
-                3,
-                4
+                3
             ],
             "scale": 0.4871,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 862.2459453910901,
-                "y": 411.61979059741327
+                "x": 345.9248614247588,
+                "y": 616.9164442619585
             }
         },
         "Level-02.tmx": {
@@ -103,15 +105,27 @@
             "scaleInEditor": 1
         },
         "Sample-12X9.tmx": {
-            "scale": 0.8708333333333332,
+            "scale": 0.722,
             "selectedLayer": 7,
             "viewCenter": {
-                "x": 407.65550239234454,
-                "y": 303.73205741626805
+                "x": 371.88365650969536,
+                "y": 338.6426592797784
+            }
+        },
+        "Sample-15X12.tmx": {
+            "scale": 0.56,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 531.25,
+                "y": 266.9642857142857
             }
         },
         "Terrain.tsx": {
             "scaleInDock": 0.305,
+            "scaleInEditor": 1
+        },
+        "TileSample-12X9.tsx": {
+            "scaleInDock": 1,
             "scaleInEditor": 1
         },
         "Tower_Blue.tsx": {
@@ -133,31 +147,43 @@
         "Warrior_Red.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
+        },
+        "spritesheet.tsx": {
+            "scaleInDock": 0.4252,
+            "scaleInEditor": 1
+        },
+        "ui spritesheet.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         }
     },
     "last.externalTilesetPath": "/Users/sainathlatkar/personal/flame/dual_knights/assets/tiles",
-    "last.imagePath": "/Users/sainathlatkar/personal/flame/dual_knights/assets/images/Resources/Sheep",
+    "last.imagePath": "/Users/sainathlatkar/personal/flame/dual_knights/assets/images/UI",
     "map.height": 9,
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 64,
     "map.tileWidth": 64,
     "map.width": 12,
     "openFiles": [
+        "Level-01.tmx",
+        "Sample-12X9.tmx",
+        "Sample-15X12.tmx"
     ],
     "project": "DualKnights.tiled-project",
+    "property.type": "int",
     "recentFiles": [
-        "HappySheep_All.tsx",
+        "Level-01.tmx",
         "Sample-12X9.tmx",
+        "Sample-15X12.tmx",
+        "TileSample-12X9.tsx",
+        "ui spritesheet.tsx",
+        "spritesheet.tsx",
+        "HappySheep_All.tsx",
         "13.tsx",
         "Rocks_04.tsx",
         "Bridge_All.tsx",
         "Button_Red.tsx",
-        "Button_Blue.tsx",
-        "Warrior_Red.tsx",
-        "Warrior_Blue.tsx",
-        "Barrel_Red.tsx",
-        "09.tsx",
-        "18.tsx"
+        "Button_Blue.tsx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",

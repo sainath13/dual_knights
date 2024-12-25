@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="64" tileheight="64" infinite="0" nextlayerid="5" nextobjectid="27">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="64" tileheight="64" infinite="0" nextlayerid="5" nextobjectid="28">
  <tileset firstgid="1" source="Terrain.tsx"/>
  <tileset firstgid="41" source="Tower_Blue.tsx"/>
  <tileset firstgid="49" source="Tower_Red.tsx"/>
@@ -42,5 +42,14 @@
   <object id="4" name="Barrel" type="Barrel" x="448" y="384" width="64" height="64"/>
   <object id="22" name="Barrel" type="Barrel" x="960" y="448" width="64" height="64"/>
   <object id="26" name="Tree" type="Tree" x="256" y="512" width="64" height="64"/>
+  <object id="27" name="MovingBarrel" type="MovingBarrel" x="512" y="768" width="64" height="64">
+   <properties>
+    <property name="downOffset" type="int" value="0"/>
+    <property name="isVertical" type="bool" value="false"/>
+    <property name="leftOffset" type="int" value="3"/>
+    <property name="rightOffset" type="int" value="4"/>
+    <property name="upOffset" type="int" value="0"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>
