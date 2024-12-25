@@ -41,12 +41,6 @@ class Barrel extends SpriteAnimationComponent with HasGameRef<DualKnights>, Coll
   BarrelState currentState = BarrelState.silent;
   Vector2 currentPosition = Vector2.zero();
   
-  final Set<Component> knightsInWakeRange = {};
-  final Set<Component> knightsInExplodeRange = {};
-
-  double randomLookTimer = 0;
-  static const double randomLookInterval = 3.0;
-  
   bool isExploding = false;
   bool isAnyoneInWakeRange = false;
   Barrel({required Vector2 position}) : super(size: Vector2(frameWidth, frameHeight)) {

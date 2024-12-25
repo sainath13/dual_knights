@@ -60,7 +60,6 @@ class AntiPlayerCheckpoint extends SpriteAnimationComponent
     PositionComponent other,
   ) {
     super.onCollisionStart(intersectionPoints, other);
-
     if (other is AntiPlayer) {
       isPressed = true;
       animation = pressedAnimation;
