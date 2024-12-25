@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-dualknight-dev-bbdb5-authRole",
+      "UnauthRoleArn": "arn:aws:iam::676206912517:role/amplify-dualknight-dev-bbdb5-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::676206912517:role/amplify-dualknight-dev-bbdb5-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-dualknight-dev-bbdb5-deployment",
+      "UnauthRoleName": "amplify-dualknight-dev-bbdb5-unauthRole",
+      "StackName": "amplify-dualknight-dev-bbdb5",
+      "StackId": "arn:aws:cloudformation:us-east-1:676206912517:stack/amplify-dualknight-dev-bbdb5/998cfca0-c2ce-11ef-8141-0affc932e23d",
+      "AmplifyAppId": "d3jkm7k5wetidz"
+    },
+    "categories": {
+      "auth": {
+        "dualknight71752271": {}
+      },
+      "storage": {
+        "s34a5dfb46": {}
+      }
+    }
+  }
+}
