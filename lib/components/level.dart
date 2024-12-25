@@ -49,19 +49,17 @@ class Level extends World with HasGameRef<DualKnights>, HasCollisionDetection{
     if(spawnPointsLayer != null){
       for(final spawnPoint in spawnPointsLayer.objects){
         switch (spawnPoint.class_) {
-          case 'Player' :
-            player.position = Vector2(spawnPoint.x + 32, spawnPoint.y + 32);
-            player.anchor = Anchor.center;
-            // log("player priority: ${player.priority}");
-            // player.priority = 10;
-            add(player);
-            break;
+          
           case 'AntiPlayer' :
             antiPlayer.position = Vector2(spawnPoint.x + 32, spawnPoint.y + 32);
             antiPlayer.anchor = Anchor.center;
-            // log("antiPlayer priority: ${antiPlayer.priority}");
             add(antiPlayer);
             break;
+          case 'Player' :
+            player.position = Vector2(spawnPoint.x + 32, spawnPoint.y + 32);
+            player.anchor = Anchor.center;
+            add(player);
+            break;  
           case 'Barrel' :
             final barrel = Barrel(position: Vector2(spawnPoint.x-32, spawnPoint.y-32));//..debugMode = true;
             add(barrel);

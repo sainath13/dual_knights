@@ -95,12 +95,12 @@ class Tree extends SpriteAnimationComponent with HasGameRef<DualKnights>, Collis
   // developer.log("playerPos: $playerPos, treePos: $treePos");
   // developer.log("Distance X: $distanceX, Distance Y: $distanceY");
   if(playerPos.x == treePos.x && playerPos.y - treePos.y == 64) {
-    developer.log("Player is ahead the tree at bottom");
+    // developer.log("Player is ahead the tree at bottom");
     return KnightRangeStatus.ahead;
   }
 
   if(playerPos.x == treePos.x && treePos.y - playerPos.y <= 128) {
-    developer.log("Player is behind the tree at top");
+    // developer.log("Player is behind the tree at top");
     return KnightRangeStatus.behind;
   }
 
@@ -133,7 +133,7 @@ class Tree extends SpriteAnimationComponent with HasGameRef<DualKnights>, Collis
     KnightRangeStatus status = KnightRangeStatus.notNear;
     if(knight == "player") {
       status = getKnightPositionRelativeToTree(treePosition, player.position);
-      developer.log("Status: ${status.toString()}");
+      // developer.log("Status: ${status.toString()}");
       return KnightRangeResult(status, triggeredBy: "player");
     }
     else if(knight == "antiPlayer") {
@@ -145,7 +145,7 @@ class Tree extends SpriteAnimationComponent with HasGameRef<DualKnights>, Collis
     }
     //if Knight is behind
     // return KnightRangeResult(playerStatus, triggeredBy: "player");
-    return KnightRangeResult(status, triggeredBy: "antiPlayer");
+    return KnightRangeResult(status, triggeredBy: "player");
   }
 
   

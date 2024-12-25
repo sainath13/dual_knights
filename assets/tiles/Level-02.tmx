@@ -75,7 +75,7 @@
   <object id="15" name="Block" type="Block" x="512" y="384" width="64" height="64"/>
   <object id="17" name="Block" type="Block" x="448" y="320" width="64" height="64"/>
  </objectgroup>
- <layer id="7" name="CollisionInvisible" width="20" height="15">
+ <layer id="7" name="CollisionInvisible" width="20" height="15" visible="0">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -94,7 +94,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="5" name="Spawnpoints" visible="0">
+ <objectgroup id="5" name="Spawnpoints">
   <object id="6" name="Player" type="Player" x="448" y="576" width="64" height="64"/>
   <object id="7" name="AntiPlayer" type="AntiPlayer" x="704" y="384" width="64" height="64"/>
   <object id="19" name="Tree" type="Tree" x="768" y="512" width="64" height="64"/>

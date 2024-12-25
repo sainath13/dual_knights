@@ -171,6 +171,7 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
   @override
   void update(double dt) {
     super.update(dt);
+    // log("AntiPlayer priority is $priority");
 
     if (isMoving) {
       final movement = direction * speed * dt;
