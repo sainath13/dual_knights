@@ -29,7 +29,7 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
 
   final Set<LogicalKeyboardKey> _pressedKeys = {};
 
-  AntiPlayer() : super(size: Vector2(frameWidth, frameHeight)) {
+  AntiPlayer() : super(size: Vector2(frameWidth, frameHeight), priority: 5) {
     targetPosition = position.clone();
   }
 
@@ -109,6 +109,7 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
   
   @override
   bool onKeyEvent(KeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
+    if(true) return true; //TODO : Remove this line
     if (isMoving) return true;
     _pressedKeys.clear();
     _pressedKeys.addAll(keysPressed);

@@ -47,15 +47,15 @@
         },
         "Level-02.tmx": {
             "expandedObjectLayers": [
-                5,
                 6,
+                5,
                 4
             ],
-            "scale": 0.51,
-            "selectedLayer": 4,
+            "scale": 0.56,
+            "selectedLayer": 5,
             "viewCenter": {
-                "x": 640.1960784313726,
-                "y": 479.41176470588226
+                "x": 575.8928571428571,
+                "y": 408.0357142857142
             }
         },
         "Terrain.tsx": {
@@ -67,6 +67,10 @@
             "scaleInEditor": 1
         },
         "Tower_Red.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Tree.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
@@ -88,6 +92,7 @@
     "project": "DualKnights.tiled-project",
     "recentFiles": [
         "06.tsx",
+        "Tree.tsx",
         "Level-02.tmx",
         "Tower_Red.tsx",
         "Level-01.tmx",
@@ -97,8 +102,7 @@
         "17.tsx",
         "Tower_Blue.tsx",
         "EnemySingle.tsx",
-        "Terrain.tsx",
-        "DualKnights.tsx"
+        "Terrain.tsx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {

@@ -31,7 +31,7 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
   // Keep track of pressed keys
   final Set<LogicalKeyboardKey> _pressedKeys = {};
 
-  Player() : super(size: Vector2(frameWidth, frameHeight)) {
+  Player() : super(size: Vector2(frameWidth, frameHeight), priority: 5) {
     targetPosition = position.clone();
   }
   
@@ -113,6 +113,7 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
   @override
   bool onKeyEvent(KeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
     // log("Key press is detected");
+    // if (true) return true; //
     if (isMoving) return true; // Ignore input if already moving
 
     _pressedKeys.clear();

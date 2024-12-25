@@ -21,7 +21,7 @@ class Level extends World with HasGameRef<DualKnights>, HasCollisionDetection{
   
   @override
   FutureOr<void> onLoad() async{
-    level = await TiledComponent.load('Level-02.tmx', Vector2(64, 64));
+    level = await TiledComponent.load('Level-01.tmx', Vector2(64, 64));
     // level.debugMode = true;
     add(level);
     List<CollisionBlock> collisionBlocks = [];
@@ -52,28 +52,23 @@ class Level extends World with HasGameRef<DualKnights>, HasCollisionDetection{
           case 'Player' :
             player.position = Vector2(spawnPoint.x + 32, spawnPoint.y + 32);
             player.anchor = Anchor.center;
-            log("player priority: ${player.priority}");
-            player.priority = 10;
+            // log("player priority: ${player.priority}");
+            // player.priority = 10;
             add(player);
             break;
           case 'AntiPlayer' :
             antiPlayer.position = Vector2(spawnPoint.x + 32, spawnPoint.y + 32);
             antiPlayer.anchor = Anchor.center;
-            log("antiPlayer priority: ${antiPlayer.priority}");
-            antiPlayer.priority = 10;
+            // log("antiPlayer priority: ${antiPlayer.priority}");
             add(antiPlayer);
             break;
           case 'Barrel' :
             final barrel = Barrel(position: Vector2(spawnPoint.x-32, spawnPoint.y-32));//..debugMode = true;
-            antiPlayer.anchor = Anchor.center;
-            log("barrel priority: ${barrel.priority}");
             add(barrel);
             break; 
           case 'Tree' :
             final tree = Tree(position: Vector2(spawnPoint.x + 32, spawnPoint.y-16));//..debugMode = true;
             tree.anchor = Anchor.center;
-            log("Tree priority: ${tree.priority}");
-            tree.priority = 5;
             add(tree);     
             final block = CollisionBlock(
               position: Vector2(spawnPoint.x, spawnPoint.y),
@@ -81,6 +76,7 @@ class Level extends World with HasGameRef<DualKnights>, HasCollisionDetection{
             );//..debugMode = true;
             add(block);
             collisionBlocks.add(block);
+            break;
           default:  
         }
       }
