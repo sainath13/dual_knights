@@ -22,6 +22,7 @@ void main() async {
 
   DualKnights game = DualKnights();//..debugMode = true;
   runApp(
-    GameWidget(game: true ? DualKnights() : game),
+    // GameWidget(game: true ? DualKnights() : game),
+    GameWidget(game : game),
   );
 }
