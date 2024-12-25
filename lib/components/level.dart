@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:dual_knights/components/anti_player.dart';
 import 'package:dual_knights/components/barrel.dart';
 import 'package:dual_knights/components/collision_block.dart';
+import 'package:dual_knights/components/moving_barrel.dart';
 import 'package:dual_knights/components/player.dart';
 import 'package:dual_knights/components/player_checkpoint.dart';
 import 'package:dual_knights/components/anti_player_checkpoint.dart';
@@ -11,6 +12,7 @@ import 'package:dual_knights/components/tree.dart';
 import 'package:dual_knights/dual_knights.dart';
 import 'package:flame/components.dart';
 import 'package:flame_tiled/flame_tiled.dart';
+import 'package:flutter/widgets.dart';
 
 class Level extends World with HasGameRef<DualKnights>, HasCollisionDetection{
   final String levelName;
@@ -21,7 +23,7 @@ class Level extends World with HasGameRef<DualKnights>, HasCollisionDetection{
   
   @override
   FutureOr<void> onLoad() async{
-    level = await TiledComponent.load('Level-01.tmx', Vector2(64, 64));
+    level = await TiledComponent.load('Sample12X9.tmx', Vector2(64, 64));
     // level.debugMode = true;
     add(level);
     List<CollisionBlock> collisionBlocks = [];
@@ -64,6 +66,21 @@ class Level extends World with HasGameRef<DualKnights>, HasCollisionDetection{
             final barrel = Barrel(position: Vector2(spawnPoint.x-32, spawnPoint.y-32));//..debugMode = true;
             add(barrel);
             break; 
+          case 'MovingBarrel' :
+            final isVertical = spawnPoint.properties.getValue('isVertical');
+            final leftOffset = spawnPoint.properties.getValue('leftOffset');
+            final rightOffset = spawnPoint.properties.getValue('rightOffset');
+            final upOffset = spawnPoint.properties.getValue('upOffset');
+            final downOffset = spawnPoint.properties.getValue('downOffset');
+            final movingBarrel = MovingBarrel(
+              isVertical: isVertical, 
+              leftOffset: leftOffset, 
+              rightOffset: rightOffset, 
+              upOffset: upOffset, 
+              downOffset: downOffset ,
+              position: Vector2(spawnPoint.x-32, spawnPoint.y-32));//..debugMode = true;
+            add(movingBarrel);
+            break;   
           case 'Tree' :
             final tree = Tree(position: Vector2(spawnPoint.x + 32, spawnPoint.y-16));//..debugMode = true;
             tree.anchor = Anchor.center;
