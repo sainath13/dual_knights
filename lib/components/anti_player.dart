@@ -109,7 +109,7 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
   
   @override
   bool onKeyEvent(KeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
-    if(true) return true; //TODO : Remove this line
+    // if(true) return true; //TODO : Remove this line
     if (isMoving) return true;
     _pressedKeys.clear();
     _pressedKeys.addAll(keysPressed);
