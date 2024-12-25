@@ -3,6 +3,13 @@ frontend:
   phases:
     preBuild:
       commands:
+        - git clone https://github.com/flutter/flutter.git
+        - cd flutter
+        - git checkout 3.16.9 # This Flutter version uses Dart 3.2.6
+        - cd ..
+        - export PATH="$PATH:`pwd`/flutter/bin"
+        - flutter precache
+        - flutter doctor
         - flutter pub get
     build:
       commands:
