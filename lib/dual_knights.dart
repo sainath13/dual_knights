@@ -18,7 +18,7 @@ class DualKnights extends FlameGame with KeyboardEvents{
   late final CameraComponent cam;
   
   @override
-  Color backgroundColor()  => const Color(0xFF211F30);
+  Color backgroundColor()  => const Color(0xFF47ABA9);
   final player = Player();//..debugMode = true;
   final antiPlayer = AntiPlayer();//..debugMode = true;
   List<String> levelNames = ['Level-02', 'Level-02'];
@@ -38,7 +38,7 @@ class DualKnights extends FlameGame with KeyboardEvents{
         levelName: levelNames[0],
       );
 
-      cam = CameraComponent.withFixedResolution(world: world, width: 1280, height: 960);
+      cam = CameraComponent.withFixedResolution(world: world, width: 15*64, height: 12*64);
       cam.viewfinder.anchor = Anchor.topLeft;
       addAll([cam, world]);
     });

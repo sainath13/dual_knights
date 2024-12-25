@@ -68,14 +68,14 @@
         },
         "Level-01.tmx": {
             "expandedObjectLayers": [
+                3,
                 4,
-                2,
-                3
+                2
             ],
             "scale": 0.4871,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 345.9248614247588,
+                "x": 345.9248614247587,
                 "y": 616.9164442619585
             }
         },
@@ -114,10 +114,10 @@
         },
         "Sample-15X12.tmx": {
             "scale": 0.56,
-            "selectedLayer": 2,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 531.25,
-                "y": 266.9642857142857
+                "x": 486.60714285714283,
+                "y": 306.25000000000006
             }
         },
         "Terrain.tsx": {
@@ -158,7 +158,7 @@
         }
     },
     "last.externalTilesetPath": "/Users/sainathlatkar/personal/flame/dual_knights/assets/tiles",
-    "last.imagePath": "/Users/sainathlatkar/personal/flame/dual_knights/assets/images/UI",
+    "last.imagePath": "/Users/sainathlatkar/personal/flame/dual_knights/assets/images/Treasure",
     "map.height": 9,
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 64,
