@@ -181,7 +181,7 @@ class MovingBarrel extends SpriteAnimationComponent with HasGameRef<DualKnights>
   }
   
   KnightRangeResult getKnightRangeStatus() {
-    developer.log("Checking Knight Range");
+    // developer.log("Checking Knight Range");
   double playerDistanceX = (player.position.x - position.x - 64).abs();
   double playerDistanceY = (player.position.y - position.y - 64).abs();
   double antiPlayerDistanceX = (antiPlayer.position.x - position.x - 64).abs();
@@ -269,11 +269,11 @@ void _updateMovement(double dt) {
   
   void _updateState() {
     if (currentState == MovingBarrelState.dead) return;
-    developer.log("hasCollided is $hasCollided");
+    // developer.log("hasCollided is $hasCollided");
     MovingBarrelState newState = currentState;
     KnightRangeResult knightRangeResult = hasCollided ? collisionResult : getKnightRangeStatus();
     KnightRangeStatus knightRangeStatus = knightRangeResult.status;
-    developer.log("current state is $currentState");
+    // developer.log("current state is $currentState");
     if (knightRangeStatus == KnightRangeStatus.readyToExplode) {
       if(knightRangeResult.triggeredBy == "player") {
         if (player.parent != null) {
@@ -377,12 +377,12 @@ void _updateMovement(double dt) {
     if (other is AntiPlayer) {
       hasCollided = true;
       collisionResult = KnightRangeResult(KnightRangeStatus.readyToExplode, triggeredBy: "antiPlayer");
-      developer.log("Moving Barrel : AntiPlayer collied with Moving Barrel");
+      // developer.log("Moving Barrel : AntiPlayer collied with Moving Barrel");
     }
     else{
       hasCollided = true;
       collisionResult = KnightRangeResult(KnightRangeStatus.readyToExplode, triggeredBy: "player");
-      developer.log("Moving Barrel : Player collied with Moving Barrel");
+      // developer.log("Moving Barrel : Player collied with Moving Barrel");
     }
   }
   

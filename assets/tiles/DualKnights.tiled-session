@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "Level-01.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -31,6 +31,18 @@
             "scaleInEditor": 1
         },
         "18.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Archer_Purlple.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Archer_Yellow.tsx": {
+            "scaleInDock": 0.1959,
+            "scaleInEditor": 1
+        },
+        "Arrow.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
@@ -75,8 +87,8 @@
             "scale": 0.4871,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 344.89837815643614,
-                "y": 616.9164442619585
+                "x": 612.8105111886675,
+                "y": 592.2808458222131
             }
         },
         "Level-02.tmx": {
@@ -109,11 +121,11 @@
             }
         },
         "Level-05.tmx": {
-            "scale": 0.5868229166666666,
-            "selectedLayer": 0,
+            "scale": 0.58,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 479.70178397088847,
-                "y": 384.2726546551877
+                "x": 480.1724137931035,
+                "y": 383.6206896551725
             }
         },
         "Rocks_04.tsx": {
@@ -199,25 +211,23 @@
     "map.tileWidth": 64,
     "map.width": 15,
     "openFiles": [
-        "Level-01.tmx",
-        "Sample-12X9.tmx",
-        "Sample-15X12.tmx"
+        "Level-01.tmx"
     ],
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
-        "Sample-15X12.tmx",
-        "Level-05.tmx",
         "Level-01.tmx",
+        "Archer_Purlple.tsx",
+        "Arrow.tsx",
+        "Archer_Yellow.tsx",
+        "Level-05.tmx",
+        "Sample-15X12.tmx",
         "Sample-12X9.tmx",
         "Level-04.tmx",
         "Shadows.tsx",
         "Tilemap_Elevation.tsx",
         "cloudsspritesheet.tsx",
-        "TileSample-12X9.tsx",
-        "ui spritesheet.tsx",
-        "spritesheet.tsx",
-        "HappySheep_All.tsx"
+        "TileSample-12X9.tsx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",

@@ -83,6 +83,8 @@ flutter:
     - assets/images/Terrain/Water/
     - assets/images/Treasure/
     - assets/images/clouds/
+    - assets/images/Factions/Knights/Troops/Archer/Purple/
+    - assets/images/Factions/Knights/Troops/Archer/Arrow/
     
     # - images/a_dot_ham.jpeg
 

@@ -50,7 +50,7 @@ class DualKnights extends FlameGame with KeyboardEvents{
     Set<LogicalKeyboardKey> keysPressed,
   ) {
     player.onKeyEvent(event, keysPressed);
-    antiPlayer.onKeyEvent(event, keysPressed);
+    // antiPlayer.onKeyEvent(event, keysPressed);
     return KeyEventResult.handled;
   }
 
