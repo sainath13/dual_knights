@@ -74,6 +74,8 @@ flutter:
     - assets/images/UI/Buttons/
     - assets/images/Factions/Knights/Buildings/Castle/
     - assets/images/Resources/Trees/
+    - assets/images/UI/Ribbons/
+    - assets/images/UI/Banners/
     
     # - images/a_dot_ham.jpeg
 

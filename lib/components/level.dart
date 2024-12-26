@@ -4,11 +4,13 @@ import 'dart:developer';
 import 'package:dual_knights/components/anti_player.dart';
 import 'package:dual_knights/components/barrel.dart';
 import 'package:dual_knights/components/collision_block.dart';
+import 'package:dual_knights/components/pause_dialog.dart';
 import 'package:dual_knights/components/player.dart';
 import 'package:dual_knights/components/player_checkpoint.dart';
 import 'package:dual_knights/components/anti_player_checkpoint.dart';
 import 'package:dual_knights/dual_knights.dart';
 import 'package:flame/components.dart';
+import 'package:flame/input.dart';
 import 'package:flame_tiled/flame_tiled.dart';
 
 class Level extends World with HasGameRef<DualKnights>, HasCollisionDetection{
@@ -17,6 +19,9 @@ class Level extends World with HasGameRef<DualKnights>, HasCollisionDetection{
   final AntiPlayer antiPlayer;
   Level({required this.levelName, required this.player, required this.antiPlayer});
   late TiledComponent level;
+  late SpriteButtonComponent restartButton;
+  late SpriteButtonComponent pauseButton;
+  bool isPaused = false;
   
   @override
   FutureOr<void> onLoad() async{
@@ -96,8 +101,66 @@ class Level extends World with HasGameRef<DualKnights>, HasCollisionDetection{
 
     player.setCollisionBlocks(collisionBlocks);
     antiPlayer.setCollisionBlocks(collisionBlocks);
-    
+    await _initializeUIButtons();
     return super.onLoad();
   }
+
+  Future<void> _initializeUIButtons() async {
+    // Create restart button
+    restartButton = SpriteButtonComponent(
+      button: await Sprite.load('UI/Ribbons/Ribbon_Yellow_Connection_Left.png'),
+      buttonDown: await Sprite.load('UI/Ribbons/Ribbon_Yellow_Connection_Left_Pressed.png'),
+      position: Vector2(50, 50),
+      size: Vector2(64, 64),
+      onPressed: restart,
+    );
+
+    // Create pause button
+    pauseButton = SpriteButtonComponent(
+      button: await Sprite.load('UI/Ribbons/Ribbon_Yellow_Connection_Right.png'),
+      buttonDown: await Sprite.load('UI/Ribbons/Ribbon_Yellow_Connection_Right_Pressed.png'),
+      position: Vector2(1280 - 114, 50),
+      size: Vector2(64, 64),
+      onPressed: togglePause,
+    );
+
+    // Add buttons to world
+    add(restartButton);
+    add(pauseButton);
+  }
+
+  void restart() {
+    removeAll(children);
+    onLoad();
+  }
+
+  void togglePause() {
+    isPaused = !isPaused;
+    if (isPaused) {
+      gameRef.pauseEngine();
+      _showPauseDialog();
+    } else {
+      gameRef.resumeEngine();
+    }
+  }
+
+  void _showPauseDialog() {
+  late final PauseDialog dialog;
+  dialog = PauseDialog(
+    onResume: () {
+      togglePause();
+      dialog.removeFromParent();
+    },
+    onExit: () {
+
+      // parent?.findGame()?.game.router.pushReplacement(
+      //   'levelSelection', 
+      //   replace: true
+      // );
+    }
+  );
+  add(dialog);
+  
+}
 
 }

@@ -1,50 +1,54 @@
-// ignore_for_file: implementation_imports, unnecessary_import
+// lib/game/dual_knights_game.dart
 
 import 'dart:async';
-import 'dart:developer';
 import 'dart:ui';
-
 import 'package:dual_knights/components/anti_player.dart';
-import 'package:dual_knights/components/level.dart';
 import 'package:dual_knights/components/player.dart';
-import 'package:flame/components.dart';
-import 'package:flame/events.dart';
+import 'package:dual_knights/screens/level_selection.dart';
 import 'package:flame/game.dart';
+import 'package:flame/events.dart';
+import 'package:dual_knights/routes/routes.dart';
+import 'package:dual_knights/screens/login_screen.dart';
+import 'package:flutter/material.dart' hide Route;
+
 import 'package:flutter/src/services/hardware_keyboard.dart';
 import 'package:flutter/src/services/keyboard_key.g.dart';
-import 'package:flutter/src/widgets/focus_manager.dart';
+import 'package:dual_knights/state/game_state.dart';
 
-class DualKnights extends FlameGame with KeyboardEvents{
-  late final CameraComponent cam;
-  
-  @override
-  Color backgroundColor()  => const Color(0xFF211F30);
-  final player = Player();//..debugMode = true;
-  final antiPlayer = AntiPlayer();//..debugMode = true;
-  List<String> levelNames = ['Level-02', 'Level-02'];
+class DualKnights extends FlameGame with KeyboardEvents {
+  late final RouterComponent router;
+  final gameState = GameState();
+  List<String> levelNames = List.generate(100, (index) => 'Level-${(index + 1).toString().padLeft(2, '0')}');
 
   @override
-  FutureOr<void> onLoad() async{
+  Color backgroundColor() => const Color(0xFF211F30);
+
+  @override
+  FutureOr<void> onLoad() async {
     await images.loadAllImages();
-    _loadLevel();
+    
+    // Initialize game state
+    gameState.initializePlayers();
+
+    router = RouterComponent(
+      initialRoute: Routes.levelSelection,
+      routes: {
+        Routes.login: Route(() => LoginScreen()),
+        Routes.levelSelection: Route(
+          () => LevelSelectionScreen(levelNames: levelNames),
+        ),
+     
+      },
+    );
+
+    add(router);
     return super.onLoad();
   }
 
-  void _loadLevel() {
-    Future.delayed(const Duration(seconds: 1), () {
-      Level world = Level(
-        player: player,
-        antiPlayer : antiPlayer,
-        levelName: levelNames[0],
-      );
+  Player get player => gameState.player!;
+  AntiPlayer get antiPlayer => gameState.antiPlayer!;
 
-      cam = CameraComponent.withFixedResolution(world: world, width: 1280, height: 960);
-      cam.viewfinder.anchor = Anchor.topLeft;
-      addAll([cam, world]);
-    });
-  }
-
-@override
+  @override
   KeyEventResult onKeyEvent(
     KeyEvent event,
     Set<LogicalKeyboardKey> keysPressed,
@@ -54,4 +58,6 @@ class DualKnights extends FlameGame with KeyboardEvents{
     return KeyEventResult.handled;
   }
 
+
 }
+
