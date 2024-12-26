@@ -69,13 +69,13 @@
         "Level-01.tmx": {
             "expandedObjectLayers": [
                 3,
-                4,
-                2
+                2,
+                4
             ],
             "scale": 0.4871,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 345.9248614247587,
+                "x": 344.89837815643614,
                 "y": 616.9164442619585
             }
         },
@@ -100,31 +100,55 @@
                 "y": 494.8020791683326
             }
         },
+        "Level-04.tmx": {
+            "scale": 0.7335286458333332,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 1025.1815035058137,
+                "y": 318.3243099316589
+            }
+        },
+        "Level-05.tmx": {
+            "scale": 0.5868229166666666,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 479.70178397088847,
+                "y": 384.2726546551877
+            }
+        },
         "Rocks_04.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
         "Sample-12X9.tmx": {
-            "scale": 0.722,
+            "scale": 0.72,
             "selectedLayer": 7,
             "viewCenter": {
-                "x": 371.88365650969536,
-                "y": 338.6426592797784
+                "x": 1025,
+                "y": 368.75
             }
         },
         "Sample-15X12.tmx": {
             "scale": 0.56,
-            "selectedLayer": 3,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 486.60714285714283,
+                "x": 484.82142857142856,
                 "y": 306.25000000000006
             }
         },
+        "Shadows.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
         "Terrain.tsx": {
-            "scaleInDock": 0.305,
+            "scaleInDock": 1,
             "scaleInEditor": 1
         },
         "TileSample-12X9.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Tilemap_Elevation.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
@@ -148,8 +172,18 @@
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
+        "Water.tsx": {
+            "scaleInDock": 1
+        },
+        "bgspritesheet.tsx": {
+            "scaleInDock": 1
+        },
+        "cloudsspritesheet.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
         "spritesheet.tsx": {
-            "scaleInDock": 0.4252,
+            "scaleInDock": 1,
             "scaleInEditor": 1
         },
         "ui spritesheet.tsx": {
@@ -158,12 +192,12 @@
         }
     },
     "last.externalTilesetPath": "/Users/sainathlatkar/personal/flame/dual_knights/assets/tiles",
-    "last.imagePath": "/Users/sainathlatkar/personal/flame/dual_knights/assets/images/Treasure",
-    "map.height": 9,
+    "last.imagePath": "/Users/sainathlatkar/personal/flame/dual_knights/assets/images/Factions/Knights/Troops/Archer/Purple",
+    "map.height": 12,
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 64,
     "map.tileWidth": 64,
-    "map.width": 12,
+    "map.width": 15,
     "openFiles": [
         "Level-01.tmx",
         "Sample-12X9.tmx",
@@ -172,18 +206,18 @@
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "Sample-15X12.tmx",
+        "Level-05.tmx",
         "Level-01.tmx",
         "Sample-12X9.tmx",
-        "Sample-15X12.tmx",
+        "Level-04.tmx",
+        "Shadows.tsx",
+        "Tilemap_Elevation.tsx",
+        "cloudsspritesheet.tsx",
         "TileSample-12X9.tsx",
         "ui spritesheet.tsx",
         "spritesheet.tsx",
-        "HappySheep_All.tsx",
-        "13.tsx",
-        "Rocks_04.tsx",
-        "Bridge_All.tsx",
-        "Button_Red.tsx",
-        "Button_Blue.tsx"
+        "HappySheep_All.tsx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",

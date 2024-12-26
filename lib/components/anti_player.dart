@@ -46,6 +46,10 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
     );//..debugMode = true;
     add(hitbox);
     final spriteSheet = await gameRef.images.load('Factions/Knights/Troops/Warrior/Red/Warrior_Red.png');
+    final downSheet = await gameRef.images.load('Factions/Knights/Troops/Warrior/Red/Warrior_Red_walk_down.png');
+    final leftSheet = await gameRef.images.load('Factions/Knights/Troops/Warrior/Red/Warrior_Red_walk_left.png');
+    final upSheet = await gameRef.images.load('Factions/Knights/Troops/Warrior/Red/Warrior_Red_walk_up.png');
+  
   
     log("Keeping animations loaded");
     idleAnimation = SpriteAnimation.fromFrameData(
@@ -60,35 +64,35 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
     );
 
     moveUpAnimation = SpriteAnimation.fromFrameData(
-      spriteSheet,
+      upSheet,
       SpriteAnimationData.sequenced(
         amount: 6,
         textureSize: Vector2(frameWidth, frameHeight),
         stepTime: 0.1,
         loop: true,
-        texturePosition: Vector2(0, frameHeight * 1),
+        texturePosition: Vector2(0, 0),
       ),
     );
 
     moveDownAnimation = SpriteAnimation.fromFrameData(
-      spriteSheet,
+      downSheet,
       SpriteAnimationData.sequenced(
         amount: 6,
         textureSize: Vector2(frameWidth, frameHeight),
         stepTime: 0.1,
         loop: true,
-        texturePosition: Vector2(0, frameHeight * 2),
+        texturePosition: Vector2(0, 0),
       ),
     );
 
     moveLeftAnimation = SpriteAnimation.fromFrameData(
-      spriteSheet,
+      leftSheet,
       SpriteAnimationData.sequenced(
         amount: 6,
         textureSize: Vector2(frameWidth, frameHeight),
         stepTime: 0.1,
         loop: true,
-        texturePosition: Vector2(0, frameHeight * 3),
+        texturePosition: Vector2(0, 0),
       ),
     );
 
@@ -99,7 +103,7 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
         textureSize: Vector2(frameWidth, frameHeight),
         stepTime: 0.1,
         loop: true,
-        texturePosition: Vector2(0, frameHeight * 4),
+        texturePosition: Vector2(0, frameHeight * 1),
       ),
     );
     // Set initial animation

@@ -82,6 +82,7 @@ flutter:
     - assets/images/
     - assets/images/Terrain/Water/
     - assets/images/Treasure/
+    - assets/images/clouds/
     
     # - images/a_dot_ham.jpeg
 
