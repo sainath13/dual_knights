@@ -45,10 +45,13 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
         64,
         64
       ),
-    )..debugMode = true;
+    );//..debugMode = true;
     add(hitbox);
     // Load the sprite sheet
     final spriteSheet = await gameRef.images.load('Factions/Knights/Troops/Warrior/Blue/Warrior_Blue.png');
+    final downSheet = await gameRef.images.load('Factions/Knights/Troops/Warrior/Blue/Warrior_Blue_Walk_Down.png');
+    final leftSheet = await gameRef.images.load('Factions/Knights/Troops/Warrior/Blue/Warrior_Blue_Walk_Left.png');
+    final upSheet = await gameRef.images.load('Factions/Knights/Troops/Warrior/Blue/Warrior_Blue_Walk_Up.png');
 
     // Define animations
     idleAnimation = SpriteAnimation.fromFrameData(
@@ -63,35 +66,35 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
     );
 
     moveUpAnimation = SpriteAnimation.fromFrameData(
-      spriteSheet,
+      upSheet,
       SpriteAnimationData.sequenced(
         amount: 6,
         textureSize: Vector2(frameWidth, frameHeight),
         stepTime: 0.1,
         loop: true,
-        texturePosition: Vector2(0, frameHeight * 1),
+        texturePosition: Vector2(0, 0),
       ),
     );
 
     moveDownAnimation = SpriteAnimation.fromFrameData(
-      spriteSheet,
+      downSheet,
       SpriteAnimationData.sequenced(
         amount: 6,
         textureSize: Vector2(frameWidth, frameHeight),
         stepTime: 0.1,
         loop: true,
-        texturePosition: Vector2(0, frameHeight * 2),
+        texturePosition: Vector2(0, 0),
       ),
     );
 
     moveLeftAnimation = SpriteAnimation.fromFrameData(
-      spriteSheet,
+      leftSheet,
       SpriteAnimationData.sequenced(
         amount: 6,
         textureSize: Vector2(frameWidth, frameHeight),
         stepTime: 0.1,
         loop: true,
-        texturePosition: Vector2(0, frameHeight * 3),
+        texturePosition: Vector2(0, 0),
       ),
     );
 
@@ -102,7 +105,7 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
         textureSize: Vector2(frameWidth, frameHeight),
         stepTime: 0.1,
         loop: true,
-        texturePosition: Vector2(0, frameHeight * 4),
+        texturePosition: Vector2(0, frameHeight),
       ),
     );
 

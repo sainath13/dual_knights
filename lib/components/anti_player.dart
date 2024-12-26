@@ -46,6 +46,7 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
     );//..debugMode = true;
     add(hitbox);
     final spriteSheet = await gameRef.images.load('Factions/Knights/Troops/Warrior/Red/Warrior_Red.png');
+    final idleSheet = await gameRef.images.load('Factions/Knights/Troops/Warrior/Red/Warrior_Red_Idle.png');
     final downSheet = await gameRef.images.load('Factions/Knights/Troops/Warrior/Red/Warrior_Red_walk_down.png');
     final leftSheet = await gameRef.images.load('Factions/Knights/Troops/Warrior/Red/Warrior_Red_walk_left.png');
     final upSheet = await gameRef.images.load('Factions/Knights/Troops/Warrior/Red/Warrior_Red_walk_up.png');
@@ -53,7 +54,7 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
   
     log("Keeping animations loaded");
     idleAnimation = SpriteAnimation.fromFrameData(
-      spriteSheet,
+      idleSheet,
       SpriteAnimationData.sequenced(
         texturePosition: Vector2.all(0),
         amount: 6,

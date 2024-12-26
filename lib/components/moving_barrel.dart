@@ -79,7 +79,7 @@ class MovingBarrel extends SpriteAnimationComponent with HasGameRef<DualKnights>
         32,
         32
       ),
-    )..debugMode = true;
+    );//..debugMode = true;
     add(hitbox);
     // Load all animations
     animations = {
