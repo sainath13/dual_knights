@@ -1,4 +1,4 @@
-import 'package:dual_knights/components/grid_system.dart';
+import 'package:dual_knights/components/experiments/grid_system.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/material.dart';
 

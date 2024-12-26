@@ -1,6 +1,6 @@
 import 'dart:developer' as developer;
 import 'package:dual_knights/components/anti_player.dart';
-import 'package:dual_knights/components/arrow.dart';
+import 'package:dual_knights/components/experiments/arrow.dart';
 import 'package:dual_knights/components/player.dart';
 import 'package:dual_knights/dual_knights.dart';
 import 'package:flame/collisions.dart';
@@ -45,7 +45,11 @@ class Archer extends SpriteAnimationComponent with HasGameRef<DualKnights>, Coll
   @override
   Future<void> onLoad() async {
     super.onLoad();
-
+    //note for postion
+            // Archer archer = Archer()..debugMode = true;
+            // archer.position = Vector2(spawnPoint.x + 32, spawnPoint.y + 32);
+            // archer.anchor = Anchor.center;
+            // add(archer);
     final newHitbox = RectangleHitbox(
       size: Vector2(64*4, 64*4),
       position: Vector2(currentPosition.x-64, currentPosition.y-64),

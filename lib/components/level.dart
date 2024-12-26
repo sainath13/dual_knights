@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:dual_knights/components/anti_player.dart';
-import 'package:dual_knights/components/archer.dart';
 import 'package:dual_knights/components/barrel.dart';
 import 'package:dual_knights/components/collision_block.dart';
 import 'package:dual_knights/components/moving_barrel.dart';
@@ -13,7 +12,6 @@ import 'package:dual_knights/components/tree.dart';
 import 'package:dual_knights/dual_knights.dart';
 import 'package:flame/components.dart';
 import 'package:flame_tiled/flame_tiled.dart';
-import 'package:flutter/widgets.dart';
 
 class Level extends World with HasGameRef<DualKnights>, HasCollisionDetection{
   final String levelName;
@@ -54,13 +52,9 @@ class Level extends World with HasGameRef<DualKnights>, HasCollisionDetection{
         switch (spawnPoint.class_) {
           
           case 'AntiPlayer' :
-            // antiPlayer.position = Vector2(spawnPoint.x + 32, spawnPoint.y + 32);
-            // antiPlayer.anchor = Anchor.center;
-            // add(antiPlayer);
-            Archer archer = Archer()..debugMode = true;
-            archer.position = Vector2(spawnPoint.x + 32, spawnPoint.y + 32);
-            archer.anchor = Anchor.center;
-            add(archer);
+            antiPlayer.position = Vector2(spawnPoint.x + 32, spawnPoint.y + 32);
+            antiPlayer.anchor = Anchor.center;
+            add(antiPlayer);
             break;
           case 'Player' :
             player.position = Vector2(spawnPoint.x + 32, spawnPoint.y + 32);
@@ -72,19 +66,19 @@ class Level extends World with HasGameRef<DualKnights>, HasCollisionDetection{
             add(barrel);
             break; 
           case 'MovingBarrel' :
-            // final isVertical = spawnPoint.properties.getValue('isVertical');
-            // final leftOffset = spawnPoint.properties.getValue('leftOffset');
-            // final rightOffset = spawnPoint.properties.getValue('rightOffset');
-            // final upOffset = spawnPoint.properties.getValue('upOffset');
-            // final downOffset = spawnPoint.properties.getValue('downOffset');
-            // final movingBarrel = MovingBarrel(
-            //   isVertical: isVertical, 
-            //   leftOffset: leftOffset, 
-            //   rightOffset: rightOffset, 
-            //   upOffset: upOffset, 
-            //   downOffset: downOffset ,
-            //   position: Vector2(spawnPoint.x-32, spawnPoint.y-32));//..debugMode = true;
-            // add(movingBarrel);
+            final isVertical = spawnPoint.properties.getValue('isVertical');
+            final leftOffset = spawnPoint.properties.getValue('leftOffset');
+            final rightOffset = spawnPoint.properties.getValue('rightOffset');
+            final upOffset = spawnPoint.properties.getValue('upOffset');
+            final downOffset = spawnPoint.properties.getValue('downOffset');
+            final movingBarrel = MovingBarrel(
+              isVertical: isVertical, 
+              leftOffset: leftOffset, 
+              rightOffset: rightOffset, 
+              upOffset: upOffset, 
+              downOffset: downOffset ,
+              position: Vector2(spawnPoint.x-32, spawnPoint.y-32));//..debugMode = true;
+            add(movingBarrel);
             break;   
           case 'Tree' :
             final tree = Tree(position: Vector2(spawnPoint.x + 32, spawnPoint.y-16));//..debugMode = true;
