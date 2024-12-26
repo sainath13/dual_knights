@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:dual_knights/components/anti_player.dart';
 import 'package:dual_knights/components/collision_block.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
@@ -22,6 +23,7 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
   late SpriteAnimation moveDownAnimation;
   late SpriteAnimation moveLeftAnimation;
   late SpriteAnimation moveRightAnimation;
+  late SpriteAnimation fightAnimation;
 
   // Movement speed
   final double speed = 150.0;
@@ -52,6 +54,7 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
     final downSheet = await gameRef.images.load('Factions/Knights/Troops/Warrior/Blue/Warrior_Blue_Walk_Down.png');
     final leftSheet = await gameRef.images.load('Factions/Knights/Troops/Warrior/Blue/Warrior_Blue_Walk_Left.png');
     final upSheet = await gameRef.images.load('Factions/Knights/Troops/Warrior/Blue/Warrior_Blue_Walk_Up.png');
+    final explosionSheet = await gameRef.images.load('Effects/Explosion/Explosions.png');
 
     // Define animations
     idleAnimation = SpriteAnimation.fromFrameData(
@@ -108,7 +111,16 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
         texturePosition: Vector2(0, frameHeight),
       ),
     );
-
+    fightAnimation = SpriteAnimation.fromFrameData(
+      explosionSheet,
+      SpriteAnimationData.sequenced(
+        amount: 9,
+        textureSize: Vector2(192, 192),
+        stepTime: 0.1,
+        loop: false,
+        texturePosition: Vector2(0, 0),
+      ),
+    ); 
     // Set initial animation
     animation = idleAnimation;
   }
@@ -176,6 +188,20 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
       return true;
     }
     return false;
+  }
+
+
+  @override
+  void onCollisionStart(
+    Set<Vector2> intersectionPoints,
+    PositionComponent other,
+  ) {
+    super.onCollisionStart(intersectionPoints, other);
+    if (other is AntiPlayer) {
+      log("Player collided with AntiPlayer");
+      animation = fightAnimation;  
+    }
+    
   }
 
   @override

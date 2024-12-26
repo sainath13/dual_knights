@@ -1,4 +1,5 @@
 import 'package:dual_knights/components/collision_block.dart';
+import 'package:dual_knights/components/player.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/services.dart';
@@ -23,6 +24,7 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
   late SpriteAnimation moveDownAnimation;
   late SpriteAnimation moveLeftAnimation;
   late SpriteAnimation moveRightAnimation;
+  late SpriteAnimation fightAnimation;
 
   final double speed = 150.0;
   Vector2 direction = Vector2.zero();
@@ -50,6 +52,7 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
     final downSheet = await gameRef.images.load('Factions/Knights/Troops/Warrior/Red/Warrior_Red_walk_down.png');
     final leftSheet = await gameRef.images.load('Factions/Knights/Troops/Warrior/Red/Warrior_Red_walk_left.png');
     final upSheet = await gameRef.images.load('Factions/Knights/Troops/Warrior/Red/Warrior_Red_walk_up.png');
+    final explosionSheet = await gameRef.images.load('Effects/Explosion/Explosions.png');
   
   
     log("Keeping animations loaded");
@@ -108,6 +111,17 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
       ),
     );
     // Set initial animation
+    
+    fightAnimation = SpriteAnimation.fromFrameData(
+      explosionSheet,
+      SpriteAnimationData.sequenced(
+        amount: 9,
+        textureSize: Vector2(192, 192),
+        stepTime: 0.1,
+        loop: false,
+        texturePosition: Vector2(0, 0),
+      ),
+    );
 
     animation = idleAnimation;
   }
@@ -173,6 +187,22 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
     
     return false;
   }
+
+
+  @override
+  void onCollisionStart(
+    Set<Vector2> intersectionPoints,
+    PositionComponent other,
+  ) {
+    super.onCollisionStart(intersectionPoints, other);
+    if (other is Player) {
+      log("Player collided with AntiPlayer");
+      animation = fightAnimation;  
+    }
+    
+  }
+
+
   @override
   void update(double dt) {
     super.update(dt);
