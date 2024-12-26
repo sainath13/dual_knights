@@ -45,7 +45,7 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
         64,
         64
       ),
-    );//..debugMode = true;
+    )..debugMode = true;
     add(hitbox);
     // Load the sprite sheet
     final spriteSheet = await gameRef.images.load('Factions/Knights/Troops/Warrior/Blue/Warrior_Blue.png');

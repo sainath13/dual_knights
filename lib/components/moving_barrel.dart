@@ -50,9 +50,8 @@ class MovingBarrel extends SpriteAnimationComponent with HasGameRef<DualKnights>
   static const double moveSpeed = 100.0; // pixels per second
   bool isMovingPositive = true; // true = right/down, false = left/up
   double distanceMoved = 0.0;
-
-
-  bool isExploding = false;
+  KnightRangeResult collisionResult = KnightRangeResult(KnightRangeStatus.notInRange);
+  bool hasCollided = false;
   bool isAnyoneInWakeRange = false;
   MovingBarrel({required Vector2 position,
   this.isVertical = false,
@@ -74,6 +73,14 @@ class MovingBarrel extends SpriteAnimationComponent with HasGameRef<DualKnights>
     final deathSheet = await gameRef.images.load('Factions/Knights/Troops/Dead/Dead.png');
     final explosionSheet = await gameRef.images.load('Effects/Explosion/Explosions.png');
     
+    final hitbox = RectangleHitbox(
+      size: Vector2(64-4, 64-4),
+      position: Vector2(
+        32,
+        32
+      ),
+    )..debugMode = true;
+    add(hitbox);
     // Load all animations
     animations = {
       MovingBarrelState.silent: SpriteAnimation.fromFrameData(
@@ -174,6 +181,7 @@ class MovingBarrel extends SpriteAnimationComponent with HasGameRef<DualKnights>
   }
   
   KnightRangeResult getKnightRangeStatus() {
+    developer.log("Checking Knight Range");
   double playerDistanceX = (player.position.x - position.x - 64).abs();
   double playerDistanceY = (player.position.y - position.y - 64).abs();
   double antiPlayerDistanceX = (antiPlayer.position.x - position.x - 64).abs();
@@ -182,10 +190,10 @@ class MovingBarrel extends SpriteAnimationComponent with HasGameRef<DualKnights>
   double minDistanceX = min(playerDistanceX, antiPlayerDistanceX);
   double minDistanceY = min(playerDistanceY, antiPlayerDistanceY);
 
-  if (minDistanceX <= 10 && minDistanceY <= 10) {
-    String triggeredBy = (playerDistanceX <= 10 && playerDistanceY <= 10) ? "player" : "antiPlayer";
-    return KnightRangeResult(KnightRangeStatus.readyToExplode, triggeredBy: triggeredBy);
-  }
+  // if (minDistanceX <= 10 && minDistanceY <= 10) {
+  //   String triggeredBy = (playerDistanceX <= 10 && playerDistanceY <= 10) ? "player" : "antiPlayer";
+  //   return KnightRangeResult(KnightRangeStatus.readyToExplode, triggeredBy: triggeredBy);
+  // }
 
   if (minDistanceX <= 64 && minDistanceY <= 64) {
     return KnightRangeResult(KnightRangeStatus.inExplodeRange);
@@ -208,7 +216,8 @@ double get maxDistance {
   }
 
 void _updateMovement(double dt) {
-    if (currentState == MovingBarrelState.dead || currentState == MovingBarrelState.exploding) {
+    if (currentState == MovingBarrelState.dead || currentState == MovingBarrelState.exploding || currentState == MovingBarrelState.vanishing || 
+        currentState == MovingBarrelState.dying) {
       return;
     }
 
@@ -260,11 +269,11 @@ void _updateMovement(double dt) {
   
   void _updateState() {
     if (currentState == MovingBarrelState.dead) return;
-
+    developer.log("hasCollided is $hasCollided");
     MovingBarrelState newState = currentState;
-    KnightRangeResult knightRangeResult = getKnightRangeStatus();
+    KnightRangeResult knightRangeResult = hasCollided ? collisionResult : getKnightRangeStatus();
     KnightRangeStatus knightRangeStatus = knightRangeResult.status;
-    
+    developer.log("current state is $currentState");
     if (knightRangeStatus == KnightRangeStatus.readyToExplode) {
       if(knightRangeResult.triggeredBy == "player") {
         if (player.parent != null) {
@@ -279,6 +288,12 @@ void _updateMovement(double dt) {
       
       if (animationTicker?.isLastFrame ?? false) {
         switch (currentState) {
+          case MovingBarrelState.readyToExplode:
+            currentState = MovingBarrelState.exploding;
+            animation = animations[MovingBarrelState.exploding];
+            animationTicker?.reset();
+            break;
+
           case MovingBarrelState.goingBackToSleep:
             currentState = MovingBarrelState.exploding;
             animation = animations[MovingBarrelState.exploding];
@@ -349,6 +364,25 @@ void _updateMovement(double dt) {
           ) {
         animationTicker?.reset();
       }
+    }
+  }
+
+  @override
+  void onCollisionStart(
+    Set<Vector2> intersectionPoints,
+    PositionComponent other,
+  ) {
+    super.onCollisionStart(intersectionPoints, other);
+
+    if (other is AntiPlayer) {
+      hasCollided = true;
+      collisionResult = KnightRangeResult(KnightRangeStatus.readyToExplode, triggeredBy: "antiPlayer");
+      developer.log("Moving Barrel : AntiPlayer collied with Moving Barrel");
+    }
+    else{
+      hasCollided = true;
+      collisionResult = KnightRangeResult(KnightRangeStatus.readyToExplode, triggeredBy: "player");
+      developer.log("Moving Barrel : Player collied with Moving Barrel");
     }
   }
   
