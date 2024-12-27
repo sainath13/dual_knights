@@ -56,25 +56,31 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents{
         onExitPressed: _exitToMainMenu,
       ),
     ),
+    RetryMenu.id: OverlayRoute(
+      (context, game) => RetryMenu(
+        onRetryPressed: _restartLevel,
+        onExitPressed: _exitToMainMenu,
+      ),
+    )
     
   };
 
 
-  // late final _routeFactories = <String, Route Function(String)>{
-  //   LevelComplete.id: (argument) => OverlayRoute(
-  //         (context, game) => LevelComplete(
-  //           nStars: int.parse(argument),
-  //           onNextPressed: _startNextLevel,
-  //           onRetryPressed: _restartLevel,
-  //           onExitPressed: _exitToMainMenu,
-  //         ),
-  //       ),
-  // };
+  late final _routeFactories = <String, Route Function(String)>{
+    LevelComplete.id: (argument) => OverlayRoute(
+          (context, game) => LevelComplete(
+            nStars: int.parse(argument),
+            onNextPressed: _startNextLevel,
+            onRetryPressed: _restartLevel,
+            onExitPressed: _exitToMainMenu,
+          ),
+        ),
+  };
 
   late final _router = RouterComponent(
     initialRoute: MainMenu.id,
     routes: _routes,
-    // routeFactories: _routeFactories,
+    routeFactories: _routeFactories,
   );
 
 

@@ -133,8 +133,8 @@ class Gameplay extends Component with HasGameReference<DualKnights> {
   }
 
   Future<void> _setupWorldAndCamera(Level level) async {
-    _world = World(children: [level]);
-    
+    _world = World(children: [level,input]);
+    await add(_world);
 
     _camera = CameraComponent.withFixedResolution(
       width: 15*64, height: 15*64,
@@ -142,7 +142,7 @@ class Gameplay extends Component with HasGameReference<DualKnights> {
     );
     _camera.viewfinder.anchor = Anchor.topLeft;
     await add(_camera);
-    await add(_world);
+    
   }
 
   

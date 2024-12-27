@@ -19,7 +19,7 @@ class Input extends Component with KeyboardHandler, HasGameReference {
   final sensitivity = 2.0;
 
   var hAxis = 0.0;
-  bool active = false;
+  bool active = true;
 
   final Map<LogicalKeyboardKey, VoidCallback> _keyCallbacks;
 
