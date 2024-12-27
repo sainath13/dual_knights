@@ -161,19 +161,22 @@ class Barrel extends SpriteAnimationComponent with HasGameRef<DualKnights>, Coll
   double antiPlayerDistanceX = (antiPlayer.position.x - position.x - 64).abs();
   double antiPlayerDistanceY = (antiPlayer.position.y - position.y - 64).abs();
 
-  double minDistanceX = min(playerDistanceX, antiPlayerDistanceX);
-  double minDistanceY = min(playerDistanceY, antiPlayerDistanceY);
-
-  if (minDistanceX <= 10 && minDistanceY <= 10) {
+  // Check if either player is within the trigger range
+  if ((playerDistanceX <= 10 && playerDistanceY <= 10) || 
+      (antiPlayerDistanceX <= 10 && antiPlayerDistanceY <= 10)) {
     String triggeredBy = (playerDistanceX <= 10 && playerDistanceY <= 10) ? "player" : "antiPlayer";
     return KnightRangeResult(KnightRangeStatus.readyToExplode, triggeredBy: triggeredBy);
   }
 
-  if (minDistanceX <= 64 && minDistanceY <= 64) {
+  // Check if either player is within explode range
+  if ((playerDistanceX <= 64 && playerDistanceY <= 64) ||
+      (antiPlayerDistanceX <= 64 && antiPlayerDistanceY <= 64)) {
     return KnightRangeResult(KnightRangeStatus.inExplodeRange);
   }
 
-  if (minDistanceX <= 128 && minDistanceY <= 128) {
+  // Check if either player is within wake range
+  if ((playerDistanceX <= 128 && playerDistanceY <= 128) ||
+      (antiPlayerDistanceX <= 128 && antiPlayerDistanceY <= 128)) {
     return KnightRangeResult(KnightRangeStatus.inWakeRange);
   }
 

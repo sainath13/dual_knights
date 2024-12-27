@@ -23,7 +23,7 @@ class Level extends World with HasGameRef<DualKnights>, HasCollisionDetection{
   
   @override
   FutureOr<void> onLoad() async{
-    level = await TiledComponent.load('Level-02.tmx', Vector2(64, 64));
+    level = await TiledComponent.load('Level-for-Sarvesh.tmx', Vector2(64, 64));
     // level.debugMode = true;
     add(level);
     List<CollisionBlock> collisionBlocks = [];
@@ -63,7 +63,7 @@ class Level extends World with HasGameRef<DualKnights>, HasCollisionDetection{
             add(player);
             break;  
           case 'Barrel' :
-            final barrel = Barrel(position: Vector2(spawnPoint.x-32, spawnPoint.y-32));//..debugMode = true;
+            final barrel = Barrel(position: Vector2(spawnPoint.x-32, spawnPoint.y-32))..debugMode = true;
             add(barrel);
             break; 
           case 'MovingBarrel' :

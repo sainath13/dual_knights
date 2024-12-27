@@ -7,7 +7,7 @@
  <tileset firstgid="59" source="Castle_Red.tsx"/>
  <tileset firstgid="79" source="06.tsx"/>
  <tileset firstgid="80" source="Tree.tsx"/>
- <layer id="1" name="Background" width="20" height="15" visible="0">
+ <layer id="1" name="Background" width="20" height="15">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -26,7 +26,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="2" name="BackgroundNonPlayer" width="20" height="15" visible="0">
+ <layer id="2" name="BackgroundNonPlayer" width="20" height="15">
   <data encoding="csv">
 17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,
 17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,
@@ -45,7 +45,7 @@
 17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17
 </data>
  </layer>
- <layer id="3" name="Tower" width="20" height="15" visible="0">
+ <layer id="3" name="Tower" width="20" height="15">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -64,7 +64,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="4" name="Collisionblocks" visible="0">
+ <objectgroup id="4" name="Collisionblocks">
   <object id="1" name="Block" type="Block" x="256" y="320" width="64" height="384"/>
   <object id="2" name="Block" type="Block" x="320" y="256" width="576" height="64"/>
   <object id="3" x="896" y="320" width="64" height="384"/>
@@ -75,7 +75,7 @@
   <object id="15" name="Block" type="Block" x="512" y="384" width="64" height="64"/>
   <object id="17" name="Block" type="Block" x="448" y="320" width="64" height="64"/>
  </objectgroup>
- <layer id="7" name="CollisionInvisible" width="20" height="15" visible="0">
+ <layer id="7" name="CollisionInvisible" width="20" height="15">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -100,7 +100,7 @@
   <object id="19" name="Tree" type="Tree" x="768" y="512" width="64" height="64"/>
   <object id="20" name="Tree" type="Tree" x="448" y="512" width="64" height="64"/>
  </objectgroup>
- <objectgroup id="6" name="Checkpoints" visible="0">
+ <objectgroup id="6" name="Checkpoints">
   <object id="8" name="PlayerCheckpoint" type="PlayerCheckpoint" x="448" y="384" width="64" height="64"/>
   <object id="9" name="AntiPlayerCheckpoint" type="AntiPlayerCheckpoint" x="704" y="576" width="64" height="64"/>
  </objectgroup>

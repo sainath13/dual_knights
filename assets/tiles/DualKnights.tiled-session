@@ -80,28 +80,26 @@
         },
         "Level-01.tmx": {
             "expandedObjectLayers": [
-                3,
-                4,
-                2
+                3
             ],
-            "scale": 0.4871,
-            "selectedLayer": 3,
+            "scale": 0.5497,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 612.8105111886675,
-                "y": 592.2808458222131
+                "x": 601.2370383845735,
+                "y": 586.6836456248864
             }
         },
         "Level-02.tmx": {
             "expandedObjectLayers": [
                 6,
-                5,
-                4
+                4,
+                5
             ],
             "scale": 0.56,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 817.8571428571429,
-                "y": 408.0357142857142
+                "x": 1353.5714285714284,
+                "y": 450.892857142857
             }
         },
         "Level-03.tmx": {
@@ -126,6 +124,14 @@
             "viewCenter": {
                 "x": 480.1724137931035,
                 "y": 383.6206896551725
+            }
+        },
+        "Level-for-Sarvesh.tmx": {
+            "scale": 0.53,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 512.2641509433962,
+                "y": 383.9622641509433
             }
         },
         "Rocks_04.tsx": {
@@ -223,9 +229,10 @@
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "Level-02.tmx",
+        "Level-01.tmx",
         "Sample-15X12.tmx",
         "Sample-Level.tmx",
-        "Level-01.tmx",
         "Archer_Purlple.tsx",
         "Arrow.tsx",
         "Archer_Yellow.tsx",
@@ -233,8 +240,7 @@
         "Sample-12X9.tmx",
         "Level-04.tmx",
         "Shadows.tsx",
-        "Tilemap_Elevation.tsx",
-        "cloudsspritesheet.tsx"
+        "Tilemap_Elevation.tsx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
