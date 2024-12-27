@@ -16,16 +16,16 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 
 
-class Level extends World with HasGameRef<DualKnights>, HasCollisionDetection,KeyboardHandler{
-  final String levelName;
+class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollisionDetection,KeyboardHandler{
+  final String currentLevelIndex;
   final Player player;
   final AntiPlayer antiPlayer;
-  Level({required this.levelName, required this.player, required this.antiPlayer});
+  Level({required this.currentLevelIndex, required this.player, required this.antiPlayer});
   late TiledComponent level;
   
   @override
   FutureOr<void> onLoad() async{
-    level = await TiledComponent.load('Level-01.tmx', Vector2(64, 64));
+    level = await TiledComponent.load('Level-0$currentLevelIndex.tmx', Vector2(64, 64));
     // level.debugMode = true;
     add(level);
     List<CollisionBlock> collisionBlocks = [];
