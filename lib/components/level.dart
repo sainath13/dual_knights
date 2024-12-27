@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:dual_knights/components/anti_player.dart';
 import 'package:dual_knights/components/barrel.dart';
 import 'package:dual_knights/components/collision_block.dart';
+import 'package:dual_knights/components/experiments/archer.dart';
 import 'package:dual_knights/components/moving_barrel.dart';
 import 'package:dual_knights/components/player.dart';
 import 'package:dual_knights/components/player_checkpoint.dart';
@@ -22,7 +23,7 @@ class Level extends World with HasGameRef<DualKnights>, HasCollisionDetection{
   
   @override
   FutureOr<void> onLoad() async{
-    level = await TiledComponent.load('Level-01.tmx', Vector2(64, 64));
+    level = await TiledComponent.load('Level-02.tmx', Vector2(64, 64));
     // level.debugMode = true;
     add(level);
     List<CollisionBlock> collisionBlocks = [];
@@ -52,9 +53,13 @@ class Level extends World with HasGameRef<DualKnights>, HasCollisionDetection{
         switch (spawnPoint.class_) {
           
           case 'AntiPlayer' :
-            antiPlayer.position = Vector2(spawnPoint.x + 32, spawnPoint.y + 32);
-            antiPlayer.anchor = Anchor.center;
-            add(antiPlayer);
+            Archer archer = Archer()..debugMode = true;
+            archer.position = Vector2(spawnPoint.x + 32, spawnPoint.y + 32);
+            archer.anchor = Anchor.center;
+            add(archer);
+            // antiPlayer.position = Vector2(spawnPoint.x + 32, spawnPoint.y + 32);
+            // antiPlayer.anchor = Anchor.center;
+            // add(antiPlayer);
             break;
           case 'Player' :
             player.position = Vector2(spawnPoint.x + 32, spawnPoint.y + 32);
