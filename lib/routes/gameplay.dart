@@ -10,6 +10,7 @@ import 'package:dual_knights/components/level.dart';
 import 'package:dual_knights/components/player.dart';
 
 import 'package:dual_knights/dual_knights.dart';
+import 'package:dual_knights/hud.dart';
 
 import 'package:dual_knights/input.dart';
 
@@ -65,8 +66,7 @@ class Gameplay extends Component with HasGameReference<DualKnights> {
   late final World _world;
   late final CameraComponent _camera;
   late final RectangleComponent _fader;
-  // late final Hud _hud;
-  // late final SpriteSheet _spriteSheet;
+  late final Hud _hud;
 
 
 
@@ -94,14 +94,14 @@ class Gameplay extends Component with HasGameReference<DualKnights> {
       priority: 1,
     );
 
-    // _hud = Hud(
-    //   playerSprite: _spriteSheet.getSprite(5, 10),
-    //   snowmanSprite: _spriteSheet.getSprite(5, 9),
-    //   input: DualKnights.isMobile ? input : null,
-    //   onPausePressed: DualKnights.isMobile ? onPausePressed : null,
-    // );
+    _hud = Hud(
+      playerSprite: Sprite(game.images.fromCache('UI/Buttons/Button_Blue.png')),
+      snowmanSprite: Sprite(game.images.fromCache('UI/Buttons/Button_Blue.png')),
+      input: DualKnights.isMobile ? input : null,
+      onPausePressed:onPausePressed,
+    );
 
-    await _camera.viewport.addAll([_fader]);
+    await _camera.viewport.addAll([_fader,_hud]);
     // await _camera.viewfinder.add(_cameraShake);
     // _cameraShake.pause();
   }

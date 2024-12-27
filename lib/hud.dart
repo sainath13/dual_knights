@@ -60,8 +60,8 @@ class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference {
   @override
   Future<void> onLoad() async {
     _player.position.setValues(
-      16,
-      DualKnights.isMobile ? 10 : parent.virtualSize.y - 20,
+      20,
+      DualKnights.isMobile ? 10 : 20,
     );
 
     _life.position.setValues(
@@ -71,7 +71,7 @@ class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference {
 
     _snowman.position.setValues(
       parent.virtualSize.x - 35,
-      _player.y,
+      20,
     );
 
     _score.position.setValues(
@@ -101,18 +101,18 @@ class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference {
       _joystick?.position.y =
           parent.virtualSize.y - _joystick!.knobRadius * 1.5;
       await _joystick?.addToParent(this);
+    }
 
-      final pauseButton = HudButtonComponent(
+     final pauseButton = HudButtonComponent(
         button: SpriteComponent.fromImage(
-          await game.images.load('pause.png'),
-          size: Vector2.all(12),
+          await game.images.load('UI/Icons/pause.png'),
+          size: Vector2.all(30),
         ),
         anchor: Anchor.bottomRight,
-        position: parent.virtualSize,
+        position: Vector2(parent.virtualSize.x / 2, 50),
         onPressed: onPausePressed,
       );
       await add(pauseButton);
-    }
   }
 
   @override

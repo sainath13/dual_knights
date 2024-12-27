@@ -80,6 +80,7 @@ flutter:
     - assets/images/Resources/Sheep/
     - assets/tiles/
     - assets/images/UI/
+    - assets/images/UI/Icons/
     - assets/images/
     - assets/images/Terrain/Water/
     - assets/images/Treasure/
