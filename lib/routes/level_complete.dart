@@ -55,7 +55,7 @@ class LevelComplete extends StatelessWidget {
               width: 150,
               child: OutlinedButton(
                 onPressed: nStars != 0 ? onNextPressed : null,
-                child: const Text('Next'),
+                child: const Text('Next',style: TextStyle(fontFamily: "DualKnights")),
               ),
             ),
             const SizedBox(height: 5),
@@ -63,7 +63,7 @@ class LevelComplete extends StatelessWidget {
               width: 150,
               child: OutlinedButton(
                 onPressed: onRetryPressed,
-                child: const Text('Retry'),
+                child: const Text('Retry',style: TextStyle(fontFamily: "DualKnights")),
               ),
             ),
             const SizedBox(height: 5),
@@ -71,7 +71,7 @@ class LevelComplete extends StatelessWidget {
               width: 150,
               child: OutlinedButton(
                 onPressed: onExitPressed,
-                child: const Text('Exit'),
+                child: const Text('Exit',style: TextStyle(fontFamily: "DualKnights")),
               ),
             ),
           ],

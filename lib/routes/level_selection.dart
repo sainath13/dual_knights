@@ -36,7 +36,7 @@ class LevelSelection extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return OutlinedButton(
                     onPressed: () => onLevelSelected?.call(index + 1),
-                    child: Text('Level ${index + 1}'),
+                    child: Text('Level ${index + 1}',style: TextStyle(fontFamily: "DualKnights")),
                   );
                 },
                 itemCount: 6,

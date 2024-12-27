@@ -43,7 +43,7 @@ class Settings extends StatelessWidget {
                     title: child,
                   );
                 },
-                child: const Text('Music'),
+                child: const Text('Music',style: TextStyle(fontFamily: "DualKnights")),
               ),
             ),
             const SizedBox(height: 5),
@@ -58,7 +58,7 @@ class Settings extends StatelessWidget {
                     title: child,
                   );
                 },
-                child: const Text('Sfx'),
+                child: const Text('Sfx',style: TextStyle(fontFamily: "DualKnights")),
               ),
             ),
             const SizedBox(height: 5),

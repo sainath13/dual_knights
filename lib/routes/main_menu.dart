@@ -21,14 +21,14 @@ class MainMenu extends StatelessWidget {
           children: [
             const Text(
               'Dual Knights',
-              style: TextStyle(fontSize: 30),
+              style: TextStyle(fontSize: 30,fontFamily: "DualKnights"),
             ),
             const SizedBox(height: 15),
             SizedBox(
               width: 150,
               child: OutlinedButton(
                 onPressed: onPlayPressed,
-                child: const Text('Play'),
+                child: const Text('Play',style: TextStyle(fontFamily: "DualKnights")),
               ),
             ),
             const SizedBox(height: 5),
@@ -36,7 +36,7 @@ class MainMenu extends StatelessWidget {
               width: 150,
               child: OutlinedButton(
                 onPressed: onSettingsPressed,
-                child: const Text('Settings'),
+                child: const Text('Settings',style: TextStyle(fontFamily: "DualKnights")),
               ),
             )
           ],

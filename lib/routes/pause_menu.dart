@@ -31,7 +31,7 @@ class PauseMenu extends StatelessWidget {
               width: 150,
               child: OutlinedButton(
                 onPressed: onResumePressed,
-                child: const Text('Resume'),
+                child: const Text('Resume',style: TextStyle(fontFamily: "DualKnights")),
               ),
             ),
             const SizedBox(height: 5),
@@ -39,7 +39,7 @@ class PauseMenu extends StatelessWidget {
               width: 150,
               child: OutlinedButton(
                 onPressed: onRestartPressed,
-                child: const Text('Restart'),
+                child: const Text('Restart',style: TextStyle(fontFamily: "DualKnights")),
               ),
             ),
             const SizedBox(height: 5),
@@ -47,7 +47,7 @@ class PauseMenu extends StatelessWidget {
               width: 150,
               child: OutlinedButton(
                 onPressed: onExitPressed,
-                child: const Text('Exit'),
+                child: const Text('Exit',style: TextStyle(fontFamily: "DualKnights")),
               ),
             ),
           ],
