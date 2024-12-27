@@ -13,3 +13,4 @@ void main() async {
     GameWidget(game: true ? DualKnights() : game),
   );
 }
+

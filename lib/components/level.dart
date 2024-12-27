@@ -23,7 +23,7 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
   
   @override
   FutureOr<void> onLoad() async{
-    level = await TiledComponent.load('Level-0$currentLevelIndex.tmx', Vector2(64, 64));
+    level = await TiledComponent.load('Level-$currentLevelIndex.tmx', Vector2(64, 64));
     // level.debugMode = true;
     add(level);
     List<CollisionBlock> collisionBlocks = [];

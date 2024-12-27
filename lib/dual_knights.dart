@@ -1,11 +1,9 @@
 // ignore_for_file: implementation_imports, unnecessary_import
 
 import 'dart:async';
-import 'dart:developer';
 import 'dart:ui';
 
 import 'package:dual_knights/components/anti_player.dart';
-import 'package:dual_knights/components/level.dart';
 import 'package:dual_knights/components/player.dart';
 import 'package:dual_knights/routes/gameplay.dart';
 import 'package:dual_knights/routes/level_complete.dart';
@@ -17,6 +15,7 @@ import 'package:dual_knights/routes/settings.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
+import 'package:flame_audio/flame_audio.dart';
 
 import 'package:flutter/widgets.dart' hide Route,OverlayRoute;
 
@@ -25,6 +24,8 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents{
   static const isMobile = bool.fromEnvironment('MOBILE_BUILD');
   final musicValueNotifier = ValueNotifier(true);
   final sfxValueNotifier = ValueNotifier(true);
+
+  static const bgm = '8BitDNALoop.wav';
 
 
   late final _routes = <String, Route>{
@@ -54,6 +55,7 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents{
         onResumePressed: _resumeGame,
         onRestartPressed: _restartLevel,
         onExitPressed: _exitToMainMenu,
+        
       ),
     ),
     RetryMenu.id: OverlayRoute(
@@ -94,8 +96,11 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents{
 
   @override
   FutureOr<void> onLoad() async{
-    await add(_router);
+    await FlameAudio.audioCache.loadAll([bgm]);
     await images.loadAllImages();
+    await add(_router);
+    
+    
     return super.onLoad();
   }
 
