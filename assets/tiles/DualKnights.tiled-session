@@ -80,26 +80,27 @@
         },
         "Level-01.tmx": {
             "expandedObjectLayers": [
-                3
+                3,
+                2
             ],
             "scale": 0.5497,
-            "selectedLayer": 1,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 601.2370383845735,
-                "y": 586.6836456248864
+                "x": 600.3274513370931,
+                "y": 585.7740585774059
             }
         },
         "Level-02.tmx": {
             "expandedObjectLayers": [
-                6,
+                5,
                 4,
-                5
+                6
             ],
             "scale": 0.56,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 1353.5714285714284,
-                "y": 450.892857142857
+                "x": 555.3571428571429,
+                "y": 450
             }
         },
         "Level-03.tmx": {
@@ -114,24 +115,42 @@
             "scale": 0.7335286458333332,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 1025.1815035058137,
-                "y": 318.3243099316589
+                "x": 278.1077482914708,
+                "y": 317.6426732936896
             }
         },
         "Level-05.tmx": {
             "scale": 0.58,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 480.1724137931035,
-                "y": 383.6206896551725
+                "x": 479.3103448275863,
+                "y": 384.48275862068965
+            }
+        },
+        "Level-for-Manish.tmx": {
+            "expandedObjectLayers": [
+                5,
+                4,
+                3
+            ],
+            "scale": 0.73291015625,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 511.6588940706196,
+                "y": 383.4030646235842
             }
         },
         "Level-for-Sarvesh.tmx": {
+            "expandedObjectLayers": [
+                5,
+                4,
+                3
+            ],
             "scale": 0.53,
-            "selectedLayer": 2,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 512.2641509433962,
-                "y": 383.9622641509433
+                "x": 511.3207547169811,
+                "y": 383.01886792452825
             }
         },
         "Rocks_04.tsx": {
