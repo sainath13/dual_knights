@@ -53,13 +53,9 @@ class Level extends World with HasGameRef<DualKnights>, HasCollisionDetection{
         switch (spawnPoint.class_) {
           
           case 'AntiPlayer' :
-            Archer archer = Archer()..debugMode = true;
-            archer.position = Vector2(spawnPoint.x + 32, spawnPoint.y + 32);
-            archer.anchor = Anchor.center;
-            add(archer);
-            // antiPlayer.position = Vector2(spawnPoint.x + 32, spawnPoint.y + 32);
-            // antiPlayer.anchor = Anchor.center;
-            // add(antiPlayer);
+            antiPlayer.position = Vector2(spawnPoint.x + 32, spawnPoint.y + 32);
+            antiPlayer.anchor = Anchor.center;
+            add(antiPlayer);
             break;
           case 'Player' :
             player.position = Vector2(spawnPoint.x + 32, spawnPoint.y + 32);
