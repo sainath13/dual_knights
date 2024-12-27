@@ -60,8 +60,8 @@ class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference {
   @override
   Future<void> onLoad() async {
     _player.position.setValues(
-      20,
-      DualKnights.isMobile ? 10 : 20,
+      100,
+      DualKnights.isMobile ? 100 : 80,
     );
 
     _life.position.setValues(
@@ -70,8 +70,8 @@ class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference {
     );
 
     _snowman.position.setValues(
-      parent.virtualSize.x - 35,
-      20,
+      parent.virtualSize.x - 100,
+      80,
     );
 
     _score.position.setValues(
