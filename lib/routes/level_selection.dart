@@ -22,7 +22,7 @@ class LevelSelection extends StatelessWidget {
           children: [
             const Text(
               'Level Selection',
-              style: TextStyle(fontSize: 30),
+              style: TextStyle(fontSize: 30,fontFamily: "DualKnights"),
             ),
             const SizedBox(height: 15),
             Flexible(

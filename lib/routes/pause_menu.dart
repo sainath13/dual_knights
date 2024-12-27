@@ -24,7 +24,7 @@ class PauseMenu extends StatelessWidget {
           children: [
             const Text(
               'Paused',
-              style: TextStyle(fontSize: 30),
+              style: TextStyle(fontSize: 30,fontFamily: "DualKnights"),
             ),
             const SizedBox(height: 15),
             SizedBox(

@@ -27,7 +27,7 @@ class LevelComplete extends StatelessWidget {
           children: [
             const Text(
               'Level Completed',
-              style: TextStyle(fontSize: 30),
+              style: TextStyle(fontSize: 30,fontFamily: "DualKnights")
             ),
             const SizedBox(height: 15),
             Row(

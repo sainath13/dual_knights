@@ -21,7 +21,7 @@ class MainMenu extends StatelessWidget {
           children: [
             const Text(
               'Dual Knights',
-              style: TextStyle(fontSize: 30,fontFamily: "DualKnights"),
+              style: TextStyle(fontSize: 30),
             ),
             const SizedBox(height: 15),
             SizedBox(

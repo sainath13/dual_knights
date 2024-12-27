@@ -35,6 +35,7 @@ class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference {
       style: const TextStyle(
         color: Colors.black,
         fontSize: DualKnights.isMobile ? 8 : 10,
+        fontFamily: "DualKnights"
       ),
     ),
   );
@@ -45,7 +46,7 @@ class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference {
     textRenderer: TextPaint(
       style: const TextStyle(
         color: Colors.black,
-        fontSize: DualKnights.isMobile ? 8 : 10,
+        fontSize: DualKnights.isMobile ? 8 : 10,fontFamily: "DualKnights"
       ),
     ),
   );

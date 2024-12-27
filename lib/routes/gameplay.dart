@@ -136,7 +136,7 @@ class Gameplay extends Component with HasGameReference<DualKnights> {
     await add(_world);
 
     _camera = CameraComponent.withFixedResolution(
-      width: 15*64, height: 15*64,
+      width: 16*64, height: 12*64,
       world: _world,
     );
     _camera.viewfinder.anchor = Anchor.topLeft;

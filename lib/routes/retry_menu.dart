@@ -22,7 +22,7 @@ class RetryMenu extends StatelessWidget {
           children: [
             const Text(
               'Game Over',
-              style: TextStyle(fontSize: 30),
+              style: TextStyle(fontSize: 30,fontFamily: "DualKnights"),
             ),
             const SizedBox(height: 15),
             SizedBox(
