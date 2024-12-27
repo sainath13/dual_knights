@@ -4,7 +4,10 @@ import 'package:dual_knights/components/anti_player.dart';
 import 'package:dual_knights/components/collision_block.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
+import 'package:flame/src/game/flame_game.dart';
 import 'package:flutter/services.dart';
+
+import 'experiments/grid_system.dart';
 
 class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, CollisionCallbacks {
   static const double frameWidth = 192;
@@ -13,6 +16,7 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
   bool isMoving = false;
   Vector2 targetPosition = Vector2.zero();
   List<CollisionBlock> collisionBlocks = [];
+  final GridManager gridManager;
 
   void setCollisionBlocks(List<CollisionBlock> blocks) {
     collisionBlocks = blocks;
@@ -33,7 +37,7 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
   // Keep track of pressed keys
   final Set<LogicalKeyboardKey> _pressedKeys = {};
 
-  Player() : super(size: Vector2(frameWidth, frameHeight), priority: 5) {
+  Player({required this.gridManager}) : super(size: Vector2(frameWidth, frameHeight), priority: 5) {
     targetPosition = position.clone();
   }
   
@@ -169,6 +173,7 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
         } else if (direction.x > 0) {
           animation = moveRightAnimation;
         }
+        gridManager.updateEntityPosition(targetPosition, GridEntityType.player);
       }
     }
   }
@@ -222,4 +227,8 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
       }
     }
     }
+
+  // void setGridManager(GridManager gridManager) {
+  //   this.gridManager = gridManager;
+  // }
 }

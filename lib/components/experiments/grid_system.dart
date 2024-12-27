@@ -1,6 +1,7 @@
 import 'package:flame/components.dart';
 import 'package:flame_tiled/flame_tiled.dart';
 import 'dart:collection';
+import 'dart:developer' as developer;
 
 // Represents a position in the grid
 class GridPosition {
@@ -38,7 +39,7 @@ mixin GridObserver {
   void onEntityLeft(GridPosition position, GridEntityType entityType);
 }
 
-class GridManager {
+class GridManager extends SpriteAnimationComponent {
   final int rows;
   final int columns;
   final double tileSize;
@@ -57,9 +58,12 @@ class GridManager {
 
   // Convert world position to grid position
   GridPosition worldToGrid(Vector2 position) {
+    developer.log("GridSystem : position is $position");
+    developer.log("x = ${(position.x / tileSize).ceil() -4}");
+    developer.log("y = ${(position.y / tileSize).ceil()- 4} ");
     return GridPosition(
-      (position.x / tileSize).floor(),
-      (position.y / tileSize).floor(),
+      (position.x / tileSize).ceil() - 4,
+      (position.y / tileSize).ceil() - 4,
     );
   }
 
@@ -86,7 +90,7 @@ class GridManager {
   // Update entity position in grid
   void updateEntityPosition(Vector2 worldPosition, GridEntityType entityType) {
     final newGridPos = worldToGrid(worldPosition);
-
+    developer.log("putting someone at $newGridPos");
     // Find old position if it exists
     GridPosition? oldGridPos;
     _grid.forEach((pos, type) {
@@ -111,7 +115,9 @@ class GridManager {
 
   // Notify observers of changes
   void _notifyObservers(GridPosition position, GridEntityType entityType, bool entered) {
+    // developer.log("Notifying observers");
     final observers = _observers[position];
+    developer.log("GridSystem : here observers are $observers");
     if (observers != null) {
       for (final observer in observers) {
         if (entered) {

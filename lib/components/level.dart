@@ -5,6 +5,7 @@ import 'package:dual_knights/components/anti_player.dart';
 import 'package:dual_knights/components/barrel.dart';
 import 'package:dual_knights/components/collision_block.dart';
 import 'package:dual_knights/components/experiments/archer.dart';
+import 'package:dual_knights/components/experiments/grid_system.dart';
 import 'package:dual_knights/components/moving_barrel.dart';
 import 'package:dual_knights/components/player.dart';
 import 'package:dual_knights/components/player_checkpoint.dart';
@@ -21,7 +22,10 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
   final String currentLevelIndex;
   final Player player;
   final AntiPlayer antiPlayer;
-  Level({required this.currentLevelIndex, required this.player, required this.antiPlayer});
+  final GridManager gridManager;
+  Level({required this.currentLevelIndex, required this.player, required this.antiPlayer,
+    required this.gridManager
+  });
   late TiledComponent level;
   
   @override
@@ -56,17 +60,26 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
         switch (spawnPoint.class_) {
           
           case 'AntiPlayer' :
-            antiPlayer.position = Vector2(spawnPoint.x + 32, spawnPoint.y + 32);
-            antiPlayer.anchor = Anchor.center;
-            add(antiPlayer);
+            // antiPlayer.position = Vector2(spawnPoint.x + 32, spawnPoint.y + 32);
+            // antiPlayer.anchor = Anchor.center;
+            // add(antiPlayer);
+            // gridManager.updateEntityPosition(antiPlayer.position, GridEntityType.antiPlayer);
             break;
           case 'Player' :
             player.position = Vector2(spawnPoint.x + 32, spawnPoint.y + 32);
             player.anchor = Anchor.center;
             add(player);
+            // player.setGridManager(gridManager);
+            gridManager.updateEntityPosition(player.position, GridEntityType.player);
             break;  
           case 'Barrel' :
-            final barrel = Barrel(position: Vector2(spawnPoint.x-32, spawnPoint.y-32));//..debugMode = true;
+            log("i am a new barrel, hello");
+            gridManager.updateEntityPosition(Vector2(spawnPoint.x + 64, spawnPoint.y + 64),GridEntityType.barrel);
+            final barrel = Barrel(position: Vector2(spawnPoint.x-32, spawnPoint.y-32), gridManager:  gridManager,
+                gridPosition: GridPosition(
+                  0,4
+                )
+            );//..debugMode = true;
             add(barrel);
             break; 
           case 'MovingBarrel' :
@@ -139,7 +152,7 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
     Set<LogicalKeyboardKey> keysPressed,
   ) {
     player.onKeyEvent(event, keysPressed);
-    antiPlayer.onKeyEvent(event, keysPressed);
+    // antiPlayer.onKeyEvent(event, keysPressed);
     return super.onKeyEvent(event, keysPressed);
   }
 

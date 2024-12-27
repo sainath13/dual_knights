@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:dual_knights/components/anti_player.dart';
+import 'package:dual_knights/components/experiments/grid_system.dart';
 import 'package:dual_knights/components/player.dart';
 import 'package:dual_knights/dual_knights.dart';
 import 'package:flame/collisions.dart';
@@ -31,27 +32,47 @@ enum KnightRangeStatus{
   readyToExplode,
 }
 
-class Barrel extends SpriteAnimationComponent with HasGameRef<DualKnights>, CollisionCallbacks {
+class Barrel extends SpriteAnimationComponent with HasGameRef<DualKnights>, CollisionCallbacks, GridObserver{
   static const double frameWidth = 128;
   static const double frameHeight = 128;
   static const double gridSize = 64.0;  
   late final Player player;
   late final AntiPlayer antiPlayer;
   late final Map<BarrelState, SpriteAnimation> animations;
+  final GridManager gridManager;
+  final GridPosition gridPosition;
   BarrelState currentState = BarrelState.silent;
   Vector2 currentPosition = Vector2.zero();
+  GridEntityType? targetType;
+  Vector2? targetPosition;
+  final List<GridPosition> interestedPositions;
   
   bool isExploding = false;
   bool isAnyoneInWakeRange = false;
-  Barrel({required Vector2 position}) : super(size: Vector2(frameWidth, frameHeight)) {
+  Barrel({required Vector2 position, required this.gridManager, required this.gridPosition}) :
+        interestedPositions = _calculateInterestedPositions(gridPosition),
+        super(size: Vector2(frameWidth, frameHeight)) {
     this.position = position;
     currentPosition = position.clone();
+    gridManager.addObserver(this, interestedPositions);
+  }
+
+  static List<GridPosition> _calculateInterestedPositions(GridPosition center) {
+    final positions = <GridPosition>[];
+    for (var dx = -1; dx <= 1; dx++) {
+      for (var dy = -1; dy <= 1; dy++) {
+        positions.add(GridPosition(center.x + dx, center.y + dy));
+      }
+    }
+    developer.log("I am barrel : observing these positions $positions");
+    return positions;
   }
 
   @override
   Future<void> onLoad() async {
     player = game.player;
     antiPlayer = game.antiPlayer;
+    // gridManager = game.gridManager;
     final spriteSheet = await gameRef.images.load('Factions/Goblins/Troops/Barrel/Red/Barrel_Red.png');
     final deathSheet = await gameRef.images.load('Factions/Knights/Troops/Dead/Dead.png');
     final explosionSheet = await gameRef.images.load('Effects/Explosion/Explosions.png');
@@ -279,6 +300,28 @@ class Barrel extends SpriteAnimationComponent with HasGameRef<DualKnights>, Coll
   void update(double dt) {
     super.update(dt);
     _updateState();
+  }
+
+  @override
+  void onEntityEntered(GridPosition position, GridEntityType entityType) {
+    developer.log("I am barrel : you entered my range");
+    if (entityType == GridEntityType.player || entityType == GridEntityType.antiPlayer) {
+      // targetInRange = true;
+      targetType = entityType;
+      targetPosition = gridManager.gridToWorld(position);
+      // Start shooting animation and logic
+    }
+  }
+
+  @override
+  void onEntityLeft(GridPosition position, GridEntityType entityType) {
+    developer.log("I am barrel : you left my range");
+    if (entityType == targetType) {
+      // targetInRange = false;
+      targetType = null;
+      targetPosition = null;
+      // Return to idle state
+    }
   }
 }
 

@@ -20,6 +20,8 @@ import 'package:flame/game.dart';
 
 import 'package:flutter/widgets.dart' hide Route,OverlayRoute;
 
+import 'components/experiments/grid_system.dart';
+
 class DualKnights extends FlameGame with HasKeyboardHandlerComponents{
 
   static const isMobile = bool.fromEnvironment('MOBILE_BUILD');
@@ -82,9 +84,10 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents{
   
   @override
   Color backgroundColor()  => const Color(0xFF47ABA9);
-  final player = Player();//..debugMode = true;
+  static final gridManager = GridManager(rows: 9, columns: 6, tileSize: 64);
+  final player = Player(gridManager:  gridManager);//..debugMode = true;
   final antiPlayer = AntiPlayer();
-    
+
 
   @override
   FutureOr<void> onLoad() async{
@@ -113,7 +116,8 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents{
           onGameOver: _showRetryMenu,
           key: ComponentKey.named(Gameplay.id),
           player:player,
-          antiPlayer: antiPlayer
+          antiPlayer: antiPlayer,
+            gridManager : gridManager
         ),
       ),
       name: Gameplay.id,

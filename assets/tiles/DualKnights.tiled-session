@@ -81,27 +81,27 @@
         "Level-01.tmx": {
             "expandedObjectLayers": [
                 3,
-                4,
-                2
+                2,
+                4
             ],
-            "scale": 0.4871,
+            "scale": 0.48,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 612.8105111886675,
-                "y": 592.2808458222131
+                "x": 645.8333333333334,
+                "y": 569.7916666666667
             }
         },
         "Level-02.tmx": {
             "expandedObjectLayers": [
                 6,
-                5,
-                4
+                4,
+                5
             ],
             "scale": 0.56,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 817.8571428571429,
-                "y": 408.0357142857142
+                "x": 1658.9285714285713,
+                "y": 447.32142857142856
             }
         },
         "Level-03.tmx": {
@@ -223,9 +223,10 @@
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "Level-01.tmx",
+        "Level-02.tmx",
         "Sample-15X12.tmx",
         "Sample-Level.tmx",
-        "Level-01.tmx",
         "Archer_Purlple.tsx",
         "Arrow.tsx",
         "Archer_Yellow.tsx",
@@ -233,8 +234,7 @@
         "Sample-12X9.tmx",
         "Level-04.tmx",
         "Shadows.tsx",
-        "Tilemap_Elevation.tsx",
-        "cloudsspritesheet.tsx"
+        "Tilemap_Elevation.tsx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",

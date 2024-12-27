@@ -39,8 +39,8 @@
  <objectgroup id="2" name="Spawnpoints">
   <object id="1" name="Player" type="Player" x="192" y="192" width="64" height="64"/>
   <object id="2" name="AntiPlayer" type="AntiPlayer" x="512" y="448" width="64" height="64"/>
-  <object id="4" name="Barrel" type="Barrel" x="969.454" y="211.551" width="64" height="64"/>
-  <object id="22" name="Barrel" type="Barrel" x="960" y="448" width="64" height="64"/>
+  <object id="4" name="Barrel" type="Barrel" x="384" y="192" width="64" height="64"/>
+  <object id="22" name="NotBarrel" type="NotBarrel" x="960" y="448" width="64" height="64"/>
   <object id="26" name="Tree" type="Tree" x="960.168" y="524.318" width="64" height="64"/>
   <object id="27" name="MovingBarrel" type="MovingBarrel" x="512" y="899.39" width="64" height="64">
    <properties>

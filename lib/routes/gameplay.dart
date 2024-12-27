@@ -6,6 +6,7 @@ import 'package:dual_knights/components/anti_player.dart';
 import 'package:dual_knights/components/anti_player_checkpoint.dart';
 import 'package:dual_knights/components/barrel.dart';
 import 'package:dual_knights/components/collision_block.dart';
+import 'package:dual_knights/components/experiments/grid_system.dart';
 import 'package:dual_knights/components/level.dart';
 import 'package:dual_knights/components/moving_barrel.dart';
 import 'package:dual_knights/components/player.dart';
@@ -27,6 +28,7 @@ import 'package:flutter/widgets.dart';
 class Gameplay extends Component with HasGameReference<DualKnights> {
   final Player player;
   final AntiPlayer antiPlayer;
+  final GridManager gridManager;
 
   Gameplay(
     this.currentLevel, {
@@ -35,7 +37,8 @@ class Gameplay extends Component with HasGameReference<DualKnights> {
     required this.onLevelCompleted,
     required this.onGameOver,
     required this.player,
-    required this.antiPlayer
+    required this.antiPlayer,
+    required this.gridManager
   });
 
   static const id = 'Gameplay';
@@ -81,7 +84,8 @@ class Gameplay extends Component with HasGameReference<DualKnights> {
       // _bgmPlayer = await FlameAudio.loopLongAudio(DualKnights.bgm, volume: 0);
     }
 
-    Level level = Level(currentLevelIndex: currentLevel.toString(), player: player, antiPlayer: antiPlayer);
+    Level level = Level(currentLevelIndex: currentLevel.toString(), player: player, antiPlayer: antiPlayer,
+    gridManager: gridManager);
     
     
 
