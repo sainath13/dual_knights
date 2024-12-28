@@ -10,6 +10,9 @@ class AntiPlayerCheckpoint extends SpriteAnimationComponent
 
   late SpriteAnimation pressedAnimation;
   late SpriteAnimation unpressedAnimation;
+  late SpriteAnimation artifactAnimation;
+  late SpriteAnimationComponent artifactComponent;
+
 
   bool isPressed = false;
 
@@ -27,6 +30,7 @@ class AntiPlayerCheckpoint extends SpriteAnimationComponent
     // Load button animations
     final buttonPressedImage = await gameRef.images.load('UI/Buttons/Button_Red_Pressed.png');
     final buttonUnpressedImage = await gameRef.images.load('UI/Buttons/Button_Red.png');
+    final wakeRangeArtifactImage = await gameRef.images.load('Effects/Checkpoint/Obelisk_Blue_Effects.png');
 
     pressedAnimation = SpriteAnimation.fromFrameData(
       buttonPressedImage,
@@ -50,6 +54,24 @@ class AntiPlayerCheckpoint extends SpriteAnimationComponent
       ),
     );
 
+  artifactAnimation = SpriteAnimation.fromFrameData(
+      wakeRangeArtifactImage,
+      SpriteAnimationData.sequenced(
+        amount: 14,
+        textureSize: Vector2(190,380),
+        stepTime: 0.1,
+        loop: true,
+      ),
+    );
+
+    artifactComponent = SpriteAnimationComponent(
+      animation: artifactAnimation,
+      size: Vector2(47.5,60),
+      position: this.position + Vector2(8,-16),
+      priority: 14, // Position above the checkpoint
+    );
+    // artifactComponent.opacity = 0;
+    await parent?.add(artifactComponent);
     // Set the default animation
     animation = unpressedAnimation;
   }
