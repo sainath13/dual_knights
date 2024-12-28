@@ -74,7 +74,7 @@ class LevelEditor:
 
 
 if __name__ == "__main__":
-    editor = LevelEditor(9, 6)
+    editor = LevelEditor(6, 9)
     editor.edit_grid()
     editor.save_to_file("level_data.xml")
 

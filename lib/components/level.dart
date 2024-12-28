@@ -5,6 +5,7 @@ import 'package:dual_knights/components/anti_player.dart';
 import 'package:dual_knights/components/barrel.dart';
 import 'package:dual_knights/components/collision_block.dart';
 import 'package:dual_knights/components/experiments/archer.dart';
+import 'package:dual_knights/components/gold.dart';
 import 'package:dual_knights/components/moving_barrel.dart';
 import 'package:dual_knights/components/player.dart';
 import 'package:dual_knights/components/player_checkpoint.dart';
@@ -24,7 +25,7 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
   
   @override
   FutureOr<void> onLoad() async{
-    level = await TiledComponent.load('Level-$currentLevelIndex.tmx', Vector2(64, 64));
+    level = await TiledComponent.load('Level-for-Manish-2.tmx', Vector2(64, 64));
     // level.debugMode = true;
     add(level);
     List<CollisionBlock> collisionBlocks = [];
@@ -36,6 +37,10 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
             final playerCheckpoint = PlayerCheckpoint();//..debugMode = true;
             playerCheckpoint.position = Vector2(checkpoint.x, checkpoint.y);
             add(playerCheckpoint);
+            // final gold = Gold()..debugMode = true;
+            // gold.position = Vector2(checkpoint.x, checkpoint.y);
+            // add(gold);
+            break;
           case 'AntiPlayerCheckpoint' :
             final antiPlayerCheckpoint = AntiPlayerCheckpoint();//..debugMode = true;
             antiPlayerCheckpoint.position = Vector2(checkpoint.x, checkpoint.y);
@@ -116,7 +121,7 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
             final block = CollisionBlock(
               position: Vector2(collisionBlock.x, collisionBlock.y),
               size: Vector2(collisionBlock.width, collisionBlock.height),
-            );//..debugMode = true;
+            )..debugMode = true;
             add(block);
             collisionBlocks.add(block);
             //create a new block.

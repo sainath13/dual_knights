@@ -127,17 +127,25 @@
                 "y": 384.48275862068965
             }
         },
+        "Level-for-Manish-2.tmx": {
+            "scale": 0.533447265625,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 321.49382151029755,
+                "y": 372.10800915331816
+            }
+        },
         "Level-for-Manish.tmx": {
             "expandedObjectLayers": [
+                3,
                 5,
-                4,
-                3
+                4
             ],
             "scale": 0.73291015625,
-            "selectedLayer": 4,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 511.6588940706196,
-                "y": 383.4030646235842
+                "x": 530.0786142571619,
+                "y": 470.04397068620926
             }
         },
         "Level-for-Sarvesh.tmx": {
@@ -248,6 +256,9 @@
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "Level-for-Manish.tmx",
+        "Level-for-Manish-2.tmx",
+        "Tree.tsx",
         "Level-for-Sarvesh.tmx",
         "Level-01.tmx",
         "Level-02.tmx",
@@ -256,10 +267,7 @@
         "Archer_Purlple.tsx",
         "Arrow.tsx",
         "Archer_Yellow.tsx",
-        "Level-05.tmx",
-        "Sample-12X9.tmx",
-        "Level-04.tmx",
-        "Shadows.tsx"
+        "Level-05.tmx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
