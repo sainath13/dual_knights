@@ -13,11 +13,9 @@ import 'package:dual_knights/components/tree.dart';
 import 'package:dual_knights/dual_knights.dart';
 import 'package:flame/components.dart';
 import 'package:flame_tiled/flame_tiled.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 
 
-class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollisionDetection,KeyboardHandler{
+class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollisionDetection{
   final String currentLevelIndex;
   final Player player;
   final AntiPlayer antiPlayer;
@@ -26,7 +24,7 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
   
   @override
   FutureOr<void> onLoad() async{
-    level = await TiledComponent.load('Level-0$currentLevelIndex.tmx', Vector2(64, 64));
+    level = await TiledComponent.load('Level-$currentLevelIndex.tmx', Vector2(64, 64));
     // level.debugMode = true;
     add(level);
     List<CollisionBlock> collisionBlocks = [];
@@ -130,17 +128,6 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
     antiPlayer.setCollisionBlocks(collisionBlocks);
     
     return super.onLoad();
-  }
-
-
-  @override
-  bool onKeyEvent(
-    KeyEvent event,
-    Set<LogicalKeyboardKey> keysPressed,
-  ) {
-    player.onKeyEvent(event, keysPressed);
-    antiPlayer.onKeyEvent(event, keysPressed);
-    return super.onKeyEvent(event, keysPressed);
   }
 
 }

@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   flame: ^1.22.0
   flame_tiled: ^1.21.1
+  flame_audio: ^2.10.5
 
 dev_dependencies:
   flutter_test:
@@ -79,13 +80,15 @@ flutter:
     - assets/images/Resources/Sheep/
     - assets/tiles/
     - assets/images/UI/
+    - assets/images/UI/Icons/
     - assets/images/
     - assets/images/Terrain/Water/
     - assets/images/Treasure/
     - assets/images/clouds/
     - assets/images/Factions/Knights/Troops/Archer/Purple/
     - assets/images/Factions/Knights/Troops/Archer/Arrow/
-    
+    - assets/audio/
+
     # - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -99,6 +102,11 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
+
+  fonts:
+    - family: DualKnights
+      fonts:
+        - asset: assets/fonts/PatrickHand-Regular.ttf
   # fonts:
   #   - family: Schyler
   #     fonts:

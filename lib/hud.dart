@@ -35,6 +35,7 @@ class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference {
       style: const TextStyle(
         color: Colors.black,
         fontSize: DualKnights.isMobile ? 8 : 10,
+        fontFamily: "DualKnights"
       ),
     ),
   );
@@ -45,7 +46,7 @@ class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference {
     textRenderer: TextPaint(
       style: const TextStyle(
         color: Colors.black,
-        fontSize: DualKnights.isMobile ? 8 : 10,
+        fontSize: DualKnights.isMobile ? 8 : 10,fontFamily: "DualKnights"
       ),
     ),
   );
@@ -60,8 +61,8 @@ class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference {
   @override
   Future<void> onLoad() async {
     _player.position.setValues(
-      16,
-      DualKnights.isMobile ? 10 : parent.virtualSize.y - 20,
+      100,
+      DualKnights.isMobile ? 100 : 80,
     );
 
     _life.position.setValues(
@@ -70,8 +71,8 @@ class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference {
     );
 
     _snowman.position.setValues(
-      parent.virtualSize.x - 35,
-      _player.y,
+      parent.virtualSize.x - 100,
+      80,
     );
 
     _score.position.setValues(
@@ -101,18 +102,18 @@ class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference {
       _joystick?.position.y =
           parent.virtualSize.y - _joystick!.knobRadius * 1.5;
       await _joystick?.addToParent(this);
+    }
 
-      final pauseButton = HudButtonComponent(
+     final pauseButton = HudButtonComponent(
         button: SpriteComponent.fromImage(
-          await game.images.load('pause.png'),
-          size: Vector2.all(12),
+          await game.images.load('UI/Icons/pause.png'),
+          size: Vector2.all(30),
         ),
         anchor: Anchor.bottomRight,
-        position: parent.virtualSize,
+        position: Vector2(parent.virtualSize.x / 2, 50),
         onPressed: onPausePressed,
       );
       await add(pauseButton);
-    }
   }
 
   @override

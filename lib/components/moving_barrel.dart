@@ -75,6 +75,7 @@ class MovingBarrel extends SpriteAnimationComponent with HasGameRef<DualKnights>
     
     final hitbox = RectangleHitbox(
       size: Vector2(64-4, 64-4),
+      collisionType: CollisionType.passive,
       position: Vector2(
         32,
         32

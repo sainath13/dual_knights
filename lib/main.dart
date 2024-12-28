@@ -8,8 +8,11 @@ void main() async {
   await Flame.device.fullScreen();
   await Flame.device.setLandscape();
 
+  
+
   DualKnights game = DualKnights();//..debugMode = true;
   runApp(
     GameWidget(game: true ? DualKnights() : game),
   );
 }
+

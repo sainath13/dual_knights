@@ -1,25 +1,25 @@
 import 'dart:async';
-import 'dart:developer';
 import 'dart:ui';
 
+
+
 import 'package:dual_knights/components/anti_player.dart';
-import 'package:dual_knights/components/anti_player_checkpoint.dart';
-import 'package:dual_knights/components/barrel.dart';
-import 'package:dual_knights/components/collision_block.dart';
+
 import 'package:dual_knights/components/level.dart';
-import 'package:dual_knights/components/moving_barrel.dart';
+
 import 'package:dual_knights/components/player.dart';
-import 'package:dual_knights/components/player_checkpoint.dart';
-import 'package:dual_knights/components/tree.dart';
+
 import 'package:dual_knights/dual_knights.dart';
 import 'package:dual_knights/hud.dart';
+
 import 'package:dual_knights/input.dart';
-import 'package:flame/collisions.dart';
+
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
-import 'package:flame/sprite.dart';
+import 'package:flame_audio/flame_audio.dart';
+
 // import 'package:flame_audio/flame_audio.dart';
-import 'package:flame_tiled/flame_tiled.dart';
+
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 
@@ -39,10 +39,11 @@ class Gameplay extends Component with HasGameReference<DualKnights> {
   });
 
   static const id = 'Gameplay';
-  static const _timeScaleRate = 1;
+  
   static const _bgmFadeRate = 1;
   static const _bgmMinVol = 0;
   static const _bgmMaxVol = 0.6;
+  
 
   final int currentLevel;
   final VoidCallback onPausePressed;
@@ -65,24 +66,22 @@ class Gameplay extends Component with HasGameReference<DualKnights> {
   late final World _world;
   late final CameraComponent _camera;
   late final RectangleComponent _fader;
-  // late final Hud _hud;
-  // late final SpriteSheet _spriteSheet;
+  late final Hud _hud;
 
 
 
   bool _levelCompleted = false;
   bool _gameOver = false;
 
-  // AudioPlayer? _bgmPlayer;
+  AudioPlayer? _bgmPlayer;
 
   @override
   Future<void> onLoad() async {
     if (game.musicValueNotifier.value) {
-      // _bgmPlayer = await FlameAudio.loopLongAudio(DualKnights.bgm, volume: 0);
+      _bgmPlayer = await FlameAudio.loopLongAudio(DualKnights.bgm, volume: 0);
     }
 
-    Level level = Level(currentLevelIndex: currentLevel.toString(), player: player, antiPlayer: antiPlayer);
-    
+    Level level = Level(currentLevelIndex: currentLevel.toString().padLeft(2, '0'), player: player, antiPlayer: antiPlayer);
     
 
     await _setupWorldAndCamera(level);
@@ -95,54 +94,54 @@ class Gameplay extends Component with HasGameReference<DualKnights> {
       priority: 1,
     );
 
-    // _hud = Hud(
-    //   playerSprite: _spriteSheet.getSprite(5, 10),
-    //   snowmanSprite: _spriteSheet.getSprite(5, 9),
-    //   input: DualKnights.isMobile ? input : null,
-    //   onPausePressed: DualKnights.isMobile ? onPausePressed : null,
-    // );
+    _hud = Hud(
+      playerSprite: Sprite(game.images.fromCache('UI/Buttons/Button_Blue.png')),
+      snowmanSprite: Sprite(game.images.fromCache('UI/Buttons/Button_Blue.png')),
+      input: DualKnights.isMobile ? input : null,
+      onPausePressed:onPausePressed,
+    );
 
-    await _camera.viewport.addAll([_fader]);
+    await _camera.viewport.addAll([_fader,_hud]);
     // await _camera.viewfinder.add(_cameraShake);
     // _cameraShake.pause();
   }
 
-  // @override
-  // void update(double dt) {
-  //   if (_bgmPlayer != null) {
-  //     if (_levelCompleted) {
-  //       if (_bgmPlayer!.volume > _bgmMinVol) {
-  //         _bgmPlayer!.setVolume(
-  //           lerpDouble(_bgmPlayer!.volume, _bgmMinVol, _bgmFadeRate * dt)!,
-  //         );
-  //       }
-  //     } else {
-  //       if (_bgmPlayer!.volume < _bgmMaxVol) {
-  //         _bgmPlayer!.setVolume(
-  //           lerpDouble(_bgmPlayer!.volume, _bgmMaxVol, _bgmFadeRate * dt)!,
-  //         );
-  //       }
-  //     }
-  //   }
-  // }
+  @override
+  void update(double dt) {
+    if (_bgmPlayer != null) {
+      if (_levelCompleted) {
+        if (_bgmPlayer!.volume > _bgmMinVol) {
+          _bgmPlayer!.setVolume(
+            lerpDouble(_bgmPlayer!.volume, _bgmMinVol, _bgmFadeRate * dt)!,
+          );
+        }
+      } else {
+        if (_bgmPlayer!.volume < _bgmMaxVol) {
+          _bgmPlayer!.setVolume(
+            lerpDouble(_bgmPlayer!.volume, _bgmMaxVol, _bgmFadeRate * dt)!,
+          );
+        }
+      }
+    }
+  }
 
   @override
   void onRemove() {
-    // _bgmPlayer?.dispose();
+    _bgmPlayer?.dispose();
     super.onRemove();
   }
 
   Future<void> _setupWorldAndCamera(Level level) async {
-    _world = World(children: [level]);
-    
+    _world = World(children: [level,input]);
+    await add(_world);
 
     _camera = CameraComponent.withFixedResolution(
-      width: 15*64, height: 15*64,
+      width: 16*64, height: 12*64,
       world: _world,
     );
     _camera.viewfinder.anchor = Anchor.topLeft;
     await add(_camera);
-    await add(_world);
+    
   }
 
   
