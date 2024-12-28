@@ -35,26 +35,26 @@ class AntiPlayerCheckpoint extends SpriteAnimationComponent
     pressedAnimation = SpriteAnimation.fromFrameData(
       buttonPressedImage,
       SpriteAnimationData.sequenced(
-        amount: 1,
-        textureSize: Vector2.all(gridSize),
-        stepTime: 0.1,
-        loop: false,
-        texturePosition: Vector2(0, -7)
+          amount: 1,
+          textureSize: Vector2.all(gridSize),
+          stepTime: 0.1,
+          loop: false,
+          texturePosition: Vector2(0, -7)
       ),
     );
 
     unpressedAnimation = SpriteAnimation.fromFrameData(
       buttonUnpressedImage,
       SpriteAnimationData.sequenced(
-        amount: 1,
-        textureSize: Vector2.all(gridSize),
-        stepTime: 0.1,
-        loop: false,
-        texturePosition: Vector2(0, -7)
+          amount: 1,
+          textureSize: Vector2.all(gridSize),
+          stepTime: 0.1,
+          loop: false,
+          texturePosition: Vector2(0, -7)
       ),
     );
 
-  artifactAnimation = SpriteAnimation.fromFrameData(
+    artifactAnimation = SpriteAnimation.fromFrameData(
       wakeRangeArtifactImage,
       SpriteAnimationData.sequenced(
         amount: 14,
@@ -78,9 +78,9 @@ class AntiPlayerCheckpoint extends SpriteAnimationComponent
 
   @override
   void onCollisionStart(
-    Set<Vector2> intersectionPoints,
-    PositionComponent other,
-  ) {
+      Set<Vector2> intersectionPoints,
+      PositionComponent other,
+      ) {
     super.onCollisionStart(intersectionPoints, other);
     if (other is AntiPlayer) {
       isPressed = true;

@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "Level-for-Sarvesh.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -86,8 +86,8 @@
             "scale": 0.5497,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 600.3274513370931,
-                "y": 585.7740585774059
+                "x": 639.439694378752,
+                "y": 468.43732945242857
             }
         },
         "Level-02.tmx": {
@@ -244,12 +244,15 @@
     "map.tileWidth": 64,
     "map.width": 16,
     "openFiles": [
+        "Level-01.tmx",
+        "Level-for-Sarvesh.tmx"
     ],
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
-        "Level-02.tmx",
         "Level-01.tmx",
+        "Level-for-Sarvesh.tmx",
+        "Level-02.tmx",
         "Sample-15X12.tmx",
         "Sample-Level.tmx",
         "Archer_Purlple.tsx",
@@ -258,8 +261,7 @@
         "Level-05.tmx",
         "Sample-12X9.tmx",
         "Level-04.tmx",
-        "Shadows.tsx",
-        "Tilemap_Elevation.tsx"
+        "Shadows.tsx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",

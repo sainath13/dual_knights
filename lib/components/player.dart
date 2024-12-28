@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:dual_knights/components/anti_player.dart';
 import 'package:dual_knights/components/collision_block.dart';
+import 'package:dual_knights/components/player_checkpoint.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/services.dart';
@@ -24,6 +25,7 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
   late SpriteAnimation moveLeftAnimation;
   late SpriteAnimation moveRightAnimation;
   late SpriteAnimation fightAnimation;
+  late SpriteAnimation glowAnimation;
 
   // Movement speed
   final double speed = 150.0;
@@ -55,6 +57,7 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
     final leftSheet = await gameRef.images.load('Factions/Knights/Troops/Warrior/Blue/Warrior_Blue_Walk_Left.png');
     final upSheet = await gameRef.images.load('Factions/Knights/Troops/Warrior/Blue/Warrior_Blue_Walk_Up.png');
     final explosionSheet = await gameRef.images.load('Effects/Explosion/Explosions.png');
+    final glowSheet =  await gameRef.images.load('Factions/Knights/Troops/Warrior/Blue/Warrior_Blue_Glow.png');
 
     // Define animations
     idleAnimation = SpriteAnimation.fromFrameData(
@@ -120,7 +123,19 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
         loop: false,
         texturePosition: Vector2(0, 0),
       ),
-    ); 
+    );
+
+    glowAnimation = SpriteAnimation.fromFrameData(
+      glowSheet,
+      SpriteAnimationData.sequenced(
+        amount: 9,
+        textureSize: Vector2(192, 192),
+        stepTime: 0.1,
+        loop: false,
+        texturePosition: Vector2(0, 0),
+      ),
+    );
+
     // Set initial animation
     animation = idleAnimation;
   }
@@ -200,6 +215,10 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
     if (other is AntiPlayer) {
       log("Player collided with AntiPlayer");
       animation = fightAnimation;  
+    }
+    else if(other is PlayerCheckpoint ){
+      log("Player collided with Checkpoint.");
+      animation = glowAnimation;
     }
     
   }

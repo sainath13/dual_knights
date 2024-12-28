@@ -38,7 +38,7 @@ class DualKnights extends FlameGame with KeyboardEvents{
         levelName: levelNames[0],
       );
 
-      cam = CameraComponent.withFixedResolution(world: world, width: 15*64, height: 15*64);
+      cam = CameraComponent.withFixedResolution(world: world, width: 16*64, height: 12*64);
       cam.viewfinder.anchor = Anchor.topLeft;
       addAll([cam, world]);
     });
