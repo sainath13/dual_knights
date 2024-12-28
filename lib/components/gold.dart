@@ -25,17 +25,28 @@ class Gold extends SpriteAnimationComponent
     await add(hitbox);
 
     // Load button animations
-    final idleImage = await gameRef.images.load('Resources/Resources/G_Spawn.png');
+    final idleImage = await gameRef.images.load('Deco/06.png');
     final collectedImage = await gameRef.images.load('Resources/Resources/G_Spawn.png');
+
+    // idleAnimation = SpriteAnimation.fromFrameData(
+    //   idleImage,
+    //   SpriteAnimationData.sequenced(
+    //       amount: 1,
+    //       textureSize: Vector2.all(gridSize),
+    //       stepTime: 0.1,
+    //       loop: false,
+    //       texturePosition: Vector2(768+32, 32+10)
+    //   ),
+    // );
 
     idleAnimation = SpriteAnimation.fromFrameData(
       idleImage,
       SpriteAnimationData.sequenced(
           amount: 1,
-          textureSize: Vector2.all(gridSize),
+          textureSize: Vector2.all(64),
           stepTime: 0.1,
           loop: false,
-          texturePosition: Vector2(768+32, 32+10)
+          texturePosition: Vector2(0,0)
       ),
     );
 

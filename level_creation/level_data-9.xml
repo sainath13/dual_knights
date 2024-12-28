@@ -1,0 +1,28 @@
+<objectgroup id="5" name="Collisionblocks">
+  <object id="1" name="Block" type="Block" x="320" y="192" width="64" height="64"/>
+  <object id="2" name="Block" type="Block" x="384" y="192" width="64" height="64"/>
+  <object id="3" name="Block" type="Block" x="640" y="192" width="64" height="64"/>
+  <object id="4" name="Block" type="Block" x="704" y="192" width="64" height="64"/>
+  <object id="5" name="Block" type="Block" x="320" y="256" width="64" height="64"/>
+  <object id="7" name="Block" type="Block" x="448" y="256" width="64" height="64"/>
+  <object id="8" name="Block" type="Block" x="576" y="256" width="64" height="64"/>
+  <object id="10" name="Block" type="Block" x="704" y="256" width="64" height="64"/>
+  <object id="11" name="Block" type="Block" x="320" y="320" width="64" height="64"/>
+  <object id="13" name="Block" type="Block" x="512" y="320" width="64" height="64"/>
+  <object id="15" name="Block" type="Block" x="704" y="320" width="64" height="64"/>
+  <object id="16" name="Block" type="Block" x="384" y="384" width="64" height="64"/>
+  <object id="17" name="Block" type="Block" x="640" y="384" width="64" height="64"/>
+  <object id="18" name="Block" type="Block" x="384" y="448" width="64" height="64"/>
+  <object id="19" name="Block" type="Block" x="640" y="448" width="64" height="64"/>
+  <object id="20" name="Block" type="Block" x="448" y="512" width="64" height="64"/>
+  <object id="21" name="Block" type="Block" x="512" y="512" width="64" height="64"/>
+  <object id="22" name="Block" type="Block" x="576" y="512" width="64" height="64"/>
+</objectgroup>
+<objectgroup id="6" name="Checkpoints">
+  <object id="12" name="AntiPlayerCheckpoint" type="AntiPlayerCheckpoint" x="384" y="320" width="64" height="64"/>
+  <object id="14" name="PlayerCheckpoint" type="PlayerCheckpoint" x="640" y="320" width="64" height="64"/>
+</objectgroup>
+<objectgroup id="7" name="Spawnpoints">
+  <object id="6" name="Player" type="Player" x="384" y="256" width="64" height="64"/>
+  <object id="9" name="AntiPlayer" type="AntiPlayer" x="640" y="256" width="64" height="64"/>
+</objectgroup>

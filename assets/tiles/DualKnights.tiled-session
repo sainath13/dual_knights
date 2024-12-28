@@ -22,9 +22,15 @@
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
+        "12.tsx": {
+            "scaleInDock": 1
+        },
         "13.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
+        },
+        "16.tsx": {
+            "scaleInDock": 1
         },
         "17.tsx": {
             "scaleInDock": 1,
@@ -46,6 +52,22 @@
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
+        "Background-test-02.tmx": {
+            "scale": 0.53,
+            "selectedLayer": 11,
+            "viewCenter": {
+                "x": 512.2641509433962,
+                "y": 383.9622641509433
+            }
+        },
+        "Background-test-1.tmx": {
+            "scale": 0.53,
+            "selectedLayer": 8,
+            "viewCenter": {
+                "x": 512.2641509433962,
+                "y": 383.9622641509433
+            }
+        },
         "Barrel_Red.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
@@ -62,6 +84,9 @@
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
+        "Castle_Destroyed.tsx": {
+            "scaleInDock": 1
+        },
         "Castle_Red.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
@@ -77,6 +102,9 @@
         "HappySheep_All.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
+        },
+        "HappySheep_Idle.tsx": {
+            "scaleInDock": 1
         },
         "Level-01.tmx": {
             "expandedObjectLayers": [
@@ -128,11 +156,14 @@
             }
         },
         "Level-for-Manish-2.tmx": {
-            "scale": 0.533447265625,
-            "selectedLayer": 0,
+            "expandedObjectLayers": [
+                6
+            ],
+            "scale": 0.7512,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 321.49382151029755,
-                "y": 372.10800915331816
+                "x": 594.3823216187434,
+                "y": 392.03940362087326
             }
         },
         "Level-for-Manish.tmx": {
@@ -256,8 +287,10 @@
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
-        "Level-for-Manish.tmx",
+        "Background-test-02.tmx",
+        "Background-test-1.tmx",
         "Level-for-Manish-2.tmx",
+        "Level-for-Manish.tmx",
         "Tree.tsx",
         "Level-for-Sarvesh.tmx",
         "Level-01.tmx",
@@ -265,9 +298,7 @@
         "Sample-15X12.tmx",
         "Sample-Level.tmx",
         "Archer_Purlple.tsx",
-        "Arrow.tsx",
-        "Archer_Yellow.tsx",
-        "Level-05.tmx"
+        "Arrow.tsx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
