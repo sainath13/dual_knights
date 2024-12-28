@@ -21,6 +21,7 @@ class GameMainMenu extends Component with HasGameRef<DualKnights>{
     _world.removeFromParent();
     _camera.removeFromParent();
     super.onRemove();
+
   }
 
   
