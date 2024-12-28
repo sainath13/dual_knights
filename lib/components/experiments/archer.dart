@@ -167,7 +167,7 @@ class Archer extends SpriteAnimationComponent with HasGameRef<DualKnights>, Coll
       targetPosition: targetPosition!,
     );
     arrow.anchor = Anchor.center;
-    add(arrow);
+    parent?.add(arrow);
     
     _canShoot = false;
     _timeSinceLastShot = 0;
@@ -246,12 +246,18 @@ class Archer extends SpriteAnimationComponent with HasGameRef<DualKnights>, Coll
     if (!_canShoot) {
       _timeSinceLastShot += dt;
       if (_timeSinceLastShot >= shootCooldown) {
-        _canShoot = true;
+        _canShoot = false;
       }
     }
     
     if (_canShoot && hasCollided && targetPosition != null) {
-      _shoot();
+      ArcherState newState = state;
+      if (animationTicker?.isLastFrame ?? false) {
+        switch (newState) {
+          default:
+            _shoot();
+        }
+      }
     }
   }
 }

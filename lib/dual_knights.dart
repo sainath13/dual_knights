@@ -55,7 +55,7 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents{
         onResumePressed: _resumeGame,
         onRestartPressed: _restartLevel,
         onExitPressed: _exitToMainMenu,
-        
+
       ),
     ),
     RetryMenu.id: OverlayRoute(
@@ -64,7 +64,7 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents{
         onExitPressed: _exitToMainMenu,
       ),
     )
-    
+
   };
 
 
@@ -92,15 +92,15 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents{
   Color backgroundColor()  => const Color(0xFF47ABA9);
   final player = Player();//..debugMode = true;
   final antiPlayer = AntiPlayer();
-    
+
 
   @override
   FutureOr<void> onLoad() async{
     await FlameAudio.audioCache.loadAll([bgm]);
     await images.loadAllImages();
     await add(_router);
-    
-    
+
+
     return super.onLoad();
   }
 

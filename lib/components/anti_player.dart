@@ -1,3 +1,4 @@
+import 'package:dual_knights/components/anti_player_checkpoint.dart';
 import 'package:dual_knights/components/collision_block.dart';
 import 'package:dual_knights/components/player.dart';
 import 'package:flame/collisions.dart';
@@ -25,6 +26,7 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
   late SpriteAnimation moveLeftAnimation;
   late SpriteAnimation moveRightAnimation;
   late SpriteAnimation fightAnimation;
+  late SpriteAnimation glowAnimation;
 
   final double speed = 150.0;
   Vector2 direction = Vector2.zero();
@@ -53,13 +55,14 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
     final leftSheet = await gameRef.images.load('Factions/Knights/Troops/Warrior/Red/Warrior_Red_walk_left.png');
     final upSheet = await gameRef.images.load('Factions/Knights/Troops/Warrior/Red/Warrior_Red_walk_up.png');
     final explosionSheet = await gameRef.images.load('Effects/Explosion/Explosions.png');
+    final glowSheet =  await gameRef.images.load('Factions/Knights/Troops/Warrior/Red/Warrior_Red_Glow.png');
   
   
     log("Keeping animations loaded");
     idleAnimation = SpriteAnimation.fromFrameData(
       idleSheet,
       SpriteAnimationData.sequenced(
-        texturePosition: Vector2.all(0),
+        texturePosition: Vector2(0,16),
         amount: 6,
         textureSize: Vector2(frameWidth, frameHeight),
         stepTime: 0.1,
@@ -74,7 +77,7 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
         textureSize: Vector2(frameWidth, frameHeight),
         stepTime: 0.1,
         loop: true,
-        texturePosition: Vector2(0, 0),
+        texturePosition: Vector2(0, 16),
       ),
     );
 
@@ -85,7 +88,7 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
         textureSize: Vector2(frameWidth, frameHeight),
         stepTime: 0.1,
         loop: true,
-        texturePosition: Vector2(0, 0),
+        texturePosition: Vector2(0, 16),
       ),
     );
 
@@ -96,7 +99,7 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
         textureSize: Vector2(frameWidth, frameHeight),
         stepTime: 0.1,
         loop: true,
-        texturePosition: Vector2(0, 0),
+        texturePosition: Vector2(0, 16),
       ),
     );
 
@@ -107,7 +110,7 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
         textureSize: Vector2(frameWidth, frameHeight),
         stepTime: 0.1,
         loop: true,
-        texturePosition: Vector2(0, frameHeight * 1),
+        texturePosition: Vector2(0, frameHeight + 16),
       ),
     );
     // Set initial animation
@@ -119,7 +122,17 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
         textureSize: Vector2(192, 192),
         stepTime: 0.1,
         loop: false,
-        texturePosition: Vector2(0, 0),
+        texturePosition: Vector2(0, 16),
+      ),
+    );
+    glowAnimation = SpriteAnimation.fromFrameData(
+      glowSheet,
+      SpriteAnimationData.sequenced(
+        amount: 9,
+        textureSize: Vector2(192, 192),
+        stepTime: 0.1,
+        loop: false,
+        texturePosition: Vector2(0, 16),
       ),
     );
 
@@ -199,6 +212,10 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
       log("Player collided with AntiPlayer");
       animation = fightAnimation;  
     }
+    // else if(other is AntiPlayerCheckpoint ){
+    //   log("Player collided with Checkpoint.");
+    //   animation = glowAnimation;
+    // }
     
   }
 

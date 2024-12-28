@@ -29,7 +29,7 @@
   <object id="11" name="Block" type="Block" x="1088" y="192" width="64" height="640"/>
   <object id="18" name="Block" type="Block" x="192" y="832" width="896" height="64"/>
   <object id="19" name="Block" type="Block" x="192" y="128" width="896" height="64"/>
-  <object id="20" name="Block" type="Block" x="125.949" y="195.277" width="64" height="640"/>
+  <object id="20" name="Block" type="Block" x="128" y="192" width="64" height="640"/>
   <object id="23" x="714.575" y="151.822" height="2.02429"/>
  </objectgroup>
  <objectgroup id="4" name="Checkpoints">

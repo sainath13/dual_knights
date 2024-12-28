@@ -88,6 +88,7 @@ flutter:
     - assets/images/Factions/Knights/Troops/Archer/Purple/
     - assets/images/Factions/Knights/Troops/Archer/Arrow/
     - assets/audio/
+    - assets/images/Effects/Checkpoint/
 
     # - images/a_dot_ham.jpeg
 

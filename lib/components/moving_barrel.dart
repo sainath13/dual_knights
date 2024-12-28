@@ -91,7 +91,7 @@ class MovingBarrel extends SpriteAnimationComponent with HasGameRef<DualKnights>
           textureSize: Vector2(frameWidth, frameHeight),
           stepTime: 0.1,
           loop: true,
-          texturePosition: Vector2(0, frameHeight * 4),
+          texturePosition: Vector2(0, frameHeight * 4 + 16),
         ),
       ),
       MovingBarrelState.wakingUp: SpriteAnimation.fromFrameData(
@@ -101,7 +101,7 @@ class MovingBarrel extends SpriteAnimationComponent with HasGameRef<DualKnights>
           textureSize: Vector2(frameWidth, frameHeight),
           stepTime: 0.1,
           loop: false,
-          texturePosition: Vector2(0, frameHeight),
+          texturePosition: Vector2(0, frameHeight + 16),
         ),
       ),
       MovingBarrelState.randomLooking: SpriteAnimation.fromFrameData(
@@ -111,7 +111,7 @@ class MovingBarrel extends SpriteAnimationComponent with HasGameRef<DualKnights>
           textureSize: Vector2(frameWidth, frameHeight),
           stepTime: 0.1,
           loop: true,
-          texturePosition: Vector2(0, frameHeight * 2),
+          texturePosition: Vector2(0, frameHeight * 2 + 16),
         ),
       ),
       MovingBarrelState.goingBackToSleep: SpriteAnimation.fromFrameData(
@@ -121,7 +121,7 @@ class MovingBarrel extends SpriteAnimationComponent with HasGameRef<DualKnights>
           textureSize: Vector2(frameWidth, frameHeight),
           stepTime: 0.1,
           loop: false,
-          texturePosition: Vector2(0, frameHeight * 3),
+          texturePosition: Vector2(0, frameHeight * 3 + 16),
         ),
       ),
       MovingBarrelState.awakeWaiting: SpriteAnimation.fromFrameData(
@@ -131,7 +131,7 @@ class MovingBarrel extends SpriteAnimationComponent with HasGameRef<DualKnights>
           textureSize: Vector2(frameWidth, frameHeight),
           stepTime: 0.1,
           loop: true,
-          texturePosition: Vector2(0, frameHeight * 4),
+          texturePosition: Vector2(0, frameHeight * 4 + 16),
         ),
       ),
       MovingBarrelState.readyToExplode: SpriteAnimation.fromFrameData(
@@ -141,7 +141,7 @@ class MovingBarrel extends SpriteAnimationComponent with HasGameRef<DualKnights>
           textureSize: Vector2(frameWidth, frameHeight),
           stepTime: 0.1,
           loop: true,
-          texturePosition: Vector2(0, frameHeight * 5),
+          texturePosition: Vector2(0, frameHeight * 5 + 16),
         ),
       ),
       MovingBarrelState.exploding: SpriteAnimation.fromFrameData(
@@ -162,7 +162,7 @@ class MovingBarrel extends SpriteAnimationComponent with HasGameRef<DualKnights>
           textureSize: Vector2(frameWidth, frameHeight),
           stepTime: 0.1,
           loop: false,
-          texturePosition: Vector2(0, 0),
+          texturePosition: Vector2(0, 16),
         ),
       ),
       MovingBarrelState.vanishing: SpriteAnimation.fromFrameData(
@@ -172,7 +172,7 @@ class MovingBarrel extends SpriteAnimationComponent with HasGameRef<DualKnights>
           textureSize: Vector2(frameWidth, frameHeight),
           stepTime: 0.1,
           loop: false,
-          texturePosition: Vector2(0, frameHeight),
+          texturePosition: Vector2(0, frameHeight + 16),
         ),
       ),
     };

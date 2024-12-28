@@ -81,27 +81,26 @@
         "Level-01.tmx": {
             "expandedObjectLayers": [
                 3,
-                4,
                 2
             ],
-            "scale": 0.4871,
+            "scale": 0.5497,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 612.8105111886675,
-                "y": 592.2808458222131
+                "x": 601.2370383845735,
+                "y": 584.8644715299254
             }
         },
         "Level-02.tmx": {
             "expandedObjectLayers": [
-                6,
                 5,
-                4
+                4,
+                6
             ],
             "scale": 0.56,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 817.8571428571429,
-                "y": 408.0357142857142
+                "x": 555.3571428571429,
+                "y": 450
             }
         },
         "Level-03.tmx": {
@@ -116,16 +115,42 @@
             "scale": 0.7335286458333332,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 1025.1815035058137,
-                "y": 318.3243099316589
+                "x": 278.1077482914708,
+                "y": 317.6426732936896
             }
         },
         "Level-05.tmx": {
             "scale": 0.58,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 480.1724137931035,
-                "y": 383.6206896551725
+                "x": 479.3103448275863,
+                "y": 384.48275862068965
+            }
+        },
+        "Level-for-Manish.tmx": {
+            "expandedObjectLayers": [
+                5,
+                4,
+                3
+            ],
+            "scale": 0.73291015625,
+            "selectedLayer": 4,
+            "viewCenter": {
+                "x": 511.6588940706196,
+                "y": 383.4030646235842
+            }
+        },
+        "Level-for-Sarvesh.tmx": {
+            "expandedObjectLayers": [
+                4,
+                3,
+                5
+            ],
+            "scale": 0.53,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 510.37735849056594,
+                "y": 382.0754716981131
             }
         },
         "Rocks_04.tsx": {
@@ -223,18 +248,18 @@
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "Level-for-Sarvesh.tmx",
+        "Level-01.tmx",
+        "Level-02.tmx",
         "Sample-15X12.tmx",
         "Sample-Level.tmx",
-        "Level-01.tmx",
         "Archer_Purlple.tsx",
         "Arrow.tsx",
         "Archer_Yellow.tsx",
         "Level-05.tmx",
         "Sample-12X9.tmx",
         "Level-04.tmx",
-        "Shadows.tsx",
-        "Tilemap_Elevation.tsx",
-        "cloudsspritesheet.tsx"
+        "Shadows.tsx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
