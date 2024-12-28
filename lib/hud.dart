@@ -127,45 +127,4 @@ class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference {
     }
   }
 
-  void updateSnowmanCount(int count) {
-    _score.text = 'x$count';
-
-    _snowman.add(
-      RotateEffect.by(
-        pi / 8,
-        RepeatedEffectController(ZigzagEffectController(period: 0.2), 2),
-      ),
-    );
-
-    _score.add(
-      ScaleEffect.by(
-        Vector2.all(1.5),
-        EffectController(
-          duration: 0.1,
-          alternate: true,
-        ),
-      ),
-    );
-  }
-
-  void updateLifeCount(int count) {
-    _life.text = 'x$count';
-
-    _player.add(
-      RotateEffect.by(
-        pi / 8,
-        RepeatedEffectController(ZigzagEffectController(period: 0.2), 2),
-      ),
-    );
-
-    _life.add(
-      ScaleEffect.by(
-        Vector2.all(1.5),
-        EffectController(
-          duration: 0.1,
-          alternate: true,
-        ),
-      ),
-    );
-  }
 }

@@ -5,6 +5,9 @@ import 'dart:ui';
 
 import 'package:dual_knights/components/anti_player.dart';
 import 'package:dual_knights/components/player.dart';
+import 'package:dual_knights/routes/game_level_selection.dart';
+import 'package:dual_knights/routes/game_main_menu.dart';
+import 'package:dual_knights/routes/game_settings.dart';
 import 'package:dual_knights/routes/gameplay.dart';
 import 'package:dual_knights/routes/level_complete.dart';
 import 'package:dual_knights/routes/level_selection.dart';
@@ -13,7 +16,6 @@ import 'package:dual_knights/routes/pause_menu.dart';
 import 'package:dual_knights/routes/retry_menu.dart';
 import 'package:dual_knights/routes/settings.dart';
 import 'package:flame/components.dart';
-import 'package:flame/effects.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flame_audio/flame_audio.dart';
@@ -64,6 +66,15 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents{
         onRetryPressed: _restartLevel,
         onExitPressed: _exitToMainMenu,
       ),
+    ),
+    GameMainMenu.id: Route(
+      () => GameMainMenu(),
+    ),
+    GameLevelSelection.id: Route(
+      () => GameLevelSelection(),
+    ),
+    GameSettings.id: Route(
+      () => GameSettings(),
     )
 
   };
@@ -87,7 +98,6 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents{
   );
 
 
-  late final CameraComponent cam;
   
   @override
   Color backgroundColor()  => const Color(0xFF47ABA9);
