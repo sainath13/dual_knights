@@ -13,6 +13,7 @@ import 'package:dual_knights/routes/pause_menu.dart';
 import 'package:dual_knights/routes/retry_menu.dart';
 import 'package:dual_knights/routes/settings.dart';
 import 'package:flame/components.dart';
+import 'package:flame/effects.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flame_audio/flame_audio.dart';
@@ -161,7 +162,9 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents{
     _router.pushReplacementNamed(MainMenu.id);
   }
 
-   void _showLevelCompleteMenu(int nStars) {
+   void _showLevelCompleteMenu(int nStars) {    
+    final gameplay = findByKeyName<Gameplay>(Gameplay.id);
+    gameplay?.levelCompleted = true;
     _router.pushNamed('${LevelComplete.id}/$nStars');
   }
 

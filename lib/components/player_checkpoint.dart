@@ -1,15 +1,20 @@
 import 'dart:developer';
-
+import 'package:dual_knights/components/anti_player.dart';
+import 'package:dual_knights/components/anti_player_checkpoint.dart';
 import 'package:dual_knights/components/player.dart';
+import 'package:dual_knights/dual_knights.dart';
+import 'package:dual_knights/routes/gameplay.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
+import 'package:flame/effects.dart';
 
 class PlayerCheckpoint extends SpriteAnimationComponent
-    with HasGameRef, CollisionCallbacks {
+    with HasGameRef<DualKnights>,CollisionCallbacks, HasAncestor<Gameplay>{
   static const double gridSize = 64.0;
 
   late SpriteAnimation pressedAnimation;
   late SpriteAnimation unpressedAnimation;
+
 
   bool isPressed = false;
 
@@ -55,6 +60,24 @@ class PlayerCheckpoint extends SpriteAnimationComponent
     animation = unpressedAnimation;
   }
 
+@override
+  void update(double dt) {
+      // Check if both checkpoints are pressed
+      if (isPressed) {
+        final antiPlayerCheckpoint = parent?.children.whereType<AntiPlayerCheckpoint>().firstOrNull;
+        final player = parent?.children.whereType<Player>().firstOrNull;
+        final antiPlayer = parent?.children.whereType<AntiPlayer>().firstOrNull;
+        if(player?.isMoving==false && antiPlayer?.isMoving==false && isPressed == true && antiPlayerCheckpoint?.isPressed == true){
+          ancestor.onLevelCompleted(3);
+        }
+      }
+    super.update(dt);
+    
+  }
+
+
+ 
+
   @override
   void onCollisionStart(
     Set<Vector2> intersectionPoints,
@@ -66,7 +89,7 @@ class PlayerCheckpoint extends SpriteAnimationComponent
       isPressed = true;
       animation = pressedAnimation;
       log("PlayerCheckpoint: Player reached checkpoint");
-      //TODO SARVESH : Restart game.
+      
     }
   }
 

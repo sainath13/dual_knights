@@ -237,6 +237,7 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
   void update(double dt) {
     super.update(dt);
     // log("Player priority is $priority");
+    
     if (isMoving) {
       final movement = direction * speed * dt;
       final distanceToTarget = targetPosition - position;

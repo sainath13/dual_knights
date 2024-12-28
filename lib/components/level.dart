@@ -4,8 +4,6 @@ import 'dart:developer';
 import 'package:dual_knights/components/anti_player.dart';
 import 'package:dual_knights/components/barrel.dart';
 import 'package:dual_knights/components/collision_block.dart';
-import 'package:dual_knights/components/experiments/archer.dart';
-import 'package:dual_knights/components/gold.dart';
 import 'package:dual_knights/components/moving_barrel.dart';
 import 'package:dual_knights/components/player.dart';
 import 'package:dual_knights/components/player_checkpoint.dart';
@@ -25,7 +23,7 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
   
   @override
   FutureOr<void> onLoad() async{
-    level = await TiledComponent.load('Level-for-Manish-2.tmx', Vector2(64, 64));
+    level = await TiledComponent.load('Level-$currentLevelIndex.tmx', Vector2(64, 64));
     // level.debugMode = true;
     add(level);
     List<CollisionBlock> collisionBlocks = [];

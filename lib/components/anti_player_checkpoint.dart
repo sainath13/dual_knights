@@ -4,6 +4,7 @@ import 'package:dual_knights/components/anti_player.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 
+
 class AntiPlayerCheckpoint extends SpriteAnimationComponent
     with HasGameRef, CollisionCallbacks {
   static const double gridSize = 64.0;
@@ -86,7 +87,6 @@ class AntiPlayerCheckpoint extends SpriteAnimationComponent
       isPressed = true;
       animation = pressedAnimation;
       log("AntiPlayerCheckpoint: AntiPlayer reached checkpoint");
-      //TODO SARVESH : Restart game.
     }
   }
 

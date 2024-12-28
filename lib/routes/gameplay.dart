@@ -65,15 +65,20 @@ class Gameplay extends Component with HasGameReference<DualKnights> {
 
   late final World _world;
   late final CameraComponent _camera;
-  late final RectangleComponent _fader;
+  late final RectangleComponent fader;
   late final Hud _hud;
 
 
 
-  bool _levelCompleted = false;
-  bool _gameOver = false;
+  bool levelCompleted = false;
+  bool gameOver = false;
 
   AudioPlayer? _bgmPlayer;
+
+
+
+
+  
 
   @override
   Future<void> onLoad() async {
@@ -87,7 +92,7 @@ class Gameplay extends Component with HasGameReference<DualKnights> {
     await _setupWorldAndCamera(level);
     
 
-    _fader = RectangleComponent(
+    fader = RectangleComponent(
       size: _camera.viewport.virtualSize,
       paint: Paint()..color = game.backgroundColor(),
       children: [OpacityEffect.fadeOut(LinearEffectController(1.5))],
@@ -101,7 +106,7 @@ class Gameplay extends Component with HasGameReference<DualKnights> {
       onPausePressed:onPausePressed,
     );
 
-    await _camera.viewport.addAll([_fader,_hud]);
+    await _camera.viewport.addAll([fader,_hud]);
     // await _camera.viewfinder.add(_cameraShake);
     // _cameraShake.pause();
   }
@@ -109,7 +114,7 @@ class Gameplay extends Component with HasGameReference<DualKnights> {
   @override
   void update(double dt) {
     if (_bgmPlayer != null) {
-      if (_levelCompleted) {
+      if (levelCompleted) {
         if (_bgmPlayer!.volume > _bgmMinVol) {
           _bgmPlayer!.setVolume(
             lerpDouble(_bgmPlayer!.volume, _bgmMinVol, _bgmFadeRate * dt)!,

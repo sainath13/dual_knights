@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:dual_knights/components/anti_player.dart';
 import 'package:dual_knights/components/player.dart';
 import 'package:dual_knights/dual_knights.dart';
+import 'package:dual_knights/routes/gameplay.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 
@@ -31,7 +32,7 @@ enum KnightRangeStatus{
   readyToExplode,
 }
 
-class MovingBarrel extends SpriteAnimationComponent with HasGameRef<DualKnights>, CollisionCallbacks {
+class MovingBarrel extends SpriteAnimationComponent with HasGameRef<DualKnights>, CollisionCallbacks ,HasAncestor<Gameplay>{
   final int leftOffset;
   final int  rightOffset;
   final int upOffset;
@@ -316,7 +317,7 @@ void _updateMovement(double dt) {
           case MovingBarrelState.vanishing:
             currentState = MovingBarrelState.dead;
             removeFromParent();
-            //TODO SARVESH : Restart game.
+            ancestor.onGameOver();
             break;
 
           default:
