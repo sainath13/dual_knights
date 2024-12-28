@@ -1,58 +1,21 @@
 import 'dart:async';
-import 'dart:math';
 import 'dart:ui';
 
 import 'package:dual_knights/dual_knights.dart';
 import 'package:dual_knights/input.dart';
 import 'package:flame/camera.dart';
 import 'package:flame/components.dart';
-import 'package:flame/effects.dart';
 import 'package:flame/input.dart';
 import 'package:flutter/material.dart' hide Viewport;
 
 
 class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference {
   Hud({
-    required Sprite playerSprite,
-    required Sprite snowmanSprite,
     this.input,
     this.onPausePressed,
-  })  : _player = SpriteComponent(
-          sprite: playerSprite,
-          anchor: Anchor.center,
-          scale: Vector2.all(DualKnights.isMobile ? 0.6 : 1.0),
-        ),
-        _snowman = SpriteComponent(
-          sprite: snowmanSprite,
-          anchor: Anchor.center,
-          scale: Vector2.all(DualKnights.isMobile ? 0.6 : 1.0),
-        );
+  });
 
-  final _life = TextComponent(
-    text: 'x3',
-    anchor: Anchor.centerLeft,
-    textRenderer: TextPaint(
-      style: const TextStyle(
-        color: Colors.black,
-        fontSize: DualKnights.isMobile ? 8 : 10,
-        fontFamily: "DualKnights"
-      ),
-    ),
-  );
 
-  final _score = TextComponent(
-    text: 'x0',
-    anchor: Anchor.centerLeft,
-    textRenderer: TextPaint(
-      style: const TextStyle(
-        color: Colors.black,
-        fontSize: DualKnights.isMobile ? 8 : 10,fontFamily: "DualKnights"
-      ),
-    ),
-  );
-
-  final SpriteComponent _player;
-  final SpriteComponent _snowman;
 
   late final JoystickComponent? _joystick;
   final Input? input;
@@ -60,27 +23,6 @@ class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference {
 
   @override
   Future<void> onLoad() async {
-    _player.position.setValues(
-      100,
-      DualKnights.isMobile ? 100 : 80,
-    );
-
-    _life.position.setValues(
-      _player.position.x + 8,
-      _player.position.y,
-    );
-
-    _snowman.position.setValues(
-      parent.virtualSize.x - 100,
-      80,
-    );
-
-    _score.position.setValues(
-      _snowman.position.x + 8,
-      _snowman.position.y,
-    );
-
-    await addAll([_player, _life, _snowman, _score]);
 
     if (DualKnights.isMobile) {
       _joystick = JoystickComponent(

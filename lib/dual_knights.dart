@@ -112,7 +112,7 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents{
     await add(_router);
 
 
-    return super.onLoad();
+  return super.onLoad();
   }
 
 
@@ -125,7 +125,7 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents{
   }
 
   void _startLevel(int levelIndex) {
-    _router.pop();
+    //  _router.pop();    
     _router.pushReplacement(
       Route(
         () => Gameplay(

@@ -100,8 +100,6 @@ class Gameplay extends Component with HasGameReference<DualKnights> {
     );
 
     _hud = Hud(
-      playerSprite: Sprite(game.images.fromCache('UI/Buttons/Button_Blue.png')),
-      snowmanSprite: Sprite(game.images.fromCache('UI/Buttons/Button_Blue.png')),
       input: DualKnights.isMobile ? input : null,
       onPausePressed:onPausePressed,
     );
