@@ -1,5 +1,13 @@
 Collisionblocks:
+  (0, 1)
+  (0, 2)
+  (0, 3)
+  (0, 4)
   (0, 5)
+  (1, 0)
+  (1, 1)
+  (1, 2)
+  (1, 3)
   (1, 4)
   (1, 5)
   (2, 0)
@@ -45,12 +53,4 @@ Collisionblocks:
   (8, 4)
   (8, 5)
 Checkpoints:
-  (0, 0, 'PlayerCheckpoint')
-  (1, 0, 'AntiPlayerCheckpoint')
-  (1, 1, 'AntiPlayerCheckpoint')
-  (1, 2, 'AntiPlayerCheckpoint')
 Spawnpoints:
-  (0, 1, 'Player')
-  (0, 2, 'Player')
-  (0, 3, 'Player')
-  (0, 4, 'Player')

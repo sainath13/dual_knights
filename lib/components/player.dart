@@ -60,14 +60,24 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
     final glowSheet =  await gameRef.images.load('Factions/Knights/Troops/Warrior/Blue/Warrior_Blue_Glow.png');
 
     // Define animations
+    // idleAnimation = SpriteAnimation.fromFrameData(
+    //   spriteSheet,
+    //   SpriteAnimationData.sequenced(
+    //     texturePosition: Vector2.all(0),
+    //     amount: 6,
+    //     textureSize: Vector2(frameWidth, frameHeight),
+    //     stepTime: 0.1,
+    //     loop: true,
+    //   ),
+    // );
     idleAnimation = SpriteAnimation.fromFrameData(
-      spriteSheet,
+      glowSheet,
       SpriteAnimationData.sequenced(
-        texturePosition: Vector2.all(0),
         amount: 6,
-        textureSize: Vector2(frameWidth, frameHeight),
+        textureSize: Vector2(192, 192),
         stepTime: 0.1,
         loop: true,
+        texturePosition: Vector2(0, 16),
       ),
     );
 
@@ -78,7 +88,7 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
         textureSize: Vector2(frameWidth, frameHeight),
         stepTime: 0.1,
         loop: true,
-        texturePosition: Vector2(0, 0),
+        texturePosition: Vector2(0, 16),
       ),
     );
 
@@ -89,7 +99,7 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
         textureSize: Vector2(frameWidth, frameHeight),
         stepTime: 0.1,
         loop: true,
-        texturePosition: Vector2(0, 0),
+        texturePosition: Vector2(0, 16),
       ),
     );
 
@@ -100,7 +110,7 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
         textureSize: Vector2(frameWidth, frameHeight),
         stepTime: 0.1,
         loop: true,
-        texturePosition: Vector2(0, 0),
+        texturePosition: Vector2(0, 16),
       ),
     );
 
@@ -111,7 +121,7 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
         textureSize: Vector2(frameWidth, frameHeight),
         stepTime: 0.1,
         loop: true,
-        texturePosition: Vector2(0, frameHeight),
+        texturePosition: Vector2(0, frameHeight+16),
       ),
     );
     fightAnimation = SpriteAnimation.fromFrameData(
@@ -121,7 +131,7 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
         textureSize: Vector2(192, 192),
         stepTime: 0.1,
         loop: false,
-        texturePosition: Vector2(0, 0),
+        texturePosition: Vector2(0, 16),
       ),
     );
 

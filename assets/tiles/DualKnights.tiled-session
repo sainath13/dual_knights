@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "Level-for-Sarvesh.tmx",
+    "activeFile": "",
     "expandedProjectPaths": [
         "."
     ],
@@ -86,8 +86,8 @@
             "scale": 0.5497,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 639.439694378752,
-                "y": 468.43732945242857
+                "x": 601.2370383845735,
+                "y": 584.8644715299254
             }
         },
         "Level-02.tmx": {
@@ -142,15 +142,15 @@
         },
         "Level-for-Sarvesh.tmx": {
             "expandedObjectLayers": [
-                5,
                 4,
-                3
+                3,
+                5
             ],
             "scale": 0.53,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 511.3207547169811,
-                "y": 383.01886792452825
+                "x": 510.37735849056594,
+                "y": 382.0754716981131
             }
         },
         "Rocks_04.tsx": {
@@ -244,14 +244,12 @@
     "map.tileWidth": 64,
     "map.width": 16,
     "openFiles": [
-        "Level-01.tmx",
-        "Level-for-Sarvesh.tmx"
     ],
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
-        "Level-01.tmx",
         "Level-for-Sarvesh.tmx",
+        "Level-01.tmx",
         "Level-02.tmx",
         "Sample-15X12.tmx",
         "Sample-Level.tmx",

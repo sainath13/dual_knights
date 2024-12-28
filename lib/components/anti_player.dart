@@ -62,7 +62,7 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
     idleAnimation = SpriteAnimation.fromFrameData(
       idleSheet,
       SpriteAnimationData.sequenced(
-        texturePosition: Vector2.all(0),
+        texturePosition: Vector2(0,16),
         amount: 6,
         textureSize: Vector2(frameWidth, frameHeight),
         stepTime: 0.1,
@@ -77,7 +77,7 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
         textureSize: Vector2(frameWidth, frameHeight),
         stepTime: 0.1,
         loop: true,
-        texturePosition: Vector2(0, 0),
+        texturePosition: Vector2(0, 16),
       ),
     );
 
@@ -88,7 +88,7 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
         textureSize: Vector2(frameWidth, frameHeight),
         stepTime: 0.1,
         loop: true,
-        texturePosition: Vector2(0, 0),
+        texturePosition: Vector2(0, 16),
       ),
     );
 
@@ -99,7 +99,7 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
         textureSize: Vector2(frameWidth, frameHeight),
         stepTime: 0.1,
         loop: true,
-        texturePosition: Vector2(0, 0),
+        texturePosition: Vector2(0, 16),
       ),
     );
 
@@ -110,7 +110,7 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
         textureSize: Vector2(frameWidth, frameHeight),
         stepTime: 0.1,
         loop: true,
-        texturePosition: Vector2(0, frameHeight * 1),
+        texturePosition: Vector2(0, frameHeight + 16),
       ),
     );
     // Set initial animation
@@ -122,7 +122,7 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
         textureSize: Vector2(192, 192),
         stepTime: 0.1,
         loop: false,
-        texturePosition: Vector2(0, 0),
+        texturePosition: Vector2(0, 16),
       ),
     );
     glowAnimation = SpriteAnimation.fromFrameData(
@@ -132,7 +132,7 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
         textureSize: Vector2(192, 192),
         stepTime: 0.1,
         loop: false,
-        texturePosition: Vector2(0, 0),
+        texturePosition: Vector2(0, 16),
       ),
     );
 
