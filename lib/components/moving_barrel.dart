@@ -316,6 +316,7 @@ void _updateMovement(double dt) {
           case MovingBarrelState.vanishing:
             currentState = MovingBarrelState.dead;
             removeFromParent();
+            //TODO SARVESH : Restart game.
             break;
 
           default:

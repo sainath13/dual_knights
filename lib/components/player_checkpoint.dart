@@ -66,6 +66,7 @@ class PlayerCheckpoint extends SpriteAnimationComponent
       isPressed = true;
       animation = pressedAnimation;
       log("PlayerCheckpoint: Player reached checkpoint");
+      //TODO SARVESH : Restart game.
     }
   }
 

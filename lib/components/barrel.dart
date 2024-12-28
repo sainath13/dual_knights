@@ -226,6 +226,7 @@ class Barrel extends SpriteAnimationComponent with HasGameRef<DualKnights>, Coll
           case BarrelState.vanishing:
             currentState = BarrelState.dead;
             removeFromParent();
+            //TODO SARVESH : Restart game.
             break;
 
           default:

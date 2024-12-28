@@ -86,6 +86,7 @@ class AntiPlayerCheckpoint extends SpriteAnimationComponent
       isPressed = true;
       animation = pressedAnimation;
       log("AntiPlayerCheckpoint: AntiPlayer reached checkpoint");
+      //TODO SARVESH : Restart game.
     }
   }
 
