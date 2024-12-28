@@ -212,10 +212,10 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
       log("Player collided with AntiPlayer");
       animation = fightAnimation;  
     }
-    else if(other is AntiPlayerCheckpoint ){
-      log("Player collided with Checkpoint.");
-      animation = glowAnimation;
-    }
+    // else if(other is AntiPlayerCheckpoint ){
+    //   log("Player collided with Checkpoint.");
+    //   animation = glowAnimation;
+    // }
     
   }
 

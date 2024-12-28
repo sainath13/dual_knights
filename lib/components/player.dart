@@ -60,26 +60,26 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
     final glowSheet =  await gameRef.images.load('Factions/Knights/Troops/Warrior/Blue/Warrior_Blue_Glow.png');
 
     // Define animations
-    // idleAnimation = SpriteAnimation.fromFrameData(
-    //   spriteSheet,
-    //   SpriteAnimationData.sequenced(
-    //     texturePosition: Vector2.all(0),
-    //     amount: 6,
-    //     textureSize: Vector2(frameWidth, frameHeight),
-    //     stepTime: 0.1,
-    //     loop: true,
-    //   ),
-    // );
     idleAnimation = SpriteAnimation.fromFrameData(
-      glowSheet,
+      spriteSheet,
       SpriteAnimationData.sequenced(
+        texturePosition: Vector2.all(0),
         amount: 6,
-        textureSize: Vector2(192, 192),
+        textureSize: Vector2(frameWidth, frameHeight),
         stepTime: 0.1,
         loop: true,
-        texturePosition: Vector2(0, 16),
       ),
     );
+    // idleAnimation = SpriteAnimation.fromFrameData(
+    //   glowSheet,
+    //   SpriteAnimationData.sequenced(
+    //     amount: 6,
+    //     textureSize: Vector2(192, 192),
+    //     stepTime: 0.1,
+    //     loop: true,
+    //     texturePosition: Vector2(0, 16),
+    //   ),
+    // );
 
     moveUpAnimation = SpriteAnimation.fromFrameData(
       upSheet,
@@ -121,7 +121,7 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
         textureSize: Vector2(frameWidth, frameHeight),
         stepTime: 0.1,
         loop: true,
-        texturePosition: Vector2(0, frameHeight+16),
+        texturePosition: Vector2(0, frameHeight + 16),
       ),
     );
     fightAnimation = SpriteAnimation.fromFrameData(
@@ -226,10 +226,10 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
       log("Player collided with AntiPlayer");
       animation = fightAnimation;  
     }
-    else if(other is PlayerCheckpoint ){
-      log("Player collided with Checkpoint.");
-      animation = glowAnimation;
-    }
+    // else if(other is PlayerCheckpoint ){
+    //   log("Player collided with Checkpoint.");
+    //   animation = glowAnimation;
+    // }
     
   }
 

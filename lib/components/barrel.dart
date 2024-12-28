@@ -65,7 +65,7 @@ class Barrel extends SpriteAnimationComponent with HasGameRef<DualKnights>, Coll
           textureSize: Vector2(frameWidth, frameHeight),
           stepTime: 0.1,
           loop: true,
-          texturePosition: Vector2(0, 0),
+          texturePosition: Vector2(0, 16),
         ),
       ),
       BarrelState.wakingUp: SpriteAnimation.fromFrameData(
@@ -75,7 +75,7 @@ class Barrel extends SpriteAnimationComponent with HasGameRef<DualKnights>, Coll
           textureSize: Vector2(frameWidth, frameHeight),
           stepTime: 0.1,
           loop: false,
-          texturePosition: Vector2(0, frameHeight),
+          texturePosition: Vector2(0, frameHeight+16),
         ),
       ),
       BarrelState.randomLooking: SpriteAnimation.fromFrameData(
@@ -85,7 +85,7 @@ class Barrel extends SpriteAnimationComponent with HasGameRef<DualKnights>, Coll
           textureSize: Vector2(frameWidth, frameHeight),
           stepTime: 0.1,
           loop: true,
-          texturePosition: Vector2(0, frameHeight * 2),
+          texturePosition: Vector2(0, frameHeight * 2 + 16),
         ),
       ),
       BarrelState.goingBackToSleep: SpriteAnimation.fromFrameData(
@@ -95,7 +95,7 @@ class Barrel extends SpriteAnimationComponent with HasGameRef<DualKnights>, Coll
           textureSize: Vector2(frameWidth, frameHeight),
           stepTime: 0.1,
           loop: false,
-          texturePosition: Vector2(0, frameHeight * 3),
+          texturePosition: Vector2(0, frameHeight * 3 + 16),
         ),
       ),
       BarrelState.awakeWaiting: SpriteAnimation.fromFrameData(
@@ -105,7 +105,7 @@ class Barrel extends SpriteAnimationComponent with HasGameRef<DualKnights>, Coll
           textureSize: Vector2(frameWidth, frameHeight),
           stepTime: 0.1,
           loop: true,
-          texturePosition: Vector2(0, frameHeight * 4),
+          texturePosition: Vector2(0, frameHeight * 4 + 16),
         ),
       ),
       BarrelState.readyToExplode: SpriteAnimation.fromFrameData(
@@ -115,7 +115,7 @@ class Barrel extends SpriteAnimationComponent with HasGameRef<DualKnights>, Coll
           textureSize: Vector2(frameWidth, frameHeight),
           stepTime: 0.1,
           loop: true,
-          texturePosition: Vector2(0, frameHeight * 5),
+          texturePosition: Vector2(0, frameHeight * 5 + 16) ,
         ),
       ),
       BarrelState.exploding: SpriteAnimation.fromFrameData(
@@ -136,7 +136,7 @@ class Barrel extends SpriteAnimationComponent with HasGameRef<DualKnights>, Coll
           textureSize: Vector2(frameWidth, frameHeight),
           stepTime: 0.1,
           loop: false,
-          texturePosition: Vector2(0, 0),
+          texturePosition: Vector2(0, 16),
         ),
       ),
       BarrelState.vanishing: SpriteAnimation.fromFrameData(
@@ -146,7 +146,7 @@ class Barrel extends SpriteAnimationComponent with HasGameRef<DualKnights>, Coll
           textureSize: Vector2(frameWidth, frameHeight),
           stepTime: 0.1,
           loop: false,
-          texturePosition: Vector2(0, frameHeight),
+          texturePosition: Vector2(0, frameHeight+16),
         ),
       ),
     };
