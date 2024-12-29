@@ -11,6 +11,53 @@
     "exportAsImage.visibleLayersOnly": false,
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
+        "/Users/sainathlatkar/Downloads/01.tsx": {
+            "scaleInDock": 1
+        },
+        "/Users/sainathlatkar/Downloads/06.tsx": {
+            "scaleInDock": 1
+        },
+        "/Users/sainathlatkar/Downloads/09.tsx": {
+            "scaleInDock": 1
+        },
+        "/Users/sainathlatkar/Downloads/12.tsx": {
+            "scaleInDock": 1
+        },
+        "/Users/sainathlatkar/Downloads/16.tsx": {
+            "scaleInDock": 1
+        },
+        "/Users/sainathlatkar/Downloads/17.tsx": {
+            "scaleInDock": 1
+        },
+        "/Users/sainathlatkar/Downloads/18.tsx": {
+            "scaleInDock": 1
+        },
+        "/Users/sainathlatkar/Downloads/Castle_Destroyed.tsx": {
+            "scaleInDock": 1
+        },
+        "/Users/sainathlatkar/Downloads/Castle_Red.tsx": {
+            "scaleInDock": 1
+        },
+        "/Users/sainathlatkar/Downloads/HappySheep_Idle.tsx": {
+            "scaleInDock": 1
+        },
+        "/Users/sainathlatkar/Downloads/Level-01.tmx": {
+            "scale": 0.509326171875,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 511.46007094238337,
+                "y": 383.84047550570415
+            }
+        },
+        "/Users/sainathlatkar/Downloads/Terrain.tsx": {
+            "scaleInDock": 1
+        },
+        "/Users/sainathlatkar/Downloads/Tower_Blue.tsx": {
+            "scaleInDock": 1
+        },
+        "/Users/sainathlatkar/Downloads/Tree.tsx": {
+            "scaleInDock": 1
+        },
         "01.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
@@ -174,8 +221,8 @@
             "scale": 0.5497,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 601.2370383845735,
-                "y": 584.8644715299254
+                "x": 526.6509004911771,
+                "y": 523.0125523012553
             }
         },
         "Level-02.tmx": {
@@ -328,8 +375,8 @@
             "scale": 0.533447265625,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 541.7592677345538,
-                "y": 516.4521739130435
+                "x": 512.7029748283754,
+                "y": 372.1080091533181
             }
         },
         "UI/All-levels-map.tmx": {
@@ -527,24 +574,24 @@
             "scale": 0.92958984375,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 512.053787162517,
-                "y": 383.5024687467171
+                "x": 511.51591553734636,
+                "y": 383.50246874671706
             }
         },
         "level-new-selection.tmx": {
             "scale": 0.92958984375,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 512.053787162517,
-                "y": 383.5024687467171
+                "x": 511.51591553734636,
+                "y": 383.50246874671706
             }
         },
         "level-selection-final.tmx": {
             "scale": 0.75,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 1953.3333333333333,
-                "y": 202.66666666666669
+                "x": 1954,
+                "y": 201.99999999999994
             }
         },
         "spritesheet.tsx": {
@@ -580,6 +627,8 @@
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "Level-01.tmx",
+        "/Users/sainathlatkar/Downloads/Level-01.tmx",
         "UI-TEST-1.tmx",
         "level-new-selection.tmx",
         "level-new-selection part 2.tmx",
@@ -589,9 +638,7 @@
         "Torch_Red.tsx",
         "Pawn_Blue.tsx",
         "Archer_Red.tsx",
-        "Castle_Red.tsx",
-        "UI/Ribbon_Red_3Slides.tsx",
-        "level-selection-final.tmx"
+        "Castle_Red.tsx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",

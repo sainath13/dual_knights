@@ -13,6 +13,8 @@ import 'package:dual_knights/dual_knights.dart';
 import 'package:flame/components.dart';
 import 'package:flame_tiled/flame_tiled.dart';
 
+import '../services/map_loader.dart';
+
 
 class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollisionDetection{
   final String currentLevelIndex;
@@ -23,8 +25,15 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
   
   @override
   FutureOr<void> onLoad() async{
-    level = await TiledComponent.load('Level-$currentLevelIndex.tmx', Vector2(64, 64));
+    // level = await TiledComponent.load('Level-$currentLevelIndex.tmx', Vector2(64, 64));
     // level.debugMode = true;
+    final mapLoader = MapLoader();
+      final level = await mapLoader.loadMapFromUrl(
+        'https://res.cloudinary.com/parc-india/raw/upload/v1735490786/ij4vpeif8ap3qrcxlzyo.tmx',
+        Vector2(64, 64),
+      );
+      // Add the level to your game
+      // add(level);
     add(level);
     List<CollisionBlock> collisionBlocks = [];
     final checkpointLayer = level.tileMap.getLayer<ObjectGroup>('Checkpoints');

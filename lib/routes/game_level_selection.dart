@@ -1,5 +1,6 @@
 import 'package:flame/components.dart';
 import 'package:flame_tiled/flame_tiled.dart';
+import 'dart:developer' as developer;
 
 class GameLevelSelection extends Component {
 
@@ -23,6 +24,7 @@ class GameLevelSelection extends Component {
   }
 
 Future<void> loadGameLevelSelection() async {
+    // developer.log("Loading a level");
     gameLevelSelection = await TiledComponent.load('Background-test-23.tmx', Vector2(64, 64));
 
     add(gameLevelSelection);

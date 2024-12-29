@@ -18,6 +18,8 @@ import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flame_audio/flame_audio.dart';
 
+import 'dart:developer' as developer;
+
 import 'package:flutter/widgets.dart' hide Route,OverlayRoute;
 
 class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetector{
@@ -128,6 +130,7 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
   }
 
   void _startLevel(int levelIndex) {
+    developer.log("Loading a level");
     _router.pop();    
     _router.pushReplacement(
       Route(
