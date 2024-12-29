@@ -22,7 +22,7 @@ import 'package:flame_audio/flame_audio.dart';
 
 import 'package:flutter/widgets.dart' hide Route,OverlayRoute;
 
-class DualKnights extends FlameGame with HasKeyboardHandlerComponents{
+class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetector{
 
   static const isMobile = bool.fromEnvironment('MOBILE_BUILD');
   final musicValueNotifier = ValueNotifier(true);
@@ -92,7 +92,7 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents{
   };
 
   late final _router = RouterComponent(
-    initialRoute: MainMenu.id,
+    initialRoute: GameMainMenu.id,
     routes: _routes,
     routeFactories: _routeFactories,
   );

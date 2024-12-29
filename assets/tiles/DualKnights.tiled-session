@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "Game-Welcome-Page.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -68,6 +68,22 @@
                 "y": 383.9622641509433
             }
         },
+        "Background-test-23.tmx": {
+            "scale": 0.75517578125,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 511.80137074873915,
+                "y": 375.409284882969
+            }
+        },
+        "Background-test-bases-without-broder.tmx": {
+            "scale": 0.75517578125,
+            "selectedLayer": 5,
+            "viewCenter": {
+                "x": 511.80137074873915,
+                "y": 383.3544549334024
+            }
+        },
         "Barrel_Red.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
@@ -98,6 +114,14 @@
         "EnemySingle.tsx": {
             "scaleInDock": 0.7446,
             "scaleInEditor": 1
+        },
+        "Game-Welcome-Page.tmx": {
+            "scale": 0.533447265625,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 512.7029748283753,
+                "y": 383.3556064073226
+            }
         },
         "HappySheep_All.tsx": {
             "scaleInDock": 1,
@@ -192,6 +216,14 @@
                 "y": 382.0754716981131
             }
         },
+        "New-Test-Menu.tmx": {
+            "scale": 0.533447265625,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 507.07917620137306,
+                "y": 385.23020594965675
+            }
+        },
         "Rocks_04.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
@@ -283,10 +315,17 @@
     "map.tileWidth": 64,
     "map.width": 16,
     "openFiles": [
+        "Background-test-23.tmx",
+        "Background-test-bases-without-broder.tmx",
+        "Game-Welcome-Page.tmx"
     ],
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "New-Test-Menu.tmx",
+        "Background-test-23.tmx",
+        "Background-test-bases-without-broder.tmx",
+        "Game-Welcome-Page.tmx",
         "Background-test-02.tmx",
         "Background-test-1.tmx",
         "Level-for-Manish-2.tmx",
@@ -294,11 +333,7 @@
         "Tree.tsx",
         "Level-for-Sarvesh.tmx",
         "Level-01.tmx",
-        "Level-02.tmx",
-        "Sample-15X12.tmx",
-        "Sample-Level.tmx",
-        "Archer_Purlple.tsx",
-        "Arrow.tsx"
+        "Level-02.tmx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
