@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "Game-Welcome-Page.tmx",
+    "activeFile": "UI-TEST-1.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -69,19 +69,19 @@
             }
         },
         "Background-test-23.tmx": {
-            "scale": 0.75517578125,
+            "scale": 0.75,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 511.80137074873915,
-                "y": 375.409284882969
+                "x": 512.6666666666667,
+                "y": 383.33333333333337
             }
         },
         "Background-test-bases-without-broder.tmx": {
             "scale": 0.75517578125,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 511.80137074873915,
-                "y": 383.3544549334024
+                "x": 469.42713047976207,
+                "y": 379.38186990818565
             }
         },
         "Barrel_Red.tsx": {
@@ -280,6 +280,14 @@
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
+        "UI-TEST-1.tmx": {
+            "scale": 0.533447265625,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 488.33318077803204,
+                "y": 402.10160183066364
+            }
+        },
         "Warrior_Blue.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
@@ -315,25 +323,23 @@
     "map.tileWidth": 64,
     "map.width": 16,
     "openFiles": [
-        "Background-test-23.tmx",
-        "Background-test-bases-without-broder.tmx",
-        "Game-Welcome-Page.tmx"
+        "UI-TEST-1.tmx"
     ],
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
-        "New-Test-Menu.tmx",
+        "UI-TEST-1.tmx",
         "Background-test-23.tmx",
         "Background-test-bases-without-broder.tmx",
         "Game-Welcome-Page.tmx",
+        "New-Test-Menu.tmx",
         "Background-test-02.tmx",
         "Background-test-1.tmx",
         "Level-for-Manish-2.tmx",
         "Level-for-Manish.tmx",
         "Tree.tsx",
         "Level-for-Sarvesh.tmx",
-        "Level-01.tmx",
-        "Level-02.tmx"
+        "Level-01.tmx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
