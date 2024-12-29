@@ -221,17 +221,19 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
 
     if (isMoving) return;
 
-    if(ancestor.input.isLeftPressed){
-      startGridMove(Vector2(1, 0));
+    bool shouldInvert = ancestor.input.isInversed;
+
+    if (ancestor.input.isLeftPressed) {
+      startGridMove(Vector2(shouldInvert ? -1 : 1, 0));
     }
-    if(ancestor.input.isRightPressed){
-      startGridMove(Vector2(-1, 0));
+    if (ancestor.input.isRightPressed) {
+      startGridMove(Vector2(shouldInvert ? 1 : -1, 0));
     }
-    if(ancestor.input.isUpPressed){
-      startGridMove(Vector2(0,  1));
+    if (ancestor.input.isUpPressed) {
+      startGridMove(Vector2(0, shouldInvert ? -1 : 1));
     }
-    if(ancestor.input.isDownPressed){
-      startGridMove(Vector2(0, -1));
+    if (ancestor.input.isDownPressed) {
+      startGridMove(Vector2(0, shouldInvert ? 1 : -1));
     }
   }
 }

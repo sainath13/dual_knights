@@ -9,11 +9,9 @@ class Input extends Component with KeyboardHandler, HasGameReference {
   Input({Map<LogicalKeyboardKey, VoidCallback>? keyCallbacks})
       : _keyCallbacks = keyCallbacks ?? <LogicalKeyboardKey, VoidCallback>{};
 
-  bool _leftPressed = false;
-  bool _rightPressed = false;
+  
+  bool _isInversed = false;
 
-  var _leftInput = 0.0;
-  var _rightInput = 0.0;
 
   final maxHAxis = 1.5;
   final sensitivity = 2.0;
@@ -25,24 +23,6 @@ class Input extends Component with KeyboardHandler, HasGameReference {
 
   final Set<LogicalKeyboardKey> pressedKeys = {};
 
-  @override
-  void update(double dt) {
-    if (!DualKnights.isMobile) {
-      _leftInput = lerpDouble(
-        _leftInput,
-        (_leftPressed && active) ? maxHAxis : 0,
-        sensitivity * dt,
-      )!;
-
-      _rightInput = lerpDouble(
-        _rightInput,
-        (_rightPressed && active) ? maxHAxis : 0,
-        sensitivity * dt,
-      )!;
-
-      hAxis = _rightInput - _leftInput;
-    }
-  }
 
 
 @override
@@ -82,5 +62,12 @@ bool get isUpPressed => pressedKeys.contains(LogicalKeyboardKey.arrowUp) || pres
 bool get isDownPressed => pressedKeys.contains(LogicalKeyboardKey.arrowDown) || pressedKeys.contains(LogicalKeyboardKey.keyS);
 bool get isLeftPressed => pressedKeys.contains(LogicalKeyboardKey.arrowLeft) || pressedKeys.contains(LogicalKeyboardKey.keyA);
 bool get isRightPressed => pressedKeys.contains(LogicalKeyboardKey.arrowRight) ||  pressedKeys.contains(LogicalKeyboardKey.keyD);
+
+bool get isInversed => _isInversed;
+
+
+  void setInversed(bool bool) {
+      _isInversed = bool;
+  }
 
 }

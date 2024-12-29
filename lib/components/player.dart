@@ -227,17 +227,23 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
 
     if (isMoving) return;
 
-    if(ancestor.input.isLeftPressed){
-      startGridMove(Vector2(-1, 0));
+    bool shouldInvert = ancestor.input.isInversed; // Set this flag based on your condition
+
+    Vector2 applyInversion(Vector2 vector) {
+      return shouldInvert ? vector * -1 : vector;
     }
-    if(ancestor.input.isRightPressed){
-      startGridMove(Vector2(1, 0));
+
+    if (ancestor.input.isLeftPressed) {
+      startGridMove(applyInversion(Vector2(-1, 0)));
     }
-    if(ancestor.input.isUpPressed){
-      startGridMove(Vector2(0, -1));
+    if (ancestor.input.isRightPressed) {
+      startGridMove(applyInversion(Vector2(1, 0)));
     }
-    if(ancestor.input.isDownPressed){
-      startGridMove(Vector2(0, 1));
+    if (ancestor.input.isUpPressed) {
+      startGridMove(applyInversion(Vector2(0, -1)));
+    }
+    if (ancestor.input.isDownPressed) {
+      startGridMove(applyInversion(Vector2(0, 1)));
     }
   }
 }
