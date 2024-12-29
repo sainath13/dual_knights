@@ -120,11 +120,19 @@
             "scaleInEditor": 1
         },
         "Game-Open-UI.tmx": {
-            "scale": 0.49578124999999995,
-            "selectedLayer": 1,
+            "scale": 0.33,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 960.1008509297196,
-                "y": 671.6671919319257
+                "x": 824.2424242424242,
+                "y": 866.6666666666666
+            }
+        },
+        "Game-UI-With-Settings.tmx": {
+            "scale": 0.24789062499999998,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 1298.9599747872676,
+                "y": 673.6842105263158
             }
         },
         "Game-Welcome-Page.tmx": {
@@ -316,6 +324,12 @@
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
+        "UI/Button_Blue_9Slides.tsx": {
+            "scaleInEditor": 1
+        },
+        "UI/Button_Red.tsx": {
+            "scaleInEditor": 1
+        },
         "UI/Carved_3Slides.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
@@ -328,6 +342,14 @@
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
+        "UI/level-selection.tmx": {
+            "scale": 0.24789062499999998,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 1920.2017018594393,
+                "y": 673.6842105263158
+            }
+        },
         "Warrior_Blue.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
@@ -338,6 +360,9 @@
         },
         "Water.tsx": {
             "scaleInDock": 1
+        },
+        "base.tsx": {
+            "scaleInEditor": 1
         },
         "bgspritesheet.tsx": {
             "scaleInDock": 1
@@ -356,18 +381,21 @@
         }
     },
     "last.externalTilesetPath": "D:/mulag/dual_knights/assets/tiles",
-    "last.imagePath": "D:/mulag/dual_knights/assets/images/UI/Icons",
+    "last.imagePath": "D:/mulag/dual_knights/assets/images/Resources/Resources",
     "map.height": 21,
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 64,
     "map.tileWidth": 64,
-    "map.width": 30,
+    "map.width": 60,
     "openFiles": [
         "UI-TEST-1.tmx"
     ],
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "UI/Button_Red.tsx",
+        "UI/Button_Blue_9Slides.tsx",
+        "base.tsx",
         "UI/Ribbon_Yellow_3Slides_64.tsx",
         "UI/Carved_3Slides.tsx",
         "UI/Carved_9Slides.tsx",
@@ -376,10 +404,7 @@
         "UI/Banner_Connection_Right.tsx",
         "Banner_Connection_Up.tsx",
         "UI/Banner_Connection_Horizontal.tsx",
-        "UI-TEST-1.tmx",
-        "Background-test-23.tmx",
-        "Background-test-bases-without-broder.tmx",
-        "Game-Welcome-Page.tmx"
+        "UI-TEST-1.tmx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
