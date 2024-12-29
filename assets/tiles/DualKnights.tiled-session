@@ -84,6 +84,10 @@
                 "y": 379.38186990818565
             }
         },
+        "Banner_Connection_Up.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
         "Barrel_Red.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
@@ -284,9 +288,37 @@
             "scale": 0.533447265625,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 488.33318077803204,
-                "y": 402.10160183066364
+                "x": 487.3958810068651,
+                "y": 401.16430205949666
             }
+        },
+        "UI/Banner_Connection_Down.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "UI/Banner_Connection_Horizontal.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "UI/Banner_Connection_Left.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "UI/Banner_Connection_Right.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "UI/Carved_3Slides.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "UI/Carved_9Slides.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "UI/Ribbon_Yellow_3Slides_64.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         },
         "Warrior_Blue.tsx": {
             "scaleInDock": 1,
@@ -315,8 +347,8 @@
             "scaleInEditor": 1
         }
     },
-    "last.externalTilesetPath": "/Users/sainathlatkar/personal/flame/dual_knights/assets/tiles",
-    "last.imagePath": "/Users/sainathlatkar/personal/flame/dual_knights/assets/images/Factions/Knights/Troops/Archer/Purple",
+    "last.externalTilesetPath": "D:/mulag/dual_knights/assets/tiles",
+    "last.imagePath": "D:/mulag/dual_knights/assets/images/UI/Buttons",
     "map.height": 12,
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 64,
@@ -328,18 +360,18 @@
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "UI/Ribbon_Yellow_3Slides_64.tsx",
+        "UI/Carved_3Slides.tsx",
+        "UI/Carved_9Slides.tsx",
+        "UI/Banner_Connection_Down.tsx",
+        "UI/Banner_Connection_Left.tsx",
+        "UI/Banner_Connection_Right.tsx",
+        "Banner_Connection_Up.tsx",
+        "UI/Banner_Connection_Horizontal.tsx",
         "UI-TEST-1.tmx",
         "Background-test-23.tmx",
         "Background-test-bases-without-broder.tmx",
-        "Game-Welcome-Page.tmx",
-        "New-Test-Menu.tmx",
-        "Background-test-02.tmx",
-        "Background-test-1.tmx",
-        "Level-for-Manish-2.tmx",
-        "Level-for-Manish.tmx",
-        "Tree.tsx",
-        "Level-for-Sarvesh.tmx",
-        "Level-01.tmx"
+        "Game-Welcome-Page.tmx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
