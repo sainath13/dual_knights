@@ -34,6 +34,7 @@ class Gameplay extends Component with HasGameReference<DualKnights> {
     required this.onPausePressed,
     required this.onLevelCompleted,
     required this.onGameOver,
+    required this.onRestartLevel,
     required this.player,
     required this.antiPlayer
   });
@@ -49,6 +50,7 @@ class Gameplay extends Component with HasGameReference<DualKnights> {
   final VoidCallback onPausePressed;
   final ValueChanged<int> onLevelCompleted;
   final VoidCallback onGameOver;
+  final VoidCallback onRestartLevel;
 
   late final input = Input(
     keyCallbacks: {
@@ -75,6 +77,8 @@ class Gameplay extends Component with HasGameReference<DualKnights> {
 
   AudioPlayer? _bgmPlayer;
 
+  var _musicListener;
+
 
 
 
@@ -84,7 +88,22 @@ class Gameplay extends Component with HasGameReference<DualKnights> {
   Future<void> onLoad() async {
     if (game.musicValueNotifier.value) {
       _bgmPlayer = await FlameAudio.loopLongAudio(DualKnights.bgm, volume: 0);
+    }else{
+      _bgmPlayer = await FlameAudio.loopLongAudio(DualKnights.bgm, volume: 0);
+      _bgmPlayer?.pause();
     }
+
+    _musicListener = () {
+      if (game.musicValueNotifier.value) {
+      _bgmPlayer?.resume();
+      } else {
+      _bgmPlayer?.pause();
+      }
+    };
+
+
+    
+    game.musicValueNotifier.addListener(_musicListener);
 
     Level level = Level(currentLevelIndex: currentLevel.toString().padLeft(2, '0'), player: player, antiPlayer: antiPlayer);
     
@@ -102,6 +121,7 @@ class Gameplay extends Component with HasGameReference<DualKnights> {
     _hud = Hud(
       input: DualKnights.isMobile ? input : null,
       onPausePressed:onPausePressed,
+      onRestartLevel:onRestartLevel
     );
 
     await _camera.viewport.addAll([fader,_hud]);
@@ -131,6 +151,7 @@ class Gameplay extends Component with HasGameReference<DualKnights> {
   @override
   void onRemove() {
     _bgmPlayer?.dispose();
+    game.musicValueNotifier.removeListener(_musicListener);
     super.onRemove();
   }
 

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class PauseMenu extends StatelessWidget {
@@ -6,6 +7,10 @@ class PauseMenu extends StatelessWidget {
     this.onResumePressed,
     this.onRestartPressed,
     this.onExitPressed,
+    required this.musicValueListenable,
+    required this.sfxValueListenable,
+    this.onMusicValueChanged,
+    this.onSfxValueChanged,
   });
 
   static const id = 'PauseMenu';
@@ -13,6 +18,12 @@ class PauseMenu extends StatelessWidget {
   final VoidCallback? onResumePressed;
   final VoidCallback? onRestartPressed;
   final VoidCallback? onExitPressed;
+
+   final ValueListenable<bool> musicValueListenable;
+  final ValueListenable<bool> sfxValueListenable;
+
+  final ValueChanged<bool>? onMusicValueChanged;
+  final ValueChanged<bool>? onSfxValueChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +51,36 @@ class PauseMenu extends StatelessWidget {
               child: OutlinedButton(
                 onPressed: onRestartPressed,
                 child: const Text('Restart',style: TextStyle(fontFamily: "DualKnights")),
+              ),
+            ),
+            const SizedBox(height: 5),
+            SizedBox(
+              width: 150,
+              child: ValueListenableBuilder<bool>(
+                valueListenable: musicValueListenable,
+                builder: (BuildContext context, bool value, Widget? child) {
+                  return SwitchListTile(
+                    value: value,
+                    onChanged: onMusicValueChanged,
+                    title: child,
+                  );
+                },
+                child: const Text('Music',style: TextStyle(fontFamily: "DualKnights")),
+              ),
+            ),
+            const SizedBox(height: 5),
+            SizedBox(
+              width: 150,
+              child: ValueListenableBuilder<bool>(
+                valueListenable: sfxValueListenable,
+                builder: (BuildContext context, bool value, Widget? child) {
+                  return SwitchListTile(
+                    value: value,
+                    onChanged: onSfxValueChanged,
+                    title: child,
+                  );
+                },
+                child: const Text('Sfx',style: TextStyle(fontFamily: "DualKnights")),
               ),
             ),
             const SizedBox(height: 5),

@@ -41,7 +41,7 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
     LevelSelection.id: OverlayRoute(
       (context, game) => LevelSelection(
         onLevelSelected: _startLevel,
-        onBackPressed: ()=> _popRoute,
+        onBackPressed:  _popRoute,
       ),
     ),
      Settings.id: OverlayRoute(
@@ -58,6 +58,10 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
         onResumePressed: _resumeGame,
         onRestartPressed: _restartLevel,
         onExitPressed: _exitToMainMenu,
+        musicValueListenable: musicValueNotifier,
+        sfxValueListenable: sfxValueNotifier,
+        onMusicValueChanged: (value) => musicValueNotifier.value = value,
+        onSfxValueChanged: (value) => sfxValueNotifier.value = value,
 
       ),
     ),
@@ -92,7 +96,7 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
   };
 
   late final _router = RouterComponent(
-    initialRoute: GameMainMenu.id,
+    initialRoute: MainMenu.id,
     routes: _routes,
     routeFactories: _routeFactories,
   );
@@ -137,6 +141,7 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
           onPausePressed: _pauseGame,
           onLevelCompleted: _showLevelCompleteMenu,
           onGameOver: _showRetryMenu,
+          onRestartLevel:  _restartLevel,
           key: ComponentKey.named(Gameplay.id),
           player:player,
           antiPlayer: antiPlayer
