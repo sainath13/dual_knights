@@ -328,8 +328,8 @@
             "scale": 0.533447265625,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 487.395881006865,
-                "y": 401.16430205949666
+                "x": 541.7592677345538,
+                "y": 516.4521739130435
             }
         },
         "UI/All-levels-map.tmx": {
@@ -527,16 +527,16 @@
             "scale": 0.92958984375,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 540.0231116713941,
-                "y": 384.04034037188785
+                "x": 512.053787162517,
+                "y": 383.5024687467171
             }
         },
         "level-new-selection.tmx": {
             "scale": 0.92958984375,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 512.0537871625171,
-                "y": 384.04034037188785
+                "x": 512.053787162517,
+                "y": 383.5024687467171
             }
         },
         "level-selection-final.tmx": {
@@ -557,7 +557,7 @@
         }
     },
     "last.externalTilesetPath": "D:/mulag/dual_knights/assets/tiles",
-    "last.imagePath": "D:/mulag/dual_knights/assets/images/Factions/Goblins/Troops/Torch/Red",
+    "last.imagePath": "D:/mulag/dual_knights/assets/images/UI/Banners",
     "map.height": 12,
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 64,
