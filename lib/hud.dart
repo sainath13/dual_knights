@@ -6,6 +6,7 @@ import 'package:flame/camera.dart';
 import 'package:flame/components.dart';
 import 'package:flame/input.dart';
 import 'package:flutter/material.dart' hide Viewport;
+import 'package:flutter/services.dart';
 
 class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference {
   Hud({
@@ -14,35 +15,39 @@ class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference {
     required this.onRestartLevel,
   });
 
-  late final JoystickComponent? _joystick;
+  late final JoystickComponent _joystick;
   final Input? input;
   final VoidCallback? onPausePressed;
   final VoidCallback onRestartLevel;
+  LogicalKeyboardKey? lastDirection;
 
   @override
   Future<void> onLoad() async {
 
-    // if (DualKnights.isMobile) {
-    //   _joystick = JoystickComponent(
-    //     anchor: Anchor.center,
-    //     position: parent.virtualSize * 0.5,
-    //     knob: CircleComponent(
-    //       radius: 10,
-    //       paint: Paint()..color = Colors.green.withOpacity(0.08),
-    //     ),
-    //     background: CircleComponent(
-    //       radius: 20,
-    //       paint: Paint()
-    //         ..color = Colors.black.withOpacity(0.05)
-    //         ..style = PaintingStyle.stroke
-    //         ..strokeWidth = 4,
-    //     ),
-    //   );
 
-    //   _joystick?.position.y =
-    //       parent.virtualSize.y - _joystick!.knobRadius * 1.5;
-    //   await _joystick?.addToParent(this);
-    // }
+      _joystick = JoystickComponent(
+        anchor: Anchor.center,
+  
+        knob: CircleComponent(
+          radius: 50,
+          paint: Paint()..color = Colors.grey
+        ),
+        background: CircleComponent(
+          radius: 60,
+          paint: Paint()
+            ..color = Colors.black
+            ..style = PaintingStyle.stroke
+            ..strokeWidth = 4,
+        ),
+      );
+
+      _joystick.position.y =
+          parent.virtualSize.y - _joystick.knobRadius * 2.5;
+      _joystick.position.x =
+          _joystick.knobRadius * 2.5;
+
+      await _joystick.addToParent(this);
+  
 
     final pauseButton = HudButtonComponent(
       button: SpriteComponent.fromImage(
@@ -50,7 +55,7 @@ class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference {
         size: Vector2.all(30),
       ),
       anchor: Anchor.bottomRight,
-      position: Vector2(parent.virtualSize.x - 100, 50),
+      position: Vector2(parent.virtualSize.x - 100, 100),
       onPressed: onPausePressed,
     );
     await add(pauseButton);
@@ -62,46 +67,47 @@ class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference {
         size: Vector2.all(30),
       ),
       anchor: Anchor.bottomLeft,
-      position: Vector2(100, 50),
-      onPressed: _confirmRestart,
+      position: Vector2(100, 100),
+      onPressed: onRestartLevel,
     );
     await add(restartButton);
   }
 
-  void _confirmRestart() {
-    // Show a confirmation dialog before restarting
-    showDialog(
-      context: game.buildContext!,
-      builder: (context) {
-        return AlertDialog(
-          title: const Text("Restart Level"),
-          content: const Text("Are you sure you want to restart the level?"),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(), // Cancel
-              child: const Text("Cancel"),
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop(); // Close dialog
-                onRestartLevel(); // Call restart level method
-              },
-              child: const Text("Restart"),
-            ),
-          ],
-        );
-      },
-    );
-  }
 
   @override
   void update(double dt) {
-    if (input?.active ?? false) {
-      input?.hAxis = lerpDouble(
-        input!.hAxis,
-        _joystick!.isDragged ? _joystick!.relativeDelta.x * input!.maxHAxis : 0,
-        input!.sensitivity * dt,
-      )!;
+    super.update(dt);
+
+    // Detect joystick direction
+    if (_joystick.relativeDelta != Vector2.zero()) {
+      LogicalKeyboardKey? currentDirection;
+
+      if (_joystick.relativeDelta.x > 0.5) {
+        currentDirection = LogicalKeyboardKey.arrowRight;
+      } else if (_joystick.relativeDelta.x < -0.5) {
+        currentDirection = LogicalKeyboardKey.arrowLeft;
+      } else if (_joystick.relativeDelta.y > 0.5) {
+        currentDirection = LogicalKeyboardKey.arrowDown;
+      } else if (_joystick.relativeDelta.y < -0.5) {
+        currentDirection = LogicalKeyboardKey.arrowUp;
+      }
+
+      // Log only if the direction has changed
+      if (currentDirection != null && currentDirection != lastDirection) {
+        _simulateKeyEvent(currentDirection);
+        lastDirection = currentDirection; // Update last direction
+      }
+    } else {
+      // Reset last direction when _joystick returns to center
+      lastDirection = null;
     }
+  }
+
+  
+
+  void _simulateKeyEvent(LogicalKeyboardKey key) {
+    // Use this to trigger in-game actions as if a key was pressed
+    debugPrint('Simulated key press: ${key.keyLabel}');
+    // Perform your game logic here based on the key
   }
 }

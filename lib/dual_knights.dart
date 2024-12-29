@@ -141,7 +141,7 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
           onPausePressed: _pauseGame,
           onLevelCompleted: _showLevelCompleteMenu,
           onGameOver: _showRetryMenu,
-          onRestartLevel:  _restartLevel,
+          onRestartLevel:  _restartWithoutPopup,
           key: ComponentKey.named(Gameplay.id),
           player:player,
           antiPlayer: antiPlayer
@@ -163,6 +163,16 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
     final gameplay = findByKeyName<Gameplay>(Gameplay.id);
 
     if (gameplay != null) {
+      _startLevel(gameplay.currentLevel);
+      resumeEngine();
+    }
+  }
+
+  void _restartWithoutPopup(){
+    final gameplay = findByKeyName<Gameplay>(Gameplay.id);
+
+    if (gameplay != null) {
+      _router.pushOverlay(MainMenu.id);
       _startLevel(gameplay.currentLevel);
       resumeEngine();
     }
