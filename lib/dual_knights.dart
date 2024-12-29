@@ -3,8 +3,6 @@
 import 'dart:async';
 import 'dart:ui';
 
-import 'package:dual_knights/components/anti_player.dart';
-import 'package:dual_knights/components/player.dart';
 import 'package:dual_knights/routes/game_level_selection.dart';
 import 'package:dual_knights/routes/game_main_menu.dart';
 import 'package:dual_knights/routes/game_settings.dart';
@@ -105,9 +103,6 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
   
   @override
   Color backgroundColor()  => const Color(0xFF47ABA9);
-  final player = Player();//..debugMode = true;
-  final antiPlayer = AntiPlayer();
-
 
   @override
   FutureOr<void> onLoad() async{
@@ -142,9 +137,7 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
           onLevelCompleted: _showLevelCompleteMenu,
           onGameOver: _showRetryMenu,
           onRestartLevel:  _restartWithoutPopup,
-          key: ComponentKey.named(Gameplay.id),
-          player:player,
-          antiPlayer: antiPlayer
+          key: ComponentKey.named(Gameplay.id)
         ),
       ),
       name: Gameplay.id,

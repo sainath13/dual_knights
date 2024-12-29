@@ -23,6 +23,8 @@ class Input extends Component with KeyboardHandler, HasGameReference {
 
   final Map<LogicalKeyboardKey, VoidCallback> _keyCallbacks;
 
+  final Set<LogicalKeyboardKey> pressedKeys = {};
+
   @override
   void update(double dt) {
     if (!DualKnights.isMobile) {
@@ -42,22 +44,43 @@ class Input extends Component with KeyboardHandler, HasGameReference {
     }
   }
 
-  @override
-  bool onKeyEvent(KeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
-    if (!DualKnights.isMobile && game.paused == false) {
-      _leftPressed = keysPressed.contains(LogicalKeyboardKey.keyA) ||
-          keysPressed.contains(LogicalKeyboardKey.arrowLeft);
-      _rightPressed = keysPressed.contains(LogicalKeyboardKey.keyD) ||
-          keysPressed.contains(LogicalKeyboardKey.arrowRight);
 
-      if (active && event is KeyDownEvent) {
-        for (final entry in _keyCallbacks.entries) {
-          if (entry.key == event.logicalKey) {
-            entry.value.call();
-          }
+@override
+bool onKeyEvent(KeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
+  
+  if (game.paused == false) {
+    if (event is KeyDownEvent) {
+      if(keysPressed.contains(LogicalKeyboardKey.arrowLeft) || keysPressed.contains(LogicalKeyboardKey.keyA)) {
+        pressedKeys.add(event.logicalKey);
+      }
+      if(keysPressed.contains(LogicalKeyboardKey.arrowRight) || keysPressed.contains(LogicalKeyboardKey.keyD)) {
+        pressedKeys.add(event.logicalKey);
+      } 
+      if(keysPressed.contains(LogicalKeyboardKey.arrowUp) || keysPressed.contains(LogicalKeyboardKey.keyW)) {
+        pressedKeys.add(event.logicalKey);
+      }
+      if(keysPressed.contains(LogicalKeyboardKey.arrowDown) || keysPressed.contains(LogicalKeyboardKey.keyS)) {
+        pressedKeys.add(event.logicalKey);
+      }    
+    } else if (event is KeyUpEvent) {
+         pressedKeys.remove(event.logicalKey);
+    }
+
+    if (active && event is KeyDownEvent) {
+      for (final entry in _keyCallbacks.entries) {
+        if (entry.key == event.logicalKey) {
+          entry.value.call();
         }
       }
     }
-    return super.onKeyEvent(event, keysPressed);
+
   }
+  return super.onKeyEvent(event, keysPressed);
+}
+
+bool get isUpPressed => pressedKeys.contains(LogicalKeyboardKey.arrowUp) || pressedKeys.contains(LogicalKeyboardKey.keyW);
+bool get isDownPressed => pressedKeys.contains(LogicalKeyboardKey.arrowDown) || pressedKeys.contains(LogicalKeyboardKey.keyS);
+bool get isLeftPressed => pressedKeys.contains(LogicalKeyboardKey.arrowLeft) || pressedKeys.contains(LogicalKeyboardKey.keyA);
+bool get isRightPressed => pressedKeys.contains(LogicalKeyboardKey.arrowRight) ||  pressedKeys.contains(LogicalKeyboardKey.keyD);
+
 }

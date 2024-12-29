@@ -1,12 +1,13 @@
-import 'package:dual_knights/components/anti_player_checkpoint.dart';
+
 import 'package:dual_knights/components/collision_block.dart';
 import 'package:dual_knights/components/player.dart';
+import 'package:dual_knights/routes/gameplay.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/services.dart';
 import 'dart:developer';
 
-class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, CollisionCallbacks {
+class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, CollisionCallbacks,HasAncestor<Gameplay> {
   static const double frameWidth = 192;
   static const double frameHeight = 192;
   static const double gridSize = 64.0;
@@ -31,7 +32,6 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
   final double speed = 150.0;
   Vector2 direction = Vector2.zero();
 
-  final Set<LogicalKeyboardKey> _pressedKeys = {};
 
   AntiPlayer() : super(size: Vector2(frameWidth, frameHeight), priority: 5) {
     targetPosition = position.clone();
@@ -139,28 +139,7 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
     animation = idleAnimation;
   }
   
-  @override
-  bool onKeyEvent(KeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
-    // if(true) return true; //TODO : Remove this line
-    if (isMoving) return true;
-    _pressedKeys.clear();
-    _pressedKeys.addAll(keysPressed);
-    if (keysPressed.contains(LogicalKeyboardKey.keyW) || 
-        keysPressed.contains(LogicalKeyboardKey.arrowUp)) {
-      startGridMove(Vector2(0, 1));  // Player goes up, AntiPlayer goes down
-    } else if (keysPressed.contains(LogicalKeyboardKey.keyS) || 
-        keysPressed.contains(LogicalKeyboardKey.arrowDown)) {
-      startGridMove(Vector2(0, -1));  // Player goes down, AntiPlayer goes up
-    } else if (keysPressed.contains(LogicalKeyboardKey.keyA) || 
-        keysPressed.contains(LogicalKeyboardKey.arrowLeft)) {
-      startGridMove(Vector2(1, 0));  // Player goes left, AntiPlayer goes right
-    } else if (keysPressed.contains(LogicalKeyboardKey.keyD) || 
-        keysPressed.contains(LogicalKeyboardKey.arrowRight)) {
-      startGridMove(Vector2(-1, 0));  // Player goes right, AntiPlayer goes left
-    }
-
-    return true;
-  }
+ 
 
 
   void startGridMove(Vector2 dir) {
@@ -238,6 +217,21 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
       } else {
         position += movement;
       }
+    }
+
+    if (isMoving) return;
+
+    if(ancestor.input.isLeftPressed){
+      startGridMove(Vector2(1, 0));
+    }
+    if(ancestor.input.isRightPressed){
+      startGridMove(Vector2(-1, 0));
+    }
+    if(ancestor.input.isUpPressed){
+      startGridMove(Vector2(0,  1));
+    }
+    if(ancestor.input.isDownPressed){
+      startGridMove(Vector2(0, -1));
     }
   }
 }

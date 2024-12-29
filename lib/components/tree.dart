@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:dual_knights/components/anti_player.dart';
 import 'package:dual_knights/components/player.dart';
 import 'package:dual_knights/dual_knights.dart';
+import 'package:dual_knights/routes/gameplay.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 
@@ -25,26 +26,27 @@ enum KnightRangeStatus{
   notNear,
 }
 
-class Tree extends SpriteAnimationComponent with HasGameRef<DualKnights>, CollisionCallbacks {
+class Tree extends SpriteAnimationComponent with HasGameRef<DualKnights>, CollisionCallbacks, HasAncestor<Gameplay> {
   static const double frameWidth = 192;
   static const double frameHeight = 192;
   static const double gridSize = 64.0;  
-  late final Player player;
-  late final AntiPlayer antiPlayer;
+  final Player player;
+  final AntiPlayer antiPlayer;
   late final Map<TreeState, SpriteAnimation> animations;
   TreeState currentState = TreeState.idle;
   Vector2 currentPosition = Vector2.zero();
   
   
-  Tree({required Vector2 position}) : super(size: Vector2(frameWidth, frameHeight), priority: 10) {
+  Tree({required Vector2 position,required this.player, required this.antiPlayer}) : super(size: Vector2(frameWidth, frameHeight), priority: 10) {
     this.position = position;
     currentPosition = position.clone();
   }
 
+
+
   @override
   Future<void> onLoad() async {
-    player = game.player;
-    antiPlayer = game.antiPlayer;
+
     final spriteSheet = await gameRef.images.load('Resources/Trees/Tree.png');
     
     // Load all animations

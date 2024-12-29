@@ -37,23 +37,22 @@ class Barrel extends SpriteAnimationComponent with HasGameRef<DualKnights>, Coll
   static const double frameWidth = 128;
   static const double frameHeight = 128;
   static const double gridSize = 64.0;  
-  late final Player player;
-  late final AntiPlayer antiPlayer;
+  final Player player;
+  final AntiPlayer antiPlayer;
   late final Map<BarrelState, SpriteAnimation> animations;
   BarrelState currentState = BarrelState.silent;
   Vector2 currentPosition = Vector2.zero();
   
   bool isExploding = false;
   bool isAnyoneInWakeRange = false;
-  Barrel({required Vector2 position}) : super(size: Vector2(frameWidth, frameHeight)) {
+  Barrel({required Vector2 position,required this.player, required this.antiPlayer}) : super(size: Vector2(frameWidth, frameHeight)) {
     this.position = position;
     currentPosition = position.clone();
   }
 
   @override
   Future<void> onLoad() async {
-    player = game.player;
-    antiPlayer = game.antiPlayer;
+
     final spriteSheet = await gameRef.images.load('Factions/Goblins/Troops/Barrel/Red/Barrel_Red.png');
     final deathSheet = await gameRef.images.load('Factions/Knights/Troops/Dead/Dead.png');
     final explosionSheet = await gameRef.images.load('Effects/Explosion/Explosions.png');

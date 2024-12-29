@@ -74,7 +74,7 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
             add(player);
             break;  
           case 'Barrel' :
-            final barrel = Barrel(position: Vector2(spawnPoint.x-32, spawnPoint.y-32));//..debugMode = true;
+            final barrel = Barrel(position: Vector2(spawnPoint.x-32, spawnPoint.y-32),player: player,antiPlayer: antiPlayer);//..debugMode = true;
             add(barrel);
             break; 
           case 'MovingBarrel' :
@@ -89,11 +89,11 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
               rightOffset: rightOffset, 
               upOffset: upOffset, 
               downOffset: downOffset ,
-              position: Vector2(spawnPoint.x-32, spawnPoint.y-32));//..debugMode = true;
+              position: Vector2(spawnPoint.x-32, spawnPoint.y-32),player: player,antiPlayer: antiPlayer);//..debugMode = true;
             add(movingBarrel);
             break;   
           case 'Tree' :
-            final tree = Tree(position: Vector2(spawnPoint.x + 32, spawnPoint.y-16));//..debugMode = true;
+            final tree = Tree(position: Vector2(spawnPoint.x + 32, spawnPoint.y-16),player: player,antiPlayer: antiPlayer);//..debugMode = true;
             tree.anchor = Anchor.center;
             add(tree);     
             final block = CollisionBlock(

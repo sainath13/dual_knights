@@ -3,11 +3,12 @@ import 'dart:developer';
 import 'package:dual_knights/components/anti_player.dart';
 import 'package:dual_knights/components/collision_block.dart';
 import 'package:dual_knights/components/player_checkpoint.dart';
+import 'package:dual_knights/routes/gameplay.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/services.dart';
 
-class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, CollisionCallbacks {
+class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, CollisionCallbacks,HasAncestor<Gameplay> {
   static const double frameWidth = 192;
   static const double frameHeight = 192;
   static const double gridSize = 64.0;
@@ -32,8 +33,6 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
   Vector2 direction = Vector2.zero();
   
 
-  // Keep track of pressed keys
-  final Set<LogicalKeyboardKey> _pressedKeys = {};
 
   Player() : super(size: Vector2(frameWidth, frameHeight), priority: 5) {
     targetPosition = position.clone();
@@ -150,32 +149,6 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
     animation = idleAnimation;
   }
 
-  @override
-  bool onKeyEvent(KeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
-    // log("Key press is detected");
-    // if (true) return true; //
-    if (isMoving) return true; // Ignore input if already moving
-
-    _pressedKeys.clear();
-    _pressedKeys.addAll(keysPressed);
-    
-    // Handle only one direction at a time
-    if (keysPressed.contains(LogicalKeyboardKey.keyW) || 
-        keysPressed.contains(LogicalKeyboardKey.arrowUp)) {
-      startGridMove(Vector2(0, -1));
-    } else if (keysPressed.contains(LogicalKeyboardKey.keyS) || 
-        keysPressed.contains(LogicalKeyboardKey.arrowDown)) {
-      startGridMove(Vector2(0, 1));
-    } else if (keysPressed.contains(LogicalKeyboardKey.keyA) || 
-        keysPressed.contains(LogicalKeyboardKey.arrowLeft)) {
-      startGridMove(Vector2(-1, 0));
-    } else if (keysPressed.contains(LogicalKeyboardKey.keyD) || 
-        keysPressed.contains(LogicalKeyboardKey.arrowRight)) {
-      startGridMove(Vector2(1, 0));
-    }
-
-    return true;
-  }
 
   void startGridMove(Vector2 dir) {
     if (!isMoving) {
@@ -251,5 +224,20 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
         position += movement;
       }
     }
+
+    if (isMoving) return;
+
+    if(ancestor.input.isLeftPressed){
+      startGridMove(Vector2(-1, 0));
     }
+    if(ancestor.input.isRightPressed){
+      startGridMove(Vector2(1, 0));
+    }
+    if(ancestor.input.isUpPressed){
+      startGridMove(Vector2(0, -1));
+    }
+    if(ancestor.input.isDownPressed){
+      startGridMove(Vector2(0, 1));
+    }
+  }
 }

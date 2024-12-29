@@ -41,8 +41,8 @@ class MovingBarrel extends SpriteAnimationComponent with HasGameRef<DualKnights>
   static const double frameWidth = 128;
   static const double frameHeight = 128;
   static const double gridSize = 64.0;  
-  late final Player player;
-  late final AntiPlayer antiPlayer;
+  final Player player;
+  final AntiPlayer antiPlayer;
   late final Map<MovingBarrelState, SpriteAnimation> animations;
   MovingBarrelState currentState = MovingBarrelState.silent;
   Vector2 currentPosition = Vector2.zero();
@@ -55,6 +55,7 @@ class MovingBarrel extends SpriteAnimationComponent with HasGameRef<DualKnights>
   bool hasCollided = false;
   bool isAnyoneInWakeRange = false;
   MovingBarrel({required Vector2 position,
+  required this.player, required this.antiPlayer,
   this.isVertical = false,
   this.leftOffset = 0,
     this.rightOffset = 0,
@@ -68,8 +69,6 @@ class MovingBarrel extends SpriteAnimationComponent with HasGameRef<DualKnights>
 
   @override
   Future<void> onLoad() async {
-    player = game.player;
-    antiPlayer = game.antiPlayer;
     final spriteSheet = await gameRef.images.load('Factions/Goblins/Troops/Barrel/Blue/Barrel_Blue.png');
     final deathSheet = await gameRef.images.load('Factions/Knights/Troops/Dead/Dead.png');
     final explosionSheet = await gameRef.images.load('Effects/Explosion/Explosions.png');

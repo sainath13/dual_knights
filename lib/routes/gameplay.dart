@@ -34,10 +34,8 @@ class Gameplay extends Component with HasGameReference<DualKnights> {
     required this.onPausePressed,
     required this.onLevelCompleted,
     required this.onGameOver,
-    required this.onRestartLevel,
-    required this.player,
-    required this.antiPlayer
-  });
+    required this.onRestartLevel
+  }):player = Player(),antiPlayer = AntiPlayer();
 
   static const id = 'Gameplay';
   
@@ -79,13 +77,10 @@ class Gameplay extends Component with HasGameReference<DualKnights> {
 
   var _musicListener;
 
-
-
-
-  
-
   @override
   Future<void> onLoad() async {
+    add(player);
+    add(antiPlayer);
     if (game.musicValueNotifier.value) {
       _bgmPlayer = await FlameAudio.loopLongAudio(DualKnights.bgm, volume: 0);
     }else{

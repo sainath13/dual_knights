@@ -2,13 +2,14 @@ import 'dart:async';
 import 'dart:ui';
 
 import 'package:dual_knights/input.dart';
+import 'package:dual_knights/routes/gameplay.dart';
 import 'package:flame/camera.dart';
 import 'package:flame/components.dart';
 import 'package:flame/input.dart';
 import 'package:flutter/material.dart' hide Viewport;
 import 'package:flutter/services.dart';
 
-class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference {
+class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference,HasAncestor<Gameplay> {
   Hud({
     this.input,
     this.onPausePressed,
@@ -99,6 +100,7 @@ class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference {
       }
     } else {
       // Reset last direction when _joystick returns to center
+      ancestor.input.pressedKeys.clear();
       lastDirection = null;
     }
   }
@@ -106,8 +108,6 @@ class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference {
   
 
   void _simulateKeyEvent(LogicalKeyboardKey key) {
-    // Use this to trigger in-game actions as if a key was pressed
-    debugPrint('Simulated key press: ${key.keyLabel}');
-    // Perform your game logic here based on the key
+      ancestor.input.pressedKeys.add(key);
   }
 }
