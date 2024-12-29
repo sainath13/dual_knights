@@ -119,6 +119,14 @@
             "scaleInDock": 0.7446,
             "scaleInEditor": 1
         },
+        "Game-Open-UI.tmx": {
+            "scale": 0.49578124999999995,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 960.1008509297196,
+                "y": 671.6671919319257
+            }
+        },
         "Game-Welcome-Page.tmx": {
             "scale": 0.533447265625,
             "selectedLayer": 2,
@@ -288,7 +296,7 @@
             "scale": 0.533447265625,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 487.3958810068651,
+                "x": 487.395881006865,
                 "y": 401.16430205949666
             }
         },
@@ -348,12 +356,12 @@
         }
     },
     "last.externalTilesetPath": "D:/mulag/dual_knights/assets/tiles",
-    "last.imagePath": "D:/mulag/dual_knights/assets/images/UI/Buttons",
-    "map.height": 12,
+    "last.imagePath": "D:/mulag/dual_knights/assets/images/UI/Icons",
+    "map.height": 21,
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 64,
     "map.tileWidth": 64,
-    "map.width": 16,
+    "map.width": 30,
     "openFiles": [
         "UI-TEST-1.tmx"
     ],
