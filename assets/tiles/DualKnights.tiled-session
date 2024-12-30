@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "level-selection-final.tmx",
+    "activeFile": "Game-Open-UI.tmx",
     "expandedProjectPaths": [
         "UI",
         "."
@@ -45,8 +45,8 @@
             "scale": 0.75,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 1731.9999999999998,
-                "y": 409.33333333333337
+                "x": 1732,
+                "y": 237.33333333333337
             }
         },
         "Archer_Purlple.tsx": {
@@ -101,6 +101,10 @@
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
+        "Banner_Horizontal.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
         "Barrel_Red.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
@@ -132,15 +136,19 @@
             "scaleInDock": 0.7446,
             "scaleInEditor": 1
         },
+        "Foam.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
         "G_Idle.tsx": {
             "scaleInDock": 1
         },
         "Game-Open-UI.tmx": {
             "scale": 0.33,
-            "selectedLayer": 2,
+            "selectedLayer": 7,
             "viewCenter": {
-                "x": 824.2424242424242,
-                "y": 866.6666666666666
+                "x": 860.6060606060606,
+                "y": 803.0303030303032
             }
         },
         "Game-UI-With-Settings.tmx": {
@@ -158,6 +166,23 @@
                 "x": 512.7029748283753,
                 "y": 383.3556064073226
             }
+        },
+        "Game-logo.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 227.33333333333331,
+                "y": 265.33333333333326
+            }
+        },
+        "GoldMine_Active.tsx": {
+            "scaleInDock": 1
+        },
+        "GoldMine_Destroyed.tsx": {
+            "scaleInDock": 1
+        },
+        "GoldMine_Inactive.tsx": {
+            "scaleInDock": 1
         },
         "HappySheep_All.tsx": {
             "scaleInDock": 1,
@@ -328,8 +353,8 @@
             "scale": 0.533447265625,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 541.7592677345538,
-                "y": 516.4521739130435
+                "x": 487.39588100686507,
+                "y": 401.16430205949666
             }
         },
         "UI/All-levels-map.tmx": {
@@ -363,7 +388,8 @@
             "scaleInDock": 1
         },
         "UI/Banner_Connection_Up.tsx": {
-            "scaleInDock": 1
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         },
         "UI/Banner_Horizontal.tsx": {
             "scaleInDock": 1
@@ -375,9 +401,15 @@
             "scaleInDock": 1
         },
         "UI/Button_Blue_9Slides.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "UI/Button_Disable_9Slides.tsx": {
+            "scaleInDock": 1,
             "scaleInEditor": 1
         },
         "UI/Button_Red.tsx": {
+            "scaleInDock": 1,
             "scaleInEditor": 1
         },
         "UI/Button_Red_3Slides.tsx": {
@@ -405,6 +437,9 @@
         "UI/G_Idle.tsx": {
             "scaleInDock": 1
         },
+        "UI/Regular_02.tsx": {
+            "scaleInDock": 1
+        },
         "UI/Regular_04.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
@@ -417,6 +452,10 @@
             "scaleInEditor": 1
         },
         "UI/Ribbon_Yellow_3Slides_64.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "UI/StarYellow.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
@@ -498,7 +537,7 @@
             "scale": 0.24789062499999998,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 1920.2017018594393,
+                "x": 1920.2017018594388,
                 "y": 673.6842105263158
             }
         },
@@ -511,9 +550,11 @@
             "scaleInEditor": 1
         },
         "Water.tsx": {
-            "scaleInDock": 1
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         },
         "base.tsx": {
+            "scaleInDock": 1,
             "scaleInEditor": 1
         },
         "bgspritesheet.tsx": {
@@ -525,29 +566,37 @@
         },
         "level-new-selection part 2.tmx": {
             "scale": 0.92958984375,
-            "selectedLayer": 5,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": 512.053787162517,
-                "y": 383.5024687467171
+                "x": 540.0231116713941,
+                "y": 384.04034037188785
             }
         },
         "level-new-selection.tmx": {
             "scale": 0.92958984375,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 512.053787162517,
-                "y": 383.5024687467171
+                "x": 583.0528416850509,
+                "y": 522.8112196659313
             }
         },
         "level-selection-final.tmx": {
             "scale": 0.75,
-            "selectedLayer": 3,
+            "selectedLayer": 9,
             "viewCenter": {
-                "x": 1953.3333333333333,
-                "y": 202.66666666666669
+                "x": 482.66666666666663,
+                "y": 374.6666666666667
             }
         },
         "spritesheet.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "star2.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "star3.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
@@ -557,41 +606,37 @@
         }
     },
     "last.externalTilesetPath": "D:/mulag/dual_knights/assets/tiles",
-    "last.imagePath": "D:/mulag/dual_knights/assets/images/UI/Banners",
-    "map.height": 12,
+    "last.imagePath": "D:/mulag/dual_knights/assets/images/Effects/Explosion",
+    "map.height": 8,
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 64,
     "map.tileWidth": 64,
-    "map.width": 46,
+    "map.width": 8,
     "openFiles": [
-        "UI-TEST-1.tmx",
-        "level-new-selection.tmx",
-        "level-new-selection part 2.tmx",
-        "UI/Disable_10.tsx",
-        "UI/Disable_04.tsx",
-        "UI/Regular_04.tsx",
-        "level-selection-final.tmx",
-        "UI/Ribbon_Red_3Slides.tsx",
-        "Castle_Red.tsx",
-        "Archer_Red.tsx",
-        "Pawn_Blue.tsx",
-        "Torch_Red.tsx"
+        "Game-Open-UI.tmx",
+        "Water.tsx",
+        "Foam.tsx",
+        "Tilemap_Elevation.tsx",
+        "Tower_Blue.tsx",
+        "All-levels-map.tmx",
+        "UI/level-selection.tmx",
+        "level-new-selection.tmx"
     ],
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
-        "UI-TEST-1.tmx",
         "level-new-selection.tmx",
+        "UI/level-selection.tmx",
+        "All-levels-map.tmx",
+        "Tower_Blue.tsx",
+        "Tilemap_Elevation.tsx",
+        "Foam.tsx",
+        "Water.tsx",
+        "Game-Open-UI.tmx",
+        "UI-TEST-1.tmx",
         "level-new-selection part 2.tmx",
         "UI/Disable_10.tsx",
-        "UI/Disable_04.tsx",
-        "UI/Regular_04.tsx",
-        "Torch_Red.tsx",
-        "Pawn_Blue.tsx",
-        "Archer_Red.tsx",
-        "Castle_Red.tsx",
-        "UI/Ribbon_Red_3Slides.tsx",
-        "level-selection-final.tmx"
+        "UI/Disable_04.tsx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
