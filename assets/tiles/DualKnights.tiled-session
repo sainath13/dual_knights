@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "level-selection-final.tmx",
+    "activeFile": "",
     "expandedProjectPaths": [
         "UI",
         "."
@@ -375,8 +375,8 @@
             "scale": 0.533447265625,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 512.7029748283754,
-                "y": 372.1080091533181
+                "x": 542.696567505721,
+                "y": 516.4521739130436
             }
         },
         "UI/All-levels-map.tmx": {
@@ -574,15 +574,15 @@
             "scale": 0.92958984375,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 511.51591553734636,
-                "y": 383.50246874671706
+                "x": -27.4314528837063,
+                "y": 335.094022481353
             }
         },
         "level-new-selection.tmx": {
             "scale": 0.92958984375,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 511.51591553734636,
+                "x": 854.6780123962601,
                 "y": 383.50246874671706
             }
         },
@@ -611,6 +611,10 @@
     "map.tileWidth": 64,
     "map.width": 46,
     "openFiles": [
+    ],
+    "project": "DualKnights.tiled-project",
+    "property.type": "int",
+    "recentFiles": [
         "UI-TEST-1.tmx",
         "level-new-selection.tmx",
         "level-new-selection part 2.tmx",
@@ -623,22 +627,6 @@
         "Archer_Red.tsx",
         "Pawn_Blue.tsx",
         "Torch_Red.tsx"
-    ],
-    "project": "DualKnights.tiled-project",
-    "property.type": "int",
-    "recentFiles": [
-        "Level-01.tmx",
-        "/Users/sainathlatkar/Downloads/Level-01.tmx",
-        "UI-TEST-1.tmx",
-        "level-new-selection.tmx",
-        "level-new-selection part 2.tmx",
-        "UI/Disable_10.tsx",
-        "UI/Disable_04.tsx",
-        "UI/Regular_04.tsx",
-        "Torch_Red.tsx",
-        "Pawn_Blue.tsx",
-        "Archer_Red.tsx",
-        "Castle_Red.tsx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
