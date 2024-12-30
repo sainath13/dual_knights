@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:ui';
 
+import 'package:dual_knights/components/pause_game_menu.dart';
 import 'package:dual_knights/input.dart';
 import 'package:dual_knights/routes/gameplay.dart';
 import 'package:flame/camera.dart';
@@ -8,6 +9,7 @@ import 'package:flame/components.dart';
 import 'package:flame/input.dart';
 import 'package:flutter/material.dart' hide Viewport;
 import 'package:flutter/services.dart';
+import 'dart:developer' as developer;
 
 class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference, HasAncestor<Gameplay> {
   Hud({
@@ -82,6 +84,11 @@ class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference, 
     anchor: Anchor.center,
     position: Vector2(_joystick.position.x , _joystick.position.y - 120),
     onPressed: () {
+      developer.log("Knight selection button is pressed ");
+      final pauseMenu2 = PauseMenu2();
+      // game.overlays.add(pauseMenu2);
+      // game.pauseEngine();
+      game.overlays.add('pause_menu2');
       _toggleSprite(!_isBlueSelected);
       (_knightSelectionButton.button as SpriteComponent?)?.sprite = Sprite(
         _isBlueSelected ? blueSprite : redSprite,

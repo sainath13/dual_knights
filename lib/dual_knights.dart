@@ -3,6 +3,7 @@
 import 'dart:async';
 import 'dart:ui';
 
+import 'package:dual_knights/components/pause_game_menu.dart';
 import 'package:dual_knights/routes/game_level_selection.dart';
 import 'package:dual_knights/routes/game_main_menu.dart';
 import 'package:dual_knights/routes/game_settings.dart';
@@ -28,6 +29,10 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
 
   static const bgm = '8BitDNALoop.wav';
 
+  // void showPauseMenu() {
+  //   overlays.add('PauseMenu2');
+  //   pauseEngine();
+  // }
 
   late final _routes = <String, Route>{
     MainMenu.id: OverlayRoute(
@@ -109,9 +114,19 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
     await FlameAudio.audioCache.loadAll([bgm]);
     await images.loadAllImages();
     await add(_router);
+    //
+    // overlays.addEntry(
+    //   'pause_menu2',
+    //       (BuildContext context, Game game) {
+    //     return GameWidget(
+    //       game: FlameGame(
+    //         children: [PauseMenu2()],
+    //       ),
+    //     );
+    //   },
+    // );
 
-
-  return super.onLoad();
+    return super.onLoad();
   }
 
    void _routeReplaceById(String id) {

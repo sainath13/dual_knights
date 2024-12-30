@@ -205,6 +205,7 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
     // log("AntiPlayer priority is $priority");
 
     if (isMoving) {
+
       final movement = direction * speed * dt;
       final distanceToTarget = targetPosition - position;
       final distanceThisFrame = movement.length;
