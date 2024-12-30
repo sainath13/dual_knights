@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="64" tileheight="64" infinite="0" nextlayerid="9" nextobjectid="3">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="64" tileheight="64" infinite="0" nextlayerid="12" nextobjectid="4">
  <tileset firstgid="1" source="Terrain.tsx"/>
  <tileset firstgid="41" source="Castle_Red.tsx"/>
  <tileset firstgid="61" source="Tree.tsx"/>
@@ -13,6 +13,9 @@
  <tileset firstgid="192" source="16.tsx"/>
  <tileset firstgid="194" source="Castle_Destroyed.tsx"/>
  <tileset firstgid="214" source="HappySheep_Idle.tsx"/>
+ <tileset firstgid="246" source="UI/Carved_9Slides.tsx"/>
+ <tileset firstgid="255" source="UI/Ribbon_Red_3Slides.tsx"/>
+ <tileset firstgid="258" source="G_Idle.tsx"/>
  <layer id="3" name="GameBackground" width="16" height="12">
   <data encoding="csv">
 12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,
@@ -126,7 +129,7 @@
 230,231,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="5" name="Collisionblocks">
+ <objectgroup id="5" name="Collisionblocks" visible="0">
   <object id="1" name="Block" type="Block" x="384" y="192" width="64" height="64"/>
   <object id="2" name="Block" type="Block" x="512" y="192" width="64" height="64"/>
   <object id="3" name="Block" type="Block" x="576" y="192" width="64" height="64"/>
@@ -160,10 +163,47 @@
   <object id="19" name="Player" type="Player" x="384" y="448" width="64" height="64"/>
   <object id="22" name="AntiPlayer" type="AntiPlayer" x="640" y="256" width="64" height="64"/>
  </objectgroup>
- <objectgroup id="30" name="CollisionblocksForGrid">
-   <object id="101" name="Block" type="Block" x="256" y="128" width="576" height="64"/>
-   <object id="102" name="Block" type="Block" x="256" y="576" width="576" height="64"/>
-   <object id="103" name="Block" type="Block" x="192" y="192" width="64" height="384"/>
-   <object id="104" name="Block" type="Block" x="831" y="192" width="64" height="384"/>
-  </objectgroup>
+ <objectgroup id="30" name="CollisionblocksForGrid" visible="0">
+  <object id="101" name="Block" type="Block" x="256" y="128" width="576" height="64"/>
+  <object id="102" name="Block" type="Block" x="256" y="576" width="576" height="64"/>
+  <object id="103" name="Block" type="Block" x="192" y="192" width="64" height="384"/>
+  <object id="104" name="Block" type="Block" x="831" y="192" width="64" height="384"/>
+ </objectgroup>
+ <layer id="9" name="LevelCompleted" width="16" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,246,247,247,247,247,247,247,247,247,247,247,248,0,0,
+0,0,249,250,250,250,250,250,250,250,250,250,250,251,0,0,
+0,0,249,250,250,250,250,250,250,250,250,250,250,251,0,0,
+0,0,249,250,250,250,250,250,250,250,250,250,250,251,0,0,
+0,0,249,250,250,250,250,250,250,250,250,250,250,251,0,0,
+0,0,249,250,250,250,250,250,250,250,250,250,250,251,0,0,
+0,0,249,250,250,250,250,250,250,250,250,250,250,251,0,0,
+0,0,252,250,253,253,253,253,253,253,253,253,253,254,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="10" name="LevelCompletedRIbbons" width="16" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,255,256,256,256,256,256,256,257,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,41,42,43,44,45,0,0,
+0,0,0,0,0,0,0,0,0,46,47,48,49,50,0,0,
+0,0,0,0,0,0,0,0,0,51,52,53,54,55,0,0,
+0,0,0,0,0,0,0,0,0,56,57,58,59,60,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="11" name="Object Layer 6">
+  <object id="3" x="385.565" y="200.621" width="300" height="32">
+   <text fontfamily="ThaleahFat" pixelsize="34" wrap="1" color="#ffffff">Level Completed</text>
+  </object>
+ </objectgroup>
 </map>
