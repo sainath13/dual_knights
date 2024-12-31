@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "Background-test-01.tmx",
+    "activeFile": "Banner_Horizontal.tsx",
     "expandedProjectPaths": [
         ".",
         "UI"
@@ -53,7 +53,7 @@
             "scale": 0.75,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 756,
+                "x": 406.6666666666667,
                 "y": 409.33333333333337
             }
         },
@@ -77,7 +77,7 @@
             "scale": 0.73291015625,
             "selectedLayer": 13,
             "viewCenter": {
-                "x": 511.6588940706196,
+                "x": 458.4463690872752,
                 "y": 267.4270486342438
             }
         },
@@ -85,8 +85,16 @@
             "scale": 0.53,
             "selectedLayer": 11,
             "viewCenter": {
-                "x": 512.2641509433962,
-                "y": 383.9622641509433
+                "x": 511.3207547169811,
+                "y": 383.01886792452825
+            }
+        },
+        "Background-test-03.tmx": {
+            "scale": 0.73291015625,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 511.6588940706196,
+                "y": 383.4030646235842
             }
         },
         "Background-test-1.tmx": {
@@ -118,6 +126,7 @@
             "scaleInEditor": 1
         },
         "Banner_Horizontal.tsx": {
+            "dynamicWrapping": true,
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
@@ -164,32 +173,32 @@
             "scale": 0.33,
             "selectedLayer": 7,
             "viewCenter": {
-                "x": 860.6060606060606,
-                "y": 803.0303030303032
+                "x": 484.8484848484849,
+                "y": 412.1212121212121
             }
         },
         "Game-UI-With-Settings.tmx": {
-            "scale": 0.24789062499999998,
+            "scale": 0.25,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 1298.9599747872676,
-                "y": 673.6842105263158
+                "x": 1256,
+                "y": 1052
             }
         },
         "Game-Welcome-Page.tmx": {
             "scale": 0.533447265625,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 512.7029748283753,
-                "y": 383.3556064073226
+                "x": 511.76567505720834,
+                "y": 382.4183066361557
             }
         },
         "Game-logo.tmx": {
             "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 227.33333333333331,
-                "y": 265.33333333333326
+                "x": 256,
+                "y": 256
             }
         },
         "GoldMine_Active.tsx": {
@@ -654,7 +663,7 @@
             "scale": 0.75,
             "selectedLayer": 13,
             "viewCenter": {
-                "x": 320,
+                "x": 757.3333333333333,
                 "y": 508
             }
         },
@@ -671,6 +680,7 @@
             "scaleInEditor": 1
         },
         "star_1.tsx": {
+            "scaleInDock": 1,
             "scaleInEditor": 1
         },
         "star_2.tsx": {
@@ -682,6 +692,10 @@
             "scaleInEditor": 1
         },
         "star_Active.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "star_in_active.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
@@ -702,31 +716,27 @@
     "map.tileWidth": 64,
     "map.width": 8,
     "openFiles": [
-        "Shadows.tsx",
-        "Sample-Level.tmx",
-        "level-selection-final.tmx",
-        "3G_Idle_(NoShadow)-sheet.tsx",
-        "2G_Idle_(NoShadow)-sheet.tsx",
-        "G_Idle.tsx",
-        "aws_icon.tsx",
-        "Background-test-01.tmx",
-        "HappySheep_Idle.tsx"
+        "Game-Open-UI.tmx",
+        "Game-logo.tmx",
+        "Game-UI-With-Settings.tmx",
+        "Game-Welcome-Page.tmx",
+        "Banner_Horizontal.tsx"
     ],
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
-        "aws_icon.tsx",
-        "G_Idle.tsx",
-        "2G_Idle_(NoShadow)-sheet.tsx",
-        "3G_Idle_(NoShadow)-sheet.tsx",
-        "HappySheep_Idle.tsx",
-        "star_2.tsx",
-        "star_1.tsx",
-        "timer_BG.tsx",
-        "button_bg.tsx",
-        "Levels.tsx",
-        "Locked.tsx",
-        "star_Active.tsx"
+        "UI/level-selection.tmx",
+        "Game-Open-UI.tmx",
+        "Game-logo.tmx",
+        "Game-UI-With-Settings.tmx",
+        "Game-Welcome-Page.tmx",
+        "Banner_Horizontal.tsx",
+        "EnemySingle.tsx",
+        "Shadows.tsx",
+        "Sample-Level.tmx",
+        "level-selection-final.tmx",
+        "Background-test-01.tmx",
+        "star_in_active.tsx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
