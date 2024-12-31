@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="8" height="8" tilewidth="64" tileheight="64" infinite="0" nextlayerid="6" nextobjectid="1">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="8" height="8" tilewidth="64" tileheight="64" infinite="0" nextlayerid="7" nextobjectid="2">
  <tileset firstgid="1" source="Warrior_Blue.tsx"/>
  <tileset firstgid="433" source="UI/Warrior_Red_Idle.tsx"/>
  <tileset firstgid="487" source="UI/Banner_Connection_Left_64.tsx"/>
@@ -8,6 +8,8 @@
  <tileset firstgid="508" source="UI/Ribbon_Yellow_3Slides_64.tsx"/>
  <tileset firstgid="511" source="UI/Carved_9Slides.tsx"/>
  <tileset firstgid="520" source="UI/Button_Disable_9Slides.tsx"/>
+ <tileset firstgid="529" source="Warrior_Blue_192.tsx"/>
+ <tileset firstgid="577" source="Warrior_Red_Idle_192.tsx"/>
  <layer id="5" name="morebf" width="8" height="8">
   <data encoding="csv">
 487,497,497,497,497,497,497,498,
@@ -44,13 +46,13 @@
 0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="1" name="Tile Layer 1" width="8" height="8">
+ <layer id="1" name="Blue" width="8" height="8">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,
-0,0,1,2,3,0,0,0,
-0,0,19,20,21,0,0,0,
-0,0,37,38,39,0,0,0,
+0,0,1,0,3,0,0,0,
+0,0,0,0,0,0,0,0,
+0,0,529,0,39,0,0,0,
 0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0
@@ -60,12 +62,17 @@
   <data encoding="csv">
 0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,
-0,0,0,433,434,435,0,0,
-0,0,0,451,452,453,0,0,
-0,0,0,469,470,471,0,0,
+0,0,0,433,0,435,0,0,
+0,0,0,0,0,0,0,0,
+0,0,0,577,0,471,0,0,
 0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0
 </data>
  </layer>
+ <objectgroup id="6" name="Text">
+  <object id="1" x="172.5" y="393.833" width="177.333" height="46.6667">
+   <text fontfamily="ThaleahFat" pixelsize="32" wrap="1" color="#552828">Dual Knights</text>
+  </object>
+ </objectgroup>
 </map>

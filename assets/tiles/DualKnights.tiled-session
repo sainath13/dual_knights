@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "Banner_Horizontal.tsx",
+    "activeFile": "",
     "expandedProjectPaths": [
         ".",
         "UI"
@@ -74,10 +74,14 @@
             "scaleInEditor": 1
         },
         "Background-test-01.tmx": {
+            "expandedObjectLayers": [
+                11,
+                13
+            ],
             "scale": 0.73291015625,
-            "selectedLayer": 13,
+            "selectedLayer": 15,
             "viewCenter": {
-                "x": 489.8281145902732,
+                "x": 443.437708194537,
                 "y": 267.4270486342438
             }
         },
@@ -178,6 +182,9 @@
             }
         },
         "Game-UI-With-Settings.tmx": {
+            "expandedObjectLayers": [
+                4
+            ],
             "scale": 0.25,
             "selectedLayer": 2,
             "viewCenter": {
@@ -723,27 +730,22 @@
     "map.tileWidth": 64,
     "map.width": 8,
     "openFiles": [
-        "Game-Open-UI.tmx",
-        "Game-logo.tmx",
-        "Game-UI-With-Settings.tmx",
-        "Game-Welcome-Page.tmx",
-        "Banner_Horizontal.tsx"
     ],
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "Game-Open-UI.tmx",
+        "Background-test-02.tmx",
+        "Background-test-03.tmx",
+        "Background-test-01.tmx",
+        "All-levels-map.tmx",
+        "Banner_Horizontal.tsx",
+        "Game-Welcome-Page.tmx",
+        "Game-UI-With-Settings.tmx",
+        "Game-logo.tmx",
         "Star_Innactive.tsx",
         "UI/level-selection.tmx",
-        "Game-Open-UI.tmx",
-        "Game-logo.tmx",
-        "Game-UI-With-Settings.tmx",
-        "Game-Welcome-Page.tmx",
-        "Banner_Horizontal.tsx",
-        "EnemySingle.tsx",
-        "Shadows.tsx",
-        "Sample-Level.tmx",
-        "level-selection-final.tmx",
-        "Background-test-01.tmx"
+        "EnemySingle.tsx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
