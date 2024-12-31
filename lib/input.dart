@@ -12,6 +12,8 @@ class Input extends Component with KeyboardHandler, HasGameReference {
   
   bool _isInversed = false;
 
+  bool movementAllowed = true;
+
 
   final maxHAxis = 1.5;
   final sensitivity = 2.0;
@@ -58,10 +60,10 @@ bool onKeyEvent(KeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
   return super.onKeyEvent(event, keysPressed);
 }
 
-bool get isUpPressed => pressedKeys.contains(LogicalKeyboardKey.arrowUp) || pressedKeys.contains(LogicalKeyboardKey.keyW);
-bool get isDownPressed => pressedKeys.contains(LogicalKeyboardKey.arrowDown) || pressedKeys.contains(LogicalKeyboardKey.keyS);
-bool get isLeftPressed => pressedKeys.contains(LogicalKeyboardKey.arrowLeft) || pressedKeys.contains(LogicalKeyboardKey.keyA);
-bool get isRightPressed => pressedKeys.contains(LogicalKeyboardKey.arrowRight) ||  pressedKeys.contains(LogicalKeyboardKey.keyD);
+bool get isUpPressed => movementAllowed && (pressedKeys.contains(LogicalKeyboardKey.arrowUp) || pressedKeys.contains(LogicalKeyboardKey.keyW));
+bool get isDownPressed => movementAllowed && (pressedKeys.contains(LogicalKeyboardKey.arrowDown) || pressedKeys.contains(LogicalKeyboardKey.keyS));
+bool get isLeftPressed => movementAllowed && (pressedKeys.contains(LogicalKeyboardKey.arrowLeft) || pressedKeys.contains(LogicalKeyboardKey.keyA));
+bool get isRightPressed => movementAllowed && (pressedKeys.contains(LogicalKeyboardKey.arrowRight) ||  pressedKeys.contains(LogicalKeyboardKey.keyD));
 
 bool get isInversed => _isInversed;
 
