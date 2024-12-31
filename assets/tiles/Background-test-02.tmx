@@ -13,6 +13,7 @@
  <tileset firstgid="192" source="16.tsx"/>
  <tileset firstgid="194" source="Castle_Destroyed.tsx"/>
  <tileset firstgid="214" source="HappySheep_Idle.tsx"/>
+ <tileset firstgid="246" source="star_in_active.tsx"/>
  <layer id="3" name="GameBackground" width="16" height="12">
   <data encoding="csv">
 12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,

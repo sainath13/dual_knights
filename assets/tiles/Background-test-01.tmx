@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="64" tileheight="64" infinite="0" nextlayerid="13" nextobjectid="4">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="64" tileheight="64" infinite="0" nextlayerid="14" nextobjectid="11">
  <tileset firstgid="1" source="Terrain.tsx"/>
  <tileset firstgid="41" source="Castle_Red.tsx"/>
  <tileset firstgid="61" source="Tree.tsx"/>
@@ -21,6 +21,10 @@
  <tileset firstgid="316" source="star_2.tsx"/>
  <tileset firstgid="317" source="star_1.tsx"/>
  <tileset firstgid="318" source="button_bg.tsx"/>
+ <tileset firstgid="319" source="UI/Banner_Connection_Left_64.tsx"/>
+ <tileset firstgid="328" source="UI/Banner_Connection_Right_64.tsx"/>
+ <tileset firstgid="337" source="Tower_Red.tsx"/>
+ <tileset firstgid="345" source="Star_Innactive.tsx"/>
  <layer id="3" name="GameBackground" width="16" height="12">
   <data encoding="csv">
 12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,
@@ -177,16 +181,16 @@
  <layer id="9" name="LevelCompleted" width="16" height="12">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,246,247,247,247,247,247,247,247,247,247,247,248,0,0,
-0,0,249,250,250,250,250,250,250,250,250,250,250,251,0,0,
-0,0,249,250,250,250,250,250,250,250,250,250,250,251,0,0,
-0,0,249,250,250,250,250,250,250,250,250,250,250,251,0,0,
-0,0,249,250,250,250,250,250,250,250,250,250,250,251,0,0,
-0,0,249,250,250,250,250,250,250,250,250,250,250,251,0,0,
-0,0,249,250,250,250,250,250,250,250,250,250,250,251,0,0,
-0,0,252,250,253,253,253,253,253,253,253,253,253,254,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,319,329,329,329,329,329,329,329,329,329,329,330,0,0,
+0,0,322,323,323,323,323,323,323,323,323,323,323,333,0,0,
+0,0,322,323,323,323,323,323,323,323,323,323,323,333,0,0,
+0,0,322,323,323,323,323,323,323,323,323,323,323,333,0,0,
+0,0,322,323,323,323,323,323,323,323,323,323,323,333,0,0,
+0,0,322,323,323,323,323,323,323,323,323,323,323,333,0,0,
+0,0,322,323,323,323,323,323,323,323,323,323,323,333,0,0,
+0,0,322,323,323,323,323,323,323,323,323,323,323,333,0,0,
+0,0,322,323,323,323,323,323,323,323,323,323,323,333,0,0,
+0,0,325,326,326,326,326,326,326,326,326,326,326,336,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
@@ -198,10 +202,10 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,41,42,43,44,45,0,0,
-0,0,0,0,0,0,0,0,0,46,47,48,49,50,0,0,
-0,0,0,318,0,318,0,318,0,51,52,53,54,55,0,0,
-0,0,0,0,0,0,0,0,0,56,57,58,59,60,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,318,0,318,0,318,0,0,192,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,193,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
@@ -213,7 +217,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,255,256,256,256,256,256,256,257,0,0,0,0,
 0,0,262,0,0,0,0,0,0,0,0,310,0,0,0,0,
-0,0,0,0,0,317,0,317,0,317,0,0,0,0,0,0,
+0,0,0,0,0,317,0,317,0,345,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -222,9 +226,17 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="11" name="Object Layer 6">
+ <objectgroup id="11" name="StarSpawnLayer">
   <object id="3" x="385.565" y="200.621" width="300" height="32">
    <text fontfamily="ThaleahFat" pixelsize="34" wrap="1" color="#ffffff">Level Completed</text>
   </object>
+  <object id="8" name="StarPostionOne" type="StarPostionOne" x="317.911" y="290.622" width="98.2385" height="95.5097"/>
+  <object id="9" name="StarPostionTwo" type="StarPostionTwo" x="446.167" y="290.622" width="102.332" height="96.8741"/>
+  <object id="10" name="StarPostionThree" type="StarPostionThree" x="571.011" y="292.669" width="102.332" height="96.8741"/>
+ </objectgroup>
+ <objectgroup id="13" name="ButtonsSpawnLayer">
+  <object id="4" name="Restart" type="Restart" x="319.275" y="484.37" width="84.5943" height="94.1452"/>
+  <object id="6" name="Next" type="Next" x="575.787" y="482.324" width="84.5943" height="94.1452"/>
+  <object id="7" name="Levels" type="Levels" x="448.895" y="482.324" width="84.5943" height="94.1452"/>
  </objectgroup>
 </map>
