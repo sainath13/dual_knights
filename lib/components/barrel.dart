@@ -193,6 +193,7 @@ class Barrel extends SpriteAnimationComponent with HasGameRef<DualKnights>, Coll
     KnightRangeStatus knightRangeStatus = knightRangeResult.status;
     
     if (knightRangeStatus == KnightRangeStatus.readyToExplode) {
+      ancestor.input.movementAllowed = false;
       if(knightRangeResult.triggeredBy == "player") {
         if (player.parent != null) {
          player.parent!.remove(player);

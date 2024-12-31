@@ -184,14 +184,19 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
     _router.pushReplacementNamed(MainMenu.id);
   }
 
-   void _showLevelCompleteMenu(int nStars) {    
-    final gameplay = findByKeyName<Gameplay>(Gameplay.id);
-    gameplay?.levelCompleted = true;
-    _router.pushNamed('${LevelComplete.id}/$nStars');
+  void _showLevelCompleteMenu(int nStars) async{    
+   final gameplay = findByKeyName<Gameplay>(Gameplay.id);
+   gameplay?.levelCompleted = true;
+   gameplay?.input.movementAllowed = false;
+  _router.pushNamed('${LevelComplete.id}/$nStars');
+  
   }
 
    void _showRetryMenu() {
+    final gameplay = findByKeyName<Gameplay>(Gameplay.id);
+    gameplay?.input.movementAllowed = false;
     _router.pushNamed(RetryMenu.id);
+
   }
 
 

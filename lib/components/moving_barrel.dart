@@ -302,6 +302,7 @@ void _updateMovement(double dt) {
             break;
 
           case MovingBarrelState.exploding:
+            ancestor.input.movementAllowed = false;
             currentState = MovingBarrelState.dying;
             animation = animations[MovingBarrelState.dying];
             animationTicker?.reset();
