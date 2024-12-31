@@ -125,6 +125,10 @@
                 "y": 379.38186990818565
             }
         },
+        "Banner_Connection_Left_32.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
         "Banner_Connection_Up.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
@@ -169,6 +173,9 @@
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
+        "Foam_192.tsx": {
+            "scaleInEditor": 1
+        },
         "G_Idle.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
@@ -182,13 +189,10 @@
             }
         },
         "Game-UI-With-Settings.tmx": {
-            "expandedObjectLayers": [
-                4
-            ],
             "scale": 0.25,
-            "selectedLayer": 2,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 908,
+                "x": 1832,
                 "y": 1032
             }
         },
@@ -380,6 +384,14 @@
         "Terrain.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
+        },
+        "The-final-Background.tmx": {
+            "scale": 0.5,
+            "selectedLayer": 9,
+            "viewCenter": {
+                "x": 894,
+                "y": 540
+            }
         },
         "TileSample-12X9.tsx": {
             "scaleInDock": 1,
@@ -639,6 +651,10 @@
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
+        "background.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
         "base.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
@@ -675,9 +691,9 @@
                 13
             ],
             "scale": 0.75,
-            "selectedLayer": 13,
+            "selectedLayer": -1,
             "viewCenter": {
-                "x": 757.3333333333333,
+                "x": 404,
                 "y": 508
             }
         },
@@ -723,34 +739,34 @@
         }
     },
     "last.externalTilesetPath": "D:/mulag/dual_knights/assets/tiles",
-    "last.imagePath": "D:/mulag/dual_knights/assets/images/Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Star",
-    "map.height": 8,
+    "last.imagePath": "D:/mulag",
+    "map.height": 19,
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 64,
     "map.tileWidth": 64,
-    "map.width": 8,
+    "map.width": 50,
     "openFiles": [
     ],
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "Foam_192.tsx",
+        "Game-UI-With-Settings.tmx",
+        "The-final-Background.tmx",
+        "base.tsx",
+        "background.tsx",
         "Game-Open-UI.tmx",
+        "Banner_Connection_Left_32.tsx",
+        "level-selection-final.tmx",
+        "UI/level-selection.tmx",
         "Background-test-02.tmx",
         "Background-test-03.tmx",
-        "Background-test-01.tmx",
-        "All-levels-map.tmx",
-        "Banner_Horizontal.tsx",
-        "Game-Welcome-Page.tmx",
-        "Game-UI-With-Settings.tmx",
-        "Game-logo.tmx",
-        "Star_Innactive.tsx",
-        "UI/level-selection.tmx",
-        "EnemySingle.tsx"
+        "Background-test-01.tmx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
-        "height": 87,
-        "width": 92
+        "height": 64,
+        "width": 64
     }
 }
