@@ -81,7 +81,16 @@ flutter:
     - assets/tiles/
     - assets/tiles/UI/
     - assets/images/UI/
+    - assets/images/UI/Ribbons/
     - assets/images/UI/Banners/
+    - assets/images/logo/
+    - assets/images/Factions/Knights/Troops/Archer/Red/
+    - assets/images/Factions/Goblins/Troops/Torch/Red/
+    - assets/images/Factions/Knights/Troops/Pawn/Red/
+    - assets/images/Factions/Knights/Troops/Archer/Blue/
+    - assets/images/Factions/Knights/Troops/Pawn/Blue/
+    - assets/images/Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Level/Star/
+    - assets/images/Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Star/
     - assets/images/UI/Icons/
     - assets/images/base_image/
     - assets/images/

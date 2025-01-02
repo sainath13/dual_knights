@@ -52,7 +52,7 @@ class GameMainMenu extends PositionComponent with HasGameRef<DualKnights> {
     _world = World(children: [gameMainMenu]);
     await add(_world);
     _camera = CameraComponent.withFixedResolution(
-      width: 31 * 64,
+      width: 31*2 * 64,
       height: 22 * 64,
       world: _world,
     );

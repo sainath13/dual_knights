@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="46" height="12" tilewidth="64" tileheight="64" infinite="0" nextlayerid="17" nextobjectid="79">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="46" height="12" tilewidth="64" tileheight="64" infinite="0" nextlayerid="19" nextobjectid="94">
  <tileset firstgid="1" source="UI/Banner_Connection_Left_64.tsx"/>
  <tileset firstgid="10" source="UI/Carved_Regular.tsx"/>
  <tileset firstgid="11" source="UI/Banner_Connection_Right_64.tsx"/>
@@ -201,6 +201,12 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
+ <objectgroup id="18" name="NavigationButtons">
+  <object id="90" name="LeftNavigation" type="LeftNavigation" x="768.94" y="321.292" width="62.0984" height="60.4784"/>
+  <object id="91" name="RightNavigation" type="RightNavigation" x="897.457" y="321.292" width="61.0184" height="60.4784"/>
+  <object id="92" name="LeftNavigation" type="LeftNavigation" x="1664.24" y="321.292" width="62.6384" height="59.9384"/>
+  <object id="93" name="RightNavigation" type="RightNavigation" x="1792.75" y="321.292" width="62.6384" height="59.9384"/>
+ </objectgroup>
  <layer id="12" name="KnigthANimation" width="46" height="12">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,

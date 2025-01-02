@@ -20,7 +20,7 @@ import 'package:flame_audio/flame_audio.dart';
 
 import 'package:flutter/widgets.dart' hide Route,OverlayRoute;
 
-class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetector{
+class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetector,ScrollDetector{
 
   static const isMobile = bool.fromEnvironment('MOBILE_BUILD');
   final musicValueNotifier = ValueNotifier(true);
@@ -71,7 +71,7 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
     ),
     GameMainMenu.id: Route(
       () => GameMainMenu(
-        onPlayPressed: () => _routeById(LevelSelection.id),
+        onPlayPressed: () => _navigateToGameLevelSelection(),
         musicValueListenable: musicValueNotifier,
         sfxValueListenable: sfxValueNotifier,
         onMusicValueChanged: (value) => musicValueNotifier.value = value,
@@ -79,7 +79,10 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
       ),
     ),
     GameLevelSelection.id: Route(
-      () => GameLevelSelection(),
+      () => GameLevelSelection(
+        onLevelSelected: _startLevel,
+        onBackPressed:  _popRoute,
+      ),
     ),
     GameSettings.id: Route(
       () => GameSettings(),
@@ -106,6 +109,7 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
   );
 
 
+
   
   @override
   Color backgroundColor()  => const Color(0xFF47ABA9);
@@ -127,10 +131,21 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
 
   void _routeById(String id) {
     _router.pushNamed(id);
-  }
+}
 
   void _popRoute() {
     _router.pop();
+  }
+
+  void _navigateToGameLevelSelection() {
+     _router.pushRoute(
+      Route(
+      () => GameLevelSelection(
+        onLevelSelected: _startLevel,
+        onBackPressed:  _popRoute,
+      ),
+    )
+    );
   }
 
   void _startLevel(int levelIndex) {
@@ -189,7 +204,7 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
     _resumeGame();
     _router.pushReplacement(Route(
       () => GameMainMenu(
-        onPlayPressed: () => _routeById(LevelSelection.id),
+        onPlayPressed: () => _navigateToGameLevelSelection(),
         musicValueListenable: musicValueNotifier,
         sfxValueListenable: sfxValueNotifier,
         onMusicValueChanged: (value) => musicValueNotifier.value = value,
@@ -212,6 +227,10 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
     _router.pushNamed(RetryMenu.id);
 
   }
+
+ 
+
+
 
 
 }
