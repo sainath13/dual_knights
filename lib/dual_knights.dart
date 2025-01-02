@@ -70,7 +70,13 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
       ),
     ),
     GameMainMenu.id: Route(
-      () => GameMainMenu(),
+      () => GameMainMenu(
+        onPlayPressed: () => _routeById(LevelSelection.id),
+        musicValueListenable: musicValueNotifier,
+        sfxValueListenable: sfxValueNotifier,
+        onMusicValueChanged: (value) => musicValueNotifier.value = value,
+        onSfxValueChanged: (value) => sfxValueNotifier.value = value,
+      ),
     ),
     GameLevelSelection.id: Route(
       () => GameLevelSelection(),
@@ -94,7 +100,7 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
   };
 
   late final _router = RouterComponent(
-    initialRoute: MainMenu.id,
+    initialRoute: GameMainMenu.id,
     routes: _routes,
     routeFactories: _routeFactories,
   );
@@ -181,7 +187,15 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
 
   void _exitToMainMenu() {
     _resumeGame();
-    _router.pushReplacementNamed(MainMenu.id);
+    _router.pushReplacement(Route(
+      () => GameMainMenu(
+        onPlayPressed: () => _routeById(LevelSelection.id),
+        musicValueListenable: musicValueNotifier,
+        sfxValueListenable: sfxValueNotifier,
+        onMusicValueChanged: (value) => musicValueNotifier.value = value,
+        onSfxValueChanged: (value) => sfxValueNotifier.value = value,
+      ),
+    ));
   }
 
   void _showLevelCompleteMenu(int nStars) async{    

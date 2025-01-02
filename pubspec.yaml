@@ -79,8 +79,11 @@ flutter:
     - assets/images/Terrain/Bridge/
     - assets/images/Resources/Sheep/
     - assets/tiles/
+    - assets/tiles/UI/
     - assets/images/UI/
+    - assets/images/UI/Banners/
     - assets/images/UI/Icons/
+    - assets/images/base_image/
     - assets/images/
     - assets/images/Terrain/Water/
     - assets/images/Treasure/
