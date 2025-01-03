@@ -7,6 +7,8 @@ class GameButton extends PositionComponent with  TapCallbacks, HasGameReference 
   final Sprite? onTapSprite;
   final VoidCallback? onClick;
   final String buttonText;
+  final Color? buttonTextColor;
+  final double? buttonTextSize;
   late TextComponent _textComponent;
 
   SpriteComponent? _spriteComponent;
@@ -18,6 +20,8 @@ class GameButton extends PositionComponent with  TapCallbacks, HasGameReference 
     required Vector2 size,
     required Vector2 position,
     required this.buttonText,
+    this.buttonTextColor,
+    this.buttonTextSize
   }) {
     this.size = size;
     this.position = position;
@@ -41,9 +45,10 @@ class GameButton extends PositionComponent with  TapCallbacks, HasGameReference 
       text: buttonText,
       textRenderer: TextPaint(
         style: TextStyle(
-          color: Colors.white,
-          fontSize: 20,
+            color: buttonTextColor ?? Colors.white,
+            fontSize: buttonTextSize ?? 20,
           fontWeight: FontWeight.bold,
+          fontFamily: 'DualKnights',
         ),
       ),
       anchor: Anchor.center,

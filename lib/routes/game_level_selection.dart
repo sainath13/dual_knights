@@ -1,6 +1,7 @@
 
 import 'dart:math';
 
+import 'package:dual_knights/components/camera_movement.dart';
 import 'package:dual_knights/components/game_button.dart';
 import 'package:dual_knights/dual_knights.dart';
 import 'package:flame/components.dart';
@@ -42,11 +43,26 @@ class GameLevelSelection extends PositionComponent with HasGameRef<DualKnights>,
   }
 
   void moveCamera(int direction, double viewportWidth, double tmxWidth) {
-    final currentPosition = _camera.viewfinder.position;
-    final offset = direction * 64 * 14;
-    final targetX = (currentPosition.x + offset).clamp(viewportWidth / 2, tmxWidth - viewportWidth / 2);
-    _camera.moveTo(Vector2(targetX, currentPosition.y));
-  }
+  double duration = 0.5;
+  final currentPosition = _camera.viewfinder.position;
+  final offset = direction * 64 * 14;
+  final targetX = (currentPosition.x + offset).clamp(viewportWidth / 2, tmxWidth - viewportWidth / 2);
+
+  final startPosition = currentPosition.clone();
+  final targetPosition = Vector2(targetX, currentPosition.y);
+
+  // Add a custom component to handle smooth movement
+  game.add(
+    CameraMovementComponent(
+      camera: _camera,
+      startPosition: startPosition,
+      targetPosition: targetPosition,
+      duration: duration,
+    ),
+  );
+}
+
+
 
 
 
