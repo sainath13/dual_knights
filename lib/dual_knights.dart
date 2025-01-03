@@ -5,7 +5,7 @@ import 'dart:ui';
 
 import 'package:dual_knights/routes/game_level_selection.dart';
 import 'package:dual_knights/routes/game_main_menu.dart';
-import 'package:dual_knights/routes/game_settings.dart';
+import 'package:dual_knights/routes/game_level_complete.dart';
 import 'package:dual_knights/routes/gameplay.dart';
 import 'package:dual_knights/routes/level_complete.dart';
 import 'package:dual_knights/routes/level_selection.dart';
@@ -20,11 +20,12 @@ import 'package:flame_audio/flame_audio.dart';
 
 import 'package:flutter/widgets.dart' hide Route,OverlayRoute;
 
-class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetector,ScrollDetector{
+class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetector{
 
   static const isMobile = bool.fromEnvironment('MOBILE_BUILD');
   final musicValueNotifier = ValueNotifier(true);
   final sfxValueNotifier = ValueNotifier(true);
+  var lastGamePlayState = null;
 
   static const bgm = '8BitDNALoop.wav';
 
@@ -84,10 +85,6 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
         onBackPressed:  _popRoute,
       ),
     ),
-    GameSettings.id: Route(
-      () => GameSettings(),
-    )
-
   };
 
 
@@ -99,7 +96,7 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
             onRetryPressed: _restartLevel,
             onExitPressed: _exitToMainMenu,
           ),
-        ),
+        )
   };
 
   late final _router = RouterComponent(
@@ -156,7 +153,7 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
           levelIndex,
           onPausePressed: _pauseGame,
           onLevelCompleted: _showLevelCompleteMenu,
-          onGameOver: _showRetryMenu,
+          onGameOver: _restartWithoutPopup,
           onRestartLevel:  _restartWithoutPopup,
           key: ComponentKey.named(Gameplay.id)
         ),
@@ -170,6 +167,9 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
 
     if (gameplay != null) {
       _startLevel(gameplay.currentLevel + 1);
+    }else if(lastGamePlayState!=null){
+      _router.pushOverlay(MainMenu.id);
+      _startLevel(lastGamePlayState.currentLevel + 1);
     }
   }
 
@@ -178,6 +178,11 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
 
     if (gameplay != null) {
       _startLevel(gameplay.currentLevel);
+      resumeEngine();
+    }
+    else if(lastGamePlayState!=null){
+      _router.pushOverlay(MainMenu.id);
+      _startLevel(lastGamePlayState.currentLevel);
       resumeEngine();
     }
   }
@@ -202,7 +207,11 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
 
   void _exitToMainMenu() {
     _resumeGame();
-    _router.pushReplacement(Route(
+    _routeToGameMainMenu();
+  }
+
+  void _routeToGameMainMenu() {
+     _router.pushReplacement(Route(
       () => GameMainMenu(
         onPlayPressed: () => _navigateToGameLevelSelection(),
         musicValueListenable: musicValueNotifier,
@@ -217,7 +226,16 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
    final gameplay = findByKeyName<Gameplay>(Gameplay.id);
    gameplay?.levelCompleted = true;
    gameplay?.input.movementAllowed = false;
-  _router.pushNamed('${LevelComplete.id}/$nStars');
+
+  lastGamePlayState = gameplay;
+    _router.pushReplacement(Route(
+      () => GameLevelComplete(
+            nStars: nStars,
+            onNextPressed: _startNextLevel,
+            onRetryPressed: _restartLevel,
+            onExitPressed: _routeToGameMainMenu,
+      ),
+    ));
   
   }
 

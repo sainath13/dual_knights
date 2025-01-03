@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:dual_knights/components/game_button.dart';
 import 'package:dual_knights/dual_knights.dart';
 import 'package:flame/components.dart';
+import 'package:flame/effects.dart';
 import 'package:flame/events.dart';
 import 'package:flame_tiled/flame_tiled.dart';
 import 'package:flutter/material.dart';
@@ -42,10 +43,12 @@ class GameLevelSelection extends PositionComponent with HasGameRef<DualKnights>,
 
   void moveCamera(int direction, double viewportWidth, double tmxWidth) {
     final currentPosition = _camera.viewfinder.position;
-    final offset = direction * 64 * 15;
+    final offset = direction * 64 * 14;
     final targetX = (currentPosition.x + offset).clamp(viewportWidth / 2, tmxWidth - viewportWidth / 2);
     _camera.moveTo(Vector2(targetX, currentPosition.y));
   }
+
+
 
 Future<void> loadGameLevelSelection() async {
 
@@ -60,7 +63,7 @@ Future<void> loadGameLevelSelection() async {
     _world = World(children: [gameLevelSelection]);
     await add(_world);
     _camera = CameraComponent.withFixedResolution(
-      width: 24*64, height: 12*64,
+      width: cameraViewportWidth, height: cameraViewportHeight,
       world: _world,
     );
 
@@ -143,7 +146,7 @@ if (navigationButtons != null) {
     switch (button.class_) {
       case 'LeftNavigation':
        final leftButton = GameButton(
-        onClick: () => moveCamera(-1, 46*64, gameLevelSelection.size.x),
+        onClick: () => moveCamera(-1,  cameraViewportWidth,gameLevelSelection.size.x),
         size: Vector2(button.width, button.height),
         position: Vector2(button.x, button.y),
         buttonText: '<',
@@ -152,7 +155,7 @@ if (navigationButtons != null) {
         break;
       case 'RightNavigation':
        final rightButton = GameButton(
-        onClick: () => moveCamera(-1, 46*64, gameLevelSelection.size.x),
+        onClick: () => moveCamera(1, cameraViewportWidth,gameLevelSelection.size.x),
         size: Vector2(button.width, button.height),
         position: Vector2(button.x, button.y),
         buttonText: '>',

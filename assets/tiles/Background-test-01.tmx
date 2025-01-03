@@ -230,13 +230,13 @@
   <object id="3" x="385.565" y="200.621" width="300" height="32">
    <text fontfamily="ThaleahFat" pixelsize="34" wrap="1" color="#ffffff">Level Completed</text>
   </object>
-  <object id="8" name="StarPostionOne" type="StarPostionOne" x="317.911" y="290.622" width="98.2385" height="95.5097"/>
-  <object id="9" name="StarPostionTwo" type="StarPostionTwo" x="446.167" y="290.622" width="102.332" height="96.8741"/>
-  <object id="10" name="StarPostionThree" type="StarPostionThree" x="571.011" y="292.669" width="102.332" height="96.8741"/>
+  <object id="8" name="StarPositionOne" type="StarPositionOne" x="317.911" y="290.622" width="98.2385" height="95.5097"/>
+  <object id="9" name="StarPositionTwo" type="StarPositionTwo" x="446.167" y="290.622" width="102.332" height="96.8741"/>
+  <object id="10" name="StarPositionThree" type="StarPositionThree" x="571.011" y="292.669" width="102.332" height="96.8741"/>
  </objectgroup>
  <objectgroup id="13" name="ButtonsSpawnLayer">
   <object id="4" name="Restart" type="Restart" x="319.275" y="484.37" width="84.5943" height="94.1452"/>
-  <object id="6" name="Next" type="Next" x="575.787" y="482.324" width="84.5943" height="94.1452"/>
-  <object id="7" name="Levels" type="Levels" x="448.895" y="482.324" width="84.5943" height="94.1452"/>
+  <object id="6" name="Exit" type="Exit" x="575.787" y="482.324" width="84.5943" height="94.1452"/>
+  <object id="7" name="Next" type="Next" x="448.895" y="482.324" width="84.5943" height="94.1452"/>
  </objectgroup>
 </map>
