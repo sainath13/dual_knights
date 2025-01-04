@@ -416,7 +416,7 @@
             "selectedLayer": 11,
             "viewCenter": {
                 "x": 852,
-                "y": 540.6666666666667
+                "y": 541.3333333333334
             }
         },
         "TileSample-12X9.tsx": {
@@ -456,6 +456,10 @@
             "scaleInEditor": 1
         },
         "Tree.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Tree_192.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
@@ -777,18 +781,18 @@
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "Tree_192.tsx",
+        "The-final-Background.tmx",
         "Game-Open-UI.tmx",
         "Game-UI-With-Settings.tmx",
         "Game-Welcome-Page.tmx",
-        "The-final-Background.tmx",
         "level-selection-final.tmx",
         "Level-Completed-Menu.tmx",
         "Background-test-01.tmx",
         "Game-logo.tmx",
         "Tower_Red.tsx",
         "Torch_Red_192.tsx",
-        "Torch_Red_Down_192.tsx",
-        "Torch_Red_Right_192.tsx"
+        "Torch_Red_Down_192.tsx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
