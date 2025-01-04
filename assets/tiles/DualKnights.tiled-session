@@ -820,7 +820,6 @@
     "map.tileWidth": 64,
     "map.width": 50,
     "openFiles": [
-        "The-final-Background.tmx",
         "Layer-Background.tmx"
     ],
     "project": "DualKnights.tiled-project",
