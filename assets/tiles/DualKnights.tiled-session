@@ -826,10 +826,10 @@
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "Layer-Background.tmx",
         "Level-02.tmx",
         "star_2.tsx",
         "The-final-Background.tmx",
-        "Layer-Background.tmx",
         "Level-01.tmx",
         "level old/Level-01.tmx",
         "Background-test-02.tmx",
