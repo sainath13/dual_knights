@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="64" tileheight="64" infinite="0" nextlayerid="5" nextobjectid="28">
+ <tileset firstgid="1" source="Terrain.tsx"/>
+ <tileset firstgid="41" source="Tower_Blue.tsx"/>
+ <tileset firstgid="49" source="Tower_Red.tsx"/>
+ <tileset firstgid="57" source="17.tsx"/>
+ <tileset firstgid="59" source="Warrior_Blue.tsx"/>
+ <tileset firstgid="491" source="Barrel_Red.tsx"/>
+ <layer id="1" name="Background" width="20" height="15">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,17,12,17,12,17,12,17,12,17,12,17,12,17,0,0,0,
+0,0,0,17,17,17,17,17,17,17,17,17,17,17,17,17,17,0,0,0,
+0,0,0,12,17,12,17,12,17,12,17,12,17,12,17,12,17,0,0,0,
+0,0,0,17,17,17,17,17,17,17,17,17,17,17,17,17,17,0,0,0,
+0,0,0,12,17,12,17,12,17,12,17,12,17,12,17,12,17,0,0,0,
+0,0,0,17,17,17,17,17,17,17,17,17,17,17,17,17,17,0,0,0,
+0,0,0,12,17,12,17,12,17,12,17,12,17,12,17,12,17,0,0,0,
+0,0,0,17,17,17,17,17,17,17,17,17,17,17,17,17,17,0,0,0,
+0,0,0,12,17,12,17,12,17,12,17,12,17,12,17,12,17,0,0,0,
+0,0,0,17,17,17,17,17,17,17,17,17,17,17,17,17,17,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="3" name="Collisionblocks">
+  <object id="11" name="Block" type="Block" x="1088" y="192" width="64" height="640"/>
+  <object id="18" name="Block" type="Block" x="192" y="832" width="896" height="64"/>
+  <object id="19" name="Block" type="Block" x="192" y="128" width="896" height="64"/>
+  <object id="20" name="Block" type="Block" x="128" y="192" width="64" height="640"/>
+  <object id="23" x="714.575" y="151.822" height="2.02429"/>
+ </objectgroup>
+ <objectgroup id="4" name="Checkpoints">
+  <object id="14" name="PlayerCheckpoint" type="PlayerCheckpoint" x="960" y="320" width="64" height="64"/>
+  <object id="15" name="AntiPlayerCheckpoint" type="AntiPlayerCheckpoint" x="960" y="640" width="64" height="64"/>
+ </objectgroup>
+ <objectgroup id="2" name="Spawnpoints">
+  <object id="1" name="Player" type="Player" x="192" y="192" width="64" height="64"/>
+  <object id="2" name="AntiPlayer" type="AntiPlayer" x="512" y="448" width="64" height="64"/>
+  <object id="4" name="Barrel" type="Barrel" x="969.454" y="211.551" width="64" height="64"/>
+  <object id="22" name="Barrel" type="Barrel" x="960" y="448" width="64" height="64"/>
+  <object id="26" name="Tree" type="Tree" x="960.168" y="524.318" width="64" height="64"/>
+  <object id="27" name="MovingBarrel" type="MovingBarrel" x="512" y="899.39" width="64" height="64">
+   <properties>
+    <property name="downOffset" type="int" value="0"/>
+    <property name="isVertical" type="bool" value="false"/>
+    <property name="leftOffset" type="int" value="3"/>
+    <property name="rightOffset" type="int" value="4"/>
+    <property name="upOffset" type="int" value="0"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
