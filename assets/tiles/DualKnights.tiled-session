@@ -193,11 +193,14 @@
             }
         },
         "Game-UI-With-Settings.tmx": {
+            "expandedObjectLayers": [
+                4
+            ],
             "scale": 0.25,
-            "selectedLayer": 0,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 1832,
-                "y": 1032
+                "x": 1206,
+                "y": 1054
             }
         },
         "Game-Welcome-Page.tmx": {
@@ -210,10 +213,10 @@
         },
         "Game-logo.tmx": {
             "scale": 1.5,
-            "selectedLayer": 0,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": 256,
-                "y": 256
+                "x": 292.66666666666663,
+                "y": 269
             }
         },
         "Game-logo.tsx": {
@@ -398,11 +401,14 @@
             "scaleInEditor": 1
         },
         "The-final-Background.tmx": {
+            "expandedObjectLayers": [
+                18
+            ],
             "scale": 0.75,
-            "selectedLayer": 10,
+            "selectedLayer": 15,
             "viewCenter": {
-                "x": 942.6666666666667,
-                "y": 689.3333333333334
+                "x": 1232,
+                "y": 558
             }
         },
         "TileSample-12X9.tsx": {

@@ -70,9 +70,4 @@
 0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="6" name="Text">
-  <object id="1" x="172.5" y="393.833" width="177.333" height="46.6667">
-   <text fontfamily="ThaleahFat" pixelsize="32" wrap="1" color="#552828">Dual Knights</text>
-  </object>
- </objectgroup>
 </map>

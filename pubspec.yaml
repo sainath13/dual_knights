@@ -88,12 +88,15 @@ flutter:
     - assets/images/Factions/Goblins/Troops/Torch/Red/
     - assets/images/Factions/Knights/Troops/Pawn/Red/
     - assets/images/Factions/Knights/Troops/Archer/Blue/
+    - assets/images/Factions/Knights/Buildings/House/House_Blue.png
+    - assets/images/Resources/Gold Mine/GoldMine_Active.png
     - assets/images/Factions/Knights/Troops/Pawn/Blue/
     - assets/images/Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Level/Star/
     - assets/images/Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Star/
     - assets/images/Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png@2x/Star/
     - assets/images/Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Button/Square/Fill/
     - assets/images/UI/Icons/
+    - assets/images/Factions/Knights/Troops/Archer/Yellow/Archer_Yellow.png
     - assets/images/base_image/
     - assets/images/
     - assets/images/Terrain/Water/

@@ -47,13 +47,13 @@ class GameMainMenu extends PositionComponent with HasGameRef<DualKnights> {
   }
 
   Future<void> loadGameMainMenu() async {
-    gameMainMenu = await TiledComponent.load('Game-UI-With-Settings.tmx', Vector2(64, 64));
+    gameMainMenu = await TiledComponent.load('The-Final-Background.tmx', Vector2(64, 64));
     // add(gameMainMenu);
     _world = World(children: [gameMainMenu]);
     await add(_world);
     _camera = CameraComponent.withFixedResolution(
-      width: 31*2 * 64,
-      height: 22 * 64,
+      width: 25 * 64,
+      height: 19 * 64,
       world: _world,
     );
     // _camera.viewfinder.anchor = Anchor.topLeft;
