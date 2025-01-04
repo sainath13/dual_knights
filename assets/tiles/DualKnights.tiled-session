@@ -665,8 +665,14 @@
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
+        "Warrior_Blue_Big.tsx": {
+            "scaleInEditor": 1
+        },
         "Warrior_Red.tsx": {
             "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Warrior_Red_Big.tsx": {
             "scaleInEditor": 1
         },
         "Warrior_Red_Idle_192.tsx": {
@@ -781,18 +787,18 @@
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "Warrior_Blue_Big.tsx",
+        "Warrior_Red_Big.tsx",
+        "timer_BG.tsx",
+        "Torch_Red.tsx",
+        "Torch_Red_192.tsx",
+        "Torch_Red_Down_192.tsx",
+        "Torch_Red_Idle_192.tsx",
+        "Torch_Red_Right_192.tsx",
+        "spritesheet.tsx",
+        "base.tsx",
         "HappySheep_Idle.tsx",
-        "Tree_192.tsx",
-        "The-final-Background.tmx",
-        "Game-Open-UI.tmx",
-        "Game-UI-With-Settings.tmx",
-        "Game-Welcome-Page.tmx",
-        "level-selection-final.tmx",
-        "Level-Completed-Menu.tmx",
-        "Background-test-01.tmx",
-        "Game-logo.tmx",
-        "Tower_Red.tsx",
-        "Torch_Red_192.tsx"
+        "Tree_192.tsx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
