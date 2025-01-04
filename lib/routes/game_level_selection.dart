@@ -179,18 +179,22 @@ if (navigationButtons != null) {
       case 'LeftNavigation':
        final leftButton = GameButton(
         onClick: () => moveCamera(-1,  cameraViewportWidth,gameLevelSelection.size.x),
-        size: Vector2(button.width, button.height),
+        size: Vector2(button.width/1.1, button.height/1.1),
         position: Vector2(button.x, button.y),
-        buttonText: '<',
+        normalSprite: Sprite(await game.images.load('Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Buttons/Square/ArrowLeft-Bold/Default@2x-1.png')),
+        onTapSprite: Sprite(await game.images.load('Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Buttons/Square/ArrowLeft-Bold/Hover@2x-1.png')),
+        buttonText: '',
       );
       _world.add(leftButton);
         break;
       case 'RightNavigation':
        final rightButton = GameButton(
         onClick: () => moveCamera(1, cameraViewportWidth,gameLevelSelection.size.x),
-        size: Vector2(button.width, button.height),
+        size: Vector2(button.width/1.1, button.height/1.1),
         position: Vector2(button.x, button.y),
-        buttonText: '>',
+        normalSprite: Sprite(await game.images.load('Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Buttons/Square/ArrowRight-Bold/Default@2x-1.png')),
+        onTapSprite: Sprite(await game.images.load('Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Buttons/Square/ArrowRight-Bold/Hover@2x-1.png')),
+        buttonText: '',
       );
       _world.add(rightButton);
         break;
