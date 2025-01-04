@@ -21,6 +21,9 @@ class GameLevelSelection extends PositionComponent with HasGameRef<DualKnights>,
   final VoidCallback? onBackPressed;
   Vector2 dragStart = Vector2.zero();
 
+  double cameraViewportWidth = 24 * 64; // 832
+  double cameraViewportHeight = 12 * 64; 
+
 
  GameLevelSelection({
     super.key,
@@ -31,6 +34,15 @@ class GameLevelSelection extends PositionComponent with HasGameRef<DualKnights>,
   @override
   Future<void> onLoad() async {
     await loadGameLevelSelection();
+    GameButton backButton = GameButton(
+        onClick: () => onBackPressed?.call(),
+        size: Vector2(40, 40),
+        position: Vector2(30, 15),
+        normalSprite: Sprite(await game.images.load('Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Buttons/Square/ArrowLeft-Thin/Default@2x-1.png')),
+        onTapSprite: Sprite(await game.images.load('Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Buttons/Square/ArrowLeft-Thin/Hover@2x-1.png')),
+        buttonText: '',
+    );
+    _camera.viewport.add(backButton);
     super.onLoad();
     // Load your assets and initialize your component here
   }
@@ -74,8 +86,7 @@ Future<void> loadGameLevelSelection() async {
     var lastLevelUnlocked  = 25;
     gameLevelSelection = await TiledComponent.load('level-selection-final.tmx', Vector2(64, 64),atlasMaxX: 5000,atlasMaxY: 5000);
 
-    const double cameraViewportWidth = 24 * 64; // 832
-    const double cameraViewportHeight = 12 * 64; // 1408
+    // 1408
     _world = World(children: [gameLevelSelection]);
     await add(_world);
     _camera = CameraComponent.withFixedResolution(
