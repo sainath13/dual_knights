@@ -769,7 +769,7 @@
         }
     },
     "last.externalTilesetPath": "D:/mulag/dual_knights/assets/tiles",
-    "last.imagePath": "D:/mulag/dual_knights/assets/tiles",
+    "last.imagePath": "D:/mulag/dual_knights/assets/images/Resources/Sheep",
     "map.height": 19,
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 64,
@@ -781,6 +781,7 @@
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "HappySheep_Idle.tsx",
         "Tree_192.tsx",
         "The-final-Background.tmx",
         "Game-Open-UI.tmx",
@@ -791,13 +792,12 @@
         "Background-test-01.tmx",
         "Game-logo.tmx",
         "Tower_Red.tsx",
-        "Torch_Red_192.tsx",
-        "Torch_Red_Down_192.tsx"
+        "Torch_Red_192.tsx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
-        "height": 64,
-        "width": 64
+        "height": 128,
+        "width": 128
     }
 }
