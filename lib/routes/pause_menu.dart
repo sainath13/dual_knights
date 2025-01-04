@@ -7,6 +7,7 @@ class PauseMenu extends StatelessWidget {
     this.onResumePressed,
     this.onRestartPressed,
     this.onExitPressed,
+    this.onLevelSelection,
     required this.musicValueListenable,
     required this.sfxValueListenable,
     this.onMusicValueChanged,
@@ -20,6 +21,7 @@ class PauseMenu extends StatelessWidget {
   final VoidCallback? onResumePressed;
   final VoidCallback? onRestartPressed;
   final VoidCallback? onExitPressed;
+  final VoidCallback? onLevelSelection;
 
    final ValueListenable<bool> musicValueListenable;
   final ValueListenable<bool> sfxValueListenable;
@@ -56,6 +58,14 @@ class PauseMenu extends StatelessWidget {
               child: OutlinedButton(
                 onPressed: onRestartPressed,
                 child: const Text('Restart',style: TextStyle(fontFamily: "DualKnights")),
+              ),
+            ),
+            const SizedBox(height: 5),
+            SizedBox(
+              width: 150,
+              child: OutlinedButton(
+                onPressed: onLevelSelection,
+                child: const Text('Level Selection',style: TextStyle(fontFamily: "DualKnights")),
               ),
             ),
             const SizedBox(height: 5),

@@ -25,7 +25,7 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
   static const isMobile = bool.fromEnvironment('MOBILE_BUILD');
   final musicValueNotifier = ValueNotifier(true);
   final sfxValueNotifier = ValueNotifier(true);
-  final analogueJoystick = ValueNotifier(true);
+  final analogueJoystick = ValueNotifier(false); //If true hud will have analogue joystick else arrow keys
 
   var lastGamePlayState = null;
 
@@ -65,6 +65,7 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
         onSfxValueChanged: (value) => sfxValueNotifier.value = value,
         controlTypeListenable: analogueJoystick,
         onControlTypeChanged: (value) => analogueJoystick.value = value,
+        onLevelSelection: _navigateToGameLevelSelectionFromPause
 
       ),
     ),
@@ -136,6 +137,13 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
 
   void _popRoute() {
     _router.pop();
+  }
+
+   void _navigateToGameLevelSelectionFromPause() {
+     resumeEngine();
+     _router.pop();
+     _routeToGameMainMenu();
+     _navigateToGameLevelSelection();
   }
 
   void _navigateToGameLevelSelection() {
