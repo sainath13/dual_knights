@@ -13,6 +13,8 @@ import 'package:dual_knights/dual_knights.dart';
 import 'package:flame/components.dart';
 import 'package:flame_tiled/flame_tiled.dart';
 
+import 'gold.dart';
+
 
 class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollisionDetection{
   final String currentLevelIndex;
@@ -114,16 +116,19 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
     
     final collisionBlocksLayer = level.tileMap.getLayer<ObjectGroup>('Collisionblocks');
     if(collisionBlocksLayer != null){
-      // log("Collision blocks layer is not null");
+      log("Collision blocks layer is not null");
       for(final collisionBlock in collisionBlocksLayer.objects){
         switch(collisionBlock.class_){
           case 'Block' :
             final block = CollisionBlock(
               position: Vector2(collisionBlock.x, collisionBlock.y),
               size: Vector2(collisionBlock.width, collisionBlock.height),
-            )..debugMode = true;
+            );//..debugMode = true;
             add(block);
             collisionBlocks.add(block);
+            final gold = Gold();//..debugMode = true;
+            gold.position = Vector2(collisionBlock.x, collisionBlock.y);
+            add(gold);
             //create a new block.
             break;
           default:   
@@ -132,6 +137,31 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
     }
     else {
       log("Collision blocks layer is sadly null");
+    }
+
+    final collisionBlocksForGridLayer = level.tileMap.getLayer<ObjectGroup>('CollisionblocksForGrid');
+    if(collisionBlocksForGridLayer != null){
+      log("Collision blocks for grid layer is not null");
+      for(final collisionBlock in collisionBlocksForGridLayer.objects){
+        switch(collisionBlock.class_){
+          case 'Block' :
+            final block = CollisionBlock(
+              position: Vector2(collisionBlock.x, collisionBlock.y),
+              size: Vector2(collisionBlock.width, collisionBlock.height),
+            );//..debugMode = true;
+            add(block);
+            collisionBlocks.add(block);
+            final gold = Gold();//..debugMode = true;
+            gold.position = Vector2(collisionBlock.x, collisionBlock.y);
+            add(gold);
+            //create a new block.
+            break;
+          default:
+        }
+      }
+    }
+    else {
+      log("Collision blocks grids layer is sadly null");
     }
 
     player.setCollisionBlocks(collisionBlocks);

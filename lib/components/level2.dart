@@ -139,7 +139,7 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
 
     final collisionBlocksForGridLayer = level.tileMap.getLayer<ObjectGroup>('CollisionblocksForGrid');
     if(collisionBlocksForGridLayer != null){
-      log("Collision blocks layer is not null");
+      log("Collision blocks for grid layer is not null");
       for(final collisionBlock in collisionBlocksForGridLayer.objects){
         switch(collisionBlock.class_){
           case 'Block' :
