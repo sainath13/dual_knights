@@ -74,14 +74,14 @@
         },
         "Background-test-01.tmx": {
             "expandedObjectLayers": [
-                11,
-                13
+                13,
+                11
             ],
             "scale": 0.73291015625,
-            "selectedLayer": 15,
+            "selectedLayer": 13,
             "viewCenter": {
-                "x": 443.437708194537,
-                "y": 267.4270486342438
+                "x": 443.43770819453704,
+                "y": 266.744836775483
             }
         },
         "Background-test-02.tmx": {
@@ -291,6 +291,14 @@
             "viewCenter": {
                 "x": 479.3103448275863,
                 "y": 384.48275862068965
+            }
+        },
+        "Level-Completed-Menu.tmx": {
+            "scale": 0.85537109375,
+            "selectedLayer": 14,
+            "viewCenter": {
+                "x": 512.0584541614339,
+                "y": 384.0438406210755
             }
         },
         "Level-for-Manish-2.tmx": {
@@ -711,8 +719,8 @@
             "scale": 0.8664,
             "selectedLayer": 10,
             "viewCenter": {
-                "x": 2303.785780240074,
-                "y": 502.6546629732226
+                "x": 2579.639889196676,
+                "y": 495.72945521698983
             }
         },
         "spritesheet.tsx": {
@@ -769,18 +777,18 @@
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "Level-Completed-Menu.tmx",
+        "level-selection-final.tmx",
+        "Background-test-01.tmx",
         "The-final-Background.tmx",
         "Game-UI-With-Settings.tmx",
         "Game-logo.tmx",
-        "level-selection-final.tmx",
         "Tower_Red.tsx",
         "Torch_Red_192.tsx",
         "Torch_Red_Down_192.tsx",
         "Torch_Red_Right_192.tsx",
         "Torch_Red.tsx",
-        "01.tsx",
-        "Game-logo.tsx",
-        "Bridge_All.tsx"
+        "01.tsx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
