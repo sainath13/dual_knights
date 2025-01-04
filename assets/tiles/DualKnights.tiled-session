@@ -88,16 +88,24 @@
             "scale": 0.53,
             "selectedLayer": 11,
             "viewCenter": {
-                "x": 511.3207547169811,
-                "y": 383.01886792452825
+                "x": 511.32075471698107,
+                "y": 382.0754716981131
             }
         },
         "Background-test-03.tmx": {
-            "scale": 0.73291015625,
+            "scale": 0.4634,
+            "selectedLayer": -1,
+            "viewCenter": {
+                "x": 533.0168321104876,
+                "y": 449.93526111350883
+            }
+        },
+        "Background-test-08.tmx": {
+            "scale": 0.616015625,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 511.6588940706196,
-                "y": 383.4030646235842
+                "x": 511.3506658211795,
+                "y": 383.91883322764744
             }
         },
         "Background-test-1.tmx": {
@@ -108,12 +116,28 @@
                 "y": 383.9622641509433
             }
         },
+        "Background-test-12.tmx": {
+            "scale": 0.616015625,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 511.3506658211795,
+                "y": 383.91883322764744
+            }
+        },
+        "Background-test-2.tmx": {
+            "scale": 0.616015625,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 511.3506658211795,
+                "y": 383.91883322764744
+            }
+        },
         "Background-test-23.tmx": {
             "scale": 0.75,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 512.6666666666667,
-                "y": 383.33333333333337
+                "x": 636,
+                "y": 259.33333333333337
             }
         },
         "Background-test-bases-without-broder.tmx": {
@@ -246,27 +270,27 @@
         },
         "Level-01.tmx": {
             "expandedObjectLayers": [
-                3,
-                2
+                2,
+                3
             ],
             "scale": 0.5497,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 601.2370383845735,
-                "y": 584.8644715299254
+                "x": 571.2206658177188,
+                "y": 581.2261233400037
             }
         },
         "Level-02.tmx": {
             "expandedObjectLayers": [
-                5,
+                6,
                 4,
-                6
+                5
             ],
             "scale": 0.56,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 555.3571428571429,
-                "y": 450
+                "x": 555.3571428571428,
+                "y": 450.89285714285717
             }
         },
         "Level-03.tmx": {
@@ -281,8 +305,8 @@
             "scale": 0.7335286458333332,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 278.1077482914708,
-                "y": 317.6426732936896
+                "x": 278.10774829147067,
+                "y": 316.96103665572036
             }
         },
         "Level-05.tmx": {
@@ -290,7 +314,15 @@
             "selectedLayer": 1,
             "viewCenter": {
                 "x": 479.3103448275863,
-                "y": 384.48275862068965
+                "y": 383.6206896551725
+            }
+        },
+        "Level-06.tmx": {
+            "scale": 0.616015625,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 511.3506658211795,
+                "y": 383.91883322764744
             }
         },
         "Level-Completed-Menu.tmx": {
@@ -412,8 +444,8 @@
             "scale": 0.4429,
             "selectedLayer": 14,
             "viewCenter": {
-                "x": 605.102731993678,
-                "y": 601.7159629713253
+                "x": 711.2214946940619,
+                "y": 610.7473470309325
             }
         },
         "The-final-Background-old.tmx": {
@@ -745,10 +777,10 @@
                 13
             ],
             "scale": 0.8664,
-            "selectedLayer": 12,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 436.2880886426593,
-                "y": 478.4164358264082
+                "x": 560.9418282548477,
+                "y": 349.145891043398
             }
         },
         "spritesheet.tsx": {
@@ -804,6 +836,7 @@
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "level-selection-final.tmx",
         "The-final-Background-old.tmx",
         "The-final-Background.tmx",
         "The-Final-Game-Open.tmx",
@@ -814,8 +847,7 @@
         "Torch_Red_192.tsx",
         "Torch_Red_Down_192.tsx",
         "Torch_Red_Idle_192.tsx",
-        "Torch_Red_Right_192.tsx",
-        "spritesheet.tsx"
+        "Torch_Red_Right_192.tsx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
