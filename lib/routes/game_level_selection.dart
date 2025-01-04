@@ -70,7 +70,7 @@ Future<void> loadGameLevelSelection() async {
 
 
 
-    var levelData = {1: {"locked": false, "stars": 2}, 2: {"locked": false, "stars": 1},3: {"locked": false, "stars": 1},4: {"locked": false, "stars": 1},5: {"locked": false, "stars": 1},6: {"locked": false, "stars": 1},7: {"locked": false, "stars": 1},8: {"locked": false, "stars": 1},9: {"locked": false, "stars": 1},10: {"locked": false, "stars": 1},};
+    var levelData = {1: {"locked": false, "stars": 3}, 2: {"locked": false, "stars": 1},3: {"locked": false, "stars": 3},4: {"locked": false, "stars": 1},5: {"locked": false, "stars": 1},6: {"locked": false, "stars": 1},7: {"locked": false, "stars": 1},8: {"locked": false, "stars": 1},9: {"locked": false, "stars": 1},10: {"locked": false, "stars": 1},};
     var lastLevelUnlocked  = 25;
     gameLevelSelection = await TiledComponent.load('level-selection-final.tmx', Vector2(64, 64),atlasMaxX: 5000,atlasMaxY: 5000);
 
@@ -132,14 +132,19 @@ if (buttonsLayer != null) {
         for (int i = 0; i < 3; i++) {
           final starSprite = Sprite(await game.images.load(
             i < (stars as int)
-              ? 'Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Star/Active.png'
-              : 'Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Star/Unactive.png'
+              ? 'Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png@2x/Level/Star/Active@2x.png'
+              : 'Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png@2x/Level/Star/Unactive@2x.png'
           ));
-          final starSize = Vector2(16, 16);
+          // final starSprite = Sprite(await game.images.load(
+          //     i < (stars as int)
+          //         ? 'Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Star/Active.png'
+          //         : 'Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Star/Unactive.png'
+          // ));
+          final starSize = Vector2(16+5, 16+4);
           final starPosition = buttonPosition +
               Vector2(
                 (buttonSize.x - (3 * starSize.x + (3 - 1) * 4)) / 2 + i * (starSize.x + 4),
-                buttonSize.y,
+                buttonSize.y -20,
               );
 
           final starComponent = SpriteComponent(

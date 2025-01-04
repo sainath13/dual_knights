@@ -188,8 +188,8 @@
             "scale": 0.33,
             "selectedLayer": 7,
             "viewCenter": {
-                "x": 1130.30303030303,
-                "y": 362.12121212121224
+                "x": 742.4242424242425,
+                "y": 119.69696969696975
             }
         },
         "Game-UI-With-Settings.tmx": {
@@ -199,16 +199,16 @@
             "scale": 0.25,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 1684,
-                "y": 1054
+                "x": 1172,
+                "y": 734
             }
         },
         "Game-Welcome-Page.tmx": {
             "scale": 0.533447265625,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 511.7656750572083,
-                "y": 383.3556064073226
+                "x": 271.8169336384439,
+                "y": 233.38764302059496
             }
         },
         "Game-logo.tmx": {
@@ -413,10 +413,10 @@
                 18
             ],
             "scale": 0.75,
-            "selectedLayer": 15,
+            "selectedLayer": 11,
             "viewCenter": {
-                "x": 730.6666666666666,
-                "y": 636.6666666666665
+                "x": 852,
+                "y": 540.6666666666667
             }
         },
         "TileSample-12X9.tsx": {
@@ -717,10 +717,10 @@
                 13
             ],
             "scale": 0.8664,
-            "selectedLayer": 10,
+            "selectedLayer": 12,
             "viewCenter": {
-                "x": 2579.639889196676,
-                "y": 495.72945521698983
+                "x": 436.2880886426593,
+                "y": 478.4164358264082
             }
         },
         "spritesheet.tsx": {
@@ -777,18 +777,18 @@
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
-        "Level-Completed-Menu.tmx",
-        "level-selection-final.tmx",
-        "Background-test-01.tmx",
-        "The-final-Background.tmx",
+        "Game-Open-UI.tmx",
         "Game-UI-With-Settings.tmx",
+        "Game-Welcome-Page.tmx",
+        "The-final-Background.tmx",
+        "level-selection-final.tmx",
+        "Level-Completed-Menu.tmx",
+        "Background-test-01.tmx",
         "Game-logo.tmx",
         "Tower_Red.tsx",
         "Torch_Red_192.tsx",
         "Torch_Red_Down_192.tsx",
-        "Torch_Red_Right_192.tsx",
-        "Torch_Red.tsx",
-        "01.tsx"
+        "Torch_Red_Right_192.tsx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
