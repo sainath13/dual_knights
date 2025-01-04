@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'dart:ui';
 
+import 'package:dual_knights/components/arrow_keys.dart';
+import 'package:dual_knights/dual_knights.dart';
 import 'package:dual_knights/input.dart';
 import 'package:dual_knights/routes/gameplay.dart';
 import 'package:flame/camera.dart';
@@ -9,43 +11,30 @@ import 'package:flame/input.dart';
 import 'package:flutter/material.dart' hide Viewport;
 import 'package:flutter/services.dart';
 
-class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference, HasAncestor<Gameplay> {
+class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference<DualKnights>,HasAncestor<Gameplay> {
   Hud({
     this.input,
     this.onPausePressed,
     required this.onRestartLevel,
   });
 
-  late final JoystickComponent _joystick;
+  late  JoystickComponent _joystick;
   final Input? input;
   final VoidCallback? onPausePressed;
   final VoidCallback onRestartLevel;
   LogicalKeyboardKey? lastDirection;
+  var _joystickSettingListener;
 
   late HudButtonComponent _knightSelectionButton;
   bool _isBlueSelected = true;
 
   @override
   Future<void> onLoad() async {
-    // Joystick setup
-    _joystick = JoystickComponent(
-      anchor: Anchor.center,
-      knob: CircleComponent(
-        radius: 50,
-        paint: Paint()..color = Colors.grey,
-      ),
-      background: CircleComponent(
-        radius: 60,
-        paint: Paint()
-          ..color = Colors.black
-          ..style = PaintingStyle.stroke
-          ..strokeWidth = 4,
-      ),
-    );
 
-    _joystick.position.y = parent.virtualSize.y - _joystick.knobRadius * 2.5;
-    _joystick.position.x = _joystick.knobRadius * 2.5;
-    await _joystick.addToParent(this);
+    
+    setupJoyStick();
+    // Joystick setup
+    
 
     // Pause button
     final pauseButton = HudButtonComponent(
@@ -80,7 +69,7 @@ class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference, 
       size: Vector2.all(50),
     ),
     anchor: Anchor.center,
-    position: Vector2(_joystick.position.x , _joystick.position.y - 120),
+    position: Vector2(parent.virtualSize.x-100 , parent.virtualSize.y - 100),
     onPressed: () {
       _toggleSprite(!_isBlueSelected);
       (_knightSelectionButton.button as SpriteComponent?)?.sprite = Sprite(
@@ -104,6 +93,9 @@ class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference, 
   );
   await add(textComponent);
 
+
+
+    
 
   }
 
@@ -145,7 +137,82 @@ class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference, 
       lastDirection = null;
     }
   }
+  
+  void setupJoyStick() async{
+
+    
+        _joystick = JoystickComponent(
+        anchor: Anchor.center,
+        knob: CircleComponent(
+          radius: 50,
+          paint: Paint()..color = Colors.grey,
+        ),
+        background: CircleComponent(
+          radius: 60,
+          paint: Paint()
+            ..color = Colors.black
+            ..style = PaintingStyle.stroke
+            ..strokeWidth = 4,
+        ),
+      );
+      _joystick.position.y = parent.virtualSize.y - _joystick.knobRadius * 2.5;
+      _joystick.position.x = _joystick.knobRadius * 2.5;
 
 
-}
+      var arrowKeysComponent = ArrowKeysComponent(
+            onDirectionPressed: (direction) {
+              switch (direction) {
+                case 'up':
+                  _simulateKeyEvent(LogicalKeyboardKey.arrowUp);
+                  break;
+                case 'down':
+                  _simulateKeyEvent(LogicalKeyboardKey.arrowDown);
+                  break;
+                case 'left':
+                  _simulateKeyEvent(LogicalKeyboardKey.arrowLeft);
+                  break;
+                case 'right':
+                  _simulateKeyEvent(LogicalKeyboardKey.arrowRight);
+                  break;
+              }
+            },
+          );
+      arrowKeysComponent.position = Vector2(100, parent.virtualSize.y-140);
+      
+
+       _joystickSettingListener = () {
+      if (game.analogueJoystick.value) {
+        remove(arrowKeysComponent);
+        add(_joystick);
+      } else {
+        add(arrowKeysComponent);
+        remove(_joystick);
+      }
+    };
+
+    game.analogueJoystick.addListener(_joystickSettingListener);
+      
+    if(game.analogueJoystick.value==true){
+        add(_joystick);
+    }else{
+      add(arrowKeysComponent);
+    }
+      
+    
+      
+    }
+    
+
+  @override
+  void onRemove() {
+    
+    game.analogueJoystick.removeListener(_joystickSettingListener);
+    super.onRemove();
+  }
+    
+
+  }
+
+
+
 

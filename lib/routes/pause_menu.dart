@@ -11,6 +11,8 @@ class PauseMenu extends StatelessWidget {
     required this.sfxValueListenable,
     this.onMusicValueChanged,
     this.onSfxValueChanged,
+    required this.controlTypeListenable,
+    this.onControlTypeChanged,
   });
 
   static const id = 'PauseMenu';
@@ -24,6 +26,9 @@ class PauseMenu extends StatelessWidget {
 
   final ValueChanged<bool>? onMusicValueChanged;
   final ValueChanged<bool>? onSfxValueChanged;
+
+  final ValueListenable<bool> controlTypeListenable;
+  final ValueChanged<bool>? onControlTypeChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -81,6 +86,24 @@ class PauseMenu extends StatelessWidget {
                   );
                 },
                 child: const Text('Sfx',style: TextStyle(fontFamily: "DualKnights")),
+              ),
+            ),
+            const SizedBox(height: 5),
+            SizedBox(
+              width: 150,
+              child: ValueListenableBuilder<bool>(
+                valueListenable: controlTypeListenable,
+                builder: (BuildContext context, bool isAnalogue, Widget? child) {
+                  return OutlinedButton(
+                    onPressed: () {
+                      onControlTypeChanged?.call(!isAnalogue);
+                    },
+                    child: Text(
+                      isAnalogue ? 'Analogue Controller' : 'Arrow Keys Controller',
+                      style: const TextStyle(fontFamily: "DualKnights"),
+                    ),
+                  );
+                },
               ),
             ),
             const SizedBox(height: 5),

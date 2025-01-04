@@ -25,6 +25,8 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
   static const isMobile = bool.fromEnvironment('MOBILE_BUILD');
   final musicValueNotifier = ValueNotifier(true);
   final sfxValueNotifier = ValueNotifier(true);
+  final analogueJoystick = ValueNotifier(true);
+
   var lastGamePlayState = null;
 
   static const bgm = '8BitDNALoop.wav';
@@ -61,6 +63,8 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
         sfxValueListenable: sfxValueNotifier,
         onMusicValueChanged: (value) => musicValueNotifier.value = value,
         onSfxValueChanged: (value) => sfxValueNotifier.value = value,
+        controlTypeListenable: analogueJoystick,
+        onControlTypeChanged: (value) => analogueJoystick.value = value,
 
       ),
     ),
