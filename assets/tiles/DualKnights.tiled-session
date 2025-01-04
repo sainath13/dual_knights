@@ -245,33 +245,32 @@
             "scaleInEditor": 1
         },
         "Layer-Background.tmx": {
+            "expandedObjectLayers": [
+                30
+            ],
             "scale": 0.73291015625,
-            "selectedLayer": 1,
+            "selectedLayer": 8,
             "viewCenter": {
                 "x": 511.6588940706196,
                 "y": 383.4030646235842
             }
         },
         "Level-01.tmx": {
-            "expandedObjectLayers": [
-                3,
-                2
-            ],
             "scale": 0.5497,
-            "selectedLayer": 3,
+            "selectedLayer": 8,
             "viewCenter": {
-                "x": 601.2370383845735,
-                "y": 584.8644715299254
+                "x": 600.3274513370931,
+                "y": 583.9548844824451
             }
         },
         "Level-02.tmx": {
             "expandedObjectLayers": [
                 5,
-                4,
-                6
+                6,
+                4
             ],
             "scale": 0.56,
-            "selectedLayer": 5,
+            "selectedLayer": 12,
             "viewCenter": {
                 "x": 555.3571428571429,
                 "y": 450
@@ -716,6 +715,35 @@
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
+        "level old/17.tsx": {
+            "scaleInDock": 1
+        },
+        "level old/Barrel_Red.tsx": {
+            "scaleInDock": 1
+        },
+        "level old/Level-01.tmx": {
+            "expandedObjectLayers": [
+                3
+            ],
+            "scale": 0.586328125,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 639.5736175882745,
+                "y": 479.2538307794804
+            }
+        },
+        "level old/Terrain.tsx": {
+            "scaleInDock": 1
+        },
+        "level old/Tower_Blue.tsx": {
+            "scaleInDock": 1
+        },
+        "level old/Tower_Red.tsx": {
+            "scaleInDock": 1
+        },
+        "level old/Warrior_Blue.tsx": {
+            "scaleInDock": 1
+        },
         "level-new-selection part 2.tmx": {
             "scale": 0.92958984375,
             "selectedLayer": 4,
@@ -798,18 +826,18 @@
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "Level-02.tmx",
+        "star_2.tsx",
         "The-final-Background.tmx",
         "Layer-Background.tmx",
+        "Level-01.tmx",
+        "level old/Level-01.tmx",
         "Background-test-02.tmx",
         "Warrior_Blue_Big.tsx",
         "Warrior_Red_Big.tsx",
         "timer_BG.tsx",
         "Torch_Red.tsx",
-        "Torch_Red_192.tsx",
-        "Torch_Red_Down_192.tsx",
-        "Torch_Red_Idle_192.tsx",
-        "Torch_Red_Right_192.tsx",
-        "spritesheet.tsx"
+        "Torch_Red_192.tsx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",

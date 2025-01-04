@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="64" tileheight="64" infinite="0" nextlayerid="5" nextobjectid="28">
  <tileset firstgid="1" source="Terrain.tsx"/>
- <tileset firstgid="41" source="Tower_Blue.tsx"/>
- <tileset firstgid="49" source="Tower_Red.tsx"/>
- <tileset firstgid="57" source="17.tsx"/>
- <tileset firstgid="59" source="Warrior_Blue.tsx"/>
- <tileset firstgid="491" source="Barrel_Red.tsx"/>
+ <tileset firstgid="18" source="Tower_Blue.tsx"/>
+ <tileset firstgid="18" source="Tower_Red.tsx"/>
+ <tileset firstgid="18" source="17.tsx"/>
+ <tileset firstgid="18" source="Warrior_Blue.tsx"/>
+ <tileset firstgid="18" source="Barrel_Red.tsx"/>
  <layer id="1" name="Background" width="20" height="15">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
