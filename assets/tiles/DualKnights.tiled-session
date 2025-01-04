@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "Layer-Background.tmx",
+    "activeFile": "",
     "expandedProjectPaths": [
         "."
     ],
@@ -248,11 +248,11 @@
             "expandedObjectLayers": [
                 30
             ],
-            "scale": 0.73291015625,
+            "scale": 0.73,
             "selectedLayer": 8,
             "viewCenter": {
-                "x": 511.6588940706196,
-                "y": 383.4030646235842
+                "x": 511.64383561643837,
+                "y": 382.87671232876704
             }
         },
         "Level-01.tmx": {
@@ -302,10 +302,10 @@
         },
         "Level-Completed-Menu.tmx": {
             "scale": 0.85537109375,
-            "selectedLayer": 14,
+            "selectedLayer": -1,
             "viewCenter": {
-                "x": 512.0584541614339,
-                "y": 384.0438406210755
+                "x": 732.4306427674392,
+                "y": 345.46409407466604
             }
         },
         "Level-for-Manish-2.tmx": {
@@ -820,12 +820,12 @@
     "map.tileWidth": 64,
     "map.width": 50,
     "openFiles": [
-        "Layer-Background.tmx"
     ],
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
         "Layer-Background.tmx",
+        "Level-Completed-Menu.tmx",
         "Level-02.tmx",
         "star_2.tsx",
         "The-final-Background.tmx",
@@ -835,8 +835,7 @@
         "Warrior_Blue_Big.tsx",
         "Warrior_Red_Big.tsx",
         "timer_BG.tsx",
-        "Torch_Red.tsx",
-        "Torch_Red_192.tsx"
+        "Torch_Red.tsx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",

@@ -13,18 +13,18 @@
  <tileset firstgid="192" source="16.tsx"/>
  <tileset firstgid="194" source="Castle_Destroyed.tsx"/>
  <tileset firstgid="214" source="HappySheep_Idle.tsx"/>
- <tileset firstgid="246" source="UI/Carved_9Slides.tsx"/>
- <tileset firstgid="255" source="UI/Ribbon_Red_3Slides.tsx"/>
- <tileset firstgid="258" source="G_Idle.tsx"/>
- <tileset firstgid="262" source="Warrior_Blue_192.tsx"/>
- <tileset firstgid="310" source="Warrior_Red_Idle_192.tsx"/>
- <tileset firstgid="316" source="star_2.tsx"/>
- <tileset firstgid="317" source="star_1.tsx"/>
- <tileset firstgid="318" source="button_bg.tsx"/>
- <tileset firstgid="319" source="UI/Banner_Connection_Left_64.tsx"/>
- <tileset firstgid="328" source="UI/Banner_Connection_Right_64.tsx"/>
- <tileset firstgid="337" source="Tower_Red.tsx"/>
- <tileset firstgid="345" source="Star_Innactive.tsx"/>
+ <tileset firstgid="232" source="UI/Carved_9Slides.tsx"/>
+ <tileset firstgid="241" source="UI/Ribbon_Red_3Slides.tsx"/>
+ <tileset firstgid="244" source="G_Idle.tsx"/>
+ <tileset firstgid="248" source="Warrior_Blue_192.tsx"/>
+ <tileset firstgid="296" source="Warrior_Red_Idle_192.tsx"/>
+ <tileset firstgid="302" source="star_2.tsx"/>
+ <tileset firstgid="303" source="star_1.tsx"/>
+ <tileset firstgid="304" source="button_bg.tsx"/>
+ <tileset firstgid="305" source="UI/Banner_Connection_Left_64.tsx"/>
+ <tileset firstgid="314" source="UI/Banner_Connection_Right_64.tsx"/>
+ <tileset firstgid="323" source="Tower_Red.tsx"/>
+ <tileset firstgid="331" source="Star_Innactive.tsx"/>
  <layer id="3" name="GameBackground" width="16" height="12">
   <data encoding="csv">
 12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,
@@ -122,22 +122,6 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="7" name="Sheep" width="16" height="12">
-  <data encoding="csv">
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,214,215,0,
-0,214,215,0,0,0,0,0,0,0,0,0,0,230,231,0,
-0,230,231,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,214,215,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,230,231,0,0,0,0,0,0,0,0,0,0,0,0,
-0,214,215,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,230,231,0,0,0,0,214,215,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,230,231,0,0,0,0,0,0,0,
-214,215,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-230,231,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-</data>
- </layer>
  <objectgroup id="5" name="Collisionblocks" visible="0">
   <object id="1" name="Block" type="Block" x="384" y="192" width="64" height="64"/>
   <object id="2" name="Block" type="Block" x="512" y="192" width="64" height="64"/>
@@ -181,16 +165,16 @@
  <layer id="9" name="LevelCompleted" width="16" height="12">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,319,329,329,329,329,329,329,329,329,329,329,330,0,0,
-0,0,322,323,323,323,323,323,323,323,323,323,323,333,0,0,
-0,0,322,323,323,323,323,323,323,323,323,323,323,333,0,0,
-0,0,322,323,323,323,323,323,323,323,323,323,323,333,0,0,
-0,0,322,323,323,323,323,323,323,323,323,323,323,333,0,0,
-0,0,322,323,323,323,323,323,323,323,323,323,323,333,0,0,
-0,0,322,323,323,323,323,323,323,323,323,323,323,333,0,0,
-0,0,322,323,323,323,323,323,323,323,323,323,323,333,0,0,
-0,0,322,323,323,323,323,323,323,323,323,323,323,333,0,0,
-0,0,325,326,326,326,326,326,326,326,326,326,326,336,0,0,
+0,0,305,315,315,315,315,315,315,315,315,315,315,316,0,0,
+0,0,308,309,309,309,309,309,309,309,309,309,309,319,0,0,
+0,0,308,309,309,309,309,309,309,309,309,309,309,319,0,0,
+0,0,308,309,309,309,309,309,309,309,309,309,309,319,0,0,
+0,0,308,309,309,309,309,309,309,309,309,309,309,319,0,0,
+0,0,308,309,309,309,309,309,309,309,309,309,309,319,0,0,
+0,0,308,309,309,309,309,309,309,309,309,309,309,319,0,0,
+0,0,308,309,309,309,309,309,309,309,309,309,309,319,0,0,
+0,0,308,309,309,309,309,309,309,309,309,309,309,319,0,0,
+0,0,311,312,312,312,312,312,312,312,312,312,312,322,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
@@ -215,8 +199,8 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,255,256,256,256,256,256,256,257,0,0,0,0,
-0,0,0,0,262,0,0,0,0,0,0,0,0,310,0,0,
+0,0,0,0,241,242,242,242,242,242,242,243,0,0,0,0,
+0,0,0,0,248,0,0,0,0,0,0,0,0,296,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,

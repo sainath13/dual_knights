@@ -26,6 +26,8 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
   @override
   FutureOr<void> onLoad() async{
     level = await TiledComponent.load('Level-$currentLevelIndex.tmx', Vector2(64, 64));
+    // level = await TiledComponent.load('Level-for-Sarvesh.tmx', Vector2(64, 64));
+
     // level.debugMode = true;
     add(level);
     List<CollisionBlock> collisionBlocks = [];
@@ -141,7 +143,7 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
 
     final collisionBlocksForGridLayer = level.tileMap.getLayer<ObjectGroup>('CollisionblocksForGrid');
     if(collisionBlocksForGridLayer != null){
-      log("Collision blocks for grid layer is not null");
+      log("Testing this right now for Sarvesh");
       for(final collisionBlock in collisionBlocksForGridLayer.objects){
         switch(collisionBlock.class_){
           case 'Block' :
