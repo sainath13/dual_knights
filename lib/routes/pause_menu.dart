@@ -99,7 +99,7 @@ class PauseMenu extends StatelessWidget {
                       onControlTypeChanged?.call(!isAnalogue);
                     },
                     child: Text(
-                      isAnalogue ? 'Analogue Controller' : 'Arrow Keys Controller',
+                      isAnalogue ? 'Analogue Joystick' : 'Arrow Keys ',
                       style: const TextStyle(fontFamily: "DualKnights"),
                     ),
                   );
