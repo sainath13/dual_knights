@@ -47,7 +47,7 @@ class GameMainMenu extends PositionComponent with HasGameRef<DualKnights> {
   }
 
   Future<void> loadGameMainMenu() async {
-    gameMainMenu = await TiledComponent.load('The-Final-Background.tmx', Vector2(64, 64));
+    gameMainMenu = await TiledComponent.load('The-Final-Game-Open.tmx', Vector2(64, 64));
     // add(gameMainMenu);
     _world = World(children: [gameMainMenu]);
     await add(_world);
