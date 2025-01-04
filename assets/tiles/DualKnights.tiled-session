@@ -199,7 +199,7 @@
             "scale": 0.25,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 1206,
+                "x": 1684,
                 "y": 1054
             }
         },
@@ -407,8 +407,8 @@
             "scale": 0.75,
             "selectedLayer": 15,
             "viewCenter": {
-                "x": 1232,
-                "y": 558
+                "x": 730.6666666666666,
+                "y": 636.6666666666665
             }
         },
         "TileSample-12X9.tsx": {
@@ -708,11 +708,11 @@
             "expandedObjectLayers": [
                 13
             ],
-            "scale": 0.75,
-            "selectedLayer": -1,
+            "scale": 0.8664,
+            "selectedLayer": 10,
             "viewCenter": {
-                "x": 404,
-                "y": 508
+                "x": 2303.785780240074,
+                "y": 502.6546629732226
             }
         },
         "spritesheet.tsx": {
@@ -770,17 +770,17 @@
     "property.type": "int",
     "recentFiles": [
         "The-final-Background.tmx",
+        "Game-UI-With-Settings.tmx",
+        "Game-logo.tmx",
+        "level-selection-final.tmx",
+        "Tower_Red.tsx",
+        "Torch_Red_192.tsx",
+        "Torch_Red_Down_192.tsx",
+        "Torch_Red_Right_192.tsx",
+        "Torch_Red.tsx",
         "01.tsx",
         "Game-logo.tsx",
-        "Bridge_All.tsx",
-        "House_Blue.tsx",
-        "Castle_Blue.tsx",
-        "Tree.tsx",
-        "Foam_192.tsx",
-        "Game-UI-With-Settings.tmx",
-        "base.tsx",
-        "background.tsx",
-        "Game-Open-UI.tmx"
+        "Bridge_All.tsx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
