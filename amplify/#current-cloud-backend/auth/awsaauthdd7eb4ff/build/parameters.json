@@ -1,0 +1,64 @@
+{
+  "identityPoolName": "awsaauthdd7eb4ff_identitypool_dd7eb4ff",
+  "allowUnauthenticatedIdentities": false,
+  "resourceNameTruncated": "awsaaudd7eb4ff",
+  "userPoolName": "awsaauthdd7eb4ff_userpool_dd7eb4ff",
+  "autoVerifiedAttributes": [
+    "email"
+  ],
+  "mfaConfiguration": "OFF",
+  "mfaTypes": [
+    "SMS Text Message"
+  ],
+  "smsAuthenticationMessage": "Your authentication code is {####}",
+  "smsVerificationMessage": "Your verification code is {####}",
+  "emailVerificationSubject": "Your verification code",
+  "emailVerificationMessage": "Your verification code is {####}",
+  "defaultPasswordPolicy": false,
+  "passwordPolicyMinLength": 8,
+  "passwordPolicyCharacters": [],
+  "requiredAttributes": [
+    "email"
+  ],
+  "aliasAttributes": [],
+  "userpoolClientGenerateSecret": false,
+  "userpoolClientRefreshTokenValidity": 30,
+  "userpoolClientWriteAttributes": [
+    "email"
+  ],
+  "userpoolClientReadAttributes": [
+    "email"
+  ],
+  "userpoolClientLambdaRole": "awsaaudd7eb4ff_userpoolclient_lambda_role",
+  "userpoolClientSetAttributes": false,
+  "sharedId": "dd7eb4ff",
+  "resourceName": "awsaauthdd7eb4ff",
+  "authSelections": "identityPoolAndUserPool",
+  "useDefault": "defaultSocial",
+  "hostedUI": true,
+  "userPoolGroupList": [],
+  "serviceName": "Cognito",
+  "usernameCaseSensitive": false,
+  "useEnabledMfas": true,
+  "authRoleArn": {
+    "Fn::GetAtt": [
+      "AuthRole",
+      "Arn"
+    ]
+  },
+  "unauthRoleArn": {
+    "Fn::GetAtt": [
+      "UnauthRole",
+      "Arn"
+    ]
+  },
+  "breakCircularDependency": true,
+  "dependsOn": [],
+  "hostedUIDomainName": "dual-knight-auth",
+  "authProvidersUserPool": [
+    "LoginWithAmazon"
+  ],
+  "hostedUIProviderMeta": "[{\"ProviderName\":\"LoginWithAmazon\",\"authorize_scopes\":\"profile profile:user_id\",\"AttributeMapping\":{\"email\":\"email\",\"username\":\"user_id\"}}]",
+  "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"myapp://\",\"http://localhost:3000/\",\"https://dev.d3jkm7k5wetidz.amplifyapp.com/\"],\"LogoutURLs\":[\"http://localhost:3000/\",\"https://dev.d3jkm7k5wetidz.amplifyapp.com/\"]}",
+  "authProviders": []
+}

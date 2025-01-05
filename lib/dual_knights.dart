@@ -17,6 +17,12 @@ import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flame_audio/flame_audio.dart';
+import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
+import 'package:amplify_authenticator/amplify_authenticator.dart';
+import 'package:amplify_flutter/amplify_flutter.dart';
+import 'package:flutter/material.dart' hide Route,OverlayRoute;
+
+import 'amplifyconfiguration.dart';
 
 import 'package:flutter/widgets.dart' hide Route,OverlayRoute;
 
@@ -257,10 +263,84 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
     _router.pushNamed(RetryMenu.id);
 
   }
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await _configureAmplify();
+  runApp(const MyApp());
+}
 
- 
+Future<void> _configureAmplify() async {
+  try {
+    await Amplify.addPlugin(AmplifyAuthCognito());
+    await Amplify.configure(amplifyconfig);
+    safePrint('Successfully configured');
+  } on Exception catch (e) {
+    safePrint('Error configuring Amplify: $e');
+  }
+}
 
+  Future<void> _printUserData() async {
+    try {
+      // Get current user
+      final user = await Amplify.Auth.getCurrentUser();
+      safePrint('====== User Information ======');
+      safePrint('User ID: ${user.userId}');
+      safePrint('Username: ${user.username}');
 
+      // Get user attributes
+      final attributes = await Amplify.Auth.fetchUserAttributes();
+      safePrint('====== User Attributes ======');
+      for (final attribute in attributes) {
+        safePrint('${attribute.userAttributeKey}: ${attribute.value}');
+      }
 
+      // Get session information - Corrected version
+      final cognitoPlugin = Amplify.Auth.getPlugin(AmplifyAuthCognito.pluginKey);
+      final session = await cognitoPlugin.fetchAuthSession();
+      safePrint('====== Session Information ======');
+      safePrint('Is Signed In: ${session.isSignedIn}');
 
+      // Access tokens using cognitoResult
+      final tokens = session.userPoolTokensResult.value;
+      safePrint('Access Token: ${tokens.accessToken.raw}');
+      safePrint('ID Token: ${tokens.idToken.raw}');
+      safePrint('Refresh Token Available: ${tokens.refreshToken != null}');
+      //safePrint('Token Expiration: ${tokens.expiration}');
+
+    } on AuthException catch (e) {
+      safePrint('Error fetching user data: ${e.message}');
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Authenticator(
+      child: MaterialApp(
+        builder: Authenticator.builder(),
+        home: Scaffold(
+          appBar: AppBar(
+            title: const Text('AWS Cognito Auth'),
+          ),
+          body: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  'Successfully logged in!',
+                  style: TextStyle(fontSize: 18),
+                ),
+                const SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: _printUserData,
+                  child: const Text('Show User Data'),
+                ),
+                const SizedBox(height: 20),
+                const SignOutButton(),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
 }

@@ -12,56 +12,54 @@ const amplifyconfig = '''{
                 "CredentialsProvider": {
                     "CognitoIdentity": {
                         "Default": {
-                            "PoolId": "us-east-1:1619a6e0-a983-4440-a7db-0f7592f04daa",
+                            "PoolId": "us-east-1:a2b4bb4a-dbc0-4661-88c4-e98afb3026d8",
                             "Region": "us-east-1"
                         }
                     }
                 },
                 "CognitoUserPool": {
                     "Default": {
-                        "PoolId": "us-east-1_8vaFua9vx",
-                        "AppClientId": "1k7b8i2h9n7ienbo8vdu3hjbut",
+                        "PoolId": "us-east-1_yvxTdn1YV",
+                        "AppClientId": "du5f9csl5841jhrgopkvri449",
                         "Region": "us-east-1"
                     }
                 },
                 "Auth": {
                     "Default": {
+                        "OAuth": {
+                            "WebDomain": "dual-knight-auth-dev.auth.us-east-1.amazoncognito.com",
+                            "AppClientId": "du5f9csl5841jhrgopkvri449",
+                            "SignInRedirectURI": "myapp://,http://localhost:3000/,https://dev.d3jkm7k5wetidz.amplifyapp.com/",
+                            "SignOutRedirectURI": "http://localhost:3000/,https://dev.d3jkm7k5wetidz.amplifyapp.com/",
+                            "Scopes": [
+                                "phone",
+                                "email",
+                                "openid",
+                                "profile",
+                                "aws.cognito.signin.user.admin"
+                            ]
+                        },
                         "authenticationFlowType": "USER_SRP_AUTH",
-                        "mfaConfiguration": "OFF",
-                        "mfaTypes": [
-                            "SMS"
+                        "socialProviders": [
+                            "AMAZON"
+                        ],
+                        "usernameAttributes": [],
+                        "signupAttributes": [
+                            "EMAIL"
                         ],
                         "passwordProtectionSettings": {
                             "passwordPolicyMinLength": 8,
                             "passwordPolicyCharacters": []
                         },
-                        "signupAttributes": [
-                            "EMAIL"
-                        ],
-                        "socialProviders": [],
-                        "usernameAttributes": [
-                            "EMAIL"
+                        "mfaConfiguration": "OFF",
+                        "mfaTypes": [
+                            "SMS"
                         ],
                         "verificationMechanisms": [
                             "EMAIL"
                         ]
                     }
-                },
-                "S3TransferUtility": {
-                    "Default": {
-                        "Bucket": "dualknighta1e240d4912142a6983b71dec68345fabbdb5-dev",
-                        "Region": "us-east-1"
-                    }
                 }
-            }
-        }
-    },
-    "storage": {
-        "plugins": {
-            "awsS3StoragePlugin": {
-                "bucket": "dualknighta1e240d4912142a6983b71dec68345fabbdb5-dev",
-                "region": "us-east-1",
-                "defaultAccessLevel": "guest"
             }
         }
     }

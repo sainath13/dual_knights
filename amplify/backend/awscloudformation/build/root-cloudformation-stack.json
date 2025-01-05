@@ -199,15 +199,15 @@
         }
       }
     },
-    "authdualknight71752271": {
+    "authawsaauthdd7eb4ff": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
-        "TemplateURL": "https://s3.amazonaws.com/amplify-dualknight-dev-bbdb5-deployment/amplify-cfn-templates/auth/dualknight71752271-cloudformation-template.json",
+        "TemplateURL": "https://s3.amazonaws.com/amplify-awsaauth-dev-2a5ae-deployment/amplify-cfn-templates/auth/awsaauthdd7eb4ff-cloudformation-template.json",
         "Parameters": {
-          "identityPoolName": "dualknight71752271_identitypool_71752271",
-          "allowUnauthenticatedIdentities": true,
-          "resourceNameTruncated": "dualkn71752271",
-          "userPoolName": "dualknight71752271_userpool_71752271",
+          "identityPoolName": "awsaauthdd7eb4ff_identitypool_dd7eb4ff",
+          "allowUnauthenticatedIdentities": false,
+          "resourceNameTruncated": "awsaaudd7eb4ff",
+          "userPoolName": "awsaauthdd7eb4ff_userpool_dd7eb4ff",
           "autoVerifiedAttributes": "email",
           "mfaConfiguration": "OFF",
           "mfaTypes": "SMS Text Message",
@@ -224,13 +224,13 @@
           "userpoolClientRefreshTokenValidity": 30,
           "userpoolClientWriteAttributes": "email",
           "userpoolClientReadAttributes": "email",
-          "userpoolClientLambdaRole": "dualkn71752271_userpoolclient_lambda_role",
+          "userpoolClientLambdaRole": "awsaaudd7eb4ff_userpoolclient_lambda_role",
           "userpoolClientSetAttributes": false,
-          "sharedId": "71752271",
-          "resourceName": "dualknight71752271",
+          "sharedId": "dd7eb4ff",
+          "resourceName": "awsaauthdd7eb4ff",
           "authSelections": "identityPoolAndUserPool",
-          "useDefault": "default",
-          "usernameAttributes": "email",
+          "useDefault": "defaultSocial",
+          "hostedUI": true,
           "userPoolGroupList": "",
           "serviceName": "Cognito",
           "usernameCaseSensitive": false,
@@ -249,50 +249,12 @@
           },
           "breakCircularDependency": true,
           "dependsOn": "",
-          "env": "dev"
-        }
-      }
-    },
-    "storages34a5dfb46": {
-      "Type": "AWS::CloudFormation::Stack",
-      "Properties": {
-        "TemplateURL": "https://s3.amazonaws.com/amplify-dualknight-dev-bbdb5-deployment/amplify-cfn-templates/storage/cloudformation-template.json",
-        "Parameters": {
-          "bucketName": "dualknighta1e240d4912142a6983b71dec68345fa",
-          "selectedGuestPermissions": "s3:PutObject",
-          "selectedAuthenticatedPermissions": "s3:PutObject",
-          "unauthRoleName": {
-            "Ref": "UnauthRoleName"
-          },
-          "authRoleName": {
-            "Ref": "AuthRoleName"
-          },
-          "s3PrivatePolicy": "Private_policy_4a5dfb46",
-          "s3ProtectedPolicy": "Protected_policy_4a5dfb46",
-          "s3PublicPolicy": "Public_policy_4a5dfb46",
-          "s3ReadPolicy": "read_policy_4a5dfb46",
-          "s3UploadsPolicy": "Uploads_policy_4a5dfb46",
-          "authPolicyName": "s3_amplify_4a5dfb46",
-          "unauthPolicyName": "s3_amplify_4a5dfb46",
-          "AuthenticatedAllowList": "DISALLOW",
-          "GuestAllowList": "DISALLOW",
-          "s3PermissionsAuthenticatedPrivate": "s3:PutObject",
-          "s3PermissionsAuthenticatedProtected": "s3:PutObject",
-          "s3PermissionsAuthenticatedPublic": "s3:PutObject",
-          "s3PermissionsAuthenticatedUploads": "s3:PutObject",
-          "s3PermissionsGuestPublic": "s3:PutObject",
-          "s3PermissionsGuestUploads": "s3:PutObject",
-          "env": "dev"
-        }
-      }
-    },
-    "hostingamplifyhosting": {
-      "Type": "AWS::CloudFormation::Stack",
-      "Properties": {
-        "TemplateURL": "https://s3.amazonaws.com/amplify-dualknight-dev-bbdb5-deployment/amplify-cfn-templates/hosting/amplifyhosting-template.json",
-        "Parameters": {
-          "appId": "d3jkm7k5wetidz",
-          "type": "manual",
+          "hostedUIDomainName": "dual-knight-auth",
+          "authProvidersUserPool": "LoginWithAmazon",
+          "hostedUIProviderMeta": "[{\"ProviderName\":\"LoginWithAmazon\",\"authorize_scopes\":\"profile profile:user_id\",\"AttributeMapping\":{\"email\":\"email\",\"username\":\"user_id\"}}]",
+          "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"myapp://\",\"http://localhost:3000/\",\"https://dev.d3jkm7k5wetidz.amplifyapp.com/\"],\"LogoutURLs\":[\"http://localhost:3000/\",\"https://dev.d3jkm7k5wetidz.amplifyapp.com/\"]}",
+          "authProviders": "",
+          "hostedUIProviderCreds": "[{\"ProviderName\":\"LoginWithAmazon\",\"client_id\":\"amzn1.application-oa2-client.5341fadada1149ac9a538070ada86caa\",\"client_secret\":\"amzn1.oa2-cs.v1.d062234957fa2964786015c0461dd06902bbce3b6837d663f41a5a854e00deb4\"}]",
           "env": "dev"
         }
       }
@@ -301,7 +263,7 @@
       "DependsOn": [
         "AuthRole",
         "UnauthRole",
-        "authdualknight71752271"
+        "authawsaauthdd7eb4ff"
       ],
       "Type": "AWS::Lambda::Function",
       "Properties": {
@@ -411,7 +373,7 @@
         },
         "idpId": {
           "Fn::GetAtt": [
-            "authdualknight71752271",
+            "authawsaauthdd7eb4ff",
             "Outputs.IdentityPoolId"
           ]
         },

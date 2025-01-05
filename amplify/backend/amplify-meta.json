@@ -1,87 +1,60 @@
 {
   "providers": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-dualknight-dev-bbdb5-authRole",
-      "UnauthRoleArn": "arn:aws:iam::676206912517:role/amplify-dualknight-dev-bbdb5-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::676206912517:role/amplify-dualknight-dev-bbdb5-authRole",
+      "AuthRoleName": "amplify-awsaauth-dev-2a5ae-authRole",
+      "UnauthRoleArn": "arn:aws:iam::676206912517:role/amplify-awsaauth-dev-2a5ae-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::676206912517:role/amplify-awsaauth-dev-2a5ae-authRole",
       "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-dualknight-dev-bbdb5-deployment",
-      "UnauthRoleName": "amplify-dualknight-dev-bbdb5-unauthRole",
-      "StackName": "amplify-dualknight-dev-bbdb5",
-      "StackId": "arn:aws:cloudformation:us-east-1:676206912517:stack/amplify-dualknight-dev-bbdb5/998cfca0-c2ce-11ef-8141-0affc932e23d",
-      "AmplifyAppId": "d3jkm7k5wetidz"
+      "DeploymentBucketName": "amplify-awsaauth-dev-2a5ae-deployment",
+      "UnauthRoleName": "amplify-awsaauth-dev-2a5ae-unauthRole",
+      "StackName": "amplify-awsaauth-dev-2a5ae",
+      "StackId": "arn:aws:cloudformation:us-east-1:676206912517:stack/amplify-awsaauth-dev-2a5ae/63282210-c45a-11ef-8073-0ec3ca325e99",
+      "AmplifyAppId": "djajb90iwrodi"
     }
   },
   "auth": {
-    "dualknight71752271": {
-      "customAuth": false,
+    "awsaauthdd7eb4ff": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
       "dependsOn": [],
+      "customAuth": false,
       "frontendAuthConfig": {
-        "mfaConfiguration": "OFF",
-        "mfaTypes": [
-          "SMS"
+        "socialProviders": [
+          "AMAZON"
+        ],
+        "usernameAttributes": [],
+        "signupAttributes": [
+          "EMAIL"
         ],
         "passwordProtectionSettings": {
           "passwordPolicyMinLength": 8,
           "passwordPolicyCharacters": []
         },
-        "signupAttributes": [
-          "EMAIL"
-        ],
-        "socialProviders": [],
-        "usernameAttributes": [
-          "EMAIL"
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
         ],
         "verificationMechanisms": [
           "EMAIL"
         ]
       },
-      "providerPlugin": "awscloudformation",
-      "service": "Cognito",
+      "lastPushTimeStamp": "2024-12-27T14:28:50.366Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-awsaauth-dev-2a5ae-deployment/amplify-cfn-templates/auth/awsaauthdd7eb4ff-cloudformation-template.json",
+        "logicalId": "authawsaauthdd7eb4ff"
+      },
       "output": {
-        "UserPoolId": "us-east-1_8vaFua9vx",
-        "AppClientIDWeb": "3vc21q4c6i5k7ql5om6cli3vfu",
-        "AppClientID": "1k7b8i2h9n7ienbo8vdu3hjbut",
-        "IdentityPoolId": "us-east-1:1619a6e0-a983-4440-a7db-0f7592f04daa",
-        "UserPoolArn": "arn:aws:cognito-idp:us-east-1:676206912517:userpool/us-east-1_8vaFua9vx",
-        "IdentityPoolName": "dualknight71752271_identitypool_71752271__dev",
-        "UserPoolName": "dualknight71752271_userpool_71752271"
+        "UserPoolId": "us-east-1_yvxTdn1YV",
+        "AppClientIDWeb": "2i9kp8td5h3ug9n4312a449ulr",
+        "AppClientID": "du5f9csl5841jhrgopkvri449",
+        "HostedUIDomain": "dual-knight-auth-dev",
+        "IdentityPoolId": "us-east-1:a2b4bb4a-dbc0-4661-88c4-e98afb3026d8",
+        "UserPoolArn": "arn:aws:cognito-idp:us-east-1:676206912517:userpool/us-east-1_yvxTdn1YV",
+        "IdentityPoolName": "awsaauthdd7eb4ff_identitypool_dd7eb4ff__dev",
+        "OAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"myapp://\",\"http://localhost:3000/\",\"https://dev.d3jkm7k5wetidz.amplifyapp.com/\"],\"LogoutURLs\":[\"http://localhost:3000/\",\"https://dev.d3jkm7k5wetidz.amplifyapp.com/\"]}",
+        "UserPoolName": "awsaauthdd7eb4ff_userpool_dd7eb4ff"
       },
-      "lastPushTimeStamp": "2024-12-25T19:30:54.731Z",
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-dualknight-dev-bbdb5-deployment/amplify-cfn-templates/auth/dualknight71752271-cloudformation-template.json",
-        "logicalId": "authdualknight71752271"
-      }
-    }
-  },
-  "storage": {
-    "s34a5dfb46": {
-      "dependsOn": [],
-      "providerPlugin": "awscloudformation",
-      "service": "S3",
-      "output": {
-        "BucketName": "dualknighta1e240d4912142a6983b71dec68345fabbdb5-dev",
-        "Region": "us-east-1"
-      },
-      "lastPushTimeStamp": "2024-12-25T19:30:55.560Z",
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-dualknight-dev-bbdb5-deployment/amplify-cfn-templates/storage/cloudformation-template.json",
-        "logicalId": "storages34a5dfb46"
-      }
-    }
-  },
-  "hosting": {
-    "amplifyhosting": {
-      "service": "amplifyhosting",
-      "providerPlugin": "awscloudformation",
-      "type": "manual",
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-dualknight-dev-bbdb5-deployment/amplify-cfn-templates/hosting/amplifyhosting-template.json",
-        "logicalId": "hostingamplifyhosting"
-      },
-      "lastPushTimeStamp": "2024-12-25T19:30:54.734Z",
-      "output": {},
-      "lastPushDirHash": "vPz5UI5Lzt5soFzYScbJqwKgoN0="
+      "lastPushDirHash": "rkOXolBWhxD30hjsVIDN4wuxaCE="
     }
   }
 }
