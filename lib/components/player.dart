@@ -197,7 +197,11 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
     super.onCollisionStart(intersectionPoints, other);
     if (other is AntiPlayer) {
       log("Player collided with AntiPlayer");
-      animation = fightAnimation;  
+      ancestor.input.movementAllowed = false;
+      animation = fightAnimation;
+      Future.delayed(Duration(milliseconds: 300), () {
+        ancestor.onGameOver();
+      });
     }
     // else if(other is PlayerCheckpoint ){
     //   log("Player collided with Checkpoint.");

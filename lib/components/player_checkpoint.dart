@@ -68,7 +68,11 @@ class PlayerCheckpoint extends SpriteAnimationComponent
         final player = parent?.children.whereType<Player>().firstOrNull;
         final antiPlayer = parent?.children.whereType<AntiPlayer>().firstOrNull;
         if(player?.isMoving==false && antiPlayer?.isMoving==false && isPressed == true && antiPlayerCheckpoint?.isPressed == true){
-          ancestor.onLevelCompleted(3);
+          ancestor.input.movementAllowed = false;
+          Future.delayed(Duration(milliseconds: 800), () {
+            ancestor.onLevelCompleted(3);
+          });
+          
         }
       }
     super.update(dt);
