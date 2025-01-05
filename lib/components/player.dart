@@ -199,7 +199,7 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
       log("Player collided with AntiPlayer");
       ancestor.input.movementAllowed = false;
       animation = fightAnimation;
-      Future.delayed(Duration(milliseconds: 300), () {
+      Future.delayed(Duration(milliseconds: 200), () {
         ancestor.onGameOver();
       });
     }

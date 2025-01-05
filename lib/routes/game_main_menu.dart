@@ -77,6 +77,7 @@ class GameMainMenu extends PositionComponent with HasGameRef<DualKnights> {
               onClick: onPlayPressed!,
               size: Vector2(button.width, button.height),
               position: Vector2(button.x, button.y),
+              buttonTextSize:35,
               buttonText: 'Play',
             );
             _world.add(gameButton);
@@ -92,7 +93,7 @@ class GameMainMenu extends PositionComponent with HasGameRef<DualKnights> {
           case 'SFXButton':
             Sprite spriteOn = Sprite(await game.images.load('UI/Icons/Regular_03.png'));
             Sprite spriteOff = Sprite(await game.images.load('UI/Icons/Pressed_03.png'));
-            GameSoundButton sfxSoundButton = GameSoundButton(spriteOn: spriteOn, spriteOff: spriteOff, onToggle: onSfxValueChanged, isSoundOn: sfxValueListenable.value, size: Vector2(button.width, button.height), position: Vector2(button.x, button.y),buttonText: "SFX");
+            GameSoundButton sfxSoundButton = GameSoundButton(spriteOn: spriteOn, spriteOff: spriteOff, onToggle: onSfxValueChanged, isSoundOn: sfxValueListenable.value, size: Vector2(button.width, button.height), position: Vector2(button.x, button.y),buttonText: "SFX",);
             _world.add(sfxSoundButton);
             break;
 

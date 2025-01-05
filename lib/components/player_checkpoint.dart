@@ -69,9 +69,12 @@ class PlayerCheckpoint extends SpriteAnimationComponent
         final antiPlayer = parent?.children.whereType<AntiPlayer>().firstOrNull;
         if(player?.isMoving==false && antiPlayer?.isMoving==false && isPressed == true && antiPlayerCheckpoint?.isPressed == true){
           ancestor.input.movementAllowed = false;
-          Future.delayed(Duration(milliseconds: 800), () {
-            ancestor.onLevelCompleted(3);
-          });
+          final timer = TimerComponent(
+          period: 0.8,
+          onTick: () => ancestor.onLevelCompleted(3),
+          removeOnFinish: true,
+          );
+          ancestor.add(timer);
           
         }
       }

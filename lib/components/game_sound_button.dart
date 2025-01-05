@@ -39,11 +39,12 @@ class GameSoundButton extends PositionComponent with TapCallbacks, HasGameRefere
       textRenderer: TextPaint(
         style: TextStyle(
           color: Colors.white,
-          fontSize: 16,
+          fontFamily: "DualKnights",
+          fontSize: 24  ,
         ),
       ),
       anchor: Anchor.topCenter,
-      position: Vector2(size.x / 2, size.y + 5), // Position below the sprite
+      position: Vector2(size.x / 2, size.y -20), // Position below the sprite
     );
     add(_textComponent);
   }
