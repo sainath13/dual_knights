@@ -61,12 +61,12 @@ class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference<D
     await add(restartButton);
 
     // Add blue sprite button
-  final blueSprite = await game.images.load('UI/Buttons/Button_Blue_Pressed.png');
-  final redSprite = await game.images.load('UI/Buttons/Button_Red_Pressed.png');
+  final blueSprite = await game.images.load('Factions/Knights/Troops/Warrior/Blue/Warrior_Blue_Small.png');
+  final redSprite = await game.images.load('Factions/Knights/Troops/Warrior/Red/Warrior_Red_Small.png');
   _knightSelectionButton = HudButtonComponent(
     button: SpriteComponent.fromImage(
       _isBlueSelected ? blueSprite : redSprite,
-      size: Vector2.all(50),
+      size: Vector2.all(192),
     ),
     anchor: Anchor.center,
     position: Vector2(parent.virtualSize.x-100 , parent.virtualSize.y - 100),
@@ -80,7 +80,7 @@ class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference<D
   await add(_knightSelectionButton);
   // Add text above the button
   final textComponent = TextComponent(
-    text: 'Primary Knight',
+    text: 'Play As',
     textRenderer: TextPaint(
     style: TextStyle(
       color: Colors.white,
