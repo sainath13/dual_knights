@@ -29,6 +29,8 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
 
   var lastGamePlayState = null;
 
+  late RectangleComponent background;
+
   static const bgm = '8BitDNALoop.wav';
 
 
@@ -122,8 +124,24 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
     await images.loadAllImages();
     await add(_router);
 
+    background = RectangleComponent(
+      size: canvasSize, // Full-screen background
+      paint: Paint()..color = Color(0xFF47ABA9), // Initial color
+      priority: -1, // Render it behind everything
+    );
+
+    add(background);
+
 
   return super.onLoad();
+  }
+
+  void updateBackgroundColor(Color color) {
+    background.paint.color = color;
+  }
+
+  void updateDefaultBackgroundColor(){
+    background.paint.color = Color(0xFF47ABA9);
   }
 
    void _routeReplaceById(String id) {
