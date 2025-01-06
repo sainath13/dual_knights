@@ -80,7 +80,7 @@ class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference<D
   await add(_knightSelectionButton);
   // Add text above the button
   final textComponent = TextComponent(
-    text: 'Primary Knight',
+    text: 'Play As',
     textRenderer: TextPaint(
     style: TextStyle(
       color: Colors.white,

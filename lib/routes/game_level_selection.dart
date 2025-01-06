@@ -82,7 +82,53 @@ Future<void> loadGameLevelSelection() async {
 
 
 
-    var levelData = {1: {"locked": false, "stars": 3}, 2: {"locked": false, "stars": 1},3: {"locked": false, "stars": 3},4: {"locked": false, "stars": 1},5: {"locked": false, "stars": 1},6: {"locked": false, "stars": 1},7: {"locked": false, "stars": 1},8: {"locked": false, "stars": 1},9: {"locked": false, "stars": 1},10: {"locked": false, "stars": 1},};
+    var levelData = {
+      1: {"locked": false, "stars": 2},
+      2: {"locked": false, "stars": 1},
+      3: {"locked": false, "stars": 2},
+      4: {"locked": false, "stars": 3},
+      5: {"locked": false, "stars": 1},
+      6: {"locked": false, "stars": 1},
+      7: {"locked": false, "stars": 2},
+      8: {"locked": false, "stars": 3},
+      9: {"locked": false, "stars": 3},
+      10: {"locked": false, "stars": 1},
+      11: {"locked": false, "stars": 1},
+      12: {"locked": false, "stars": 2},
+      13: {"locked": false, "stars": 3},
+      14: {"locked": false, "stars": 1},
+      15: {"locked": false, "stars": 3},
+      16: {"locked": false, "stars": 2},
+      17: {"locked": false, "stars": 1},
+      18: {"locked": false, "stars": 2},
+      19: {"locked": false, "stars": 2},
+      20: {"locked": false, "stars": 2},
+      21: {"locked": false, "stars": 2},
+      22: {"locked": false, "stars": 3},
+      23: {"locked": false, "stars": 3},
+      24: {"locked": false, "stars": 3},
+      25: {"locked": false, "stars": 3},
+      26: {"locked": false, "stars": 1},
+      27: {"locked": false, "stars": 3},
+      28: {"locked": false, "stars": 3},
+      29: {"locked": false, "stars": 2},
+      30: {"locked": false, "stars": 2},
+      31: {"locked": false, "stars": 3},
+      32: {"locked": false, "stars": 3},
+      33: {"locked": false, "stars": 3},
+      34: {"locked": false, "stars": 3},
+      35: {"locked": false, "stars": 3},
+      36: {"locked": false, "stars": 3},
+      37: {"locked": false, "stars": 1},
+      38: {"locked": false, "stars": 1},
+      39: {"locked": false, "stars": 1},
+      40: {"locked": false, "stars": 3},
+      41: {"locked": false, "stars": 1},
+      42: {"locked": false, "stars": 3},
+      43: {"locked": false, "stars": 2},
+      44: {"locked": false, "stars": 1},
+      45: {"locked": false, "stars": 1}
+    };
     var lastLevelUnlocked  = 25;
     gameLevelSelection = await TiledComponent.load('level-selection-final.tmx', Vector2(64, 64),atlasMaxX: 5000,atlasMaxY: 5000);
 
