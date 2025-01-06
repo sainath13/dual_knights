@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "tutorial.tmx",
+    "activeFile": "level-selection-final.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -199,8 +199,8 @@
             "scale": 0.33,
             "selectedLayer": 7,
             "viewCenter": {
-                "x": 742.4242424242425,
-                "y": 509.0909090909091
+                "x": 942.4242424242425,
+                "y": 1157.5757575757575
             }
         },
         "Game-UI-With-Settings.tmx": {
@@ -210,16 +210,16 @@
             "scale": 0.25,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 960,
-                "y": 732
+                "x": 1920,
+                "y": 672
             }
         },
         "Game-Welcome-Page.tmx": {
             "scale": 0.533447265625,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 271.8169336384439,
-                "y": 232.45034324942787
+                "x": 511.7656750572082,
+                "y": 384.2929061784898
             }
         },
         "Game-logo.tmx": {
@@ -315,8 +315,8 @@
             "scale": 0.85537109375,
             "selectedLayer": 14,
             "viewCenter": {
-                "x": 733.0151843817788,
-                "y": 383.45929900673593
+                "x": 512.0584541614339,
+                "y": 383.4592990067359
             }
         },
         "Level-for-Manish-2.tmx": {
@@ -429,6 +429,14 @@
         "Terrain.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
+        },
+        "The-Final-Game-Open.tmx": {
+            "scale": 0.46075,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 800.8681497558329,
+                "y": 607.7048290830168
+            }
         },
         "The-final-Background.tmx": {
             "expandedObjectLayers": [
@@ -771,8 +779,8 @@
             "scale": 0.92958984375,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 550.7805441748083,
-                "y": 384.04034037188785
+                "x": 512.053787162517,
+                "y": 384.04034037188774
             }
         },
         "level-selection-final.tmx": {
@@ -780,9 +788,9 @@
                 13
             ],
             "scale": 0.8664,
-            "selectedLayer": 12,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 637.1191135734072,
+                "x": 445.5216989843029,
                 "y": 478.99353647276087
             }
         },
@@ -843,26 +851,32 @@
     "map.tileWidth": 64,
     "map.width": 50,
     "openFiles": [
-        "tutorial.tmx",
-        "Dead.tsx",
-        "Barrel_Blue.tsx",
-        "TNT_Red.tsx"
+        "Game-Open-UI.tmx",
+        "Game-UI-With-Settings.tmx",
+        "Game-Welcome-Page.tmx",
+        "The-Final-Game-Open.tmx",
+        "Tilemap_Elevation.tsx",
+        "timer_BG.tsx",
+        "TileSample-12X9.tsx",
+        "Level-Completed-Menu.tmx",
+        "level-new-selection.tmx",
+        "level-selection-final.tmx"
     ],
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
-        "Game-logo.tsx",
-        "TNT_Red.tsx",
-        "Barrel_Blue.tsx",
-        "Dead.tsx",
-        "tutorial.tmx",
-        "level-new-selection part 2.tmx",
+        "Game-Open-UI.tmx",
+        "Game-UI-With-Settings.tmx",
+        "Game-Welcome-Page.tmx",
+        "The-Final-Game-Open.tmx",
+        "Tilemap_Elevation.tsx",
+        "timer_BG.tsx",
+        "TileSample-12X9.tsx",
         "Level-Completed-Menu.tmx",
         "level-new-selection.tmx",
         "level-selection-final.tmx",
-        "Layer-Background.tmx",
-        "Game-UI-With-Settings.tmx",
-        "Level-02.tmx"
+        "Game-logo.tsx",
+        "TNT_Red.tsx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
