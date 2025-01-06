@@ -200,7 +200,7 @@
             "selectedLayer": 7,
             "viewCenter": {
                 "x": 742.4242424242425,
-                "y": 119.69696969696975
+                "y": 509.0909090909091
             }
         },
         "Game-UI-With-Settings.tmx": {
@@ -219,7 +219,7 @@
             "selectedLayer": 2,
             "viewCenter": {
                 "x": 271.8169336384439,
-                "y": 233.38764302059496
+                "y": 232.45034324942787
             }
         },
         "Game-logo.tmx": {
@@ -851,6 +851,7 @@
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "Game-logo.tsx",
         "TNT_Red.tsx",
         "Barrel_Blue.tsx",
         "Dead.tsx",
@@ -861,8 +862,7 @@
         "level-selection-final.tmx",
         "Layer-Background.tmx",
         "Game-UI-With-Settings.tmx",
-        "Level-02.tmx",
-        "star_2.tsx"
+        "Level-02.tmx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
