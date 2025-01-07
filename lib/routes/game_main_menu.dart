@@ -22,13 +22,18 @@ class GameMainMenu extends PositionComponent with HasGameRef<DualKnights> {
 
   final ValueChanged<bool>? onMusicValueChanged;
   final ValueChanged<bool>? onSfxValueChanged;
+  final VoidCallback? onLoginClicked;
+  final Future<bool> isUserLoggedIn;
 
   GameMainMenu({
     this.onPlayPressed,
     required this.musicValueListenable,
     required this.sfxValueListenable,
     this.onMusicValueChanged,
-    this.onSfxValueChanged,});
+    this.onSfxValueChanged,
+    required this.onLoginClicked,
+    required this.isUserLoggedIn,
+    });
 
   @override
   Future<void> onLoad() async {
@@ -71,14 +76,32 @@ class GameMainMenu extends PositionComponent with HasGameRef<DualKnights> {
           case 'PlayButton':
           Sprite normalSprite = Sprite(await game.images.load('UI/Buttons/Button_Blue_9Slides.png'));
             Sprite onTapSprite = Sprite(await game.images.load('UI/Buttons/Button_Blue_9Slides_Pressed.png'));
+            
+            final playButtonPositionY = button.y + (await isUserLoggedIn ? 30 : 0);
             GameButton gameButton = GameButton(
               normalSprite: normalSprite,
               onTapSprite: onTapSprite,
               onClick: onPlayPressed!,
               size: Vector2(button.width, button.height),
-              position: Vector2(button.x, button.y),
+              position: Vector2(button.x, playButtonPositionY),
               buttonTextSize:35,
               buttonText: 'Play',
+            );
+            _world.add(gameButton);
+            break;
+
+          case 'LoginButton':
+          if (await isUserLoggedIn) break;
+          Sprite normalSprite = Sprite(await game.images.load('UI/Buttons/Button_Red_9Slides.png'));
+            Sprite onTapSprite = Sprite(await game.images.load('UI/Buttons/Button_Red_9Slides_Pressed.png'));
+            GameButton gameButton = GameButton(
+              normalSprite: normalSprite,
+              onTapSprite: onTapSprite,
+              onClick: onLoginClicked!,
+              size: Vector2(button.width, button.height),
+              position: Vector2(button.x, button.y),
+              buttonTextSize:20,
+              buttonText: 'Login',
             );
             _world.add(gameButton);
             break;

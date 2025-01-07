@@ -3,6 +3,7 @@
 import 'dart:async';
 import 'dart:ui';
 
+import 'package:amplify_flutter/amplify_flutter.dart';
 import 'package:dual_knights/routes/game_level_selection.dart';
 import 'package:dual_knights/routes/game_main_menu.dart';
 import 'package:dual_knights/routes/game_level_complete.dart';
@@ -13,6 +14,7 @@ import 'package:dual_knights/routes/main_menu.dart';
 import 'package:dual_knights/routes/pause_menu.dart';
 import 'package:dual_knights/routes/retry_menu.dart';
 import 'package:dual_knights/routes/settings.dart';
+import 'package:dual_knights/widgets/authentication/login_page.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
@@ -35,6 +37,11 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
 
 
   late final _routes = <String, Route>{
+    LoginPage.id: OverlayRoute(
+      (context, game) =>  LoginPage(
+        onLoginSuccess:  _popRoute
+      )
+      ),
     MainMenu.id: OverlayRoute(
       (context, game) =>  MainMenu(
         onPlayPressed: () => _routeById(LevelSelection.id),
@@ -84,6 +91,8 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
         sfxValueListenable: sfxValueNotifier,
         onMusicValueChanged: (value) => musicValueNotifier.value = value,
         onSfxValueChanged: (value) => sfxValueNotifier.value = value,
+        onLoginClicked: () => _routeById(LoginPage.id),
+        isUserLoggedIn: isUserLoggedIn(),
       ),
     ),
     GameLevelSelection.id: Route(
@@ -248,6 +257,8 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
         sfxValueListenable: sfxValueNotifier,
         onMusicValueChanged: (value) => musicValueNotifier.value = value,
         onSfxValueChanged: (value) => sfxValueNotifier.value = value,
+        onLoginClicked: () => _routeById(LoginPage.id),
+        isUserLoggedIn: isUserLoggedIn(),
       ),
     ));
   }
@@ -275,6 +286,15 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
     _router.pushNamed(RetryMenu.id);
 
   }
+
+  Future<bool> isUserLoggedIn() async {
+  try {
+    final authSession = await Amplify.Auth.fetchAuthSession();
+    return authSession.isSignedIn;
+  } catch (e) {
+    return false;
+  }
+}
 
  
 
