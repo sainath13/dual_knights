@@ -33,6 +33,8 @@ class GameLevelSelection extends PositionComponent with HasGameRef<DualKnights>,
 
   @override
   Future<void> onLoad() async {
+
+    game.updateBackgroundColor(Color(0xFFC9AA8D));
     await loadGameLevelSelection();
     GameButton backButton = GameButton(
         onClick: () => onBackPressed?.call(),
@@ -49,6 +51,7 @@ class GameLevelSelection extends PositionComponent with HasGameRef<DualKnights>,
 
    @override
   void onRemove() {
+    game.updateDefaultBackgroundColor();
     _world.removeFromParent();
     _camera.removeFromParent();
     super.onRemove();
