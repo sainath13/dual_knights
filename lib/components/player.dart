@@ -37,7 +37,8 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
   
 
 
-  Player() : priorityManager = PlayerPriorityManager(null),super(size: Vector2(frameWidth, frameHeight), priority: 5) {
+  Player() : priorityManager = PlayerPriorityManager(null),super(
+      size: Vector2(frameWidth, frameHeight), priority: 5) {
     priorityManager.owner = this;
     targetPosition = position.clone();
   }

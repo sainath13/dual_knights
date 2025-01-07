@@ -275,8 +275,13 @@
             }
         },
         "Level-02-Copy.tmx": {
+            "expandedObjectLayers": [
+                7,
+                5,
+                6
+            ],
             "scale": 0.43046874999999996,
-            "selectedLayer": 11,
+            "selectedLayer": 9,
             "viewCenter": {
                 "x": 511.0707803992741,
                 "y": 384.46460980036306
