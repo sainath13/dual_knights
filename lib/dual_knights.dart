@@ -39,7 +39,7 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
   late final _routes = <String, Route>{
     LoginPage.id: OverlayRoute(
       (context, game) =>  LoginPage(
-        onLoginSuccess:  _popRoute
+        onLoginSuccess:  _onLoginSuccess,
       )
       ),
     MainMenu.id: OverlayRoute(
@@ -296,9 +296,9 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
   }
 }
 
- 
 
-
-
-
+  void _onLoginSuccess() {
+    _popRoute();
+    _routeToGameMainMenu();
+  }
 }
