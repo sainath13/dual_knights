@@ -22,6 +22,7 @@
  <tileset firstgid="277" source="04.tsx"/>
  <tileset firstgid="278" source="07.tsx"/>
  <tileset firstgid="279" source="10.tsx"/>
+ <tileset firstgid="280" source="TX Props.tsx"/>
  <layer id="13" name="Water" width="16" height="12">
   <data encoding="csv">
 234,234,234,234,234,234,234,234,234,234,234,234,234,234,234,234,
@@ -70,7 +71,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="1" name="GameGrid" width="16" height="12" visible="0">
+ <layer id="1" name="GameGrid" width="16" height="12">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -134,41 +135,4 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="30" name="CollisionblocksForGrid" visible="0">
-  <object id="101" name="Block" type="Block" x="256" y="128" width="576" height="64"/>
-  <object id="102" name="Block" type="Block" x="256" y="576" width="576" height="64"/>
-  <object id="103" name="Block" type="Block" x="192" y="192" width="64" height="384"/>
-  <object id="104" name="Block" type="Block" x="831" y="192" width="64" height="384"/>
- </objectgroup>
- <objectgroup id="5" name="Collisionblocks" visible="0">
-  <object id="1" name="Block" type="Block" x="320" y="256" width="64" height="64"/>
-  <object id="2" name="Block" type="Block" x="384" y="256" width="64" height="64"/>
-  <object id="3" name="Block" type="Block" x="448" y="256" width="64" height="64"/>
-  <object id="4" name="Block" type="Block" x="512" y="256" width="64" height="64"/>
-  <object id="5" name="Block" type="Block" x="576" y="256" width="64" height="64"/>
-  <object id="6" name="Block" type="Block" x="640" y="256" width="64" height="64"/>
-  <object id="7" name="Block" type="Block" x="704" y="256" width="64" height="64"/>
-  <object id="8" name="Block" type="Block" x="448" y="320" width="64" height="64"/>
-  <object id="10" name="Block" type="Block" x="576" y="320" width="64" height="64"/>
-  <object id="11" name="Block" type="Block" x="256" y="384" width="64" height="64"/>
-  <object id="12" name="Block" type="Block" x="448" y="384" width="64" height="64"/>
-  <object id="13" name="Block" type="Block" x="576" y="384" width="64" height="64"/>
-  <object id="14" name="Block" type="Block" x="768" y="384" width="64" height="64"/>
-  <object id="15" name="Block" type="Block" x="320" y="448" width="64" height="64"/>
-  <object id="16" name="Block" type="Block" x="448" y="448" width="64" height="64"/>
-  <object id="17" name="Block" type="Block" x="512" y="448" width="64" height="64"/>
-  <object id="18" name="Block" type="Block" x="576" y="448" width="64" height="64"/>
-  <object id="19" name="Block" type="Block" x="704" y="448" width="64" height="64"/>
-  <object id="20" name="Block" type="Block" x="320" y="512" width="64" height="64"/>
-  <object id="25" name="Block" type="Block" x="704" y="512" width="64" height="64"/>
- </objectgroup>
- <objectgroup id="6" name="Checkpoints" visible="0">
-  <object id="21" name="AntiPlayerCheckpoint" type="AntiPlayerCheckpoint" x="384" y="512" width="64" height="64"/>
-  <object id="24" name="PlayerCheckpoint" type="PlayerCheckpoint" x="640" y="512" width="64" height="64"/>
- </objectgroup>
- <objectgroup id="7" name="Spawnpoints" visible="0">
-  <object id="9" name="Barrel" type="Barrel" x="512" y="320" width="64" height="64"/>
-  <object id="22" name="Player" type="Player" x="448" y="512" width="64" height="64"/>
-  <object id="23" name="AntiPlayer" type="AntiPlayer" x="576" y="512" width="64" height="64"/>
- </objectgroup>
 </map>

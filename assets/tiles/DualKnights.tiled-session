@@ -897,7 +897,7 @@
         }
     },
     "last.externalTilesetPath": "/Users/sainathlatkar/personal/flame/dual_knights/assets/tiles",
-    "last.imagePath": "/Users/sainathlatkar/personal/flame/dual_knights/assets/images/Deco",
+    "last.imagePath": "/Users/sainathlatkar/personal/flame/dual_knights/assets/images/Texture",
     "map.height": 19,
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 64,
@@ -908,13 +908,13 @@
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "Level-07-copy.tmx",
         "10.tsx",
         "07.tsx",
         "05.tsx",
         "04.tsx",
         "03.tsx",
         "02.tsx",
-        "Level-07-copy.tmx",
         "HappySheep_Idle.tsx",
         "The-Final-Game-Open.tmx",
         "Level-31.tmx",
@@ -924,7 +924,7 @@
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
-        "height": 64,
-        "width": 64
+        "height": 32,
+        "width": 32
     }
 }

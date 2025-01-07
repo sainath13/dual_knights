@@ -67,6 +67,7 @@ flutter:
   assets:
     - assets/tiles/
     - assets/images/Terrain/Ground/
+    - assets/images/Texture/
     - assets/images/Factions/Knights/Troops/Warrior/Blue/
     - assets/images/Factions/Knights/Troops/Warrior/Red/
     - assets/images/Factions/Goblins/Troops/Barrel/Red/
