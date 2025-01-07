@@ -14,11 +14,35 @@
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
+        "02.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "03.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "04.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "05.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
         "06.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
+        "07.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
         "09.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "10.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
@@ -324,6 +348,22 @@
                 "y": 384.48275862068965
             }
         },
+        "Level-07-copy.tmx": {
+            "scale": 0.66,
+            "selectedLayer": 4,
+            "viewCenter": {
+                "x": 540.9090909090909,
+                "y": 552.2727272727274
+            }
+        },
+        "Level-31.tmx": {
+            "scale": 0.43046874999999996,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 785.1905626134302,
+                "y": 600.5081669691469
+            }
+        },
         "Level-Completed-Menu.tmx": {
             "scale": 0.85537109375,
             "selectedLayer": 14,
@@ -447,8 +487,8 @@
             "scale": 0.46075,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 998.3722192078133,
-                "y": 1167.661421595225
+                "x": 735.7569180683668,
+                "y": 854.0423223005968
             }
         },
         "The-final-Background.tmx": {
@@ -856,8 +896,8 @@
             "scaleInEditor": 1
         }
     },
-    "last.externalTilesetPath": "D:/mulag/dual_knights/assets/tiles",
-    "last.imagePath": "D:/mulag/dual_knights/assets/images/Factions/Goblins/Troops/TNT/Red",
+    "last.externalTilesetPath": "/Users/sainathlatkar/personal/flame/dual_knights/assets/tiles",
+    "last.imagePath": "/Users/sainathlatkar/personal/flame/dual_knights/assets/images/Deco",
     "map.height": 19,
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 64,
@@ -868,18 +908,18 @@
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
-        "Level-02.tmx",
-        "Game-Open-UI.tmx",
-        "Game-UI-With-Settings.tmx",
-        "Game-Welcome-Page.tmx",
+        "10.tsx",
+        "07.tsx",
+        "05.tsx",
+        "04.tsx",
+        "03.tsx",
+        "02.tsx",
+        "Level-07-copy.tmx",
+        "HappySheep_Idle.tsx",
         "The-Final-Game-Open.tmx",
-        "Tilemap_Elevation.tsx",
-        "timer_BG.tsx",
-        "TileSample-12X9.tsx",
-        "Level-Completed-Menu.tmx",
-        "level-new-selection.tmx",
-        "level-selection-final.tmx",
-        "Game-logo.tsx"
+        "Level-31.tmx",
+        "Level-02.tmx",
+        "Game-Open-UI.tmx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
