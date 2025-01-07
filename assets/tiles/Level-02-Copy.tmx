@@ -30,7 +30,7 @@
 12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12
 </data>
  </layer>
- <layer id="9" name="AnimatedTreeOne" width="16" height="12">
+ <layer id="9" name="AnimatedTreeOne" width="16" height="12" visible="0">
   <data encoding="csv">
 0,0,0,0,0,0,0,222,0,0,0,0,0,222,0,0,
 0,0,0,0,222,0,0,0,0,0,0,0,0,0,0,0,
@@ -46,7 +46,7 @@
 0,0,0,0,0,0,0,0,0,222,0,222,0,0,0,0
 </data>
  </layer>
- <layer id="10" name="AnimatedTreeTwo" width="16" height="12">
+ <layer id="10" name="AnimatedTreeTwo" width="16" height="12" visible="0">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,222,0,0,0,0,0,
 0,0,0,0,0,0,0,0,222,0,0,0,222,0,0,0,
@@ -78,7 +78,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="12" name="GameGridSideTree" width="16" height="12">
+ <layer id="12" name="GameGridSideTree" width="16" height="12" visible="0">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -126,7 +126,7 @@
 180,0,209,210,211,212,213,0,0,179,0,0,180,0,177,178
 </data>
  </layer>
- <layer id="11" name="AnimatedTreeOnTop" width="16" height="12">
+ <layer id="11" name="AnimatedTreeOnTop" width="16" height="12" visible="0">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -149,22 +149,20 @@
   <object id="104" name="Block" type="Block" x="831" y="192" width="64" height="384"/>
  </objectgroup>
  <objectgroup id="5" name="Collisionblocks">
-  <object id="2" name="Block" type="Block" x="318" y="318" width="64" height="64"/>
+  <object id="2" name="Block" type="Block" x="320" y="192" width="64" height="64"/>
   <object id="3" name="Block" type="Block" x="448" y="320" width="64" height="64"/>
-  <object id="4" name="Block" type="Block" x="576" y="320" width="64" height="64"/>
+  <object id="4" name="Block" type="Block" x="576" y="256" width="64" height="64"/>
   <object id="5" name="Block" type="Block" x="704" y="320" width="64" height="64"/>
-  <object id="7" name="Block" type="Block" x="256" y="384" width="64" height="64"/>
-  <object id="9" name="Block" type="Block" x="384" y="384" width="64" height="64"/>
-  <object id="10" name="Block" type="Block" x="512" y="384" width="64" height="64"/>
-  <object id="11" name="Block" type="Block" x="640" y="384" width="64" height="64"/>
-  <object id="13" name="Block" type="Block" x="768" y="384" width="64" height="64"/>
+  <object id="9" name="Block" type="Block" x="384" y="448" width="64" height="64"/>
+  <object id="11" name="Block" type="Block" x="640" y="448" width="64" height="64"/>
+  <object id="13" name="Block" type="Block" x="768" y="512" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="6" name="Checkpoints">
   <object id="6" name="AntiPlayerCheckpoint" type="AntiPlayerCheckpoint" x="768" y="320" width="64" height="64"/>
   <object id="12" name="PlayerCheckpoint" type="PlayerCheckpoint" x="704" y="384" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="7" name="Spawnpoints">
-  <object id="1" name="AntiPlayer" type="AntiPlayer" x="256" y="318" width="64" height="64"/>
+  <object id="1" name="AntiPlayer" type="AntiPlayer" x="256" y="320" width="64" height="64"/>
   <object id="8" name="Player" type="Player" x="320" y="384" width="64" height="64"/>
  </objectgroup>
 </map>

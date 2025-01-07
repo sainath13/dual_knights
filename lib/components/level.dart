@@ -25,7 +25,7 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
   
   @override
   FutureOr<void> onLoad() async{
-    level = await TiledComponent.load('Level-$currentLevelIndex.tmx', Vector2(64, 64));
+    level = await TiledComponent.load('Level-02-Copy.tmx', Vector2(64, 64));
     // level = await TiledComponent.load('Level-for-Sarvesh.tmx', Vector2(64, 64));
 
     // level.debugMode = true;
@@ -97,7 +97,7 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
             add(movingBarrel);
             break;   
           case 'Tree' :
-            final tree = Tree(position: Vector2(spawnPoint.x + 32, spawnPoint.y-16),player: player,antiPlayer: antiPlayer);//..debugMode = true;
+            final tree = Tree(position: Vector2(spawnPoint.x + 32, spawnPoint.y-16),player: player,antiPlayer: antiPlayer)..debugMode = true;
             tree.anchor = Anchor.center;
             add(tree);     
             final block = CollisionBlock(
@@ -122,15 +122,24 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
       for(final collisionBlock in collisionBlocksLayer.objects){
         switch(collisionBlock.class_){
           case 'Block' :
+            final tree = Tree(position: Vector2(collisionBlock.x + 32, collisionBlock.y-16),player: player,antiPlayer: antiPlayer);//..debugMode = true;
+            tree.anchor = Anchor.center;
+            add(tree);
             final block = CollisionBlock(
               position: Vector2(collisionBlock.x, collisionBlock.y),
               size: Vector2(collisionBlock.width, collisionBlock.height),
             );//..debugMode = true;
             add(block);
             collisionBlocks.add(block);
-            final gold = Gold();//..debugMode = true;
-            gold.position = Vector2(collisionBlock.x, collisionBlock.y);
-            add(gold);
+            // final block = CollisionBlock(
+            //   position: Vector2(collisionBlock.x, collisionBlock.y),
+            //   size: Vector2(collisionBlock.width, collisionBlock.height),
+            // );//..debugMode = true;
+            // add(block);
+            // collisionBlocks.add(block);
+            // final gold = Gold();//..debugMode = true;
+            // gold.position = Vector2(collisionBlock.x, collisionBlock.y);
+            // add(gold);
             //create a new block.
             break;
           default:   
@@ -143,7 +152,7 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
 
     final collisionBlocksForGridLayer = level.tileMap.getLayer<ObjectGroup>('CollisionblocksForGrid');
     if(collisionBlocksForGridLayer != null){
-      log("Testing this right now for Sarvesh");
+      // log("Testing this right now for Sarvesh");
       for(final collisionBlock in collisionBlocksForGridLayer.objects){
         switch(collisionBlock.class_){
           case 'Block' :

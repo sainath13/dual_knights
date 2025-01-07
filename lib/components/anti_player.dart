@@ -1,15 +1,19 @@
 
 import 'package:dual_knights/components/collision_block.dart';
 import 'package:dual_knights/components/player.dart';
+import 'package:dual_knights/components/tree.dart';
 import 'package:dual_knights/routes/gameplay.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/services.dart';
 import 'dart:developer';
 
+import 'anti_player_priority_manager.dart';
+
 class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, CollisionCallbacks,HasAncestor<Gameplay> {
   static const double frameWidth = 192;
   static const double frameHeight = 192;
+  final AntiPlayerPriorityManager antiPlayerPriorityManager;
   static const double gridSize = 64.0;
   
   bool isMoving = false;
@@ -33,13 +37,19 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
   Vector2 direction = Vector2.zero();
 
 
-  AntiPlayer() : super(size: Vector2(frameWidth, frameHeight), priority: 5) {
+  AntiPlayer() :  antiPlayerPriorityManager = AntiPlayerPriorityManager(null),super(size: Vector2(frameWidth, frameHeight), priority: 5) {
     targetPosition = position.clone();
+    antiPlayerPriorityManager.owner = this;
   }
 
+  void updateTreeInteraction(Tree tree) {
+    antiPlayerPriorityManager.updateTreeInteraction(tree);
+  }
   @override
   Future<void> onLoad() async {
-    super.onLoad();
+    await super.onLoad();
+
+    // priorityManager = AntiPlayerPriorityManager(this);
 
     final hitbox = RectangleHitbox(
       size: Vector2(64-4, 64-4),

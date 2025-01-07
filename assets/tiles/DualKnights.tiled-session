@@ -274,17 +274,25 @@
                 "y": 583.9548844824451
             }
         },
+        "Level-02-Copy.tmx": {
+            "scale": 0.43046874999999996,
+            "selectedLayer": 11,
+            "viewCenter": {
+                "x": 511.0707803992741,
+                "y": 384.46460980036306
+            }
+        },
         "Level-02.tmx": {
             "expandedObjectLayers": [
+                4,
                 5,
-                6,
-                4
+                6
             ],
             "scale": 0.56,
-            "selectedLayer": 12,
+            "selectedLayer": 9,
             "viewCenter": {
                 "x": 555.3571428571429,
-                "y": 450
+                "y": 450.89285714285717
             }
         },
         "Level-03.tmx": {
@@ -855,6 +863,7 @@
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "Level-02.tmx",
         "Game-Open-UI.tmx",
         "Game-UI-With-Settings.tmx",
         "Game-Welcome-Page.tmx",
@@ -865,8 +874,7 @@
         "Level-Completed-Menu.tmx",
         "level-new-selection.tmx",
         "level-selection-final.tmx",
-        "Game-logo.tsx",
-        "TNT_Red.tsx"
+        "Game-logo.tsx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",

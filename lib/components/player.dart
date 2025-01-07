@@ -3,6 +3,8 @@ import 'dart:developer';
 import 'package:dual_knights/components/anti_player.dart';
 import 'package:dual_knights/components/collision_block.dart';
 import 'package:dual_knights/components/player_checkpoint.dart';
+import 'package:dual_knights/components/player_priority_manager.dart';
+import 'package:dual_knights/components/tree.dart';
 import 'package:dual_knights/routes/gameplay.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
@@ -14,6 +16,7 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
   static const double gridSize = 64.0;
   bool isMoving = false;
   Vector2 targetPosition = Vector2.zero();
+  final PlayerPriorityManager priorityManager;
   List<CollisionBlock> collisionBlocks = [];
 
   void setCollisionBlocks(List<CollisionBlock> blocks) {
@@ -34,14 +37,19 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
   
 
 
-  Player() : super(size: Vector2(frameWidth, frameHeight), priority: 5) {
+  Player() : priorityManager = PlayerPriorityManager(null),super(size: Vector2(frameWidth, frameHeight), priority: 5) {
+    priorityManager.owner = this;
     targetPosition = position.clone();
   }
-  
+
+  void updateTreeInteraction(Tree tree) {
+    priorityManager.updateTreeInteraction(tree);
+  }
+
   @override
   Future<void> onLoad() async {
-    super.onLoad();
-
+    await super.onLoad();
+    // priorityManager = PlayerPriorityManager(this);
     final hitbox = RectangleHitbox(
       size: Vector2(64-4, 64-4),
       position: Vector2(
