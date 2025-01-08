@@ -349,11 +349,27 @@
             }
         },
         "Level-07-copy.tmx": {
-            "scale": 0.66,
-            "selectedLayer": 4,
+            "scale": 0.42,
+            "selectedLayer": 5,
             "viewCenter": {
-                "x": 540.9090909090909,
-                "y": 552.2727272727274
+                "x": 485.71428571428567,
+                "y": 65.47619047619048
+            }
+        },
+        "Level-07.tmx": {
+            "scale": 0.43232421875,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 511.1904224079513,
+                "y": 385.1276259317823
+            }
+        },
+        "Level-08.tmx": {
+            "scale": 0.43,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 511.6279069767442,
+                "y": 384.8837209302326
             }
         },
         "Level-31.tmx": {
@@ -476,6 +492,10 @@
             "scaleInEditor": 1
         },
         "TNT_Red_192.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "TX Props.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
@@ -908,6 +928,9 @@
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "Level-08.tmx",
+        "Level-07.tmx",
+        "TX Props.tsx",
         "Level-07-copy.tmx",
         "10.tsx",
         "07.tsx",
@@ -916,10 +939,7 @@
         "03.tsx",
         "02.tsx",
         "HappySheep_Idle.tsx",
-        "The-Final-Game-Open.tmx",
-        "Level-31.tmx",
-        "Level-02.tmx",
-        "Game-Open-UI.tmx"
+        "The-Final-Game-Open.tmx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",

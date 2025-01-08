@@ -4,6 +4,7 @@ import 'package:dual_knights/components/game_button.dart';
 import 'package:dual_knights/dual_knights.dart';
 import 'package:flame/components.dart';
 import 'package:flame_tiled/flame_tiled.dart';
+import 'package:flame/text.dart';
 
 class GameLevelComplete extends PositionComponent with HasGameRef<DualKnights>{
   
@@ -136,6 +137,24 @@ class GameLevelComplete extends PositionComponent with HasGameRef<DualKnights>{
             );
             _world.add(star);
             break;
+          case 'Completion':
+            final textPaint = TextPaint(
+              style: TextStyle(
+                fontSize: 48.0,
+                color: Color(0xFFFFFFFF), // White color
+                fontFamily: 'DualKnights', // Customize the font family
+              ),
+            );
+
+            final textComponent = TextComponent(
+              text: 'Level Completed',
+              textRenderer: textPaint,
+              position: Vector2(button.x+64+32+16, button.y+20), // Position from the Tiled object
+              anchor: Anchor.center, // Align the text to the center
+            );
+            _world.add(textComponent);
+            break;
+
         }
       }
     }
