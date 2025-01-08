@@ -23,7 +23,7 @@ class PauseMenu extends StatelessWidget {
   final VoidCallback? onExitPressed;
   final VoidCallback? onLevelSelection;
 
-   final ValueListenable<bool> musicValueListenable;
+  final ValueListenable<bool> musicValueListenable;
   final ValueListenable<bool> sfxValueListenable;
 
   final ValueChanged<bool>? onMusicValueChanged;
@@ -35,97 +35,120 @@ class PauseMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(210, 229, 238, 238),
+      backgroundColor: const Color.fromARGB(132, 38, 36, 36), // Dark medieval background
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              'Paused',
-              style: TextStyle(fontSize: 30,fontFamily: "DualKnights"),
-            ),
-            const SizedBox(height: 15),
-            SizedBox(
-              width: 150,
-              child: OutlinedButton(
-                onPressed: onResumePressed,
-                child: const Text('Resume',style: TextStyle(fontFamily: "DualKnights")),
+              'Game Paused',
+              style: TextStyle(
+                fontSize: 40,
+                fontFamily: "DualKnights",
+                color: Color.fromARGB(255, 213, 176, 93), // Gold-like medieval color
+                shadows: [
+                  Shadow(
+                    offset: Offset(3, 3),
+                    blurRadius: 6,
+                    color: Colors.black, // Shadow for medieval effect
+                  ),
+                ],
               ),
             ),
-            const SizedBox(height: 5),
-            SizedBox(
-              width: 150,
-              child: OutlinedButton(
-                onPressed: onRestartPressed,
-                child: const Text('Restart',style: TextStyle(fontFamily: "DualKnights")),
-              ),
+            const SizedBox(height: 20),
+            medievalButton('Resume', onResumePressed),
+            const SizedBox(height: 10),
+            medievalButton('Restart', onRestartPressed),
+            const SizedBox(height: 10),
+            medievalButton('Level Selection', onLevelSelection),
+            const SizedBox(height: 10),
+            medievalToggleButton('Music', musicValueListenable, onMusicValueChanged),
+            const SizedBox(height: 10),
+            medievalToggleButton('Sfx', sfxValueListenable, onSfxValueChanged),
+            const SizedBox(height: 10),
+            ValueListenableBuilder<bool>(
+              valueListenable: controlTypeListenable,
+              builder: (BuildContext context, bool isAnalogue, Widget? child) {
+                return medievalButton(
+                  isAnalogue ? 'Analogue Joystick' : 'Arrow Keys',
+                  () => onControlTypeChanged?.call(!isAnalogue),
+                );
+              },
             ),
-            const SizedBox(height: 5),
-            SizedBox(
-              width: 150,
-              child: OutlinedButton(
-                onPressed: onLevelSelection,
-                child: const Text('Level Selection',style: TextStyle(fontFamily: "DualKnights")),
-              ),
-            ),
-            const SizedBox(height: 5),
-            SizedBox(
-              width: 150,
-              child: ValueListenableBuilder<bool>(
-                valueListenable: musicValueListenable,
-                builder: (BuildContext context, bool value, Widget? child) {
-                  return SwitchListTile(
-                    value: value,
-                    onChanged: onMusicValueChanged,
-                    title: child,
-                  );
-                },
-                child: const Text('Music',style: TextStyle(fontFamily: "DualKnights")),
-              ),
-            ),
-            const SizedBox(height: 5),
-            SizedBox(
-              width: 150,
-              child: ValueListenableBuilder<bool>(
-                valueListenable: sfxValueListenable,
-                builder: (BuildContext context, bool value, Widget? child) {
-                  return SwitchListTile(
-                    value: value,
-                    onChanged: onSfxValueChanged,
-                    title: child,
-                  );
-                },
-                child: const Text('Sfx',style: TextStyle(fontFamily: "DualKnights")),
-              ),
-            ),
-            const SizedBox(height: 5),
-            SizedBox(
-              width: 150,
-              child: ValueListenableBuilder<bool>(
-                valueListenable: controlTypeListenable,
-                builder: (BuildContext context, bool isAnalogue, Widget? child) {
-                  return OutlinedButton(
-                    onPressed: () {
-                      onControlTypeChanged?.call(!isAnalogue);
-                    },
-                    child: Text(
-                      isAnalogue ? 'Analogue Joystick' : 'Arrow Keys ',
-                      style: const TextStyle(fontFamily: "DualKnights"),
-                    ),
-                  );
-                },
-              ),
-            ),
-            const SizedBox(height: 5),
-            SizedBox(
-              width: 150,
-              child: OutlinedButton(
-                onPressed: onExitPressed,
-                child: const Text('Exit',style: TextStyle(fontFamily: "DualKnights")),
-              ),
-            ),
+            const SizedBox(height: 10),
+            medievalButton('Exit', onExitPressed),
           ],
         ),
+      ),
+    );
+  }
+
+  /// Helper method for medieval-themed buttons
+  Widget medievalButton(String text, VoidCallback? onPressed) {
+    return SizedBox(
+      width: 200,
+      child: OutlinedButton(
+        onPressed: onPressed,
+        style: OutlinedButton.styleFrom(
+          backgroundColor: const Color.fromARGB(255, 84, 63, 63), // Wooden-like button
+          side: const BorderSide(color: Color.fromARGB(255, 213, 176, 93), width: 2), // Gold border
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8), // Slightly rounded corners
+          ),
+        ),
+        child: Text(
+          text,
+          style: const TextStyle(
+            fontFamily: "DualKnights",
+            color: Color.fromARGB(255, 213, 176, 93), // Gold text
+            fontSize: 18,
+            shadows: [
+              Shadow(
+                offset: Offset(2, 2),
+                blurRadius: 4,
+                color: Colors.black, // Text shadow
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  /// Helper method for medieval toggle buttons (like music and sfx)
+  Widget medievalToggleButton(
+    String title,
+    ValueListenable<bool> valueListenable,
+    ValueChanged<bool>? onChanged,
+  ) {
+    return SizedBox(
+      width: 200,
+      child: ValueListenableBuilder<bool>(
+        valueListenable: valueListenable,
+        builder: (BuildContext context, bool value, Widget? child) {
+          return SwitchListTile(
+            value: value,
+            onChanged: onChanged,
+            title: Text(
+              title,
+              style: const TextStyle(
+                fontFamily: "DualKnights",
+                color: Color.fromARGB(255, 213, 176, 93), // Gold text
+                fontSize: 18,
+                shadows: [
+                  Shadow(
+                    offset: Offset(2, 2),
+                    blurRadius: 4,
+                    color: Colors.black, // Text shadow
+                  ),
+                ],
+              ),
+            ),
+            activeColor: const Color.fromARGB(255, 213, 176, 93), // Gold for active toggle
+            inactiveThumbColor: Colors.grey,
+            inactiveTrackColor: Colors.grey[800],
+          );
+        },
       ),
     );
   }

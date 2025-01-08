@@ -20,8 +20,8 @@ class ArrowKeysComponent extends PositionComponent with HasGameRef<DualKnights>,
 
   ArrowKeysComponent({
     required this.onDirectionPressed,
-    this.buttonSize = 50,
-    this.spacing = 10,
+    this.buttonSize = 45,
+    this.spacing = 3,
   });
 
   @override
