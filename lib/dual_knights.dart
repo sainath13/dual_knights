@@ -3,7 +3,10 @@
 import 'dart:async';
 import 'dart:ui';
 
+import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
 import 'package:amplify_flutter/amplify_flutter.dart';
+import 'package:dual_knights/model/user_settings_model.dart';
+import 'package:dual_knights/repository/game_repository.dart';
 import 'package:dual_knights/routes/game_level_selection.dart';
 import 'package:dual_knights/routes/game_main_menu.dart';
 import 'package:dual_knights/routes/game_level_complete.dart';
@@ -24,6 +27,10 @@ import 'package:flutter/widgets.dart' hide Route,OverlayRoute;
 
 class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetector{
 
+  final GameRepository gameRepository;
+
+  DualKnights({required this.gameRepository});
+
   static const isMobile = bool.fromEnvironment('MOBILE_BUILD');
   final musicValueNotifier = ValueNotifier(true);
   final sfxValueNotifier = ValueNotifier(true);
@@ -34,6 +41,7 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
   late RectangleComponent background;
 
   static const bgm = '8BitDNALoop.wav';
+  var _settingsListener;
 
 
   late final _routes = <String, Route>{
@@ -99,6 +107,7 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
       () => GameLevelSelection(
         onLevelSelected: _startLevel,
         onBackPressed:  _popRoute,
+        gameRepository: gameRepository,
       ),
     ),
   };
@@ -129,6 +138,8 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
 
   @override
   FutureOr<void> onLoad() async{
+    await loadUserSettings();
+    syncUserSettings();
     await FlameAudio.audioCache.loadAll([bgm]);
     await images.loadAllImages();
     await add(_router);
@@ -144,6 +155,35 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
 
   return super.onLoad();
   }
+
+   @override
+  void onRemove() {
+    musicValueNotifier.removeListener(_settingsListener);
+    sfxValueNotifier.removeListener(_settingsListener);
+    analogueJoystick.removeListener(_settingsListener);
+    super.onRemove();
+  }
+
+  void syncUserSettings() {
+    _settingsListener = () async {
+      if (musicValueNotifier.value || sfxValueNotifier.value || analogueJoystick.value) {
+        await updateUserSettings(musicValueNotifier.value, sfxValueNotifier.value, analogueJoystick.value);
+      }
+    };
+        musicValueNotifier.addListener(_settingsListener);
+        sfxValueNotifier.addListener(_settingsListener);
+        analogueJoystick.addListener(_settingsListener);
+  }
+
+  Future<void> loadUserSettings() async {
+    final jwtToken = await getJwtToken();
+    UserSettings userSettings = await gameRepository.getUserSettings(jwtToken);
+    print('User settings: ${userSettings}');
+    musicValueNotifier.value = userSettings.music;
+    sfxValueNotifier.value = userSettings.sfx;
+    analogueJoystick.value = userSettings.joystick;
+  }
+  
 
   void updateBackgroundColor(Color color) {
     background.paint.color = color;
@@ -179,6 +219,7 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
       () => GameLevelSelection(
         onLevelSelected: _startLevel,
         onBackPressed:  _popRoute,
+        gameRepository: gameRepository,
       ),
     )
     );
@@ -263,8 +304,16 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
     ));
   }
 
-  void _showLevelCompleteMenu(int nStars) async{    
-   final gameplay = findByKeyName<Gameplay>(Gameplay.id);
+  void _showLevelCompleteMenu(int nStars) async{
+
+    
+    
+        
+  final gameplay = findByKeyName<Gameplay>(Gameplay.id);
+
+  int completedLevel = gameplay?.currentLevel ?? lastGamePlayState?.currentLevel ?? 0;
+  await saveLevelCompletion(completedLevel, nStars);
+
    gameplay?.levelCompleted = true;
    gameplay?.input.movementAllowed = false;
 
@@ -278,6 +327,14 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
       ),
     ));
   
+  }
+
+  Future<void> saveLevelCompletion(int completedLevel, int nStars) async {
+    final jwtToken = await getJwtToken();
+    
+    bool status = await gameRepository.markLevelComplete(completedLevel,nStars,jwtToken);
+    print('User progress saved: ${status}');
+    
   }
 
    void _showRetryMenu() {
@@ -296,9 +353,31 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
   }
 }
 
+Future<String?> getJwtToken() async {
+  try {
+    final cognitoPlugin = Amplify.Auth.getPlugin(AmplifyAuthCognito.pluginKey);
+    final session = await cognitoPlugin.fetchAuthSession();
+    if (session.isSignedIn) {
+      final tokens = session.userPoolTokensResult.value;
+      return tokens.idToken.raw;
+    }
+    return null;
+  } catch (e) {
+    print('Error fetching JWT token: $e');
+    return null;
+  }
+}
+
+
 
   void _onLoginSuccess() {
     _popRoute();
     _routeToGameMainMenu();
+  }
+  
+  Future<void> updateUserSettings(bool musicValue, bool sfxValue, bool joyStickValue) async {
+    final jwtToken = await getJwtToken();
+    final userSettings = UserSettings(music: musicValue, sfx: sfxValue, joystick: joyStickValue);
+    gameRepository.saveUserSettings(userSettings, jwtToken); 
   }
 }

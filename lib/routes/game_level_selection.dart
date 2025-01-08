@@ -4,6 +4,8 @@ import 'dart:math';
 import 'package:dual_knights/components/camera_movement.dart';
 import 'package:dual_knights/components/game_button.dart';
 import 'package:dual_knights/dual_knights.dart';
+import 'package:dual_knights/model/user_progress_model.dart';
+import 'package:dual_knights/repository/game_repository.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
 import 'package:flame/events.dart';
@@ -24,17 +26,17 @@ class GameLevelSelection extends PositionComponent with HasGameRef<DualKnights>,
 
   double cameraViewportWidth = 24 * 64; // 832
   double cameraViewportHeight = 12 * 64; 
+  final GameRepository gameRepository;
 
 
  GameLevelSelection({
     super.key,
     required this.onLevelSelected,
-    required this.onBackPressed,
+    required this.onBackPressed, required this.gameRepository,
   });
 
   @override
   Future<void> onLoad() async {
-
     game.updateBackgroundColor(Color(0xFFC9AA8D));
     await loadGameLevelSelection();
     GameButton backButton = GameButton(
@@ -83,56 +85,11 @@ class GameLevelSelection extends PositionComponent with HasGameRef<DualKnights>,
 
 
 Future<void> loadGameLevelSelection() async {
+    Map<int, LevelProgress> levelData = {};
+    
+    levelData = await loadUserProgress(levelData);
 
-
-
-    var levelData = {
-      1: {"locked": false, "stars": 2},
-      2: {"locked": false, "stars": 1},
-      3: {"locked": false, "stars": 2},
-      4: {"locked": false, "stars": 3},
-      5: {"locked": false, "stars": 1},
-      6: {"locked": false, "stars": 1},
-      7: {"locked": false, "stars": 2},
-      8: {"locked": false, "stars": 3},
-      9: {"locked": false, "stars": 3},
-      10: {"locked": false, "stars": 1},
-      11: {"locked": false, "stars": 1},
-      12: {"locked": false, "stars": 2},
-      13: {"locked": false, "stars": 3},
-      14: {"locked": false, "stars": 1},
-      15: {"locked": false, "stars": 3},
-      16: {"locked": false, "stars": 2},
-      17: {"locked": false, "stars": 1},
-      18: {"locked": false, "stars": 2},
-      19: {"locked": false, "stars": 2},
-      20: {"locked": false, "stars": 2},
-      21: {"locked": false, "stars": 2},
-      22: {"locked": false, "stars": 3},
-      23: {"locked": false, "stars": 3},
-      24: {"locked": false, "stars": 3},
-      25: {"locked": false, "stars": 3},
-      26: {"locked": false, "stars": 1},
-      27: {"locked": false, "stars": 3},
-      28: {"locked": false, "stars": 3},
-      29: {"locked": false, "stars": 2},
-      30: {"locked": false, "stars": 2},
-      31: {"locked": false, "stars": 3},
-      32: {"locked": false, "stars": 3},
-      33: {"locked": false, "stars": 3},
-      34: {"locked": false, "stars": 3},
-      35: {"locked": false, "stars": 3},
-      36: {"locked": false, "stars": 3},
-      37: {"locked": false, "stars": 1},
-      38: {"locked": false, "stars": 1},
-      39: {"locked": false, "stars": 1},
-      40: {"locked": false, "stars": 3},
-      41: {"locked": false, "stars": 1},
-      42: {"locked": false, "stars": 3},
-      43: {"locked": false, "stars": 2},
-      44: {"locked": false, "stars": 1},
-      45: {"locked": false, "stars": 1}
-    };
+    
     var lastLevelUnlocked  = 25;
     gameLevelSelection = await TiledComponent.load('level-selection-final.tmx', Vector2(64, 64),atlasMaxX: 5000,atlasMaxY: 5000);
 
@@ -159,9 +116,9 @@ if (buttonsLayer != null) {
       
       // Assuming you have some level data like this:
       
-      final levelInfo = levelData[levelIndex]; 
-      final isLocked = levelInfo?['locked'] ?? true;
-      final stars = levelInfo?['stars'] ?? 0;
+      LevelProgress levelInfo = levelData[levelIndex] ?? LevelProgress(locked: true, stars: 0); 
+      final isLocked = levelInfo.locked ?? true;
+      final stars = levelInfo.stars ?? 0;
 
       // Common button size and position
       final buttonSize = Vector2(button.width, button.height);
@@ -334,6 +291,14 @@ if (navigationButtons != null) {
 
 
 
+}
+
+Future<Map<int, LevelProgress>> loadUserProgress(Map<int, LevelProgress> levelData) async {
+  final jwtToken = await game.getJwtToken();
+  final userProgress = await gameRepository.getUserProgress(jwtToken);
+  print('User progress: ${userProgress.levelProgress}');
+  levelData = userProgress.levelProgress;
+  return levelData;
 }
 
 
