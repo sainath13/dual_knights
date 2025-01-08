@@ -384,8 +384,8 @@
             "scale": 0.85537109375,
             "selectedLayer": 14,
             "viewCenter": {
-                "x": 733.0151843817787,
-                "y": 383.45929900673593
+                "x": 532.5174106633177,
+                "y": 355.98584313277763
             }
         },
         "Level-for-Manish-2.tmx": {
@@ -928,6 +928,7 @@
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "Level-Completed-Menu.tmx",
         "Level-08.tmx",
         "Level-07.tmx",
         "TX Props.tsx",
@@ -938,8 +939,7 @@
         "04.tsx",
         "03.tsx",
         "02.tsx",
-        "HappySheep_Idle.tsx",
-        "The-Final-Game-Open.tmx"
+        "HappySheep_Idle.tsx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",

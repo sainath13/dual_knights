@@ -237,15 +237,66 @@ if (navigationButtons != null) {
       _world.add(leftButton);
         break;
       case 'RightNavigation':
-       final rightButton = GameButton(
-        onClick: () => moveCamera(1, cameraViewportWidth,gameLevelSelection.size.x),
-        size: Vector2(button.width/1.1, button.height/1.1),
-        position: Vector2(button.x, button.y),
-        normalSprite: Sprite(await game.images.load('Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Buttons/Square/ArrowRight-Bold/Default@2x-1.png')),
-        onTapSprite: Sprite(await game.images.load('Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Buttons/Square/ArrowRight-Bold/Hover@2x-1.png')),
-        buttonText: '',
-      );
-      _world.add(rightButton);
+         final rightButton = GameButton(
+          onClick: () => moveCamera(1, cameraViewportWidth,gameLevelSelection.size.x),
+          size: Vector2(button.width/1.1, button.height/1.1),
+          position: Vector2(button.x, button.y),
+          normalSprite: Sprite(await game.images.load('Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Buttons/Square/ArrowRight-Bold/Default@2x-1.png')),
+          onTapSprite: Sprite(await game.images.load('Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Buttons/Square/ArrowRight-Bold/Hover@2x-1.png')),
+          buttonText: '',
+        );
+        _world.add(rightButton);
+        break;
+      case 'StageOne':
+        final textPaint = TextPaint(
+          style: TextStyle(
+            fontSize: 48.0,
+            color: Color(0xFFFFFFFF), // White color
+            fontFamily: 'DualKnights', // Customize the font family
+          ),
+        );
+
+        final textComponent = TextComponent(
+          text: 'STAGE ONE',
+          textRenderer: textPaint,
+          position: Vector2(button.x+64+64+16, button.y+24), // Position from the Tiled object
+          anchor: Anchor.center, // Align the text to the center
+        );
+        _world.add(textComponent);
+        break;
+      case 'StageTwo':
+        final textPaint = TextPaint(
+          style: TextStyle(
+            fontSize: 48.0,
+            color: Color(0xFFFFFFFF), // White color
+            fontFamily: 'DualKnights', // Customize the font family
+          ),
+        );
+
+        final textComponent = TextComponent(
+          text: 'STAGE TWO',
+          textRenderer: textPaint,
+          position: Vector2(button.x+64+64+16, button.y+24), // Position from the Tiled object
+          anchor: Anchor.center, // Align the text to the center
+        );
+        _world.add(textComponent);
+        break;
+      case 'StageThree':
+        final textPaint = TextPaint(
+          style: TextStyle(
+            fontSize: 48.0,
+            color: Color(0xFFFFFFFF), // White color
+            fontFamily: 'DualKnights', // Customize the font family
+          ),
+        );
+
+        final textComponent = TextComponent(
+          text: 'STAGE THREE',
+          textRenderer: textPaint,
+          position: Vector2(button.x+64+64+16, button.y+24), // Position from the Tiled object
+          anchor: Anchor.center, // Align the text to the center
+        );
+        _world.add(textComponent);
         break;
     }
   }
