@@ -860,11 +860,11 @@
             "expandedObjectLayers": [
                 13
             ],
-            "scale": 0.8664,
-            "selectedLayer": 0,
+            "scale": 0.86,
+            "selectedLayer": 9,
             "viewCenter": {
-                "x": 867.9593721144968,
-                "y": 751.3850415512466
+                "x": 1695.9302325581396,
+                "y": 192.44186046511635
             }
         },
         "spritesheet.tsx": {
@@ -928,6 +928,7 @@
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "level-selection-final.tmx",
         "Level-Completed-Menu.tmx",
         "Level-08.tmx",
         "Level-07.tmx",
@@ -938,8 +939,7 @@
         "05.tsx",
         "04.tsx",
         "03.tsx",
-        "02.tsx",
-        "HappySheep_Idle.tsx"
+        "02.tsx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",

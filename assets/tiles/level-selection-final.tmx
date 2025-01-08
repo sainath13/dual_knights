@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="46" height="12" tilewidth="64" tileheight="64" infinite="0" nextlayerid="19" nextobjectid="97">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="46" height="12" tilewidth="64" tileheight="64" infinite="0" nextlayerid="19" nextobjectid="98">
  <tileset firstgid="1" source="UI/Banner_Connection_Left_64.tsx"/>
  <tileset firstgid="10" source="UI/Carved_Regular.tsx"/>
  <tileset firstgid="11" source="UI/Banner_Connection_Right_64.tsx"/>
@@ -215,6 +215,9 @@
   <object id="96" name="StageOne" type="StageOne" x="256" y="64" width="300.416" height="50">
    <text fontfamily="Patrick Hand" pixelsize="36" wrap="1" halign="center" valign="center">Stage One</text>
   </object>
+  <object id="97" name="DevelopedFor" type="DevelopedFor" x="2697.47" y="128.488" width="181.811" height="513.953">
+   <text fontfamily="Patrick Hand" pixelsize="36" wrap="1" halign="center" valign="center">AWS</text>
+  </object>
  </objectgroup>
  <layer id="12" name="KnigthANimation" width="46" height="12">
   <data encoding="csv">
@@ -251,9 +254,6 @@
  <objectgroup id="13" name="Text" opacity="0.8">
   <object id="77" x="1945.17" y="618.5" width="581.667" height="48.3333">
    <text fontfamily="ThaleahFat" pixelsize="49" wrap="1" color="#ab4b2e">More Levels Coming soon</text>
-  </object>
-  <object id="78" x="2707.83" y="169.167" width="175" height="475">
-   <text fontfamily="ThaleahFat" pixelsize="36" wrap="1" color="#613939">THis game is Created For AWS Game Builder Challenge hosted on DevPost</text>
   </object>
  </objectgroup>
  <layer id="11" name="stars" width="46" height="12" visible="0">

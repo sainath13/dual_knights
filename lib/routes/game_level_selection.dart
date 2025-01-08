@@ -7,6 +7,7 @@ import 'package:dual_knights/dual_knights.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
 import 'package:flame/events.dart';
+import 'package:flame/text.dart';
 import 'package:flame_tiled/flame_tiled.dart';
 import 'package:flutter/material.dart';
 
@@ -298,7 +299,34 @@ if (navigationButtons != null) {
         );
         _world.add(textComponent);
         break;
+      case 'DevelopedFor':
+        final document = DocumentRoot([
+          ParagraphNode.simple(
+            'This game is developed for AWS Game Builder Challenge hosted on Devpost.',
+          ),
+        ]);
+        // Define the document style with the custom font
+        final style = DocumentStyle(
+          text: InlineTextStyle(
+            fontSize: 32.0, // Adjust font size
+            color: Color(0xFFFFFFFF), // White color
+            fontFamily: 'DualKnights', // Use your custom font family
+          ),
+          paragraph: BlockStyle(margin: EdgeInsets.all(10)), // Optional spacing
+        );
+        final textElement = TextElementComponent.fromDocument(
+          document: document,
+          position: Vector2(button.x, button.y + 24), // Position from the Tiled object
+          size: Vector2(button.width, button.height), // Area size for the text
+          style: style, // Apply the custom styl
+        );
+
+        _world.add(textElement);
+        break;
+
     }
+
+
   }
 
 }
