@@ -30,25 +30,47 @@ class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference<D
 
   @override
   Future<void> onLoad() async {
-
-    
     setupJoyStick();
-    // Joystick setup
-    
+    await addPauseButton();
+    await addRestartButton();
+    await addPlayAsOption();
+  }
 
-    // Pause button
-    final pauseButton = HudButtonComponent(
+  Future<void> addPlayAsOption() async {
+    final blueSprite = await game.images.load('Factions/Knights/Troops/Warrior/Blue/Warrior_Blue_Small.png');
+    final redSprite = await game.images.load('Factions/Knights/Troops/Warrior/Red/Warrior_Red_Small.png');
+    _knightSelectionButton = HudButtonComponent(
       button: SpriteComponent.fromImage(
-        await game.images.load('UI/Icons/pause.png'),
-        size: Vector2.all(30),
+        _isBlueSelected ? blueSprite : redSprite,
+        size: Vector2.all(192),
       ),
-      anchor: Anchor.bottomRight,
-      position: Vector2(parent.virtualSize.x - 100, 100),
-      onPressed: onPausePressed,
+      anchor: Anchor.center,
+      position: Vector2(parent.virtualSize.x-100 , parent.virtualSize.y - 100),
+      onPressed: () {
+        _toggleSprite(!_isBlueSelected);
+        (_knightSelectionButton.button as SpriteComponent?)?.sprite = Sprite(
+          _isBlueSelected ? blueSprite : redSprite,
+        );
+      },
     );
-    await add(pauseButton);
+    await add(_knightSelectionButton);
+    // Add text above the button
+    final textComponent = TextComponent(
+      text: 'Play As',
+      textRenderer: TextPaint(
+      style: TextStyle(
+        color: Colors.white,
+        fontSize: 20,
+        fontFamily: "DualKnights"
+      ),
+      ),
+      anchor: Anchor.center,
+      position: Vector2(_knightSelectionButton.position.x, _knightSelectionButton.position.y - 40),
+    );
+    await add(textComponent);
+  }
 
-    // Restart button
+  Future<void> addRestartButton() async {
     final restartButton = HudButtonComponent(
       button: SpriteComponent.fromImage(
         await game.images.load('UI/Icons/pause.png'),
@@ -59,44 +81,19 @@ class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference<D
       onPressed: onRestartLevel,
     );
     await add(restartButton);
+  }
 
-    // Add blue sprite button
-  final blueSprite = await game.images.load('Factions/Knights/Troops/Warrior/Blue/Warrior_Blue_Small.png');
-  final redSprite = await game.images.load('Factions/Knights/Troops/Warrior/Red/Warrior_Red_Small.png');
-  _knightSelectionButton = HudButtonComponent(
-    button: SpriteComponent.fromImage(
-      _isBlueSelected ? blueSprite : redSprite,
-      size: Vector2.all(192),
-    ),
-    anchor: Anchor.center,
-    position: Vector2(parent.virtualSize.x-100 , parent.virtualSize.y - 100),
-    onPressed: () {
-      _toggleSprite(!_isBlueSelected);
-      (_knightSelectionButton.button as SpriteComponent?)?.sprite = Sprite(
-        _isBlueSelected ? blueSprite : redSprite,
-      );
-    },
-  );
-  await add(_knightSelectionButton);
-  // Add text above the button
-  final textComponent = TextComponent(
-    text: 'Play As',
-    textRenderer: TextPaint(
-    style: TextStyle(
-      color: Colors.white,
-      fontSize: 20,
-      fontFamily: "DualKnights"
-    ),
-    ),
-    anchor: Anchor.center,
-    position: Vector2(_knightSelectionButton.position.x, _knightSelectionButton.position.y - 40),
-  );
-  await add(textComponent);
-
-
-
-    
-
+  Future<void> addPauseButton() async {
+    final pauseButton = HudButtonComponent(
+      button: SpriteComponent.fromImage(
+        await game.images.load('UI/Icons/pause.png'),
+        size: Vector2.all(30),
+      ),
+      anchor: Anchor.bottomRight,
+      position: Vector2(parent.virtualSize.x - 100, 100),
+      onPressed: onPausePressed,
+    );
+    await add(pauseButton);
   }
 
   void _toggleSprite(bool isBlueSelected) { 
