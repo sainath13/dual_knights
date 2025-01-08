@@ -43,6 +43,12 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
   static const bgm = '8BitDNALoop.wav';
   var _settingsListener;
 
+  final ValueNotifier<Map<String, String>> dialogueNotifier = ValueNotifier({
+    'characterName': '',
+    'dialogue': '',
+    'priority': '0'
+  });
+
 
   late final _routes = <String, Route>{
     LoginPage.id: OverlayRoute(
@@ -161,6 +167,7 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
     musicValueNotifier.removeListener(_settingsListener);
     sfxValueNotifier.removeListener(_settingsListener);
     analogueJoystick.removeListener(_settingsListener);
+    dialogueNotifier.dispose();
     super.onRemove();
   }
 
@@ -380,4 +387,14 @@ Future<String?> getJwtToken() async {
     final userSettings = UserSettings(music: musicValue, sfx: sfxValue, joystick: joyStickValue);
     gameRepository.saveUserSettings(userSettings, jwtToken); 
   }
+
+   void characterDialogues(String characterName, String dialogue,int priority) {
+    dialogueNotifier.value = {
+      'characterName': characterName,
+      'dialogue': dialogue,
+      'priority': priority.toString()
+    };
+
+  }
+  
 }

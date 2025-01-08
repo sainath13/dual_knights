@@ -2,6 +2,7 @@
 import 'package:dual_knights/components/collision_block.dart';
 import 'package:dual_knights/components/player.dart';
 import 'package:dual_knights/components/tree.dart';
+import 'package:dual_knights/dual_knights.dart';
 import 'package:dual_knights/routes/gameplay.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
@@ -10,7 +11,7 @@ import 'dart:developer';
 
 import 'anti_player_priority_manager.dart';
 
-class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, CollisionCallbacks,HasAncestor<Gameplay> {
+class AntiPlayer extends SpriteAnimationComponent with HasGameRef<DualKnights>, KeyboardHandler, CollisionCallbacks,HasAncestor<Gameplay> {
   static const double frameWidth = 192;
   static const double frameHeight = 192;
   final AntiPlayerPriorityManager antiPlayerPriorityManager;
@@ -215,6 +216,7 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef, KeyboardHandl
     // log("AntiPlayer priority is $priority");
 
     if (isMoving) {
+      game.characterDialogues('Red Knight', 'Blue is duffer',1);
       final movement = direction * speed * dt;
       final distanceToTarget = targetPosition - position;
       final distanceThisFrame = movement.length;

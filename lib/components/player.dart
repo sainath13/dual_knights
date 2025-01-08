@@ -5,12 +5,13 @@ import 'package:dual_knights/components/collision_block.dart';
 import 'package:dual_knights/components/player_checkpoint.dart';
 import 'package:dual_knights/components/player_priority_manager.dart';
 import 'package:dual_knights/components/tree.dart';
+import 'package:dual_knights/dual_knights.dart';
 import 'package:dual_knights/routes/gameplay.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/services.dart';
 
-class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, CollisionCallbacks,HasAncestor<Gameplay> {
+class Player extends SpriteAnimationComponent with HasGameRef<DualKnights>, KeyboardHandler, CollisionCallbacks,HasAncestor<Gameplay> {
   static const double frameWidth = 192;
   static const double frameHeight = 192;
   static const double gridSize = 64.0;
@@ -225,6 +226,7 @@ class Player extends SpriteAnimationComponent with HasGameRef, KeyboardHandler, 
     // log("Player priority is $priority");
     
     if (isMoving) {
+      game.characterDialogues('Blue Knight', 'The enemy is approaching!',0);
       final movement = direction * speed * dt;
       final distanceToTarget = targetPosition - position;
       final distanceThisFrame = movement.length;
