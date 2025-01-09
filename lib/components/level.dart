@@ -193,8 +193,8 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
             final archer = Archer(
               position: Vector2(archerBlock.x, archerBlock.y),
               // size: Vector2(archerBlock.width, archerBlock.height),
-            )..debugColor = Colors.blue
-              ..debugMode = true;
+            );//..debugColor = Colors.blue
+              // ..debugMode = true;
             add(archer);
             // collisionBlocks.add(block);
             // final gold = Gold();//..debugMode = true;

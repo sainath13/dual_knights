@@ -5,9 +5,30 @@ import 'package:dual_knights/components/player.dart';
 import 'package:dual_knights/dual_knights.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
+import 'package:flame/events.dart';
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+class ArcherRangeVisualizer extends PositionComponent {
+  final Vector2 sizeXY;
+  final Paint _paint;
+
+  ArcherRangeVisualizer({
+    required this.sizeXY,
+    required Vector2 position,
+    Color color = const Color(0x44FF0000),
+  }) : _paint = Paint()..color = color {
+    this.position = position;
+  }
+
+  @override
+  void render(Canvas canvas) {
+    canvas.drawRect(
+      Rect.fromLTWH(0, 0, sizeXY.x, sizeXY.y),
+      _paint,
+    );
+  }
+}
 
 enum ArcherState {
   idle,
@@ -18,17 +39,17 @@ enum ArcherState {
   shootDown,
 }
 
-class Archer extends SpriteAnimationComponent with HasGameRef<DualKnights>, CollisionCallbacks {
+class Archer extends SpriteAnimationComponent with HasGameRef<DualKnights>, CollisionCallbacks, TapCallbacks {
   static const double frameWidth = 192;
   static const double frameHeight = 192;
   static const double gridSize = 64.0;
-  
+
+  static const double shootCooldown = 2.0;
+
   ArcherState state = ArcherState.idle;
   Vector2 currentPosition = Vector2.zero();
   Vector2? targetPosition;
   bool _facingLeft = false;
-
-  static const double shootCooldown = 0;
   double _timeSinceLastShot = 0;
   bool _canShoot = true;
 
@@ -42,18 +63,42 @@ class Archer extends SpriteAnimationComponent with HasGameRef<DualKnights>, Coll
   late SpriteAnimation shootFrontAnimation;
   late SpriteAnimation shootDiagonalDownAnimation;
   late SpriteAnimation shootDownAnimation;
+  ArcherRangeVisualizer? rangeVisualizer;
+  bool isRangeVisible = false;
+
 
   bool hasCollided = false;
+
+  @override
+  bool onTapDown(TapDownEvent event) {
+    _toggleRangeVisualizer();
+    return true;
+  }
+
+  void _toggleRangeVisualizer() {
+    if (isRangeVisible) {
+      rangeVisualizer?.removeFromParent();
+      rangeVisualizer = null;
+    } else {
+      rangeVisualizer = ArcherRangeVisualizer(
+        sizeXY: Vector2(gridSize * 7.5, gridSize * 7),
+        position: Vector2(-gridSize * 2, -gridSize * 2),
+        color: const Color(0x44FF0000) // Semi-transparent red
+      );
+      add(rangeVisualizer!);
+    }
+    isRangeVisible = !isRangeVisible;
+  }
 
   @override
   Future<void> onLoad() async {
     super.onLoad();
 
     final newHitbox = RectangleHitbox(
-      size: Vector2(gridSize * 7.5, gridSize * 7),
+      size: Vector2(gridSize * 7.25, gridSize * 6.75),
       position: Vector2(-gridSize * 2, -gridSize * 2),
-    )..debugColor = Colors.red
-      ..debugMode = true;
+    );//..debugColor = Colors.red
+      //..debugMode = true;
     add(newHitbox);
 
     final spriteSheet = await gameRef.images.load('Factions/Knights/Troops/Archer/Purple/Archer_Purple.png');
@@ -188,7 +233,6 @@ class Archer extends SpriteAnimationComponent with HasGameRef<DualKnights>, Coll
     _facingLeft = deltaX < 0;
     scale.x = _facingLeft ? -1 : 1;
 
-    // Get the new state based on angle
     ArcherState newState = _getStateFromAngle(angle);
     
     // Only update animation if state changed
