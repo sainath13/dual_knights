@@ -394,6 +394,7 @@ Future<void> _updateDialogue(Map<String, String> dialogue) async {
   }
 
   // Wait for 5 seconds before allowing the next update
+  //TODO SARVESH Does the thread gets stuck here? If it gets stuck its not a good idea.
   await Future.delayed(const Duration(seconds: 5));
   if (!_isDialogueActive) return; // Stop if dialogue has been canceled
 
@@ -406,9 +407,6 @@ Future<void> _updateDialogue(Map<String, String> dialogue) async {
   _isDialogueActive = false;
   currentPriority = 0; // Reset priority
 }
-
-
-
 
   @override
   void onRemove() {
