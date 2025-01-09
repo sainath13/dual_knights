@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "Level-07-copy.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -15,36 +15,27 @@
             "scaleInEditor": 1
         },
         "02.tsx": {
-            "scaleInDock": 1,
-            "scaleInEditor": 1
+            "scaleInDock": 1
         },
         "03.tsx": {
-            "scaleInDock": 1,
-            "scaleInEditor": 1
+            "scaleInDock": 1
         },
         "04.tsx": {
-            "scaleInDock": 1,
-            "scaleInEditor": 1
-        },
-        "05.tsx": {
-            "scaleInDock": 1,
-            "scaleInEditor": 1
+            "scaleInDock": 1
         },
         "06.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
         "07.tsx": {
-            "scaleInDock": 1,
-            "scaleInEditor": 1
+            "scaleInDock": 1
         },
         "09.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
         "10.tsx": {
-            "scaleInDock": 1,
-            "scaleInEditor": 1
+            "scaleInDock": 1
         },
         "12.tsx": {
             "scaleInDock": 1
@@ -298,30 +289,17 @@
                 "y": 583.9548844824451
             }
         },
-        "Level-02-Copy.tmx": {
-            "expandedObjectLayers": [
-                7,
-                5,
-                6
-            ],
-            "scale": 0.43046874999999996,
-            "selectedLayer": 9,
-            "viewCenter": {
-                "x": 511.0707803992741,
-                "y": 384.46460980036306
-            }
-        },
         "Level-02.tmx": {
             "expandedObjectLayers": [
-                4,
                 5,
-                6
+                6,
+                4
             ],
             "scale": 0.56,
-            "selectedLayer": 9,
+            "selectedLayer": 12,
             "viewCenter": {
                 "x": 555.3571428571429,
-                "y": 450.89285714285717
+                "y": 450
             }
         },
         "Level-03.tmx": {
@@ -349,19 +327,11 @@
             }
         },
         "Level-07-copy.tmx": {
-            "scale": 0.66,
-            "selectedLayer": 4,
+            "scale": 0.6171875,
+            "selectedLayer": 9,
             "viewCenter": {
-                "x": 540.9090909090909,
-                "y": 552.2727272727274
-            }
-        },
-        "Level-31.tmx": {
-            "scale": 0.43046874999999996,
-            "selectedLayer": 0,
-            "viewCenter": {
-                "x": 785.1905626134302,
-                "y": 600.5081669691469
+                "x": 607.5949367088608,
+                "y": 400.20253164556965
             }
         },
         "Level-Completed-Menu.tmx": {
@@ -479,6 +449,9 @@
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
+        "TX Props.tsx": {
+            "scaleInDock": 1
+        },
         "Terrain.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
@@ -487,8 +460,8 @@
             "scale": 0.46075,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 735.7569180683668,
-                "y": 854.0423223005968
+                "x": 998.3722192078133,
+                "y": 1167.661421595225
             }
         },
         "The-final-Background.tmx": {
@@ -904,22 +877,23 @@
     "map.tileWidth": 64,
     "map.width": 50,
     "openFiles": [
+        "Level-07-copy.tmx"
     ],
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
         "Level-07-copy.tmx",
-        "10.tsx",
-        "07.tsx",
-        "05.tsx",
-        "04.tsx",
-        "03.tsx",
-        "02.tsx",
-        "HappySheep_Idle.tsx",
+        "Game-Open-UI.tmx",
+        "Game-UI-With-Settings.tmx",
+        "Game-Welcome-Page.tmx",
         "The-Final-Game-Open.tmx",
-        "Level-31.tmx",
-        "Level-02.tmx",
-        "Game-Open-UI.tmx"
+        "Tilemap_Elevation.tsx",
+        "timer_BG.tsx",
+        "TileSample-12X9.tsx",
+        "Level-Completed-Menu.tmx",
+        "level-new-selection.tmx",
+        "level-selection-final.tmx",
+        "Game-logo.tsx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
