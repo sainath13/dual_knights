@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="46" height="12" tilewidth="64" tileheight="64" infinite="0" nextlayerid="19" nextobjectid="94">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="46" height="12" tilewidth="64" tileheight="64" infinite="0" nextlayerid="19" nextobjectid="97">
  <tileset firstgid="1" source="UI/Banner_Connection_Left_64.tsx"/>
  <tileset firstgid="10" source="UI/Carved_Regular.tsx"/>
  <tileset firstgid="11" source="UI/Banner_Connection_Right_64.tsx"/>
@@ -206,6 +206,15 @@
   <object id="91" name="RightNavigation" type="RightNavigation" x="897.457" y="321.292" width="61.0184" height="60.4784"/>
   <object id="92" name="LeftNavigation" type="LeftNavigation" x="1664.24" y="321.292" width="62.6384" height="59.9384"/>
   <object id="93" name="RightNavigation" type="RightNavigation" x="1792.75" y="321.292" width="62.6384" height="59.9384"/>
+  <object id="94" name="StageThree" type="StageThree" x="2048" y="64" width="300.416" height="50">
+   <text fontfamily="Patrick Hand" pixelsize="36" wrap="1" halign="center" valign="center">Stage One</text>
+  </object>
+  <object id="95" name="StageTwo" type="StageTwo" x="1152" y="64" width="300.416" height="50">
+   <text fontfamily="Patrick Hand" pixelsize="36" wrap="1" halign="center" valign="center">Stage One</text>
+  </object>
+  <object id="96" name="StageOne" type="StageOne" x="256" y="64" width="300.416" height="50">
+   <text fontfamily="Patrick Hand" pixelsize="36" wrap="1" halign="center" valign="center">Stage One</text>
+  </object>
  </objectgroup>
  <layer id="12" name="KnigthANimation" width="46" height="12">
   <data encoding="csv">
