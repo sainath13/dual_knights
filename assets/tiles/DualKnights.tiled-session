@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "Level-02.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -301,27 +301,28 @@
         "Level-02-Copy.tmx": {
             "expandedObjectLayers": [
                 7,
+                6,
                 5,
-                6
+                14
             ],
             "scale": 0.43046874999999996,
-            "selectedLayer": 9,
+            "selectedLayer": 13,
             "viewCenter": {
                 "x": 511.0707803992741,
-                "y": 384.46460980036306
+                "y": 383.3030852994556
             }
         },
         "Level-02.tmx": {
             "expandedObjectLayers": [
-                4,
-                5,
-                6
+                30,
+                6,
+                5
             ],
             "scale": 0.56,
-            "selectedLayer": 9,
+            "selectedLayer": 8,
             "viewCenter": {
-                "x": 555.3571428571429,
-                "y": 450.89285714285717
+                "x": 889.2857142857142,
+                "y": 428.57142857142856
             }
         },
         "Level-03.tmx": {
@@ -348,20 +349,28 @@
                 "y": 384.48275862068965
             }
         },
+        "Level-06.tmx": {
+            "scale": 0.756103515625,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 511.83467872134327,
+                "y": 383.5453664836938
+            }
+        },
         "Level-07-copy.tmx": {
-            "scale": 0.42,
+            "scale": 0.75,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 485.71428571428567,
-                "y": 65.47619047619048
+                "x": 455.99999999999994,
+                "y": 519.9999999999999
             }
         },
         "Level-07.tmx": {
             "scale": 0.43232421875,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 511.1904224079513,
-                "y": 385.1276259317823
+                "x": 511.1904224079512,
+                "y": 383.9710865145697
             }
         },
         "Level-08.tmx": {
@@ -863,8 +872,8 @@
             "scale": 0.86,
             "selectedLayer": 9,
             "viewCenter": {
-                "x": 1695.9302325581396,
-                "y": 192.44186046511635
+                "x": 2935.4651162790697,
+                "y": 284.3023255813954
             }
         },
         "spritesheet.tsx": {
@@ -924,22 +933,27 @@
     "map.tileWidth": 64,
     "map.width": 50,
     "openFiles": [
+        "Level-02.tmx",
+        "Level-07.tmx",
+        "Level-07-copy.tmx",
+        "Level-06.tmx",
+        "Level-02-Copy.tmx"
     ],
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "Level-02-Copy.tmx",
+        "Level-06.tmx",
+        "Level-07-copy.tmx",
+        "Level-07.tmx",
+        "Level-02.tmx",
+        "Bridge_All.tsx",
         "level-selection-final.tmx",
         "Level-Completed-Menu.tmx",
         "Level-08.tmx",
-        "Level-07.tmx",
         "TX Props.tsx",
-        "Level-07-copy.tmx",
         "10.tsx",
-        "07.tsx",
-        "05.tsx",
-        "04.tsx",
-        "03.tsx",
-        "02.tsx"
+        "07.tsx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",

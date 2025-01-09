@@ -7,6 +7,8 @@ import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'dart:math' as math;
 
+import 'package:flutter/material.dart';
+
 enum ArcherState {
   idle,
   shootUp,
@@ -26,11 +28,11 @@ class Archer extends SpriteAnimationComponent with HasGameRef<DualKnights>, Coll
   Vector2? targetPosition;
   bool _facingLeft = false;
 
-  static const double shootCooldown = 1.5;
+  static const double shootCooldown = 0;
   double _timeSinceLastShot = 0;
   bool _canShoot = true;
 
-  Archer() : super(size: Vector2(frameWidth, frameHeight), priority: 5) {
+  Archer({required Vector2 position}) : super(position: position,size: Vector2(frameWidth, frameHeight), priority: 5) {
     anchor = Anchor.center;
   }
 
@@ -48,9 +50,10 @@ class Archer extends SpriteAnimationComponent with HasGameRef<DualKnights>, Coll
     super.onLoad();
 
     final newHitbox = RectangleHitbox(
-      size: Vector2(gridSize * 4, gridSize * 4),
+      size: Vector2(gridSize * 7.5, gridSize * 7),
       position: Vector2(-gridSize * 2, -gridSize * 2),
-    )..debugMode = true;
+    )..debugColor = Colors.red
+      ..debugMode = true;
     add(newHitbox);
 
     final spriteSheet = await gameRef.images.load('Factions/Knights/Troops/Archer/Purple/Archer_Purple.png');
