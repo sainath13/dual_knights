@@ -11,6 +11,7 @@ import 'package:dual_knights/dual_knights.dart';
 import 'package:dual_knights/routes/gameplay.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/services.dart';
 
 class Player extends SpriteAnimationComponent with HasGameRef<DualKnights>, KeyboardHandler, CollisionCallbacks,HasAncestor<Gameplay> {
@@ -164,6 +165,9 @@ class Player extends SpriteAnimationComponent with HasGameRef<DualKnights>, Keyb
 
   void startGridMove(Vector2 dir) {
     if (!isMoving) {
+      if (game.sfxValueNotifier.value) {
+        FlameAudio.play(DualKnights.move);
+      }
       direction = dir;
       Vector2 potentialTarget = position + (direction * gridSize);
       if (!wouldCollide(potentialTarget)) {
@@ -178,6 +182,11 @@ class Player extends SpriteAnimationComponent with HasGameRef<DualKnights>, Keyb
           animation = moveLeftAnimation;
         } else if (direction.x > 0) {
           animation = moveRightAnimation;
+        }
+      }
+      else{
+        if (game.sfxValueNotifier.value) {
+          FlameAudio.play(DualKnights.blocked);
         }
       }
     }

@@ -79,6 +79,7 @@ class Gameplay extends Component with HasGameReference<DualKnights> {
 
   @override
   Future<void> onLoad() async {
+
     if (game.musicValueNotifier.value) {
       _bgmPlayer = await FlameAudio.loopLongAudio(DualKnights.bgm, volume: 0);
     }else{

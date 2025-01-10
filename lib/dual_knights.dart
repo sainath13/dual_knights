@@ -42,7 +42,10 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
 
   late RectangleComponent background;
 
-  static const bgm = '8BitDNALoop.wav';
+  static const bgm = 'bf_music_for_dual_knights.ogg';
+  static const explosion = 'explosion.wav';
+  static const blocked = 'blocked.wav';
+  static const move = 'move.wav';
   var _settingsListener;
   final storage = FlutterSecureStorage();
 
@@ -151,7 +154,7 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
   FutureOr<void> onLoad() async{
     await loadUserSettings();
     syncUserSettings();
-    await FlameAudio.audioCache.loadAll([bgm]);
+    await FlameAudio.audioCache.loadAll([bgm,explosion,blocked,move]);
     await images.loadAllImages();
     await add(_router);
 
