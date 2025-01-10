@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="46" height="12" tilewidth="64" tileheight="64" infinite="0" nextlayerid="23" nextobjectid="120">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="46" height="12" tilewidth="64" tileheight="64" infinite="0" nextlayerid="25" nextobjectid="120">
  <tileset firstgid="1" source="UI/Banner_Connection_Left_64.tsx"/>
  <tileset firstgid="10" source="UI/Carved_Regular.tsx"/>
  <tileset firstgid="11" source="UI/Banner_Connection_Right_64.tsx"/>
@@ -118,81 +118,113 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="22" name="Tile Layer 8" width="46" height="12">
+ <layer id="22" name="KnightAnimations" width="46" height="12" offsetx="128" offsety="0">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2579,2580,2581,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2603,2604,2605,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1830,1831,1902,1903,1904,1905,2009,2010,0,0,0,2627,2628,2629,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1842,1843,1914,1915,1916,1917,2023,2024,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2079,2080,0,0,0,0,0,0,0,0,0,1752,0,1746,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2091,2092,2097,2098,2185,2186,2009,2010,0,0,0,2837,2838,2777,2778,2779,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1691,0,0,0,0,0,1739,0,0,0,0,0,0,0,2103,2104,2109,2110,2197,2198,2023,2024,0,0,0,2858,2859,2798,2799,2800,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2115,2116,0,0,0,0,0,0,0,0,0,2879,2880,898,899,900,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2456,2457,922,923,924,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2480,2481,946,947,948,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2079,2080,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2838,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1691,0,0,0,0,0,1739,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2115,2116,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,946,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="20" name="Text">
-  <object id="94" x="140.167" y="94.5" width="564.333" height="605.667">
+ <layer id="23" name="barrels" width="46" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2582,2583,2585,2586,2587,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2606,2607,2609,2610,2611,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1830,1831,1902,1903,1906,1907,2009,2010,0,0,0,2630,2631,2633,2634,2635,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1842,1843,1914,1915,1918,1919,2023,2024,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2091,2092,2093,2094,2185,2186,2009,2010,0,0,0,1555,1556,1557,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2103,2104,2105,2106,2197,2198,2023,2024,0,0,0,1576,1577,1578,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1597,1598,1599,2716,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1228,2735,2736,2737,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1246,2756,2757,2758,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="24" name="barrelTwo" width="46" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1201,1202,1210,1211,1212,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1219,1220,1228,1229,1230,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1237,1238,1246,1247,1248,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1561,1562,1563,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1582,1583,1584,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1603,1604,1605,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="20" name="TextArea" class="TextArea">
+  <object id="94" name="GameStory" type="GameStory" x="137.5" y="71.8333" width="564.333" height="625.667">
    <text fontfamily="Patrick Hand" pixelsize="29" wrap="1" color="#832103">In a kingdom gripped by a powerful curse, the Dual Knights—the Blue Knight and the Red Knight—are bound by a mystical spell that forces them to move in perfect opposition. Together, they must journey through perilous landscapes filled with deadly traps, treacherous barriers, and explosive dangers to restore balance to the realm.Their goal is to reach the sacred Blue Sigil and Red Sigil—ancient symbols of power that hold the key to breaking the curse. But there's a catch: both knights must stand on their respective sigils at the exact same moment to unlock the path forward. Any misstep could spell doom for their mission, and a clash between them would end their journey in a tragic battle.
 
 </text>
   </object>
-  <object id="96" x="1033.17" y="82.5" width="567" height="211">
+  <object id="96" name="GameRules" type="GameRules" x="1031.84" y="64" width="567" height="241.667">
    <text fontfamily="Patrick Hand" pixelsize="29" wrap="1" color="#940000">In this ultimate test of harmony and precision,
  the Dual Knights must rely on their unwavering bond as warriors to succeed. Only by mastering their opposing movements can they uncover the truth behind the sigils and bring salvation to their world.</text>
   </object>
-  <object id="99" x="1279.83" y="446.5" width="64" height="64">
+  <object id="99" name="W" type="W" x="1280" y="448" width="64" height="64">
    <text fontfamily="Patrick Hand" pixelsize="35" wrap="1" color="#c80000" halign="center" valign="center">W</text>
   </object>
-  <object id="100" x="1276" y="573.333" width="64" height="64">
+  <object id="100" name="A" type="A" x="1280" y="576" width="64" height="64">
    <text fontfamily="Patrick Hand" pixelsize="35" wrap="1" color="#c80000" halign="center" valign="center">A</text>
   </object>
-  <object id="101" x="1278.67" y="516" width="64" height="64">
+  <object id="101" name="S" type="S" x="1280" y="512" width="64" height="64">
    <text fontfamily="Patrick Hand" pixelsize="35" wrap="1" color="#c80000" halign="center" valign="center">S</text>
   </object>
-  <object id="102" x="1278.67" y="638.667" width="64" height="64">
+  <object id="102" name="D" type="D" x="1278.67" y="640" width="64" height="64">
    <text fontfamily="Patrick Hand" pixelsize="35" wrap="1" color="#c80000" halign="center" valign="center">D</text>
   </object>
-  <object id="105" x="1433.83" y="459.833" width="136.333" height="41.6667">
+  <object id="105" name="AntiMovesDown" type="AntiMovesDown" x="1408" y="448" width="136.333" height="41.6667">
    <text fontfamily="Patrick Hand" pixelsize="29" wrap="1" color="#940000">Moves Down</text>
   </object>
-  <object id="106" x="1439.83" y="524.5" width="136.333" height="41.6667">
+  <object id="106" name="AntiMovesUp" type="AntiMovesUp" x="1408" y="512" width="136.333" height="41.6667">
    <text fontfamily="Patrick Hand" pixelsize="29" wrap="1" color="#940000">Moves Up</text>
   </object>
-  <object id="107" x="1054.5" y="452.5" width="136.333" height="41.6667">
+  <object id="107" name="MoveUp" type="MoveUp" x="1024" y="448" width="189.666" height="55">
    <text fontfamily="Patrick Hand" pixelsize="29" wrap="1" color="#940000">Moves Up</text>
   </object>
-  <object id="108" x="1055.83" y="525.833" width="136.333" height="41.6667">
+  <object id="108" name="MoveDown" type="MoveDown" x="1024" y="512" width="136.333" height="41.6667">
    <text fontfamily="Patrick Hand" pixelsize="29" wrap="1" color="#940000">Moves Down</text>
   </object>
-  <object id="109" x="1053.17" y="655.167" width="136.333" height="41.6667">
+  <object id="109" name="MoveRight" type="MoveRight" x="1024" y="640" width="136.333" height="41.6667">
    <text fontfamily="Patrick Hand" pixelsize="29" wrap="1" color="#940000">Moves Right</text>
   </object>
-  <object id="111" x="1437.17" y="583.167" width="136.333" height="41.6667">
+  <object id="111" name="AntiMovesRight" type="AntiMovesRight" x="1408" y="576" width="136.333" height="41.6667">
    <text fontfamily="Patrick Hand" pixelsize="29" wrap="1" color="#940000">Moves Right</text>
   </object>
-  <object id="112" x="1058.5" y="587.167" width="136.333" height="41.6667">
+  <object id="112" name="MoveLeft" type="MoveLeft" x="1024" y="576" width="136.333" height="41.6667">
    <text fontfamily="Patrick Hand" pixelsize="29" wrap="1" color="#940000">Moves Left</text>
   </object>
-  <object id="113" x="1439.83" y="645.833" width="136.333" height="41.6667">
+  <object id="113" name="AntiMovesLeft" type="AntiMovesLeft" x="1408" y="640" width="136.333" height="41.6667">
    <text fontfamily="Patrick Hand" pixelsize="29" wrap="1" color="#940000">Moves Left</text>
   </object>
-  <object id="114" x="1933.17" y="140.5" width="200" height="41.6667">
+  <object id="114" name="StationaryBarrel" type="StationaryBarrel" x="1920" y="128" width="200" height="41.6667">
    <text fontfamily="Patrick Hand" pixelsize="29" wrap="1" color="#940000">Stationary Barrel</text>
   </object>
-  <object id="115" x="2188" y="332.5" width="300" height="41.6667">
+  <object id="115" name="MovingExplodesOnCollision" type="MovingExplodesOnCollision" x="2176" y="320" width="300" height="41.6667">
    <text fontfamily="Patrick Hand" pixelsize="29" wrap="1" color="#940000">Explodes on collision</text>
   </object>
-  <object id="116" x="1937.33" y="329.833" width="200" height="41.6667">
+  <object id="116" name="MovingBarrel" type="MovingBarrel" x="1937.33" y="329.833" width="200" height="41.6667">
    <text fontfamily="Patrick Hand" pixelsize="29" wrap="1" color="#940000">Moving Barrel</text>
   </object>
-  <object id="117" x="2192.67" y="137.833" width="300" height="41.6667">
+  <object id="117" name="ExplodesOnCollision" type="ExplodesOnCollision" x="2176" y="128" width="300" height="41.6667">
    <text fontfamily="Patrick Hand" pixelsize="29" wrap="1" color="#940000">Explodes on collision</text>
   </object>
-  <object id="119" x="2689.33" y="401.833" width="200" height="100">
+  <object id="119" name="JoiningFightSoon" type="JoiningFightSoon" x="2685.33" y="327.166" width="200" height="100">
    <text fontfamily="Patrick Hand" pixelsize="29" wrap="1" color="#940000">Joining fight soon</text>
   </object>
  </objectgroup>

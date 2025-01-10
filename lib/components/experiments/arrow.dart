@@ -113,7 +113,7 @@ import 'package:dual_knights/dual_knights.dart';
 
 
 class Arrow extends SpriteAnimationComponent with HasGameRef<DualKnights>, CollisionCallbacks {
-  static const double arrowSpeed = 300.0;
+  static const double arrowSpeed = 700.0;
   static const double frameWidth = 64;
   static const double frameHeight = 64;
   
@@ -202,10 +202,10 @@ class Arrow extends SpriteAnimationComponent with HasGameRef<DualKnights>, Colli
       _hasHit = true;
       animation = stuckAnimation;
       
-      // Remove arrow after a delay
-      Future.delayed(const Duration(seconds: 1), () {
-        removeFromParent();
-      });
+      // // Remove arrow after a delay
+      // Future.delayed(const Duration(seconds: 1), () {
+      //   removeFromParent();
+      // });
     }
   }
 }

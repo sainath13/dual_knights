@@ -81,6 +81,7 @@ flutter:
     - assets/images/Deco/
     - assets/images/Terrain/Water/Foam/
     - assets/images/UI/Buttons/
+    - assets/images/UI/Pointers/
     - assets/images/Factions/Knights/Buildings/Castle/
     - assets/images/Resources/Trees/
     - assets/images/Terrain/Bridge/
@@ -91,6 +92,7 @@ flutter:
     - assets/images/UI/Ribbons/
     - assets/images/UI/Banners/
     - assets/images/logo/
+    - assets/images/Factions/Goblins/Troops/TNT/Red/
     - assets/images/Factions/Knights/Troops/Archer/Red/
     - assets/images/Factions/Goblins/Troops/Torch/Red/
     - assets/images/Factions/Knights/Troops/Pawn/Red/

@@ -8,6 +8,7 @@ import 'package:dual_knights/repository/local_storage.dart';
 import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
+import 'dart:html' as html;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,10 +21,18 @@ void main() async {
   final gameRepository = GameRepository(dio: dio, baseUrl: baseUrl,localStorageService: localStorageService);
   DualKnights game = DualKnights(gameRepository: gameRepository);//..debugMode = true;
   runApp(
-    GameWidget(game: true ? DualKnights(gameRepository: gameRepository) : game),
-  );
-
-  
+      MouseRegion(
+        onHover: (event) {
+          html.document.body?.style.cursor = 'url(assets/images/UI/Pointers/01.png), auto';
+        },
+        onExit: (event) {
+          html.document.body?.style.cursor = 'auto';
+        },
+        child:
+    GameWidget(
+        mouseCursor :  SystemMouseCursors.move,
+        game: true ? DualKnights(gameRepository: gameRepository) : game),
+  ));
 }
 
  Future<void> _configureAmplify() async {

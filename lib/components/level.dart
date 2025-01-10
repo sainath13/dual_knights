@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:dual_knights/components/anti_player.dart';
 import 'package:dual_knights/components/barrel.dart';
 import 'package:dual_knights/components/collision_block.dart';
+import 'package:dual_knights/components/experiments/archer.dart';
 import 'package:dual_knights/components/moving_barrel.dart';
 import 'package:dual_knights/components/player.dart';
 import 'package:dual_knights/components/player_checkpoint.dart';
@@ -12,6 +13,7 @@ import 'package:dual_knights/components/tree.dart';
 import 'package:dual_knights/dual_knights.dart';
 import 'package:flame/components.dart';
 import 'package:flame_tiled/flame_tiled.dart';
+import 'package:flutter/material.dart';
 
 import 'gold.dart';
 
@@ -25,7 +27,8 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
   
   @override
   FutureOr<void> onLoad() async{
-    level = await TiledComponent.load('Level-$currentLevelIndex.tmx', Vector2(64, 64));
+    // level = await TiledComponent.load('Level-$currentLevelIndex.tmx', Vector2(64, 64));
+    level = await TiledComponent.load('Level-02-Copy.tmx', Vector2(64, 64));
     // level = await TiledComponent.load('Level-07-Copy.tmx', Vector2(64, 64));
     // level = await TiledComponent.load('Level-for-Sarvesh.tmx', Vector2(64, 64));
 
@@ -178,7 +181,36 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
 
     player.setCollisionBlocks(collisionBlocks);
     antiPlayer.setCollisionBlocks(collisionBlocks);
-    
+
+
+    final archerSpawnBlockLayer = level.tileMap.getLayer<ObjectGroup>('ArcherSpawnPoints');
+    if(archerSpawnBlockLayer != null){
+
+      for(final archerBlock in archerSpawnBlockLayer.objects){
+        switch(archerBlock.class_){
+          case 'ArcherYellow' :
+            log("Found an archer in here");
+            final archer = Archer(
+              position: Vector2(archerBlock.x, archerBlock.y),
+              // size: Vector2(archerBlock.width, archerBlock.height),
+            );//..debugColor = Colors.blue
+              // ..debugMode = true;
+            add(archer);
+            // collisionBlocks.add(block);
+            // final gold = Gold();//..debugMode = true;
+            // gold.position = Vector2(archerBlock.x, archerBlock.y);
+            // add(gold);
+            //create a new block.
+            break;
+          default:
+        }
+      }
+    }
+    else {
+      log("ArcherSpawnPoints grids layer is sadly null");
+    }
+
+
     return super.onLoad();
   }
 

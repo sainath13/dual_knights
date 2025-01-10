@@ -10,6 +10,8 @@ import 'package:flutter/services.dart';
 import 'dart:developer';
 
 import 'anti_player_priority_manager.dart';
+import 'experiments/arrow.dart';
+import 'experiments/dying_knight.dart';
 
 class AntiPlayer extends SpriteAnimationComponent with HasGameRef<DualKnights>, KeyboardHandler, CollisionCallbacks,HasAncestor<Gameplay> {
   static const double frameWidth = 192;
@@ -201,6 +203,12 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef<DualKnights>, 
     if (other is Player) {
       log("Player collided with AntiPlayer");
       animation = fightAnimation;  
+    }
+    if(other is Arrow){
+      log("I am dead by arrow");
+      removeFromParent();
+      DyingKnight dyingKnight = DyingKnight(position: Vector2(position.x-64, position.y-64));
+      parent?.add(dyingKnight);
     }
     // else if(other is AntiPlayerCheckpoint ){
     //   log("Player collided with Checkpoint.");

@@ -2,6 +2,8 @@ import 'dart:developer';
 
 import 'package:dual_knights/components/anti_player.dart';
 import 'package:dual_knights/components/collision_block.dart';
+import 'package:dual_knights/components/experiments/arrow.dart';
+import 'package:dual_knights/components/experiments/dying_knight.dart';
 import 'package:dual_knights/components/player_checkpoint.dart';
 import 'package:dual_knights/components/player_priority_manager.dart';
 import 'package:dual_knights/components/tree.dart';
@@ -213,6 +215,14 @@ class Player extends SpriteAnimationComponent with HasGameRef<DualKnights>, Keyb
         ancestor.onGameOver();
       });
     }
+    if(other is Arrow){
+      log("I am dead by arrow");
+      removeFromParent();
+      DyingKnight dyingKnight = DyingKnight(position: Vector2(position.x-64, position.y-64));
+      parent?.add(dyingKnight);
+    }
+
+
     // else if(other is PlayerCheckpoint ){
     //   log("Player collided with Checkpoint.");
     //   animation = glowAnimation;
