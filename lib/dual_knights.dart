@@ -11,6 +11,7 @@ import 'package:dual_knights/repository/game_repository.dart';
 import 'package:dual_knights/routes/game_level_selection.dart';
 import 'package:dual_knights/routes/game_main_menu.dart';
 import 'package:dual_knights/routes/game_level_complete.dart';
+import 'package:dual_knights/routes/game_tutorial.dart';
 import 'package:dual_knights/routes/gameplay.dart';
 import 'package:dual_knights/routes/level_complete.dart';
 import 'package:dual_knights/routes/level_selection.dart';
@@ -114,7 +115,8 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
         onLoginClicked: () => _routeById(LoginPage.id),
         isUserLoggedIn: isUserLoggedIn(),
         onLogoutClicked: logout,
-        loadUserSettings: loadUserSettings()
+        loadUserSettings: loadUserSettings(),
+        onTutorialPressed: _navigateToTutorialScreen,
       ),
     ),
     GameLevelSelection.id: Route(
@@ -238,6 +240,16 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
     );
   }
 
+  void _navigateToTutorialScreen() {
+     _router.pushRoute(
+      Route(
+      () => GameTutorial(
+        onBackPressed:  _popRoute,
+      ),
+    )
+    );
+  }
+
   void _startLevel(int levelIndex) {
     _router.pop();    
     _router.pushReplacement(
@@ -314,7 +326,8 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
         onLoginClicked: () => _routeById(LoginPage.id),
         isUserLoggedIn: isUserLoggedIn(),
         onLogoutClicked: logout,
-        loadUserSettings: loadUserSettings()
+        loadUserSettings: loadUserSettings(),
+        onTutorialPressed: _navigateToTutorialScreen
       ),
     ));
   }

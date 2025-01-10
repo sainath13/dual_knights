@@ -26,6 +26,7 @@ class GameMainMenu extends PositionComponent with HasGameRef<DualKnights> {
   final VoidCallback? onLogoutClicked;
   final Future? loadUserSettings;
   final Future<bool> isUserLoggedIn;
+  final VoidCallback? onTutorialPressed;
 
   GameMainMenu({
     this.onPlayPressed,
@@ -37,6 +38,7 @@ class GameMainMenu extends PositionComponent with HasGameRef<DualKnights> {
     required this.onLogoutClicked,
     required this.loadUserSettings,
     required this.isUserLoggedIn,
+    required this.onTutorialPressed,
     });
 
   @override
@@ -141,6 +143,21 @@ class GameMainMenu extends PositionComponent with HasGameRef<DualKnights> {
             Sprite spriteOff = Sprite(await game.images.load('UI/Icons/Pressed_03.png'));
             GameSoundButton sfxSoundButton = GameSoundButton(spriteOn: spriteOn, spriteOff: spriteOff, onToggle: onSfxValueChanged, isSoundOn: sfxValueListenable.value, size: Vector2(button.width, button.height), position: Vector2(button.x, button.y),buttonText: "SFX",);
             _world.add(sfxSoundButton);
+            break;
+          case 'GameTutorialButton':
+            Sprite normalSprite = Sprite(await game.images.load('UI/Buttons/Button_Blue_9Slides.png'));
+            Sprite onTapSprite = Sprite(await game.images.load('UI/Buttons/Button_Blue_9Slides_Pressed.png'));
+            GameButton gameButton = GameButton(
+              normalSprite: normalSprite,
+              onTapSprite: onTapSprite,
+              onClick: onTutorialPressed,
+              size: Vector2(button.width, button.height),
+              position: Vector2(button.x, button.y),
+              buttonTextSize: 25,
+              buttonText: 'How To Play ?',
+              
+            );
+            _world.add(gameButton);
             break;
 
           // case 'AboutUsButton':
