@@ -31,6 +31,7 @@ class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference<D
   int currentPriority = 0; // Tracks the priority of the currently displayed dialogue
   bool _isDialogueActive = false; // Tracks if a dialogue is currently active
   PositionComponent? _activeDialogueBox; 
+  bool _isUpdatingDialogue = false;
   var _dialogueListener;
 
   @override
@@ -298,114 +299,127 @@ class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference<D
 
 
 Future<void> _updateDialogue(Map<String, String> dialogue) async {
-  // Extract dialogue details
   final characterName = dialogue['characterName'] ?? '';
   final characterDialogue = dialogue['dialogue'] ?? '';
   final priority = int.tryParse(dialogue['priority'] ?? '0') ?? 0;
 
-  // Skip if a lower priority dialogue tries to override
-  if (_isDialogueActive && priority <= currentPriority) return;
-
-  // Cancel any ongoing dialogue
-  _isDialogueActive = false; // Reset the active flag
-  if (_activeDialogueBox != null && _activeDialogueBox!.isMounted) {
-    remove(_activeDialogueBox!);
-    _activeDialogueBox = null;
-  }
-
-  // If there's no dialogue, return early
+  // Ignore empty dialogues
   if (characterName.isEmpty && characterDialogue.isEmpty) {
-    currentPriority = 0; // Reset priority
     return;
   }
 
-  // Mark the dialogue as active
-  _isDialogueActive = true;
-  currentPriority = priority;
+  // Ensure synchronized access to dialogue updates
+  if (_isUpdatingDialogue) return;
+  _isUpdatingDialogue = true;
 
-  // Create dialogue background
-  final dialogueBackground = RoundedBackgroundComponent(
-    size: Vector2(parent.virtualSize.x / 2 + 100, 120),
-    position: Vector2(parent.virtualSize.x / 2, parent.virtualSize.y - 120),
-    backgroundPaint: Paint()
-      ..color = const Color.fromARGB(255, 215, 215, 215).withOpacity(0.75)
-      ..style = PaintingStyle.fill,
-    borderRadius: 16.0,
-    anchor: Anchor.center,
-  );
-  _activeDialogueBox = dialogueBackground;
-  await add(dialogueBackground);
+  try {
+    // Handle priority: Remove current dialogue if the new one is higher priority
+    if (_activeDialogueBox != null && priority > currentPriority) {
+      if (_activeDialogueBox!.isMounted) {
+        remove(_activeDialogueBox!);
+      }
+      _activeDialogueBox = null;
+      _isDialogueActive = false;
+    }
 
-  // Add character name
-  final nameComponent = TextComponent(
-    text: characterName,
-    textRenderer: TextPaint(
-      style: const TextStyle(
-        color: Colors.black,
-        fontSize: 18,
-        fontWeight: FontWeight.bold,
+    // Skip lower-priority dialogues if a dialogue is already active
+    if (_isDialogueActive && priority <= currentPriority) {
+      _isUpdatingDialogue = false; // Allow other dialogues to proceed
+      return;
+    }
+
+    // Update state for the new dialogue
+    _isDialogueActive = true;
+    currentPriority = priority;
+
+    // Create and display dialogue box
+    final dialogueBackground = RoundedBackgroundComponent(
+      size: Vector2(parent.virtualSize.x / 2 + 100, 120),
+      position: Vector2(parent.virtualSize.x / 2, parent.virtualSize.y - 120),
+      backgroundPaint: Paint()
+        ..color = const Color.fromARGB(255, 215, 215, 215).withOpacity(0.75)
+        ..style = PaintingStyle.fill,
+      borderRadius: 16.0,
+      anchor: Anchor.center,
+    );
+    _activeDialogueBox = dialogueBackground;
+    await add(dialogueBackground);
+
+    // Add character name
+    final nameComponent = TextComponent(
+      text: characterName,
+      textRenderer: TextPaint(
+        style: const TextStyle(
+          color: Colors.black,
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+        ),
       ),
-    ),
-    anchor: Anchor.topLeft,
-    position: Vector2(20, 10),
-    priority: 101,
-  );
-  await dialogueBackground.add(nameComponent);
-
-  // Add character sprite if available
-  SpriteAnimationComponent? spriteComponent;
-  if (characterAnimations.containsKey(characterName)) {
-    spriteComponent = SpriteAnimationComponent(
-      animation: characterAnimations[characterName]!,
-      size: Vector2(150, 150), // Size of the character sprite
-      position: Vector2(-20, 20),
       anchor: Anchor.topLeft,
+      position: Vector2(20, 10),
       priority: 101,
     );
-    await dialogueBackground.add(spriteComponent);
-  }
+    await dialogueBackground.add(nameComponent);
 
-  // Add dialogue text
-  final dialoguePosition = spriteComponent != null
-      ? Vector2(90, 40) // Dialogue position when sprite is present
-      : Vector2(20, 40); // Dialogue position when no sprite is present
-  final dialogueComponent = TextComponent(
-    text: '', // Initially empty for word-by-word animation
-    textRenderer: TextPaint(
-      style: const TextStyle(
-        color: Colors.black,
-        fontSize: 16,
+    // Add character sprite if available
+    SpriteAnimationComponent? spriteComponent;
+    if (characterAnimations.containsKey(characterName)) {
+      spriteComponent = SpriteAnimationComponent(
+        animation: characterAnimations[characterName]!,
+        size: Vector2(150, 150),
+        position: Vector2(-20, 20),
+        anchor: Anchor.topLeft,
+        priority: 101,
+      );
+      await dialogueBackground.add(spriteComponent);
+    }
+
+    // Add dialogue text
+    final dialoguePosition = spriteComponent != null
+        ? Vector2(90, 40)
+        : Vector2(20, 40);
+    final dialogueComponent = TextComponent(
+      text: '',
+      textRenderer: TextPaint(
+        style: const TextStyle(
+          color: Colors.black,
+          fontSize: 16,
+        ),
       ),
-    ),
-    anchor: Anchor.topLeft,
-    position: dialoguePosition,
-    priority: 101,
-  );
-  await dialogueBackground.add(dialogueComponent);
+      anchor: Anchor.topLeft,
+      position: dialoguePosition,
+      priority: 101,
+    );
+    await dialogueBackground.add(dialogueComponent);
 
-  // Load text word by word
-  final words = characterDialogue.split(' ');
-  String currentText = '';
-  for (final word in words) {
-    if (!_isDialogueActive) return; // Stop if dialogue has been canceled
-    currentText += '$word ';
-    dialogueComponent.text = currentText;
-    await Future.delayed(const Duration(milliseconds: 300)); // Adjust word speed
+    // Display dialogue text word by word
+    final words = characterDialogue.split(' ');
+    String currentText = '';
+    for (final word in words) {
+      if (!_isDialogueActive || currentPriority != priority) return;
+      currentText += '$word ';
+      dialogueComponent.text = currentText;
+      await Future.delayed(const Duration(milliseconds: 300));
+    }
+
+    // Keep the dialogue visible for 5 seconds
+    await Future.delayed(const Duration(seconds: 5));
+    if (!_isDialogueActive || currentPriority != priority) return;
+
+    // Remove the dialogue if still active
+    if (_activeDialogueBox != null && _activeDialogueBox!.isMounted) {
+      remove(_activeDialogueBox!);
+      _activeDialogueBox = null;
+    }
+
+    // Reset state after removal
+    _isDialogueActive = false;
+    currentPriority = 0;
+  } finally {
+    _isUpdatingDialogue = false; // Unlock updates
   }
-
-  // Wait for 5 seconds before allowing the next update
-  await Future.delayed(const Duration(seconds: 5));
-  if (!_isDialogueActive) return; // Stop if dialogue has been canceled
-
-  // Remove the dialogue after the duration, but ensure it's still attached
-  if (_activeDialogueBox != null && _activeDialogueBox!.isMounted) {
-    remove(dialogueBackground);
-    _activeDialogueBox = null;
-  }
-
-  _isDialogueActive = false;
-  currentPriority = 0; // Reset priority
 }
+
 
 
 

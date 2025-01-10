@@ -23,6 +23,8 @@ class GameMainMenu extends PositionComponent with HasGameRef<DualKnights> {
   final ValueChanged<bool>? onMusicValueChanged;
   final ValueChanged<bool>? onSfxValueChanged;
   final VoidCallback? onLoginClicked;
+  final VoidCallback? onLogoutClicked;
+  final Future? loadUserSettings;
   final Future<bool> isUserLoggedIn;
 
   GameMainMenu({
@@ -32,11 +34,14 @@ class GameMainMenu extends PositionComponent with HasGameRef<DualKnights> {
     this.onMusicValueChanged,
     this.onSfxValueChanged,
     required this.onLoginClicked,
+    required this.onLogoutClicked,
+    required this.loadUserSettings,
     required this.isUserLoggedIn,
     });
 
   @override
   Future<void> onLoad() async {
+    await loadUserSettings;
     await loadGameMainMenu();
     super.onLoad();
   }
@@ -105,6 +110,24 @@ class GameMainMenu extends PositionComponent with HasGameRef<DualKnights> {
             );
             _world.add(gameButton);
             break;
+
+          case 'LogoutButton':
+          if (await isUserLoggedIn){
+            Sprite normalSprite = Sprite(await game.images.load('UI/Buttons/Button_Red_9Slides.png'));
+            Sprite onTapSprite = Sprite(await game.images.load('UI/Buttons/Button_Red_9Slides_Pressed.png'));
+            GameButton gameButton = GameButton(
+              normalSprite: normalSprite,
+              onTapSprite: onTapSprite,
+              onClick: onLogoutClicked!,
+              size: Vector2(button.width, button.height),
+              position: Vector2(button.x, button.y),
+              buttonTextSize:20,
+              buttonText: 'Logout',
+            );
+            _world.add(gameButton);
+          }
+          
+          break;
 
           case 'SoundButton':
             Sprite spriteOn = Sprite(await game.images.load('UI/Icons/Regular_03.png'));
