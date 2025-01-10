@@ -6,6 +6,7 @@ import 'package:dual_knights/dual_knights.dart';
 import 'package:dual_knights/routes/gameplay.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
+import 'package:flame_audio/flame_audio.dart';
 
 
 import 'dart:developer' as developer;
@@ -214,6 +215,9 @@ class Barrel extends SpriteAnimationComponent with HasGameRef<DualKnights>, Coll
             break;
 
           case BarrelState.exploding:
+            if (game.sfxValueNotifier.value) {
+              FlameAudio.play(DualKnights.explosion);
+            }
             currentState = BarrelState.dying;
             animation = animations[BarrelState.dying];
             animationTicker?.reset();

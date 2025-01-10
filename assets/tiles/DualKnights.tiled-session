@@ -242,8 +242,8 @@
             "scale": 0.533447265625,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 271.8169336384439,
-                "y": 232.45034324942787
+                "x": 560.5052631578948,
+                "y": 231.51304347826078
             }
         },
         "Game-logo.tmx": {
@@ -300,28 +300,29 @@
         },
         "Level-02-Copy.tmx": {
             "expandedObjectLayers": [
-                7,
                 5,
+                14,
+                7,
                 6
             ],
             "scale": 0.43046874999999996,
-            "selectedLayer": 9,
+            "selectedLayer": 13,
             "viewCenter": {
-                "x": 511.0707803992741,
-                "y": 384.46460980036306
+                "x": 512.2323049001815,
+                "y": 382.1415607985481
             }
         },
         "Level-02.tmx": {
             "expandedObjectLayers": [
-                4,
                 5,
-                6
+                6,
+                30
             ],
             "scale": 0.56,
-            "selectedLayer": 9,
+            "selectedLayer": 8,
             "viewCenter": {
-                "x": 555.3571428571429,
-                "y": 450.89285714285717
+                "x": 711.6071428571429,
+                "y": 415.17857142857144
             }
         },
         "Level-03.tmx": {
@@ -348,20 +349,28 @@
                 "y": 384.48275862068965
             }
         },
+        "Level-06.tmx": {
+            "scale": 0.756103515625,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 512.4959638359702,
+                "y": 382.8840813690668
+            }
+        },
         "Level-07-copy.tmx": {
-            "scale": 0.42,
+            "scale": 0.75,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 485.71428571428567,
-                "y": 65.47619047619048
+                "x": 455.3333333333333,
+                "y": 519.3333333333334
             }
         },
         "Level-07.tmx": {
             "scale": 0.43232421875,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 511.1904224079513,
-                "y": 385.1276259317823
+                "x": 512.3469618251638,
+                "y": 382.81454709735715
             }
         },
         "Level-08.tmx": {
@@ -505,10 +514,10 @@
         },
         "The-Final-Game-Open.tmx": {
             "scale": 0.46075,
-            "selectedLayer": 3,
+            "selectedLayer": 19,
             "viewCenter": {
-                "x": 735.7569180683668,
-                "y": 854.0423223005968
+                "x": 759.6310363537709,
+                "y": 656.5382528486163
             }
         },
         "The-final-Background.tmx": {
@@ -811,6 +820,14 @@
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
+        "game_logo_new_downsized.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "game_logo_new_downsized_margin.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
         "level old/17.tsx": {
             "scaleInDock": 1
         },
@@ -863,9 +880,13 @@
             "scale": 0.86,
             "selectedLayer": 9,
             "viewCenter": {
-                "x": 1695.9302325581396,
-                "y": 192.44186046511635
+                "x": 2935.4651162790697,
+                "y": 284.3023255813954
             }
+        },
+        "new_game_logo_correct.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         },
         "spritesheet.tsx": {
             "scaleInDock": 1,
@@ -904,11 +925,14 @@
             "scaleInEditor": 1
         },
         "tutorial.tmx": {
+            "expandedObjectLayers": [
+                20
+            ],
             "scale": 0.75,
             "selectedLayer": 7,
             "viewCenter": {
-                "x": 342.66666666666663,
-                "y": 373.33333333333337
+                "x": 1344,
+                "y": 244.66666666666669
             }
         },
         "ui spritesheet.tsx": {
@@ -917,7 +941,7 @@
         }
     },
     "last.externalTilesetPath": "/Users/sainathlatkar/personal/flame/dual_knights/assets/tiles",
-    "last.imagePath": "/Users/sainathlatkar/personal/flame/dual_knights/assets/images/Texture",
+    "last.imagePath": "/Users/sainathlatkar/personal/flame/dual_knights/assets/images",
     "map.height": 19,
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 64,
@@ -928,23 +952,25 @@
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
-        "level-selection-final.tmx",
-        "Level-Completed-Menu.tmx",
-        "Level-08.tmx",
-        "Level-07.tmx",
-        "TX Props.tsx",
+        "tutorial.tmx",
+        "Game-Welcome-Page.tmx",
+        "new_game_logo_correct.tsx",
+        "The-Final-Game-Open.tmx",
+        "game_logo_new_downsized_margin.tsx",
+        "game_logo_new_downsized.tsx",
+        "Level-02-Copy.tmx",
+        "Level-06.tmx",
         "Level-07-copy.tmx",
-        "10.tsx",
-        "07.tsx",
-        "05.tsx",
-        "04.tsx",
-        "03.tsx",
-        "02.tsx"
+        "Level-07.tmx",
+        "Level-02.tmx",
+        "Bridge_All.tsx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
+    "tileset.margin": 0,
+    "tileset.spacing": 0,
     "tileset.tileSize": {
-        "height": 32,
-        "width": 32
+        "height": 64,
+        "width": 64
     }
 }
