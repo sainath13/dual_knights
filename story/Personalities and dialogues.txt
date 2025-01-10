@@ -1,0 +1,108 @@
+# Character Personalities
+
+## Flame Knight
+Proud, hotheaded, and impatient. Speaks in dramatic, chivalric terms but often loses composure when frustrated. Has a rivalry with Aqua Knight but secretly respects them.
+
+## Aqua Knight
+Calm, methodical, and slightly sardonic. More strategic than Flame Knight. Enjoys pointing out ironies and making dry observations. Uses water-related metaphors.
+
+## Regular Barrels
+Mischievous troublemakers who think they're more fearsome than they are. Speak in explosive puns and take joy in creating chaos. Love taunting knights.
+
+## Moving Barrels
+Even more cocky than regular barrels. Think they're superior because they can move. Have a swagger to their personality and love to show off their mobility.
+
+## Archer
+Professional and disciplined. Takes their job very seriously. Speaks formally but occasionally makes dry observations about the knights' attempts.
+
+# Scenario Dialogues
+
+## 1. Knight Near Barrel
+Barrel: "Oho! Dost thou feel brave today, Sir Flame?"
+Aqua Knight: "Your hot-headed friend is about to make things... interesting."
+Flame Knight: "Silence, wooden menace! I fear no container!"
+
+## 2. Knight Very Near Barrel
+Barrel: "Tick... tock... tick... tock..."
+Aqua Knight: "Perhaps a step back would be wise, brother?"
+Flame Knight: "By my honor, this barrel dares to threaten ME?"
+
+## 3. Barrel Explosion
+Flame Knight: "FORSOOTH! Not again!"
+Barrel: "BOOM goes the barrel! *laughs maniacally*"
+Aqua Knight: "And thus ends another fiery tale..."
+
+## 4. One Knight Stationary
+Flame Knight: "Must I stand here like a statue in the courtyard?"
+Aqua Knight: "Patience is a virtue, even for one who burns so bright."
+Moving Barrel: "Look who's stuck like a royal portrait!"
+
+## 5. Archer Searching
+Archer: "Come forth, knights. The shadows won't hide you forever."
+Flame Knight: *whispers* "Ha! His aim is as poor as a peasant's purse!"
+Aqua Knight: *whispers* "Careful... pride comes before the arrow."
+
+## 6. Archer Detects Knight
+Archer: "By the King's command!"
+Flame Knight: "CONFOUND THESE ARROWS!"
+Aqua Knight: "Perhaps we should have taken the longer path..."
+
+## 7. Multiple Deaths by Barrel
+Flame Knight: "THESE ACCURSED BARRELS!"
+Barrel: "Third time's the charm, they say! Or was it fourth?"
+Aqua Knight: "We could try NOT running into them..."
+
+## 8. One Knight at Sigil
+Flame Knight: "Success! ...brother?"
+Aqua Knight: "Half a victory is no victory at all."
+Moving Barrel: "Stuck waiting for your friend? How boring!"
+
+## 9. Wrong Sigils
+Flame Knight: "This sigil feels... wrong."
+Aqua Knight: "Water and fire don't mix well, dear colleague."
+Barrel: "Wrong places, wrong faces!"
+
+## 10. Unable to Use Swords
+Flame Knight: "A knight with a sword that cannot swing? PREPOSTEROUS!"
+Aqua Knight: "Not every problem can be solved with a blade."
+Archer: "Those swords make fine decorations, don't they?"
+
+## 11. Repeated Attempts
+Flame Knight: "Back and forth like a court jester's dance!"
+Aqua Knight: "The solution flows like a stream... somewhere."
+Moving Barrel: "Round and round the knights do go!"
+
+## 12. First Level
+Flame Knight: "Our quest begins! To glory!"
+Aqua Knight: "Let us hope your enthusiasm lasts..."
+
+## 13. First Barrel Level
+Barrel: "Welcome, noble knights, to your DOOM!"
+Flame Knight: "What manner of devilry is this?"
+Aqua Knight: "Wonderful. Explosive furniture."
+
+## 14. First Moving Barrel
+Moving Barrel: "Watch and learn how REAL movement works!"
+Regular Barrel: "Show-off..."
+Aqua Knight: "Great. They can chase us now."
+
+## 15. First Archer Level
+Archer: "Halt! None shall pass!"
+Flame Knight: "Finally, a proper warrior!"
+Aqua Knight: "With improper timing, as usual..."
+
+## 16. Completing 20 Levels
+Flame Knight: "VICTORY! Though I suspect more challenges await..."
+Aqua Knight: "Indeed. Our journey is far from over."
+Moving Barrel: "They're getting better! We'll have to try harder!"
+
+# Additional Idle Banter
+
+Flame Knight: "Why must every step forward mean my colleague steps back?"
+Aqua Knight: "Such is the balance of our quest."
+
+Moving Barrel: "Chase me, chase me, if you dare!"
+Regular Barrel: "At least YOU can move when you want..."
+
+Archer: "A true marksman needs no movement to strike their target."
+Moving Barrel: "Says the one stuck in their tower!"

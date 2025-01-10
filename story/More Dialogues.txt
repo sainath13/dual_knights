@@ -1,0 +1,146 @@
+# Additional Dialogue Variations by Scenario
+
+## Knight Near Barrel Variations
+Barrel: "Methinks a knight approaches! How... delightful!"
+Aqua Knight: "That barrel has a gleam I don't trust."
+Flame Knight: "Stand aside, wooden menace!"
+
+Barrel: "What warmth do I feel? Ah, the fiery one approaches!"
+Flame Knight: "Your taunts do not move me, container!"
+Aqua Knight: "Except they literally do move you... towards danger."
+
+Barrel: "Step closer, noble knight. Let's make this interesting!"
+Aqua Knight: "The barrel awakens. How tiresome."
+Flame Knight: "Face me properly, cowardly cask!"
+
+## Very Near Barrel Variations
+Barrel: "The fuse is lit, as they say!"
+Flame Knight: "By all the realms, cease your infernal counting!"
+Aqua Knight: "A countdown rarely ends well, dear colleague."
+
+Barrel: "Dancing on the edge of doom, are we?"
+Aqua Knight: "That sound bodes ill..."
+Flame Knight: "Cease your beeping, barrel fiend!"
+
+Barrel: "One step more, brave knight... just one step more..."
+Flame Knight: "Your threats are as empty as your contents!"
+Aqua Knight: "Experience suggests otherwise..."
+
+## Barrel Explosion Variations
+Barrel: "A GLORIOUS ending!"
+Flame Knight: "This... this is UNDIGNIFIED!"
+Aqua Knight: "Water would have been wiser..."
+
+Barrel: "Another knight joins the dance of defeat!"
+Aqua Knight: "And so the cycle begins anew..."
+Flame Knight: "TREACHEROUS TIMBER!"
+
+Barrel: "Scatter like leaves in autumn!"
+Flame Knight: "BY THE SACRED SIGILS!"
+Aqua Knight: "Perhaps next time, dodge?"
+
+## Stationary Knight Variations
+Flame Knight: "Am I to take root like a tree?"
+Moving Barrel: "The mighty knight becomes a statue!"
+Aqua Knight: "Stillness suits you, brother."
+
+Aqua Knight: "Trapped like water in a well."
+Flame Knight: "Move! I command thee, move!"
+Moving Barrel: "Not so mobile now, are we?"
+
+Flame Knight: "Is this what castle guards feel like?"
+Moving Barrel: "At least they get paid to stand still!"
+Aqua Knight: "Consider it meditation practice."
+
+## Archer Searching Variations
+Archer: "These shadows hide cowardly knights..."
+Flame Knight: "Cowardly? Show yourself, tower-dwelling fool!"
+Aqua Knight: "Hush! Unless you fancy arrows for dinner."
+
+Archer: "The King's justice comes from above!"
+Aqua Knight: "How poetic. And tedious."
+Flame Knight: "Justice should face its foes on equal ground!"
+
+Archer: "Every shadow holds a target..."
+Flame Knight: "Your arrows fear my flame!"
+Aqua Knight: "Let's not test that theory."
+
+## Archer Detection Variations
+Archer: "Target sighted! In the name of the crown!"
+Flame Knight: "Your crown means nothing to elemental knights!"
+Aqua Knight: "Now would be a good time to move..."
+
+Archer: "The hunt ends here!"
+Aqua Knight: "Perhaps we should have taken the scenic route."
+Flame Knight: "No archer can match the speed of flame!"
+
+Archer: "My arrow flies true!"
+Flame Knight: "HAH! You missed, tower dweller!"
+Aqua Knight: "Don't tempt fate, brother."
+
+## Multiple Deaths Variations
+Barrel: "Fourth time's the charm? Or is it fifth?"
+Flame Knight: "I SHALL REMEMBER THIS HUMILIATION!"
+Aqua Knight: "Memory hasn't helped so far..."
+
+Moving Barrel: "Another dance with death?"
+Flame Knight: "These barrels mock our noble quest!"
+Aqua Knight: "Perhaps we need a new strategy..."
+
+Barrel: "Back so soon, noble knights?"
+Aqua Knight: "This is becoming a habit."
+Flame Knight: "SILENCE, YOU EXPLOSIVE NUISANCE!"
+
+## Achievement Variations
+Flame Knight: "Twenty challenges conquered!"
+Aqua Knight: "Yet somehow you still charge at barrels."
+Moving Barrel: "Twenty down, hundreds to go!"
+
+Flame Knight: "Our legend grows with each victory!"
+Aqua Knight: "As does your collection of scorch marks."
+Archer: "Impressive... for now."
+
+## Strategic Situations
+Aqua Knight: "The path ahead requires thought, not fury."
+Flame Knight: "Fury has served me well enough!"
+Moving Barrel: "Until you met me, that is!"
+
+Flame Knight: "This puzzle mocks our very nature!"
+Aqua Knight: "Or perhaps it teaches us something about it."
+Barrel: "Less philosophy, more explosion!"
+
+## Environmental Observations
+Moving Barrel: "These castle halls were made for rolling!"
+Regular Barrel: "Some of us prefer a stationary life..."
+Archer: "Quiet! You're all giving me a headache."
+
+Flame Knight: "These castle walls have seen better days."
+Aqua Knight: "Probably before you set half of them ablaze."
+Moving Barrel: "Makes for a more exciting chase!"
+
+## Tutorial Level Variations
+Aqua Knight: "Remember, your moves affect us both."
+Flame Knight: "As if I could forget this cursed connection!"
+Moving Barrel: "Two knights, twice the fun!"
+
+Flame Knight: "Forward! To glory and victory!"
+Aqua Knight: "And hopefully some wisdom along the way."
+Archer: "They learn quickly... or perish."
+
+## Sigil Confusion Variations
+Flame Knight: "This sigil feels cold... uncomfortably cold."
+Aqua Knight: "And this one burns my boots. Shall we trade?"
+Moving Barrel: "Knights these days... can't even find their own sigils!"
+
+Aqua Knight: "Fire and water, eternally confused."
+Flame Knight: "These sigils play tricks on us!"
+Barrel: "Almost as entertaining as explosions! Almost."
+
+## Long Level Attempts
+Flame Knight: "How long have we been at this challenge?"
+Aqua Knight: "Long enough for that barrel to write its memoirs."
+Moving Barrel: "Chapter One: How I Outwitted Two Knights..."
+
+Aqua Knight: "Perhaps we should consult the ancient texts?"
+Flame Knight: "Bah! Action speaks louder than dusty tomes!"
+Archer: "And arrows speak loudest of all."
