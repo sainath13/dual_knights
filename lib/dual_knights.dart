@@ -5,6 +5,7 @@ import 'dart:ui';
 
 import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
 import 'package:amplify_flutter/amplify_flutter.dart';
+import 'package:dual_knights/model/user_model.dart';
 import 'package:dual_knights/model/user_settings_model.dart';
 import 'package:dual_knights/repository/game_repository.dart';
 import 'package:dual_knights/routes/game_level_selection.dart';
@@ -24,6 +25,7 @@ import 'package:flame/game.dart';
 import 'package:flame_audio/flame_audio.dart';
 
 import 'package:flutter/widgets.dart' hide Route,OverlayRoute;
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetector{
 
@@ -42,6 +44,7 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
 
   static const bgm = '8BitDNALoop.wav';
   var _settingsListener;
+  final storage = FlutterSecureStorage();
 
   final ValueNotifier<Map<String, String>> dialogueNotifier = ValueNotifier({
     'characterName': '',
@@ -107,6 +110,8 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
         onSfxValueChanged: (value) => sfxValueNotifier.value = value,
         onLoginClicked: () => _routeById(LoginPage.id),
         isUserLoggedIn: isUserLoggedIn(),
+        onLogoutClicked: logout,
+        loadUserSettings: loadUserSettings()
       ),
     ),
     GameLevelSelection.id: Route(
@@ -173,9 +178,7 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
 
   void syncUserSettings() {
     _settingsListener = () async {
-      if (musicValueNotifier.value || sfxValueNotifier.value || analogueJoystick.value) {
         await updateUserSettings(musicValueNotifier.value, sfxValueNotifier.value, analogueJoystick.value);
-      }
     };
         musicValueNotifier.addListener(_settingsListener);
         sfxValueNotifier.addListener(_settingsListener);
@@ -297,7 +300,7 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
     _routeToGameMainMenu();
   }
 
-  void _routeToGameMainMenu() {
+  void _routeToGameMainMenu(){
      _router.pushReplacement(Route(
       () => GameMainMenu(
         onPlayPressed: () => _navigateToGameLevelSelection(),
@@ -307,19 +310,19 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
         onSfxValueChanged: (value) => sfxValueNotifier.value = value,
         onLoginClicked: () => _routeById(LoginPage.id),
         isUserLoggedIn: isUserLoggedIn(),
+        onLogoutClicked: logout,
+        loadUserSettings: loadUserSettings()
       ),
     ));
   }
 
-  void _showLevelCompleteMenu(int nStars) async{
+  void _showLevelCompleteMenu(int nStars) {
 
-    
-    
-        
   final gameplay = findByKeyName<Gameplay>(Gameplay.id);
 
   int completedLevel = gameplay?.currentLevel ?? lastGamePlayState?.currentLevel ?? 0;
-  await saveLevelCompletion(completedLevel, nStars);
+  
+  saveLevelCompletion(completedLevel, nStars);
 
    gameplay?.levelCompleted = true;
    gameplay?.input.movementAllowed = false;
@@ -334,6 +337,16 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
       ),
     ));
   
+  }
+
+  Future<void> logout() async {
+    await storage.delete(key: 'authToken');
+    try {
+      await Amplify.Auth.signOut();
+    } catch (e) {
+      print('Error signing out: $e');
+    }
+    _routeToGameMainMenu();
   }
 
   Future<void> saveLevelCompletion(int completedLevel, int nStars) async {
@@ -353,8 +366,8 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
 
   Future<bool> isUserLoggedIn() async {
   try {
-    final authSession = await Amplify.Auth.fetchAuthSession();
-    return authSession.isSignedIn;
+    String? token = await storage.read(key: 'authToken');
+    return token != null;
   } catch (e) {
     return false;
   }
@@ -362,22 +375,22 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
 
 Future<String?> getJwtToken() async {
   try {
-    final cognitoPlugin = Amplify.Auth.getPlugin(AmplifyAuthCognito.pluginKey);
-    final session = await cognitoPlugin.fetchAuthSession();
-    if (session.isSignedIn) {
-      final tokens = session.userPoolTokensResult.value;
-      return tokens.idToken.raw;
-    }
-    return null;
+
+    return await storage.read(key: 'authToken');
+
   } catch (e) {
-    print('Error fetching JWT token: $e');
+      print('Error fetching JWT token: $e');
     return null;
   }
 }
 
 
 
-  void _onLoginSuccess() {
+  void _onLoginSuccess(GameUser gameUser) async{
+    
+    var token = await gameRepository.generateJwtToken(gameUser);
+    await storage.write(key: 'authToken', value: token);
+
     _popRoute();
     _routeToGameMainMenu();
   }
