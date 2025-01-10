@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="64" tileheight="64" infinite="0" nextlayerid="13" nextobjectid="3">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="64" tileheight="64" infinite="0" nextlayerid="14" nextobjectid="3">
  <tileset firstgid="1" source="Terrain.tsx"/>
  <tileset firstgid="41" source="Castle_Red.tsx"/>
  <tileset firstgid="61" source="Tree.tsx"/>
@@ -142,6 +142,22 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
+ <layer id="13" name="CollisionblockTileLayer" width="16" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,158,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
  <objectgroup id="30" name="CollisionblocksForGrid">
   <object id="101" name="Block" type="Block" x="256" y="128" width="576" height="64"/>
   <object id="102" name="Block" type="Block" x="256" y="576" width="576" height="64"/>
@@ -150,12 +166,12 @@
  </objectgroup>
  <objectgroup id="5" name="Collisionblocks">
   <object id="12" name="Block" type="Block" x="768" y="512" width="64" height="64"/>
-</objectgroup>
-<objectgroup id="6" name="Checkpoints">
+ </objectgroup>
+ <objectgroup id="6" name="Checkpoints">
   <object id="2" name="PlayerCheckpoint" type="PlayerCheckpoint" x="640" y="192" width="64" height="64"/>
   <object id="11" name="AntiPlayerCheckpoint" type="AntiPlayerCheckpoint" x="320" y="512" width="64" height="64"/>
-</objectgroup>
-<objectgroup id="7" name="Spawnpoints">
+ </objectgroup>
+ <objectgroup id="7" name="Spawnpoints">
   <object id="1" name="Barrel" type="Barrel" x="448" y="192" width="64" height="64"/>
   <object id="3" name="AntiPlayer" type="AntiPlayer" x="704" y="192" width="64" height="64"/>
   <object id="4" name="Barrel" type="Barrel" x="576" y="256" width="64" height="64"/>
@@ -165,6 +181,5 @@
   <object id="8" name="Barrel" type="Barrel" x="512" y="448" width="64" height="64"/>
   <object id="9" name="Barrel" type="Barrel" x="704" y="448" width="64" height="64"/>
   <object id="10" name="Player" type="Player" x="256" y="512" width="64" height="64"/>
-</objectgroup>
-
+ </objectgroup>
 </map>
