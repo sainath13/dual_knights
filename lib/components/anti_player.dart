@@ -6,6 +6,7 @@ import 'package:dual_knights/dual_knights.dart';
 import 'package:dual_knights/routes/gameplay.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/services.dart';
 import 'dart:developer';
 
@@ -158,6 +159,9 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef<DualKnights>, 
       direction = dir;
       Vector2 potentialTarget = position + (direction * gridSize);
       if (!wouldCollide(potentialTarget)) {
+        if (game.sfxValueNotifier.value) {
+          FlameAudio.play(DualKnights.move);
+        }
         targetPosition = potentialTarget;
         isMoving = true;
         if (direction.y < 0) {
@@ -168,6 +172,11 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef<DualKnights>, 
           animation = moveLeftAnimation;
         } else if (direction.x > 0) {
           animation = moveRightAnimation;
+        }
+      }
+      else{
+        if (game.sfxValueNotifier.value) {
+          FlameAudio.play(DualKnights.blocked);
         }
       }
     }

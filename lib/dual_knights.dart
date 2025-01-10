@@ -42,6 +42,8 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
 
   static const bgm = 'bf_music_for_dual_knights.ogg';
   static const explosion = 'explosion.wav';
+  static const blocked = 'blocked.wav';
+  static const move = 'move.wav';
   var _settingsListener;
 
   final ValueNotifier<Map<String, String>> dialogueNotifier = ValueNotifier({
@@ -147,7 +149,7 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
   FutureOr<void> onLoad() async{
     await loadUserSettings();
     syncUserSettings();
-    await FlameAudio.audioCache.loadAll([bgm,explosion]);
+    await FlameAudio.audioCache.loadAll([bgm,explosion,blocked,move]);
     await images.loadAllImages();
     await add(_router);
 
