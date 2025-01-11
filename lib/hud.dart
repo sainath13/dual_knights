@@ -146,7 +146,7 @@ class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference<D
 
     final restartButton = HudButtonComponent(
       button: SpriteComponent.fromImage(
-        await game.images.load('UI/Icons/pause.png'),
+        await game.images.load('Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Icon/Replay@2x-1.png'),
         size: Vector2.all(30),
       ),
       anchor: Anchor.center,

@@ -1,3 +1,4 @@
+import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
 import 'package:amplify_authenticator/amplify_authenticator.dart';
 import 'package:amplify_flutter/amplify_flutter.dart';
 import 'package:dual_knights/model/user_model.dart';
@@ -90,7 +91,7 @@ class LoginPage extends StatelessWidget {
                     }
                   }
                   final gameUser = GameUser(
-                    userId: user.userId,
+                    userId: user.username,
                     email: email ?? '',
                   );
 
