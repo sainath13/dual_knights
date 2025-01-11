@@ -33,7 +33,7 @@ class LevelComplete extends StatelessWidget {
                 return Transform.scale(
                   scale: scale as double,
                   child: Text(
-                    'Level Completed',
+                    'LEVEL COMPLETED',
                     style: TextStyle(
                       fontSize: 36,
                       fontFamily: "DualKnights",
