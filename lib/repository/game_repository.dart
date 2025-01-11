@@ -6,6 +6,9 @@ import 'package:dual_knights/model/user_model.dart';
 import 'package:dual_knights/model/user_progress_model.dart';
 import 'package:dual_knights/model/user_settings_model.dart';
 import 'package:dual_knights/repository/local_storage.dart';
+import 'package:flame/cache.dart';
+import 'package:flame/components.dart';
+import 'package:flame_tiled/flame_tiled.dart';
 
 
 class GameRepository {
@@ -139,5 +142,34 @@ class GameRepository {
     return true;
   }
 }
+
+Future<TiledComponent> loadTmxFromS3(String bucketUrl,String tmxFileName) async {
+    try {
+      final String fullUrl = '$bucketUrl/$tmxFileName';
+      
+      // Download TMX file as string
+      final response = await dio.get(
+        fullUrl,
+        options: Options(responseType: ResponseType.bytes),
+      );
+      
+      final tmxString = utf8.decode(response.data);
+      final images = Images();
+      // Create TiledMap from string
+      final tiledMap = await RenderableTiledMap.fromString(
+          tmxString,Vector2(64, 64),
+        
+      );
+
+
+      return TiledComponent(
+        tiledMap,
+        priority: 1,
+      );
+      
+    } catch (e) {
+      throw Exception('Error loading TMX from S3: $e');
+    }
+  }
 
 }

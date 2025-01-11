@@ -13,6 +13,7 @@ import 'package:dual_knights/dual_knights.dart';
 import 'package:dual_knights/hud.dart';
 
 import 'package:dual_knights/input.dart';
+import 'package:dual_knights/repository/game_repository.dart';
 
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
@@ -27,6 +28,7 @@ import 'package:flutter/widgets.dart';
 class Gameplay extends Component with HasGameReference<DualKnights> {
   final Player player;
   final AntiPlayer antiPlayer;
+  final GameRepository gameRepository;
 
   Gameplay(
     this.currentLevel, {
@@ -34,7 +36,8 @@ class Gameplay extends Component with HasGameReference<DualKnights> {
     required this.onPausePressed,
     required this.onLevelCompleted,
     required this.onGameOver,
-    required this.onRestartLevel
+    required this.onRestartLevel,
+    required this.gameRepository,
   }):player = Player(),antiPlayer = AntiPlayer();
 
   static const id = 'Gameplay';
@@ -100,7 +103,7 @@ class Gameplay extends Component with HasGameReference<DualKnights> {
     
     game.musicValueNotifier.addListener(_musicListener);
 
-    Level level = Level(currentLevelIndex: currentLevel.toString().padLeft(2, '0'), player: player, antiPlayer: antiPlayer);
+    Level level = Level(currentLevelIndex: currentLevel.toString().padLeft(2, '0'), player: player, antiPlayer: antiPlayer,gameRepository: gameRepository);
     
 
     await _setupWorldAndCamera(level);

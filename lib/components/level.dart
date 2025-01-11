@@ -11,6 +11,7 @@ import 'package:dual_knights/components/player_checkpoint.dart';
 import 'package:dual_knights/components/anti_player_checkpoint.dart';
 import 'package:dual_knights/components/tree.dart';
 import 'package:dual_knights/dual_knights.dart';
+import 'package:dual_knights/repository/game_repository.dart';
 import 'package:flame/components.dart';
 import 'package:flame_tiled/flame_tiled.dart';
 import 'package:flutter/material.dart';
@@ -22,12 +23,15 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
   final String currentLevelIndex;
   final Player player;
   final AntiPlayer antiPlayer;
-  Level({required this.currentLevelIndex, required this.player, required this.antiPlayer});
+  final GameRepository gameRepository;
+  Level({required this.currentLevelIndex, required this.player, required this.antiPlayer,required this.gameRepository});
   late TiledComponent level;
   
   @override
   FutureOr<void> onLoad() async{
-    level = await TiledComponent.load('Level-$currentLevelIndex.tmx', Vector2(64, 64));
+    level = await gameRepository.loadTmxFromS3('https://dual-knight-assets.s3.us-west-2.amazonaws.com','Level-$currentLevelIndex.tmx');
+
+    // level = await TiledComponent.load('Level-$currentLevelIndex.tmx', Vector2(64, 64));
     // level = await TiledComponent.load('Level-05.tmx', Vector2(64, 64));
     // level = await TiledComponent.load('Level-07-Copy.tmx', Vector2(64, 64));
     // level = await TiledComponent.load('Level-for-Sarvesh.tmx', Vector2(64, 64));
