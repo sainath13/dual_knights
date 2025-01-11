@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="64" tileheight="64" infinite="0" nextlayerid="13" nextobjectid="3">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="64" tileheight="64" infinite="0" nextlayerid="14" nextobjectid="3">
  <tileset firstgid="1" source="Terrain.tsx"/>
  <tileset firstgid="41" source="Castle_Red.tsx"/>
  <tileset firstgid="61" source="Tree.tsx"/>
@@ -14,6 +14,9 @@
  <tileset firstgid="194" source="Castle_Destroyed.tsx"/>
  <tileset firstgid="214" source="HappySheep_Idle.tsx"/>
  <tileset firstgid="222" source="Tree_192.tsx"/>
+ <tileset firstgid="234" source="Tilemap_Elevation.tsx"/>
+ <tileset firstgid="266" source="13.tsx"/>
+ <tileset firstgid="267" source="11.tsx"/>
  <layer id="3" name="GameBackground" width="16" height="12">
   <data encoding="csv">
 12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,
@@ -142,6 +145,22 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
+ <layer id="13" name="CollisionblockTileLayer" width="16" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,185,0,0,0,0,0,192,0,0,0,0,
+0,0,0,0,266,188,266,0,0,0,191,193,191,0,0,0,
+0,0,0,0,0,0,0,0,237,0,0,0,0,0,0,0,
+0,0,0,0,0,267,267,180,241,180,267,267,0,0,0,0,
+0,0,0,0,0,0,0,0,245,0,0,0,0,0,0,0,
+0,0,0,0,158,0,190,190,249,190,190,0,158,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
  <objectgroup id="30" name="CollisionblocksForGrid">
   <object id="101" name="Block" type="Block" x="256" y="128" width="576" height="64"/>
   <object id="102" name="Block" type="Block" x="256" y="576" width="576" height="64"/>
@@ -171,17 +190,16 @@
   <object id="23" name="Block" type="Block" x="576" y="448" width="64" height="64"/>
   <object id="24" name="Block" type="Block" x="640" y="448" width="64" height="64"/>
   <object id="25" name="Block" type="Block" x="768" y="448" width="64" height="64"/>
-</objectgroup>
-<objectgroup id="6" name="Checkpoints">
+ </objectgroup>
+ <objectgroup id="6" name="Checkpoints">
   <object id="27" name="AntiPlayerCheckpoint" type="AntiPlayerCheckpoint" x="448" y="512" width="64" height="64"/>
   <object id="28" name="PlayerCheckpoint" type="PlayerCheckpoint" x="640" y="512" width="64" height="64"/>
-</objectgroup>
-<objectgroup id="7" name="Spawnpoints">
+ </objectgroup>
+ <objectgroup id="7" name="Spawnpoints">
   <object id="4" name="Barrel" type="Barrel" x="512" y="192" width="64" height="64"/>
   <object id="16" name="Barrel" type="Barrel" x="448" y="384" width="64" height="64"/>
   <object id="18" name="Barrel" type="Barrel" x="576" y="384" width="64" height="64"/>
   <object id="26" name="Player" type="Player" x="320" y="512" width="64" height="64"/>
   <object id="29" name="AntiPlayer" type="AntiPlayer" x="704" y="512" width="64" height="64"/>
-</objectgroup>
-
+ </objectgroup>
 </map>

@@ -108,6 +108,7 @@ flutter:
     - assets/images/Factions/Knights/Troops/Archer/Blue/
     - assets/images/Factions/Knights/Buildings/House/House_Blue.png
     - assets/images/Resources/Gold Mine/GoldMine_Active.png
+    - assets/images/Resources/Gold Mine/GoldMine_Destroyed.png
     - assets/images/Factions/Knights/Troops/Pawn/Blue/
     - assets/images/Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Level/Star/
     - assets/images/Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Star/
@@ -129,6 +130,15 @@ flutter:
     - assets/audio/
     - assets/images/Effects/Checkpoint/
     - assets/images/Resources/Resources/
+    - assets/images/Deco/16.png
+    - assets/images/Deco/17.png
+    - assets/images/Deco/18.png
+    - assets/images/Terrain/Ground/Shadows.png
+    - assets/images/UI/Banners/Banner_Connection_Left.png
+    - assets/images/UI/Banners/Banner_Connection_Right.png
+    - assets/images/UI/Ribbons/Ribbon_Yellow_3Slides.png
+    - assets/images/Factions/Knights/Troops/Warrior/Blue/Warrior_Blue_Big.png
+    - assets/images/Factions/Knights/Troops/Warrior/Red/Warrior_Red_Big.png
 
     # - images/a_dot_ham.jpeg
 
