@@ -166,9 +166,9 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
             );//..debugMode = true;
             add(block);
             collisionBlocks.add(block);
-            final gold = Gold();//..debugMode = true;
-            gold.position = Vector2(collisionBlock.x, collisionBlock.y);
-            add(gold);
+            // final gold = Gold();//..debugMode = true;
+            // gold.position = Vector2(collisionBlock.x, collisionBlock.y);
+            // add(gold);
             //create a new block.
             break;
           default:
