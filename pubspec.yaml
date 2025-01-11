@@ -43,7 +43,6 @@ dependencies:
   dio: ^5.7.0
   shared_preferences: ^2.0.15
   flutter_secure_storage: ^9.2.3
-  path_provider: ^2.0.13
 
 
 dev_dependencies:
@@ -120,6 +119,9 @@ flutter:
     - assets/images/Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Buttons/Square/ArrowRight-Bold/
     - assets/images/Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Buttons/Square/ArrowLeft-Bold/
     - assets/images/Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Icon/
+    - assets/images/Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Buttons/Square/Play/
+    - assets/images/Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Buttons/Square/Levels/
+    - assets/images/Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Buttons/Square/Repeat/
     - assets/images/UI/Icons/
     - assets/images/Factions/Knights/Troops/Archer/Yellow/Archer_Yellow.png
     - assets/images/base_image/

@@ -222,6 +222,13 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
     _router.pop();
   }
 
+  void _navigateToGameLevelSelectionFromLevelComplete() {
+     
+     
+     _routeToGameMainMenu();
+     _navigateToGameLevelSelection();
+  }
+
    void _navigateToGameLevelSelectionFromPause() {
      resumeEngine();
      _router.pop();
@@ -351,6 +358,7 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
             onNextPressed: _startNextLevel,
             onRetryPressed: _restartLevel,
             onExitPressed: _routeToGameMainMenu,
+            onLevelSelectionPressed: _navigateToGameLevelSelectionFromLevelComplete,
       ),
     ));
   

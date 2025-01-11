@@ -18,6 +18,7 @@ class GameLevelComplete extends PositionComponent with HasGameRef<DualKnights>{
   final VoidCallback? onNextPressed;
   final VoidCallback? onRetryPressed;
   final VoidCallback? onExitPressed;
+  final VoidCallback? onLevelSelectionPressed;
 
 
    GameLevelComplete({
@@ -26,6 +27,7 @@ class GameLevelComplete extends PositionComponent with HasGameRef<DualKnights>{
     this.onNextPressed,
     this.onRetryPressed,
     this.onExitPressed,
+    this.onLevelSelectionPressed
   });
 
 
@@ -66,33 +68,44 @@ class GameLevelComplete extends PositionComponent with HasGameRef<DualKnights>{
               onClick: onRetryPressed,
               size: Vector2(button.width, button.height),
               position: Vector2(button.x, button.y),
-              normalSprite : Sprite(await game.images.load('Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Button/Square/Fill/Default.png')),
-              onTapSprite: Sprite(await game.images.load('Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Button/Square/Fill/Hover.png')),
-              buttonText: 'Restart',
+              normalSprite : Sprite(await game.images.load('Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Buttons/Square/Repeat/Default@2x-1.png')),
+              onTapSprite: Sprite(await game.images.load('Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Buttons/Square/Repeat/Hover@2x-1.png')),
+              buttonText: '',
             );
             _world.add(restartButton);
             break;
-          case 'Exit':
-            final exitButton = GameButton(
-              onClick:onExitPressed,
+          case 'LevelSelect':
+            final levelSelectButton = GameButton(
+              onClick:onLevelSelectionPressed,
               size: Vector2(button.width, button.height),
               position: Vector2(button.x, button.y),
-              normalSprite: Sprite(await game.images.load('Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Button/Square/Fill/Default.png')),
-              onTapSprite: Sprite(await game.images.load('Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Button/Square/Fill/Hover.png')),
-              buttonText: 'Exit',
+              normalSprite: Sprite(await game.images.load('Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Buttons/Square/Levels/Default@2x-1.png')),
+              onTapSprite: Sprite(await game.images.load('Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Buttons/Square/Levels/Hover@2x-1.png')),
+              buttonText: '',
             );
-            _world.add(exitButton);
+            _world.add(levelSelectButton);
             break;
           case 'Next':  
             final nextButton = GameButton(
               onClick: onNextPressed,
               size: Vector2(button.width, button.height),
               position: Vector2(button.x, button.y),
-              normalSprite: Sprite(await game.images.load('Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Button/Square/Fill/Default.png')),
-              onTapSprite: Sprite(await game.images.load('Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Button/Square/Fill/Hover.png')),
-              buttonText: 'Next',
+              normalSprite: Sprite(await game.images.load('Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Buttons/Square/Play/Default@2x-1.png')),
+              onTapSprite: Sprite(await game.images.load('Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Buttons/Square/Play/Hover@2x-1.png')),
+              buttonText: '',
             );
             _world.add(nextButton);
+            break;
+          case 'Exit':
+            final exitButton = GameButton(
+              onClick:onExitPressed,
+              size: Vector2(button.width, button.height),
+              position: Vector2(button.x, button.y),
+              // normalSprite: Sprite(await game.images.load('Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Button/Square/Fill/Default.png')),
+              // onTapSprite: Sprite(await game.images.load('Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Button/Square/Fill/Hover.png')),
+              buttonText: '',
+            );
+            _world.add(exitButton);
             break;
           }
 
