@@ -291,11 +291,14 @@
             }
         },
         "Level-01.tmx": {
-            "scale": 0.5497,
-            "selectedLayer": 16,
+            "expandedGroupLayers": [
+                26
+            ],
+            "scale": 0.54,
+            "selectedLayer": 15,
             "viewCenter": {
-                "x": 600.3274513370931,
-                "y": 583.954884482445
+                "x": 545.3703703703703,
+                "y": 412.037037037037
             }
         },
         "Level-02-Copy.tmx": {
@@ -955,8 +958,8 @@
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
-        "Level-07-copy.tmx",
         "Level-01.tmx",
+        "Level-07-copy.tmx",
         "tutorial.tmx",
         "Game-Welcome-Page.tmx",
         "new_game_logo_correct.tsx",
