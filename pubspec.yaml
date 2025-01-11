@@ -44,9 +44,18 @@ dependencies:
   shared_preferences: ^2.0.15
   flutter_secure_storage: ^9.2.3
 
+
 dev_dependencies:
+  flutter_launcher_icons: ^0.13.1
   flutter_test:
     sdk: flutter
+
+flutter_launcher_icons:
+  web:
+    generate: true
+    image_path: "assets/images/Factions/Knights/Troops/Warrior/Blue/Warrior_Blue_Small.png"
+    background_color: "#hexcode"
+    theme_color: "#hexcode"
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

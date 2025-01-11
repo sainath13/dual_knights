@@ -46,6 +46,7 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
   static const explosion = 'explosion.wav';
   static const blocked = 'blocked.wav';
   static const move = 'move.wav';
+  static const beep = 'beep.ogg';
   var _settingsListener;
   final storage = FlutterSecureStorage();
 
@@ -154,7 +155,7 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
   FutureOr<void> onLoad() async{
     await loadUserSettings();
     syncUserSettings();
-    await FlameAudio.audioCache.loadAll([bgm,explosion,blocked,move]);
+    await FlameAudio.audioCache.loadAll([bgm,explosion,blocked,move,beep]);
     await images.loadAllImages();
     await add(_router);
 
