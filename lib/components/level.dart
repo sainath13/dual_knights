@@ -29,7 +29,7 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
   FutureOr<void> onLoad() async{
     // level = await TiledComponent.load('Level-$currentLevelIndex.tmx', Vector2(64, 64));
     // level = await TiledComponent.load('Level-05.tmx', Vector2(64, 64));
-    level = await TiledComponent.load('Level-07-Copy.tmx', Vector2(64, 64));
+    level = await TiledComponent.load('Level-01.tmx', Vector2(64, 64));
     // level = await TiledComponent.load('Level-for-Sarvesh.tmx', Vector2(64, 64));
 
     // level.debugMode = true;
