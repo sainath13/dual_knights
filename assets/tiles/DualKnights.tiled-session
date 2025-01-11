@@ -292,10 +292,10 @@
         },
         "Level-01.tmx": {
             "scale": 0.5497,
-            "selectedLayer": 8,
+            "selectedLayer": 16,
             "viewCenter": {
                 "x": 600.3274513370931,
-                "y": 583.9548844824451
+                "y": 583.954884482445
             }
         },
         "Level-02-Copy.tmx": {
@@ -358,11 +358,14 @@
             }
         },
         "Level-07-copy.tmx": {
-            "scale": 0.75,
-            "selectedLayer": 5,
+            "expandedObjectLayers": [
+                21
+            ],
+            "scale": 0.77,
+            "selectedLayer": 6,
             "viewCenter": {
-                "x": 455.3333333333333,
-                "y": 519.3333333333334
+                "x": 554.5454545454545,
+                "y": 312.987012987013
             }
         },
         "Level-07.tmx": {
@@ -952,6 +955,8 @@
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "Level-07-copy.tmx",
+        "Level-01.tmx",
         "tutorial.tmx",
         "Game-Welcome-Page.tmx",
         "new_game_logo_correct.tsx",
@@ -960,10 +965,8 @@
         "game_logo_new_downsized.tsx",
         "Level-02-Copy.tmx",
         "Level-06.tmx",
-        "Level-07-copy.tmx",
         "Level-07.tmx",
-        "Level-02.tmx",
-        "Bridge_All.tsx"
+        "Level-02.tmx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",

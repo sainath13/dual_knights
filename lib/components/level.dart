@@ -27,9 +27,9 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
   
   @override
   FutureOr<void> onLoad() async{
-    level = await TiledComponent.load('Level-$currentLevelIndex.tmx', Vector2(64, 64));
+    // level = await TiledComponent.load('Level-$currentLevelIndex.tmx', Vector2(64, 64));
     // level = await TiledComponent.load('Level-05.tmx', Vector2(64, 64));
-    // level = await TiledComponent.load('Level-07-Copy.tmx', Vector2(64, 64));
+    level = await TiledComponent.load('Level-01.tmx', Vector2(64, 64));
     // level = await TiledComponent.load('Level-for-Sarvesh.tmx', Vector2(64, 64));
 
     // level.debugMode = true;
@@ -166,9 +166,9 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
             );//..debugMode = true;
             add(block);
             collisionBlocks.add(block);
-            final gold = Gold();//..debugMode = true;
-            gold.position = Vector2(collisionBlock.x, collisionBlock.y);
-            add(gold);
+            // final gold = Gold();//..debugMode = true;
+            // gold.position = Vector2(collisionBlock.x, collisionBlock.y);
+            // add(gold);
             //create a new block.
             break;
           default:
@@ -208,6 +208,24 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
     }
     else {
       log("ArcherSpawnPoints grids layer is sadly null");
+    }
+
+
+    final treesOutSideGameGridLayer = level.tileMap.getLayer<ObjectGroup>('TreesOutSideGameGrid');
+    if(treesOutSideGameGridLayer != null){
+      for(final spawnPoint in treesOutSideGameGridLayer.objects){
+        switch (spawnPoint.class_) {
+          case 'Tree' :
+            final tree = Tree(position: Vector2(spawnPoint.x + 32, spawnPoint.y-16),player: player,antiPlayer: antiPlayer);//..debugMode = true;
+            tree.anchor = Anchor.center;
+            add(tree);
+            break;
+          default:
+        }
+      }
+    }
+    else{
+      log('Level : Sadly TreesOutSideGameGrid is null');
     }
 
 
