@@ -1,8 +1,10 @@
+import 'dart:math';
 import 'dart:ui';
 
 import 'package:dual_knights/components/game_button.dart';
 import 'package:dual_knights/dual_knights.dart';
 import 'package:flame/components.dart';
+import 'package:flame/particles.dart';
 import 'package:flame_tiled/flame_tiled.dart';
 import 'package:flame/text.dart';
 
@@ -43,6 +45,52 @@ class GameLevelComplete extends PositionComponent with HasGameRef<DualKnights>{
     _camera.removeFromParent();
     super.onRemove();
   }
+
+
+  void addConfettiEffect() {
+  final rng = Random();
+
+  final confetti = ParticleSystemComponent(
+    position: Vector2(gameLevelComplete.size.x * 0.5, gameLevelComplete.size.y * 0.5),
+    particle: Particle.generate(
+      count: 70*nStars,
+      lifespan: 5,
+      generator: (i) {
+        final randomColor = Color.fromARGB(
+          255,
+          rng.nextInt(256),
+          rng.nextInt(256),
+          rng.nextInt(256),
+        );
+        
+        return AcceleratedParticle(
+          position: Vector2(rng.nextDouble() * 300 - 150, rng.nextDouble() * 200 - 100),
+          acceleration: Vector2(0, 100), // Gravity effect
+          speed: Vector2(rng.nextDouble() * 200 - 100, rng.nextDouble() * -200),
+          child: ComposedParticle(
+            children: [
+              CircleParticle(
+                radius: 4,
+                paint: Paint()
+                  ..color = randomColor.withOpacity(0.8)
+                  ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 0.5),
+              ),
+              // Add a fading overlay particle
+              CircleParticle(
+                radius: 4,
+                paint: Paint()
+                  ..color = randomColor.withOpacity(0.2)
+                  ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 1.0),
+              ),
+            ],
+          ),
+        );
+      },
+    ),
+  );
+
+  _world.add(confetti);
+}
  
 
   Future<void> loadGameCompletionScreen() async {
@@ -57,6 +105,7 @@ class GameLevelComplete extends PositionComponent with HasGameRef<DualKnights>{
     );
     _camera.moveTo(Vector2(gameLevelComplete.size.x * 0.5, _camera.viewport.virtualSize.y*0.5));
     await add(_camera);
+    addConfettiEffect();
 
 
     final buttonsLayer = gameLevelComplete.tileMap.getLayer<ObjectGroup>('ButtonsSpawnLayer');
