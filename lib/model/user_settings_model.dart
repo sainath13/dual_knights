@@ -13,7 +13,7 @@ class UserSettings {
     return UserSettings(
       sfx: json['SFX'] as bool? ?? true, // Default to true if null
       music: json['Music'] as bool? ?? true,
-      joystick: json['joystick'] as bool? ?? true,
+      joystick: json['joystick'] as bool? ?? false,
     );
   }
 

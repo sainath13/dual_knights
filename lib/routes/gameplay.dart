@@ -53,6 +53,7 @@ class Gameplay extends Component with HasGameReference<DualKnights> {
   late final input = Input(
     keyCallbacks: {
       LogicalKeyboardKey.keyP: onPausePressed,
+      LogicalKeyboardKey.escape: onPausePressed,
       // LogicalKeyboardKey.keyC: () => onLevelCompleted.call(3),
       // LogicalKeyboardKey.keyO: onGameOver,
     },

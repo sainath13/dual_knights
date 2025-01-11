@@ -194,6 +194,7 @@ class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference<D
   @override
   void update(double dt) {
     super.update(dt);
+    ancestor.input.pressedKeys.clear();
 
     // Detect joystick direction
     if (_joystick.relativeDelta != Vector2.zero()) {
@@ -216,9 +217,10 @@ class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference<D
       }
     } else {
       // Reset last direction when joystick returns to center
-      ancestor.input.pressedKeys.clear();
+     
       lastDirection = null;
     }
+     
   }
   
   void setupJoyStick() async{
