@@ -27,8 +27,8 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
   
   @override
   FutureOr<void> onLoad() async{
-    // level = await TiledComponent.load('Level-$currentLevelIndex.tmx', Vector2(64, 64));
-    level = await TiledComponent.load('Level-05.tmx', Vector2(64, 64));
+    level = await TiledComponent.load('Level-$currentLevelIndex.tmx', Vector2(64, 64));
+    // level = await TiledComponent.load('Level-05.tmx', Vector2(64, 64));
     // level = await TiledComponent.load('Level-07-Copy.tmx', Vector2(64, 64));
     // level = await TiledComponent.load('Level-for-Sarvesh.tmx', Vector2(64, 64));
 
@@ -126,9 +126,9 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
       for(final collisionBlock in collisionBlocksLayer.objects){
         switch(collisionBlock.class_){
           case 'Block' :
-            final tree = Tree(position: Vector2(collisionBlock.x + 32, collisionBlock.y-16),player: player,antiPlayer: antiPlayer);//..debugMode = true;
-            tree.anchor = Anchor.center;
-            add(tree);
+            // final tree = Tree(position: Vector2(collisionBlock.x + 32, collisionBlock.y-16),player: player,antiPlayer: antiPlayer);//..debugMode = true;
+            // tree.anchor = Anchor.center;
+            // add(tree);
             final block = CollisionBlock(
               position: Vector2(collisionBlock.x, collisionBlock.y),
               size: Vector2(collisionBlock.width, collisionBlock.height),
