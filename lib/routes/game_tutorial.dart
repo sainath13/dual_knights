@@ -3,41 +3,34 @@ import 'dart:math';
 import 'package:dual_knights/components/camera_movement.dart';
 import 'package:dual_knights/components/game_button.dart';
 import 'package:dual_knights/dual_knights.dart';
-import 'package:dual_knights/model/user_progress_model.dart';
-import 'package:dual_knights/repository/game_repository.dart';
 import 'package:flame/components.dart';
-import 'package:flame/effects.dart';
 import 'package:flame/events.dart';
 import 'package:flame/text.dart';
 import 'package:flame_tiled/flame_tiled.dart';
 import 'package:flutter/material.dart';
 
-class GameLevelSelection extends PositionComponent
+class GameTutorial extends PositionComponent
     with HasGameRef<DualKnights>, TapCallbacks {
-  static const id = 'GameLevelSelection';
+  static const id = 'GameTutorial';
 
-  late TiledComponent gameLevelSelection;
+  late TiledComponent gameTutorial;
   late final World _world;
   late final CameraComponent _camera;
-  final ValueChanged<int>? onLevelSelected;
   final VoidCallback? onBackPressed;
   Vector2 dragStart = Vector2.zero();
 
   double cameraViewportWidth = 24 * 64; // 832
   double cameraViewportHeight = 12 * 64;
-  final GameRepository gameRepository;
 
-  GameLevelSelection({
+  GameTutorial({
     super.key,
-    required this.onLevelSelected,
-    required this.onBackPressed,
-    required this.gameRepository,
+    required this.onBackPressed
   });
 
   @override
   Future<void> onLoad() async {
     game.updateBackgroundColor(Color(0xFFC9AA8D));
-    await loadGameLevelSelection();
+    await loadGameTutorialScreen();
     GameButton backButton = GameButton(
       onClick: () => onBackPressed?.call(),
       size: Vector2(40, 40),
@@ -82,18 +75,14 @@ class GameLevelSelection extends PositionComponent
     );
   }
 
-  Future<void> loadGameLevelSelection() async {
-    Map<int, LevelProgress> levelData = {};
+  Future<void> loadGameTutorialScreen() async {
 
-    levelData = await loadUserProgress(levelData);
-
-    var lastLevelUnlocked = 25;
-    gameLevelSelection = await TiledComponent.load(
+    gameTutorial = await TiledComponent.load(
         'tutorial.tmx', Vector2(64, 64),
         atlasMaxX: 5000, atlasMaxY: 5000);
 
     // 1408
-    _world = World(children: [gameLevelSelection]);
+    _world = World(children: [gameTutorial]);
     await add(_world);
     _camera = CameraComponent.withFixedResolution(
       width: cameraViewportWidth,
@@ -107,14 +96,14 @@ class GameLevelSelection extends PositionComponent
     await add(_camera);
 
     final navigationButtons =
-        gameLevelSelection.tileMap.getLayer<ObjectGroup>('NavigationButtons');
+        gameTutorial.tileMap.getLayer<ObjectGroup>('NavigationButtons');
     if (navigationButtons != null) {
       for (final button in navigationButtons.objects) {
         switch (button.class_) {
           case 'LeftNavigation':
             final leftButton = GameButton(
               onClick: () => moveCamera(
-                  -1, cameraViewportWidth, gameLevelSelection.size.x),
+                  -1, cameraViewportWidth, gameTutorial.size.x),
               size: Vector2(button.width / 1.1, button.height / 1.1),
               position: Vector2(button.x, button.y),
               normalSprite: Sprite(await game.images.load(
@@ -128,7 +117,7 @@ class GameLevelSelection extends PositionComponent
           case 'RightNavigation':
             final rightButton = GameButton(
               onClick: () =>
-                  moveCamera(1, cameraViewportWidth, gameLevelSelection.size.x),
+                  moveCamera(1, cameraViewportWidth, gameTutorial.size.x),
               size: Vector2(button.width / 1.1, button.height / 1.1),
               position: Vector2(button.x, button.y),
               normalSprite: Sprite(await game.images.load(
@@ -225,7 +214,7 @@ class GameLevelSelection extends PositionComponent
     }
 
     final textAreaLayer =
-        gameLevelSelection.tileMap.getLayer<ObjectGroup>('TextArea');
+        gameTutorial.tileMap.getLayer<ObjectGroup>('TextArea');
     if (textAreaLayer != null) {
       for (final area in textAreaLayer.objects) {
         switch (area.class_) {
@@ -599,14 +588,5 @@ class GameLevelSelection extends PositionComponent
         }
       }
     }
-  }
-
-  Future<Map<int, LevelProgress>> loadUserProgress(
-      Map<int, LevelProgress> levelData) async {
-    final jwtToken = await game.getJwtToken();
-    final userProgress = await gameRepository.getUserProgress(jwtToken);
-    print('User progress: ${userProgress.levelProgress}');
-    levelData = userProgress.levelProgress;
-    return levelData;
   }
 }
