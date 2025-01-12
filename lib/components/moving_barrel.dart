@@ -80,7 +80,8 @@ class MovingBarrel extends SpriteAnimationComponent with HasGameRef<DualKnights>
         32,
         32
       ),
-    );//..debugMode = true;
+    );//..debugColor = Colors.red
+      // ..debugMode = true;
     add(hitbox);
     // Load all animations
     animations = {
@@ -276,12 +277,15 @@ void _updateMovement(double dt) {
     KnightRangeStatus knightRangeStatus = knightRangeResult.status;
     // developer.log("current state is $currentState");
     if (knightRangeStatus == KnightRangeStatus.readyToExplode) {
+      // developer.log("Moving barrel is ready to explode");
       if(knightRangeResult.triggeredBy == "player") {
+        // developer.log("Moving barrel triggered by player");
         if (player.parent != null) {
          player.parent!.remove(player);
         }
       }
       else {
+        // developer.log("Moving barrel triggered by antiplayer");
         if (antiPlayer.parent != null) {
           antiPlayer.parent!.remove(antiPlayer);
         }
@@ -382,7 +386,7 @@ void _updateMovement(double dt) {
       collisionResult = KnightRangeResult(KnightRangeStatus.readyToExplode, triggeredBy: "antiPlayer");
       // developer.log("Moving Barrel : AntiPlayer collied with Moving Barrel");
     }
-    else{
+    else if(other is Player){
       hasCollided = true;
       collisionResult = KnightRangeResult(KnightRangeStatus.readyToExplode, triggeredBy: "player");
       // developer.log("Moving Barrel : Player collied with Moving Barrel");

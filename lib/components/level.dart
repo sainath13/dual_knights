@@ -117,6 +117,7 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
               position: Vector2(getExactCoOrdinate(spawnPoint.x)-32, getExactCoOrdinate(spawnPoint.y)-32),
               player: player,
               antiPlayer: antiPlayer);//..debugMode = true;
+            movingBarrel.priority = 2;
             add(movingBarrel);
             break;
           default:  

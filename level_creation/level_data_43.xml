@@ -1,0 +1,14 @@
+<objectgroup id="5" name="Collisionblocks">
+  <object id="1" name="Block" type="Block" x="512" y="192" width="64" height="64"/>
+  <object id="4" name="Block" type="Block" x="256" y="320" width="64" height="64"/>
+  <object id="5" name="Block" type="Block" x="512" y="320" width="64" height="64"/>
+  <object id="6" name="Block" type="Block" x="512" y="448" width="64" height="64"/>
+</objectgroup>
+<objectgroup id="6" name="Checkpoints">
+  <object id="2" name="AntiPlayerCheckpoint" type="AntiPlayerCheckpoint" x="768" y="192" width="64" height="64"/>
+  <object id="3" name="PlayerCheckpoint" type="PlayerCheckpoint" x="256" y="256" width="64" height="64"/>
+</objectgroup>
+<objectgroup id="7" name="Spawnpoints">
+  <object id="7" name="AntiPlayer" type="AntiPlayer" x="256" y="512" width="64" height="64"/>
+  <object id="8" name="Player" type="Player" x="768" y="512" width="64" height="64"/>
+</objectgroup>
