@@ -76,7 +76,7 @@ class Barrel extends SpriteAnimationComponent with HasGameRef<DualKnights>, Coll
           amount: 6,
           textureSize: Vector2(frameWidth, frameHeight),
           stepTime: 0.1,
-          loop: false,
+          loop: true,
           texturePosition: Vector2(0, frameHeight+16),
         ),
       ),
@@ -252,6 +252,10 @@ class Barrel extends SpriteAnimationComponent with HasGameRef<DualKnights>, Coll
     else if (knightRangeStatus == KnightRangeStatus.inWakeRange) {
       if (currentState == BarrelState.silent) {
         newState = BarrelState.wakingUp;
+        if(knightRangeResult.triggeredBy != "player"){
+             game.addDialogueRequest('Barrel', 'Flame Knight is Near Barrel',1);
+        }
+       
       }
       else if (currentState == BarrelState.wakingUp && animationTicker?.done() == true) {
         newState = BarrelState.awakeWaiting;
