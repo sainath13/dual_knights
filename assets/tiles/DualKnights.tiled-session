@@ -443,15 +443,15 @@
         },
         "Level-14.tmx": {
             "scale": 0.637353515625,
-            "selectedLayer": -1,
+            "selectedLayer": 13,
             "viewCenter": {
                 "x": 511.4900789090631,
-                "y": 384.4020531678541
+                "y": 387.54002911208147
             }
         },
         "Level-15.tmx": {
             "scale": 0.637353515625,
-            "selectedLayer": -1,
+            "selectedLayer": 3,
             "viewCenter": {
                 "x": 511.4900789090631,
                 "y": 384.4020531678541
@@ -459,7 +459,7 @@
         },
         "Level-16.tmx": {
             "scale": 0.637353515625,
-            "selectedLayer": -1,
+            "selectedLayer": 0,
             "viewCenter": {
                 "x": 511.4900789090631,
                 "y": 384.4020531678541
