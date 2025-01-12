@@ -622,8 +622,11 @@
             }
         },
         "Level-35.tmx": {
+            "expandedGroupLayers": [
+                26
+            ],
             "scale": 0.637353515625,
-            "selectedLayer": 0,
+            "selectedLayer": 8,
             "viewCenter": {
                 "x": 511.4900789090631,
                 "y": 384.4020531678541
