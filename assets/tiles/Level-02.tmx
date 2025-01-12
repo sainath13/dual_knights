@@ -176,7 +176,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
   </layer>
-  <objectgroup id="30" name="CollisionblocksForGrid">
+  <objectgroup id="30" name="CollisionblocksForGrid" visible="0">
    <object id="101" name="Block" type="Block" x="256" y="128" width="576" height="64"/>
    <object id="102" name="Block" type="Block" x="256" y="576" width="576" height="64"/>
    <object id="103" name="Block" type="Block" x="192" y="192" width="64" height="384"/>
@@ -216,7 +216,7 @@
 </data>
  </layer>
  <objectgroup id="5" name="Collisionblocks">
-  <object id="2" name="Block" type="Block" x="318" y="318" width="64" height="64"/>
+  <object id="2" name="Block" type="Block" x="320" y="320" width="64" height="64"/>
   <object id="3" name="Block" type="Block" x="448" y="320" width="64" height="64"/>
   <object id="4" name="Block" type="Block" x="576" y="320" width="64" height="64"/>
   <object id="5" name="Block" type="Block" x="704" y="320" width="64" height="64"/>
@@ -231,7 +231,7 @@
   <object id="12" name="PlayerCheckpoint" type="PlayerCheckpoint" x="704" y="384" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="7" name="Spawnpoints">
-  <object id="1" name="AntiPlayer" type="AntiPlayer" x="256" y="318" width="64" height="64"/>
+  <object id="1" name="AntiPlayer" type="AntiPlayer" x="256" y="320" width="64" height="64"/>
   <object id="8" name="Player" type="Player" x="320" y="384" width="64" height="64"/>
  </objectgroup>
 </map>

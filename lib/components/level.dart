@@ -10,6 +10,7 @@ import 'package:dual_knights/components/player.dart';
 import 'package:dual_knights/components/player_checkpoint.dart';
 import 'package:dual_knights/components/anti_player_checkpoint.dart';
 import 'package:dual_knights/components/tree.dart';
+import 'package:dual_knights/components/util.dart';
 import 'package:dual_knights/dual_knights.dart';
 import 'package:dual_knights/repository/game_repository.dart';
 import 'package:flame/components.dart';
@@ -30,9 +31,9 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
   @override
   FutureOr<void> onLoad() async{
     level = await TiledComponent.load('Level-$currentLevelIndex.tmx', Vector2(64, 64));
-    level = await gameRepository.loadTmxFromS3('https://dual-knight-assets.s3.us-west-2.amazonaws.com','Level-$currentLevelIndex.tmx');
+    // level = await gameRepository.loadTmxFromS3('https://dual-knight-assets.s3.us-west-2.amazonaws.com','Level-$currentLevelIndex.tmx');
 
-    // level = await TiledComponent.load('Level-$currentLevelIndex.tmx', Vector2(64, 64));
+    level = await TiledComponent.load('Level-$currentLevelIndex.tmx', Vector2(64, 64));
     // level = await TiledComponent.load('Level-05.tmx', Vector2(64, 64));
     // level = await TiledComponent.load('Level-01.tmx', Vector2(64, 64));
     // level = await TiledComponent.load('Level-for-Sarvesh.tmx', Vector2(64, 64));
@@ -55,7 +56,7 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
         switch (checkpoint.class_) {
           case 'PlayerCheckpoint' :
             final playerCheckpoint = PlayerCheckpoint();//..debugMode = true;
-            playerCheckpoint.position = Vector2(checkpoint.x, checkpoint.y);
+            playerCheckpoint.position = Vector2(getExactCoOrdinate(checkpoint.x), getExactCoOrdinate(checkpoint.y));
             playerCheckpoint.priority = 2;
             add(playerCheckpoint);
             // final gold = Gold()..debugMode = true;
@@ -64,7 +65,7 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
             break;
           case 'AntiPlayerCheckpoint' :
             final antiPlayerCheckpoint = AntiPlayerCheckpoint();//..debugMode = true;
-            antiPlayerCheckpoint.position = Vector2(checkpoint.x, checkpoint.y);
+            antiPlayerCheckpoint.position = Vector2(getExactCoOrdinate(checkpoint.x), getExactCoOrdinate(checkpoint.y));
             antiPlayerCheckpoint.priority = 2;
             add(antiPlayerCheckpoint);
             break;
@@ -82,7 +83,7 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
         switch (spawnPoint.class_) {
           
           case 'AntiPlayer' :
-            antiPlayer.position = Vector2(spawnPoint.x + 32, spawnPoint.y + 32);
+            antiPlayer.position = Vector2(getExactCoOrdinate(spawnPoint.x) + 32, getExactCoOrdinate(spawnPoint.y) + 32);
             antiPlayer.anchor = Anchor.center;
             add(antiPlayer);
             // note for postion
@@ -92,12 +93,12 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
             // add(archer);
             break;
           case 'Player' :
-            player.position = Vector2(spawnPoint.x + 32, spawnPoint.y + 32);
+            player.position = Vector2(getExactCoOrdinate(spawnPoint.x) + 32, getExactCoOrdinate(spawnPoint.y) + 32);
             player.anchor = Anchor.center;
             add(player);
             break;  
           case 'Barrel' :
-            final barrel = Barrel(position: Vector2(spawnPoint.x-32, spawnPoint.y-32),player: player,antiPlayer: antiPlayer);//..debugMode = true;
+            final barrel = Barrel(position: Vector2(getExactCoOrdinate(spawnPoint.x)-32, getExactCoOrdinate(spawnPoint.y)-32),player: player,antiPlayer: antiPlayer);//..debugMode = true;
             add(barrel);
             break; 
           case 'MovingBarrel' :
@@ -112,13 +113,13 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
               rightOffset: rightOffset, 
               upOffset: upOffset, 
               downOffset: downOffset ,
-              position: Vector2(spawnPoint.x-32, spawnPoint.y-32),
+              position: Vector2(getExactCoOrdinate(spawnPoint.x)-32, getExactCoOrdinate(spawnPoint.y)-32),
               player: player,
               antiPlayer: antiPlayer);//..debugMode = true;
             add(movingBarrel);
             break;   
           case 'Tree' :
-            final tree = Tree(position: Vector2(spawnPoint.x + 32, spawnPoint.y-16),player: player,antiPlayer: antiPlayer)..debugMode = true;
+            final tree = Tree(position: Vector2(getExactCoOrdinate(spawnPoint.x) + 32, getExactCoOrdinate(spawnPoint.y)-16),player: player,antiPlayer: antiPlayer)..debugMode = true;
             tree.anchor = Anchor.center;
             add(tree);     
             final block = CollisionBlock(
@@ -147,7 +148,7 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
             // tree.anchor = Anchor.center;
             // add(tree);
             final block = CollisionBlock(
-              position: Vector2(collisionBlock.x, collisionBlock.y),
+              position: Vector2(getExactCoOrdinate(collisionBlock.x), getExactCoOrdinate(collisionBlock.y)),
               size: Vector2(collisionBlock.width, collisionBlock.height),
             );//..debugMode = true;
             add(block);
@@ -178,7 +179,7 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
         switch(collisionBlock.class_){
           case 'Block' :
             final block = CollisionBlock(
-              position: Vector2(collisionBlock.x, collisionBlock.y),
+              position: Vector2(getExactCoOrdinate(collisionBlock.x), getExactCoOrdinate(collisionBlock.y)),
               size: Vector2(collisionBlock.width, collisionBlock.height),
             );//..debugMode = true;
             add(block);
@@ -208,7 +209,7 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
           case 'ArcherYellow' :
             log("Found an archer in here");
             final archer = Archer(
-              position: Vector2(archerBlock.x, archerBlock.y),
+              position: Vector2(getExactCoOrdinate(archerBlock.x), getExactCoOrdinate(archerBlock.y)),
               // size: Vector2(archerBlock.width, archerBlock.height),
             );//..debugColor = Colors.blue
               // ..debugMode = true;
@@ -233,7 +234,7 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
       for(final spawnPoint in treesOutSideGameGridLayer.objects){
         switch (spawnPoint.class_) {
           case 'Tree' :
-            final tree = Tree(position: Vector2(spawnPoint.x + 32, spawnPoint.y-16),player: player,antiPlayer: antiPlayer);//..debugMode = true;
+            final tree = Tree(position: Vector2(getExactCoOrdinate(spawnPoint.x) + 32, getExactCoOrdinate(spawnPoint.y)-16),player: player,antiPlayer: antiPlayer);//..debugMode = true;
             tree.anchor = Anchor.center;
             add(tree);
             break;
