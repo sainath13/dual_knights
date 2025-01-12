@@ -86,60 +86,60 @@ class GameLevelSelection extends PositionComponent with HasGameRef<DualKnights>,
 
 Future<void> loadGameLevelSelection() async {
 
-//   var dummyUnlockedLevels = {
-//   "levelProgress": {
-//     "1": {"locked": false, "stars": 2},
-//     "2": {"locked": false, "stars": 1},
-//     "3": {"locked": false, "stars": 2},
-//     "4": {"locked": false, "stars": 3},
-//     "5": {"locked": false, "stars": 1},
-//     "6": {"locked": false, "stars": 1},
-//     "7": {"locked": false , "stars": 1},
-//   "8": {"locked": false, "stars": 2},
-//   "9": {"locked": false, "stars": 3},
-//   "10": {"locked": false, "stars": 1},
-//   "11": {"locked": false, "stars": 2},
-//   "12": {"locked": false, "stars": 3},
-//   "13": {"locked": false, "stars": 1},
-//   "14": {"locked": false, "stars": 2},
-//   "15": {"locked": false, "stars": 3},
-//   "16": {"locked": false, "stars": 1},
-//   "17": {"locked": false, "stars": 2},
-//   "18": {"locked": false, "stars": 3},
-//   "19": {"locked": false, "stars": 1},
-//   "20": {"locked": false, "stars": 2},
-//   "21": {"locked": false, "stars": 3},
-//   "22": {"locked": false, "stars": 1},
-//   "23": {"locked": false, "stars": 2},
-//   "24": {"locked": false, "stars": 3},
-//   "25": {"locked": false, "stars": 1},
-//   "26": {"locked": false, "stars": 2},
-//   "27": {"locked": false, "stars": 3},
-//   "28": {"locked": false, "stars": 1},
-//   "29": {"locked": false, "stars": 2},
-//   "30": {"locked": false, "stars": 3},
-//   "31": {"locked": false, "stars": 1},
-//   "32": {"locked": false, "stars": 2},
-//   "33": {"locked": false, "stars": 3},
-//   "34": {"locked": false, "stars": 1},
-//   "35": {"locked": false, "stars": 2},
-//   "36": {"locked": false, "stars": 3},
-//   "37": {"locked": false, "stars": 1},
-//   "38": {"locked": false, "stars": 2},
-//   "39": {"locked": false, "stars": 3},
-//   "40": {"locked": false, "stars": 1},
-//   "41": {"locked": false, "stars": 2},
-//   "42": {"locked": false, "stars": 3},
-//   "43": {"locked": false, "stars": 1},
-//   "44": {"locked": false, "stars": 2},
-//   "45": {"locked": false, "stars": 3}
-//   },
-//   "lastLevelUnlocked": 45
-// };
+  var dummyUnlockedLevels = {
+  "levelProgress": {
+    "1": {"locked": false, "stars": 2},
+    "2": {"locked": false, "stars": 1},
+    "3": {"locked": false, "stars": 2},
+    "4": {"locked": false, "stars": 3},
+    "5": {"locked": false, "stars": 1},
+    "6": {"locked": false, "stars": 1},
+    "7": {"locked": false , "stars": 1},
+  "8": {"locked": false, "stars": 2},
+  "9": {"locked": false, "stars": 3},
+  "10": {"locked": false, "stars": 1},
+  "11": {"locked": false, "stars": 2},
+  "12": {"locked": false, "stars": 3},
+  "13": {"locked": false, "stars": 1},
+  "14": {"locked": false, "stars": 2},
+  "15": {"locked": false, "stars": 3},
+  "16": {"locked": false, "stars": 1},
+  "17": {"locked": false, "stars": 2},
+  "18": {"locked": false, "stars": 3},
+  "19": {"locked": false, "stars": 1},
+  "20": {"locked": false, "stars": 2},
+  "21": {"locked": false, "stars": 3},
+  "22": {"locked": false, "stars": 1},
+  "23": {"locked": false, "stars": 2},
+  "24": {"locked": false, "stars": 3},
+  "25": {"locked": false, "stars": 1},
+  "26": {"locked": false, "stars": 2},
+  "27": {"locked": false, "stars": 3},
+  "28": {"locked": false, "stars": 1},
+  "29": {"locked": false, "stars": 2},
+  "30": {"locked": false, "stars": 3},
+  "31": {"locked": false, "stars": 1},
+  "32": {"locked": false, "stars": 2},
+  "33": {"locked": false, "stars": 3},
+  "34": {"locked": false, "stars": 1},
+  "35": {"locked": false, "stars": 2},
+  "36": {"locked": false, "stars": 3},
+  "37": {"locked": false, "stars": 1},
+  "38": {"locked": false, "stars": 2},
+  "39": {"locked": false, "stars": 3},
+  "40": {"locked": false, "stars": 1},
+  "41": {"locked": false, "stars": 2},
+  "42": {"locked": false, "stars": 3},
+  "43": {"locked": false, "stars": 1},
+  "44": {"locked": false, "stars": 2},
+  "45": {"locked": false, "stars": 3}
+  },
+  "lastLevelUnlocked": 45
+};
 
-    // Map<int, LevelProgress> levelData = UserProgress.fromJson(dummyUnlockedLevels).levelProgress;
+    Map<int, LevelProgress> levelData = UserProgress.fromJson(dummyUnlockedLevels).levelProgress;
     
-    Map<int, LevelProgress> levelData = await loadUserProgress();
+    // Map<int, LevelProgress> levelData = await loadUserProgress();
 
     
     var lastLevelUnlocked  = 25;

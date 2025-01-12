@@ -216,13 +216,13 @@
 </data>
  </layer>
  <objectgroup id="5" name="Collisionblocks">
-  <object id="2" name="Block" type="Block" x="320" y="320" width="64" height="64"/>
+  <object id="2" name="Tree" type="Tree" x="320" y="320" width="64" height="64"/>
   <object id="3" name="Block" type="Block" x="448" y="320" width="64" height="64"/>
   <object id="4" name="Block" type="Block" x="576" y="320" width="64" height="64"/>
   <object id="5" name="Block" type="Block" x="704" y="320" width="64" height="64"/>
   <object id="7" name="Block" type="Block" x="256" y="384" width="64" height="64"/>
-  <object id="9" name="Block" type="Block" x="384" y="384" width="64" height="64"/>
-  <object id="10" name="Block" type="Block" x="512" y="384" width="64" height="64"/>
+  <object id="9" name="Tree" type="Tree" x="384" y="384" width="64" height="64"/>
+  <object id="10" name="Tree" type="Tree" x="512" y="384" width="64" height="64"/>
   <object id="11" name="Block" type="Block" x="640" y="384" width="64" height="64"/>
   <object id="13" name="Block" type="Block" x="768" y="384" width="64" height="64"/>
  </objectgroup>

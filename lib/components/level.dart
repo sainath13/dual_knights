@@ -33,7 +33,7 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
     level = await TiledComponent.load('Level-$currentLevelIndex.tmx', Vector2(64, 64));
     // level = await gameRepository.loadTmxFromS3('https://dual-knight-assets.s3.us-west-2.amazonaws.com','Level-$currentLevelIndex.tmx');
 
-    level = await TiledComponent.load('Level-$currentLevelIndex.tmx', Vector2(64, 64));
+    // level = await TiledComponent.load('Level-$currentLevelIndex.tmx', Vector2(64, 64));
     // level = await TiledComponent.load('Level-05.tmx', Vector2(64, 64));
     // level = await TiledComponent.load('Level-01.tmx', Vector2(64, 64));
     // level = await TiledComponent.load('Level-for-Sarvesh.tmx', Vector2(64, 64));
@@ -99,6 +99,7 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
             break;  
           case 'Barrel' :
             final barrel = Barrel(position: Vector2(getExactCoOrdinate(spawnPoint.x)-32, getExactCoOrdinate(spawnPoint.y)-32),player: player,antiPlayer: antiPlayer);//..debugMode = true;
+            barrel.priority = 7;
             add(barrel);
             break; 
           case 'MovingBarrel' :
@@ -117,17 +118,6 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
               player: player,
               antiPlayer: antiPlayer);//..debugMode = true;
             add(movingBarrel);
-            break;   
-          case 'Tree' :
-            final tree = Tree(position: Vector2(getExactCoOrdinate(spawnPoint.x) + 32, getExactCoOrdinate(spawnPoint.y)-16),player: player,antiPlayer: antiPlayer)..debugMode = true;
-            tree.anchor = Anchor.center;
-            add(tree);     
-            final block = CollisionBlock(
-              position: Vector2(spawnPoint.x, spawnPoint.y),
-              size: Vector2(spawnPoint.width, spawnPoint.height),
-            );//..debugMode = true;
-            add(block);
-            collisionBlocks.add(block);
             break;
           default:  
         }
@@ -164,7 +154,18 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
             // add(gold);
             //create a new block.
             break;
-          default:   
+          case 'Tree' :
+            final tree = Tree(position: Vector2(getExactCoOrdinate(collisionBlock.x) + 32, getExactCoOrdinate(collisionBlock.y)-16),player: player,antiPlayer: antiPlayer);//..debugMode = true;
+            tree.anchor = Anchor.center;
+            add(tree);
+            final block = CollisionBlock(
+              position: Vector2(collisionBlock.x, collisionBlock.y),
+              size: Vector2(collisionBlock.width, collisionBlock.height),
+            );//..debugMode = true;
+            add(block);
+            collisionBlocks.add(block);
+            break;
+          default:
         }
       }
     }
