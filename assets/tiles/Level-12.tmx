@@ -25,7 +25,7 @@
  <tileset firstgid="280" source="TX Props.tsx"/>
  <tileset firstgid="344" source="11.tsx"/>
  <tileset firstgid="345" source="Bridge_All.tsx"/>
- <group id="26" name="Common">
+ <group id="26" name="Common" visible="0">
   <layer id="13" name="Water" width="16" height="12">
    <data encoding="csv">
 234,234,234,234,234,234,234,234,234,234,234,234,234,234,234,234,
@@ -206,18 +206,18 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,181,182,183,0,0,0,0,0,0,0,0,0,0,
 0,0,0,184,185,186,0,0,0,0,0,0,0,0,0,0,
-0,0,0,187,188,189,0,0,0,180,180,180,250,0,0,0,
-0,0,0,0,344,0,0,180,0,0,0,0,254,0,0,0,
+0,0,0,187,188,189,0,0,0,180,180,180,246,0,0,0,
+0,0,0,0,344,0,0,180,0,0,0,0,250,0,0,0,
 0,0,0,0,0,0,0,180,180,180,0,0,254,0,0,0,
-0,0,0,0,0,0,243,245,0,0,0,180,258,0,0,0,
-0,0,0,0,191,0,255,257,0,0,0,0,262,0,0,0,
+0,0,0,0,0,0,243,245,0,0,0,180,254,0,0,0,
+0,0,0,0,191,0,255,257,0,0,0,0,258,0,0,0,
 0,0,0,0,352,0,0,190,0,190,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="5" name="Collisionblocks">
+ <objectgroup id="5" name="Collisionblocks" visible="0">
   <object id="1" name="Block" type="Block" x="256" y="192" width="64" height="64"/>
   <object id="3" name="Block" type="Block" x="576" y="192" width="64" height="64"/>
   <object id="4" name="Block" type="Block" x="640" y="192" width="64" height="64"/>
@@ -242,11 +242,11 @@
   <object id="28" name="Block" type="Block" x="448" y="512" width="64" height="64"/>
   <object id="280" name="Block" type="Block" x="576" y="512" width="64" height="64"/>
  </objectgroup>
- <objectgroup id="6" name="Checkpoints">
+ <objectgroup id="6" name="Checkpoints" visible="0">
   <object id="27" name="AntiPlayerCheckpoint" type="AntiPlayerCheckpoint" x="384" y="512" width="64" height="64"/>
   <object id="29" name="PlayerCheckpoint" type="PlayerCheckpoint" x="512" y="512" width="64" height="64"/>
  </objectgroup>
- <objectgroup id="7" name="Spawnpoints">
+ <objectgroup id="7" name="Spawnpoints" visible="0">
   <object id="2" name="Barrel" type="Barrel" x="320" y="192" width="64" height="64"/>
   <object id="9" name="Barrel" type="Barrel" x="704" y="256" width="64" height="64"/>
   <object id="11" name="Barrel" type="Barrel" x="384" y="320" width="64" height="64"/>
