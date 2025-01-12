@@ -16,6 +16,7 @@
  <tileset firstgid="222" source="Tree_192.tsx"/>
  <tileset firstgid="234" source="Bridge_All.tsx"/>
  <tileset firstgid="246" source="13.tsx"/>
+ <tileset firstgid="247" source="11.tsx"/>
  <layer id="3" name="GameBackground" width="16" height="12">
   <data encoding="csv">
 12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,
@@ -80,7 +81,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="12" name="GameGridSideTree" width="16" height="12">
+ <layer id="12" name="GameGridSideTree" width="16" height="12" visible="0">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -148,13 +149,13 @@
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,241,238,238,238,238,238,238,238,239,0,0,0,
+0,0,0,0,0,185,0,0,0,0,0,0,169,0,0,0,
+0,0,0,0,190,188,241,238,238,238,239,180,170,0,0,0,
 0,0,0,0,0,0,0,0,246,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,191,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,191,0,0,180,0,0,0,0,
 0,0,0,0,0,0,0,0,246,0,0,0,0,0,0,0,
-0,0,0,0,241,238,238,238,238,238,238,238,239,0,0,0,
+0,0,0,0,190,180,241,238,238,238,239,247,247,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
@@ -191,11 +192,11 @@
   <object id="26" name="Block" type="Block" x="704" y="512" width="64" height="64"/>
   <object id="27" name="Block" type="Block" x="768" y="512" width="64" height="64"/>
  </objectgroup>
- <objectgroup id="6" name="Checkpoints">
+ <objectgroup id="6" name="Checkpoints" visible="0">
   <object id="14" name="AntiPlayerCheckpoint" type="AntiPlayerCheckpoint" x="704" y="320" width="64" height="64"/>
   <object id="17" name="PlayerCheckpoint" type="PlayerCheckpoint" x="320" y="448" width="64" height="64"/>
  </objectgroup>
- <objectgroup id="7" name="Spawnpoints">
+ <objectgroup id="7" name="Spawnpoints" visible="0">
   <object id="10" name="Player" type="Player" x="256" y="256" width="64" height="64"/>
   <object id="12" name="AntiPlayer" type="AntiPlayer" x="768" y="256" width="64" height="64"/>
  </objectgroup>

@@ -14,6 +14,9 @@
  <tileset firstgid="194" source="Castle_Destroyed.tsx"/>
  <tileset firstgid="214" source="HappySheep_Idle.tsx"/>
  <tileset firstgid="222" source="Tree_192.tsx"/>
+ <tileset firstgid="234" source="Tilemap_Elevation.tsx"/>
+ <tileset firstgid="266" source="Bridge_All.tsx"/>
+ <tileset firstgid="278" source="03.tsx"/>
  <layer id="3" name="GameBackground" width="16" height="12">
   <data encoding="csv">
 12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,
@@ -78,7 +81,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="12" name="GameGridSideTree" width="16" height="12">
+ <layer id="12" name="GameGridSideTree" width="16" height="12" visible="0">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -148,10 +151,10 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,191,191,191,191,191,191,191,0,0,0,0,
-0,0,0,0,0,0,0,190,0,190,0,0,0,0,0,0,
-0,0,0,0,180,0,0,190,0,190,0,0,180,0,0,0,
-0,0,0,0,0,180,0,190,190,190,0,180,0,0,0,0,
+0,0,0,0,0,273,270,237,270,237,270,271,0,0,0,0,
+0,0,0,0,0,0,0,241,0,241,0,0,0,0,0,0,
+0,0,0,0,278,0,0,245,0,245,0,0,278,0,0,0,
+0,0,0,0,0,278,0,249,190,249,0,278,0,0,0,0,
 0,0,0,0,0,180,0,0,0,0,0,180,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -186,11 +189,11 @@
   <object id="20" name="Block" type="Block" x="320" y="512" width="64" height="64"/>
   <object id="25" name="Block" type="Block" x="704" y="512" width="64" height="64"/>
  </objectgroup>
- <objectgroup id="6" name="Checkpoints">
+ <objectgroup id="6" name="Checkpoints" visible="0">
   <object id="21" name="AntiPlayerCheckpoint" type="AntiPlayerCheckpoint" x="384" y="512" width="64" height="64"/>
   <object id="24" name="PlayerCheckpoint" type="PlayerCheckpoint" x="640" y="512" width="64" height="64"/>
  </objectgroup>
- <objectgroup id="7" name="Spawnpoints">
+ <objectgroup id="7" name="Spawnpoints" visible="0">
   <object id="9" name="Barrel" type="Barrel" x="512" y="320" width="64" height="64"/>
   <object id="22" name="Player" type="Player" x="448" y="512" width="64" height="64"/>
   <object id="23" name="AntiPlayer" type="AntiPlayer" x="576" y="512" width="64" height="64"/>

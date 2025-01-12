@@ -199,17 +199,17 @@
 </data>
   </layer>
  </group>
- <layer id="13" name="CollisonblockTileLayer" width="16" height="12" visible="0">
+ <layer id="13" name="CollisonblockTileLayer" width="16" height="12">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,190,0,190,190,190,0,0,0,0,0,
-0,0,0,0,0,190,0,190,190,0,0,190,0,0,0,0,
-0,0,0,0,0,190,0,0,0,0,190,190,0,0,0,0,
-0,0,0,0,0,190,190,0,190,0,0,190,0,0,0,0,
-0,0,0,0,0,190,0,0,190,190,0,190,0,0,0,0,
-0,0,0,0,0,0,190,190,190,0,190,0,0,0,0,0,
+0,0,0,0,0,0,0,0,185,192,0,0,0,0,0,0,
+0,0,0,0,0,0,158,0,188,193,190,0,0,0,0,0,
+0,0,0,0,0,191,0,274,274,0,0,191,0,0,0,0,
+0,0,0,0,0,191,0,0,0,0,273,191,0,0,0,0,
+0,0,0,0,0,191,273,0,180,0,0,191,0,0,0,0,
+0,0,0,0,0,191,0,0,190,190,0,191,0,0,0,0,
+0,0,0,0,0,0,191,275,275,0,158,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
@@ -240,11 +240,11 @@
   <object id="26" name="Block" type="Block" x="512" y="512" width="64" height="64"/>
   <object id="27" name="Block" type="Block" x="640" y="512" width="64" height="64"/>
  </objectgroup>
- <objectgroup id="6" name="Checkpoints">
+ <objectgroup id="6" name="Checkpoints" visible="0">
   <object id="6" name="PlayerCheckpoint" type="PlayerCheckpoint" x="384" y="256" width="64" height="64"/>
   <object id="22" name="AntiPlayerCheckpoint" type="AntiPlayerCheckpoint" x="640" y="448" width="64" height="64"/>
  </objectgroup>
- <objectgroup id="7" name="Spawnpoints">
+ <objectgroup id="7" name="Spawnpoints" visible="0">
   <object id="19" name="Player" type="Player" x="384" y="448" width="64" height="64"/>
   <object id="9" name="AntiPlayer" type="AntiPlayer" x="640" y="256" width="64" height="64"/>
  </objectgroup>

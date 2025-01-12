@@ -46,6 +46,9 @@
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
+        "11.tsx": {
+            "scaleInDock": 1
+        },
         "12.tsx": {
             "scaleInDock": 1
         },
@@ -291,15 +294,11 @@
             }
         },
         "Level-01.tmx": {
-            "expandedObjectLayers": [
-                6,
-                5
-            ],
-            "scale": 0.54,
-            "selectedLayer": 12,
+            "scale": 0.5497,
+            "selectedLayer": 14,
             "viewCenter": {
-                "x": 544.4444444444443,
-                "y": 411.1111111111111
+                "x": 441.14971802801534,
+                "y": 645.8068037111152
             }
         },
         "Level-02-Copy.tmx": {
@@ -318,23 +317,23 @@
         },
         "Level-02.tmx": {
             "expandedObjectLayers": [
-                6,
                 5,
-                30
+                30,
+                6
             ],
             "scale": 0.56,
             "selectedLayer": 8,
             "viewCenter": {
-                "x": 712.5,
-                "y": 416.0714285714285
+                "x": 711.6071428571428,
+                "y": 416.07142857142856
             }
         },
         "Level-03.tmx": {
             "scale": 0.5002,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 633.7465013994403,
-                "y": 494.8020791683326
+                "x": 632.7469012395042,
+                "y": 493.80247900839674
             }
         },
         "Level-04.tmx": {
@@ -362,14 +361,11 @@
             }
         },
         "Level-07-copy.tmx": {
-            "expandedObjectLayers": [
-                21
-            ],
-            "scale": 0.77,
-            "selectedLayer": 6,
+            "scale": 0.75,
+            "selectedLayer": 5,
             "viewCenter": {
-                "x": 554.5454545454545,
-                "y": 312.987012987013
+                "x": 455.3333333333333,
+                "y": 519.3333333333334
             }
         },
         "Level-07.tmx": {
@@ -816,6 +812,22 @@
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
+        "basic_level_background.tmx": {
+            "scale": 0.7232204861111111,
+            "selectedLayer": 13,
+            "viewCenter": {
+                "x": 575.8962971853807,
+                "y": 399.6015123327132
+            }
+        },
+        "basic_level_background_original.tmx": {
+            "scale": 0.7232204861111111,
+            "selectedLayer": -1,
+            "viewCenter": {
+                "x": 530.2670587529257,
+                "y": 399.6015123327132
+            }
+        },
         "bgspritesheet.tsx": {
             "scaleInDock": 1
         },
@@ -959,9 +971,8 @@
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
-        "Level-01.tmx",
-        "Button_Blue.tsx",
-        "Level-07-copy.tmx",
+        "Level-02.tmx",
+        "basic_level_background_original.tmx",
         "tutorial.tmx",
         "Game-Welcome-Page.tmx",
         "new_game_logo_correct.tsx",
@@ -970,6 +981,7 @@
         "game_logo_new_downsized.tsx",
         "Level-02-Copy.tmx",
         "Level-06.tmx",
+        "Level-07-copy.tmx",
         "Level-07.tmx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
