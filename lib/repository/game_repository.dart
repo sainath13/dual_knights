@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:dual_knights/model/character_dialogue_model.dart';
 import 'package:dual_knights/model/level_details.dart';
 import 'package:dual_knights/model/user_model.dart';
 import 'package:dual_knights/model/user_progress_model.dart';
@@ -88,14 +89,6 @@ class GameRepository {
     await localStorageService.saveUserSettings(settings.toJson());
   }
 
-  /// Get level detail (always fetch from API, no local storage needed here)
-  Future<LevelDetail> getLevelDetail(int level) async {
-    final response = await dio.post(
-      '$baseUrl/level-detail',
-      data: {'level': level},
-    );
-    return LevelDetail.fromJson(response.data);
-  }
 
   /// Mark level complete (API or save locally for guest users)
   Future<bool> markLevelComplete(
@@ -169,6 +162,28 @@ Future<TiledComponent> loadTmxFromS3(String bucketUrl,String tmxFileName) async 
       
     } catch (e) {
       throw Exception('Error loading TMX from S3: $e');
+    }
+  }
+
+  Future<CharacterDialogue> getCharacterDialogues(String? jwtToken,String event,String character) async {
+    if (jwtToken != null) {
+      
+      final response = await dio.post(
+        '$baseUrl/api/v1/bedrock/ask',
+        options: Options(headers: {'Authorization': 'Bearer $jwtToken'}),
+        data: {
+          'event': event,
+          'character': character,
+        },
+      );
+      final characterDialogue = CharacterDialogue.fromJson(response.data['data']);
+
+      
+      return characterDialogue;
+    } else {
+      // Fetch from local storage
+      
+      return CharacterDialogue.fromJson({});
     }
   }
 

@@ -4,6 +4,7 @@ import 'dart:async';
 import 'dart:ui';
 
 import 'package:amplify_flutter/amplify_flutter.dart';
+import 'package:dual_knights/model/character_dialogue_model.dart';
 import 'package:dual_knights/model/user_model.dart';
 import 'package:dual_knights/model/user_settings_model.dart';
 import 'package:dual_knights/repository/game_repository.dart';
@@ -39,6 +40,8 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
   final analogueJoystick = ValueNotifier(false); //If true hud will have analogue joystick else arrow keys
   ValueNotifier<int> stepCountNotifier = ValueNotifier(0);
   Map<int, int> stepCountForStars = {};
+  bool isDialogueActive = false;
+  bool dialogueApiCallActive = false;
 
   var lastGamePlayState = null;
 
@@ -437,12 +440,25 @@ Future<String?> getJwtToken() async {
     gameRepository.saveUserSettings(userSettings, jwtToken); 
   }
 
-   void characterDialogues(String characterName, String dialogue,int priority) {
-    dialogueNotifier.value = {
-      'characterName': characterName,
-      'dialogue': dialogue,
-      'priority': priority.toString()
-    };
+   void generateCharacterDialogues(String characterName, String event,int priority) async{
+    if(!isDialogueActive && !dialogueApiCallActive){
+      dialogueApiCallActive = true;
+      final jwtToken = await getJwtToken();
+      try {
+        CharacterDialogue characterDialogue = await gameRepository.getCharacterDialogues(jwtToken, event, characterName);
+        print(characterDialogue);
+        dialogueNotifier.value = {
+          'characterName': characterDialogue.character,
+          'dialogue': characterDialogue.taunt,
+          'priority': priority.toString()
+        };
+      } catch (e) {
+        print('Error fetching character dialogues: $e');
+      }finally{
+        dialogueApiCallActive = false;
+      }
+    }
+   
 
   }
 
