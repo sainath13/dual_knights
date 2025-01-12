@@ -291,14 +291,15 @@
             }
         },
         "Level-01.tmx": {
-            "expandedGroupLayers": [
-                26
+            "expandedObjectLayers": [
+                6,
+                5
             ],
             "scale": 0.54,
-            "selectedLayer": 15,
+            "selectedLayer": 12,
             "viewCenter": {
-                "x": 545.3703703703703,
-                "y": 412.037037037037
+                "x": 544.4444444444443,
+                "y": 411.1111111111111
             }
         },
         "Level-02-Copy.tmx": {
@@ -317,15 +318,15 @@
         },
         "Level-02.tmx": {
             "expandedObjectLayers": [
-                5,
                 6,
+                5,
                 30
             ],
             "scale": 0.56,
             "selectedLayer": 8,
             "viewCenter": {
-                "x": 711.6071428571429,
-                "y": 415.17857142857144
+                "x": 712.5,
+                "y": 416.0714285714285
             }
         },
         "Level-03.tmx": {
@@ -959,6 +960,7 @@
     "property.type": "int",
     "recentFiles": [
         "Level-01.tmx",
+        "Button_Blue.tsx",
         "Level-07-copy.tmx",
         "tutorial.tmx",
         "Game-Welcome-Page.tmx",
@@ -968,8 +970,7 @@
         "game_logo_new_downsized.tsx",
         "Level-02-Copy.tmx",
         "Level-06.tmx",
-        "Level-07.tmx",
-        "Level-02.tmx"
+        "Level-07.tmx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",

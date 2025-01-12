@@ -46,6 +46,7 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
           case 'PlayerCheckpoint' :
             final playerCheckpoint = PlayerCheckpoint();//..debugMode = true;
             playerCheckpoint.position = Vector2(checkpoint.x, checkpoint.y);
+            playerCheckpoint.priority = 2;
             add(playerCheckpoint);
             // final gold = Gold()..debugMode = true;
             // gold.position = Vector2(checkpoint.x, checkpoint.y);
@@ -54,7 +55,9 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
           case 'AntiPlayerCheckpoint' :
             final antiPlayerCheckpoint = AntiPlayerCheckpoint();//..debugMode = true;
             antiPlayerCheckpoint.position = Vector2(checkpoint.x, checkpoint.y);
+            antiPlayerCheckpoint.priority = 2;
             add(antiPlayerCheckpoint);
+            break;
           default:  
         }
       }
