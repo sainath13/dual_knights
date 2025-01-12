@@ -233,7 +233,7 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef<DualKnights>, 
     // log("AntiPlayer priority is $priority");
 
     if (isMoving) {
-      game.characterDialogues('Red Knight', 'Blue is duffer',1);
+      game.generateCharacterDialogues('Flame Knight', 'Blue standing still',1);
       final movement = direction * speed * dt;
       final distanceToTarget = targetPosition - position;
       final distanceThisFrame = movement.length;
