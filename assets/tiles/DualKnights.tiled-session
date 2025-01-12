@@ -46,6 +46,9 @@
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
+        "11.tsx": {
+            "scaleInDock": 1
+        },
         "12.tsx": {
             "scaleInDock": 1
         },
@@ -292,10 +295,10 @@
         },
         "Level-01.tmx": {
             "scale": 0.5497,
-            "selectedLayer": 8,
+            "selectedLayer": 14,
             "viewCenter": {
-                "x": 600.3274513370931,
-                "y": 583.9548844824451
+                "x": 441.14971802801534,
+                "y": 645.8068037111152
             }
         },
         "Level-02-Copy.tmx": {
@@ -315,22 +318,22 @@
         "Level-02.tmx": {
             "expandedObjectLayers": [
                 5,
-                6,
-                30
+                30,
+                6
             ],
             "scale": 0.56,
             "selectedLayer": 8,
             "viewCenter": {
-                "x": 711.6071428571429,
-                "y": 415.17857142857144
+                "x": 711.6071428571428,
+                "y": 416.07142857142856
             }
         },
         "Level-03.tmx": {
             "scale": 0.5002,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 633.7465013994403,
-                "y": 494.8020791683326
+                "x": 632.7469012395042,
+                "y": 493.80247900839674
             }
         },
         "Level-04.tmx": {
@@ -809,6 +812,22 @@
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
+        "basic_level_background.tmx": {
+            "scale": 0.7232204861111111,
+            "selectedLayer": 13,
+            "viewCenter": {
+                "x": 575.8962971853807,
+                "y": 399.6015123327132
+            }
+        },
+        "basic_level_background_original.tmx": {
+            "scale": 0.7232204861111111,
+            "selectedLayer": -1,
+            "viewCenter": {
+                "x": 530.2670587529257,
+                "y": 399.6015123327132
+            }
+        },
         "bgspritesheet.tsx": {
             "scaleInDock": 1
         },
@@ -952,6 +971,8 @@
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "Level-02.tmx",
+        "basic_level_background_original.tmx",
         "tutorial.tmx",
         "Game-Welcome-Page.tmx",
         "new_game_logo_correct.tsx",
@@ -961,9 +982,7 @@
         "Level-02-Copy.tmx",
         "Level-06.tmx",
         "Level-07-copy.tmx",
-        "Level-07.tmx",
-        "Level-02.tmx",
-        "Bridge_All.tsx"
+        "Level-07.tmx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
