@@ -4,6 +4,7 @@ import 'dart:ui';
 
 
 import 'package:dual_knights/components/anti_player.dart';
+import 'package:dual_knights/components/cloud_loading.dart';
 
 import 'package:dual_knights/components/level.dart';
 
@@ -108,7 +109,7 @@ class Gameplay extends Component with HasGameReference<DualKnights> {
     
 
     await _setupWorldAndCamera(level);
-    
+
 
     fader = RectangleComponent(
       size: _camera.viewport.virtualSize,
@@ -123,9 +124,13 @@ class Gameplay extends Component with HasGameReference<DualKnights> {
       onRestartLevel:onRestartLevel
     );
 
-    await _camera.viewport.addAll([fader,_hud]);
-    // await _camera.viewfinder.add(_cameraShake);
-    // _cameraShake.pause();
+  var cloudLoadingComponent = CloudLoadingComponent();
+
+
+    await _camera.viewport.addAll([cloudLoadingComponent,fader,_hud]);
+
+
+    
   }
 
 

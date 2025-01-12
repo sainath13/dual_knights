@@ -30,9 +30,9 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
   
   @override
   FutureOr<void> onLoad() async{
-    level = await TiledComponent.load('Level-$currentLevelIndex.tmx', Vector2(64, 64));
-    // level = await gameRepository.loadTmxFromS3('https://dual-knight-assets.s3.us-west-2.amazonaws.com','Level-$currentLevelIndex.tmx');
-
+    // level = await TiledComponent.load('Level-$currentLevelIndex.tmx', Vector2(64, 64));
+    level = await gameRepository.loadTmxFromS3('https://dual-knight-assets.s3.us-west-2.amazonaws.com','Level-$currentLevelIndex.tmx');
+    
     // level = await TiledComponent.load('Level-$currentLevelIndex.tmx', Vector2(64, 64));
     // level = await TiledComponent.load('Level-05.tmx', Vector2(64, 64));
     // level = await TiledComponent.load('Level-01.tmx', Vector2(64, 64));
@@ -247,7 +247,7 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
       log('Level : Sadly TreesOutSideGameGrid is null');
     }
 
-
+    
     return super.onLoad();
   }
 
