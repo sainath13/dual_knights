@@ -245,7 +245,7 @@ class Player extends SpriteAnimationComponent with HasGameRef<DualKnights>, Keyb
     // log("Player priority is $priority");
     
     if (isMoving) {
-      game.generateCharacterDialogues('Aqua Knight', 'The enemy is approaching!',0);
+      game.addDialogueRequest('Aqua Knight', 'The enemy is approaching!',0);
       final movement = direction * speed * dt;
       final distanceToTarget = targetPosition - position;
       final distanceThisFrame = movement.length;
