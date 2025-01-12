@@ -37,6 +37,8 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
   final musicValueNotifier = ValueNotifier(true);
   final sfxValueNotifier = ValueNotifier(true);
   final analogueJoystick = ValueNotifier(false); //If true hud will have analogue joystick else arrow keys
+  ValueNotifier<int> stepCountNotifier = ValueNotifier(0);
+  Map<int, int> stepCountForStars = {};
 
   var lastGamePlayState = null;
 
@@ -340,7 +342,16 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
     ));
   }
 
-  void _showLevelCompleteMenu(int nStars) {
+  void _showLevelCompleteMenu(int nSteps) {
+    nSteps = stepCountNotifier.value;
+    int nStars = 0;
+    if (nSteps < stepCountForStars[3]!)  {
+      nStars = 3;
+    } else if (nSteps < stepCountForStars[2]!) {
+      nStars = 2;
+    } else if (nSteps <  stepCountForStars[1]!){
+      nStars = 1;
+    }
 
   final gameplay = findByKeyName<Gameplay>(Gameplay.id);
 

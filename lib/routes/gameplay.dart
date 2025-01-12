@@ -29,7 +29,7 @@ class Gameplay extends Component with HasGameReference<DualKnights> {
   final Player player;
   final AntiPlayer antiPlayer;
   final GameRepository gameRepository;
-
+  
   Gameplay(
     this.currentLevel, {
     super.key,
@@ -84,6 +84,7 @@ class Gameplay extends Component with HasGameReference<DualKnights> {
   @override
   Future<void> onLoad() async {
 
+    game.stepCountNotifier.value = 0;
     if (game.musicValueNotifier.value) {
       _bgmPlayer = await FlameAudio.loopLongAudio(DualKnights.bgm, volume: 0);
     }else{
@@ -125,6 +126,11 @@ class Gameplay extends Component with HasGameReference<DualKnights> {
     await _camera.viewport.addAll([fader,_hud]);
     // await _camera.viewfinder.add(_cameraShake);
     // _cameraShake.pause();
+  }
+
+
+  void addStepCount(){
+    game.stepCountNotifier.value++;
   }
 
   @override

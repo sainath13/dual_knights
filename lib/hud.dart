@@ -33,6 +33,7 @@ class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference<D
   PositionComponent? _activeDialogueBox; 
   bool _isUpdatingDialogue = false;
   var _dialogueListener;
+  var _stepCountListener = null;
 
   @override
   Future<void> onLoad() async {
@@ -40,12 +41,14 @@ class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference<D
     await addPauseButton();
     await addRestartButton();
     await addPlayAsOption();
+    await addStepCount();
 
     await loadDialogueCharacterSprites();
     _dialogueListener = () {
         _updateDialogue(game.dialogueNotifier.value);
     };
     game.dialogueNotifier.addListener(_dialogueListener);
+    
   }
 
   Future<void> loadDialogueCharacterSprites() async {
@@ -194,7 +197,11 @@ class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference<D
   @override
   void update(double dt) {
     super.update(dt);
-    ancestor.input.pressedKeys.clear();
+    if(!ancestor.input.pressedKeys.isEmpty){
+      ancestor.input.pressedKeys.clear();
+      ancestor.addStepCount();
+    }
+    
 
     // Detect joystick direction
     if (_joystick.relativeDelta != Vector2.zero()) {
@@ -431,10 +438,45 @@ Future<void> _updateDialogue(Map<String, String> dialogue) async {
     
     game.analogueJoystick.removeListener(_joystickSettingListener);
     game.dialogueNotifier.removeListener(_dialogueListener);
+    game.stepCountNotifier.removeListener(_stepCountListener);
     super.onRemove();
   }
-    
+  
 
+    Future<void> addStepCount() async {
+      final stepCountBackground = RoundedBackgroundComponent(
+        size: Vector2(100, 50),
+        position: Vector2(parent.virtualSize.x / 2, 30),
+        backgroundPaint: Paint()
+          ..color = const Color.fromARGB(255, 215, 215, 215).withOpacity(0.75)
+          ..style = PaintingStyle.fill,
+        borderRadius: 16.0,
+        anchor: Anchor.center,
+      );
+
+      await add(stepCountBackground);
+
+      final stepCountText = TextComponent(
+        text: 'Steps: 0',
+        textRenderer: TextPaint(
+          style: const TextStyle(
+            color: Colors.black,
+            fontSize: 20,
+            fontFamily: "DualKnights",
+          ),
+        ),
+        anchor: Anchor.center,
+        position: stepCountBackground.size / 2,
+      );
+
+      await stepCountBackground.add(stepCountText);
+
+      _stepCountListener = () {
+        stepCountText.text = 'Steps: ${game.stepCountNotifier.value}';
+      };
+      
+      game.stepCountNotifier.addListener(_stepCountListener);
+    }
   }
 
 

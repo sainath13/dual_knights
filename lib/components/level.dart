@@ -29,15 +29,25 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
   
   @override
   FutureOr<void> onLoad() async{
+    level = await TiledComponent.load('Level-$currentLevelIndex.tmx', Vector2(64, 64));
     level = await gameRepository.loadTmxFromS3('https://dual-knight-assets.s3.us-west-2.amazonaws.com','Level-$currentLevelIndex.tmx');
 
     // level = await TiledComponent.load('Level-$currentLevelIndex.tmx', Vector2(64, 64));
     // level = await TiledComponent.load('Level-05.tmx', Vector2(64, 64));
-    // level = await TiledComponent.load('Level-07-Copy.tmx', Vector2(64, 64));
+    // level = await TiledComponent.load('Level-01.tmx', Vector2(64, 64));
     // level = await TiledComponent.load('Level-for-Sarvesh.tmx', Vector2(64, 64));
 
     // level.debugMode = true;
     add(level);
+
+    final Map<int, int> stepCountForStars = {
+      1: level.tileMap.map.properties.getValue<int>('Star1') ?? 30, // Less than 10 steps for 3 stars
+      2: level.tileMap.map.properties.getValue<int>('Star2') ?? 20, // Less than 20 steps for 2 stars
+      3: level.tileMap.map.properties.getValue<int>('Star3') ?? 10, // Less than 30 steps for 1 star
+    };
+
+    game.stepCountForStars = stepCountForStars;
+
     List<CollisionBlock> collisionBlocks = [];
     final checkpointLayer = level.tileMap.getLayer<ObjectGroup>('Checkpoints');
     if(checkpointLayer != null){
