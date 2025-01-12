@@ -7,6 +7,7 @@ import 'package:dual_knights/dual_knights.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
 import 'package:flame/particles.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flame_tiled/flame_tiled.dart';
 import 'package:flame/text.dart';
 
@@ -118,7 +119,9 @@ class GameLevelComplete extends PositionComponent with HasGameRef<DualKnights>{
     _camera.moveTo(Vector2(gameLevelComplete.size.x * 0.5, _camera.viewport.virtualSize.y*0.5));
     await add(_camera);
     addConfettiEffect();
-
+    if (game.sfxValueNotifier.value) {
+      FlameAudio.play(DualKnights.completeLevel);
+    }
 
     final buttonsLayer = gameLevelComplete.tileMap.getLayer<ObjectGroup>('ButtonsSpawnLayer');
     if (buttonsLayer != null) {

@@ -219,6 +219,9 @@ class Player extends SpriteAnimationComponent with HasGameRef<DualKnights>, Keyb
     // log("Player detected collsion with $other");
     if (other is AntiPlayer) {
       log("Player collided with AntiPlayer");
+      if (game.sfxValueNotifier.value) {
+        FlameAudio.play(DualKnights.crashEachother);
+      }
       ancestor.input.movementAllowed = false;
       animation = fightAnimation;
       Future.delayed(Duration(milliseconds: 200), () {
