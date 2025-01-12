@@ -3,7 +3,6 @@
 import 'dart:async';
 import 'dart:ui';
 
-import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
 import 'package:amplify_flutter/amplify_flutter.dart';
 import 'package:dual_knights/model/user_model.dart';
 import 'package:dual_knights/model/user_settings_model.dart';
@@ -268,7 +267,8 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
           onLevelCompleted: _showLevelCompleteMenu,
           onGameOver: _restartWithoutPopup,
           onRestartLevel:  _restartWithoutPopup,
-          key: ComponentKey.named(Gameplay.id)
+          key: ComponentKey.named(Gameplay.id),
+          gameRepository: gameRepository
         ),
       ),
       name: Gameplay.id,
