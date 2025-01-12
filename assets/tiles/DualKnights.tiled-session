@@ -407,16 +407,19 @@
             }
         },
         "Level-10.tmx": {
-            "scale": 0.637353515625,
-            "selectedLayer": -1,
+            "scale": 0.63,
+            "selectedLayer": 13,
             "viewCenter": {
-                "x": 511.4900789090631,
-                "y": 384.4020531678541
+                "x": 498.4126984126983,
+                "y": 384.1269841269842
             }
         },
         "Level-11.tmx": {
+            "expandedGroupLayers": [
+                26
+            ],
             "scale": 0.637353515625,
-            "selectedLayer": 3,
+            "selectedLayer": 13,
             "viewCenter": {
                 "x": 511.4900789090631,
                 "y": 384.4020531678541
