@@ -1,6 +1,7 @@
 // ignore_for_file: implementation_imports, unnecessary_import
 
 import 'dart:async';
+import 'dart:math';
 import 'dart:ui';
 
 import 'package:amplify_flutter/amplify_flutter.dart';
@@ -42,6 +43,7 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
   Map<int, int> stepCountForStars = {};
   bool isDialogueActive = false;
   bool dialogueApiCallActive = false;
+  final List<Map<String, dynamic>> dialogueQueue = [];
 
   var lastGamePlayState = null;
 
@@ -175,6 +177,12 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
 
 
   return super.onLoad();
+  }
+
+  @override
+  void update(double dt) {
+    super.update(dt);
+    processDialogueQueue(); // Process the queue on each frame
   }
 
    @override
@@ -440,26 +448,53 @@ Future<String?> getJwtToken() async {
     gameRepository.saveUserSettings(userSettings, jwtToken); 
   }
 
-   void generateCharacterDialogues(String characterName, String event,int priority) async{
-    if(!isDialogueActive && !dialogueApiCallActive){
-      dialogueApiCallActive = true;
+
+  Future<void> processDialogueQueue() async {
+    if (dialogueApiCallActive || dialogueQueue.isEmpty || isDialogueActive) return;
+
+    dialogueApiCallActive = true;
+
+    try {
+      print('Dialogue queue length: ${dialogueQueue.length}');
+      // Randomly select a dialogue request from the queue
+      final randomIndex = Random().nextInt(dialogueQueue.length);
+      final selectedRequest = dialogueQueue.removeAt(randomIndex);
+      dialogueQueue.clear();
+      print('Dialogue queue length: ${dialogueQueue.length}');
+
       final jwtToken = await getJwtToken();
-      try {
-        CharacterDialogue characterDialogue = await gameRepository.getCharacterDialogues(jwtToken, event, characterName);
-        print(characterDialogue);
-        dialogueNotifier.value = {
-          'characterName': characterDialogue.character,
-          'dialogue': characterDialogue.taunt,
-          'priority': priority.toString()
-        };
-      } catch (e) {
-        print('Error fetching character dialogues: $e');
-      }finally{
-        dialogueApiCallActive = false;
-      }
+      final characterDialogue = await gameRepository.getCharacterDialogues(
+        jwtToken,
+        selectedRequest['event'],
+        selectedRequest['characterName'],
+      );
+
+      print(characterDialogue);
+
+      // Notify dialogue system with the result
+      dialogueNotifier.value = {
+        'characterName': characterDialogue.character,
+        'dialogue': characterDialogue.taunt,
+        'priority': selectedRequest['priority'].toString(),
+      };
+    } catch (e) {
+      print('Error fetching character dialogues: $e');
+    } finally {
+      dialogueApiCallActive = false;
+    }
+  }
+
+  void addDialogueRequest(String characterName, String event, int priority) {
+    // Add the dialogue request to the queue
+
+    if (!dialogueApiCallActive && !isDialogueActive){
+      dialogueQueue.add({
+      'characterName': characterName,
+      'event': event,
+      'priority': priority,
+    });
     }
    
-
   }
 
 }
