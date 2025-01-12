@@ -466,8 +466,11 @@
             }
         },
         "Level-17.tmx": {
+            "expandedGroupLayers": [
+                26
+            ],
             "scale": 0.637353515625,
-            "selectedLayer": 0,
+            "selectedLayer": 7,
             "viewCenter": {
                 "x": 511.4900789090631,
                 "y": 384.4020531678541
@@ -1268,18 +1271,18 @@
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "Level-10.tmx",
+        "Level-11.tmx",
+        "Level-13.tmx",
+        "Level-12.tmx",
+        "Level-14.tmx",
+        "Level-16.tmx",
+        "Level-15.tmx",
+        "Level-17.tmx",
         "Level-07.tmx",
         "Level-08.tmx",
         "Level-09.tmx",
-        "Level-06.tmx",
-        "Level-05.tmx",
-        "Level-04.tmx",
-        "Level-03.tmx",
-        "Level-02.tmx",
-        "Level-01.tmx",
-        "sample.tmx",
-        "Level-10.tmx",
-        "Level-11.tmx"
+        "Level-06.tmx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
