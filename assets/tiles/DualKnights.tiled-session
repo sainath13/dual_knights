@@ -344,8 +344,12 @@
             }
         },
         "Level-04.tmx": {
+            "expandedObjectLayers": [
+                5,
+                6
+            ],
             "scale": 0.7335286458333332,
-            "selectedLayer": 0,
+            "selectedLayer": 13,
             "viewCenter": {
                 "x": 478.50891985444224,
                 "y": 317.6426732936896
@@ -353,18 +357,18 @@
         },
         "Level-05.tmx": {
             "scale": 0.58,
-            "selectedLayer": 0,
+            "selectedLayer": -1,
             "viewCenter": {
                 "x": 479.3103448275863,
                 "y": 384.4827586206897
             }
         },
         "Level-06.tmx": {
-            "scale": 0.756103515625,
-            "selectedLayer": -1,
+            "scale": 0.75,
+            "selectedLayer": 13,
             "viewCenter": {
-                "x": 511.83467872134315,
-                "y": 382.22279625443974
+                "x": 512,
+                "y": 382.6666666666666
             }
         },
         "Level-07-copy.tmx": {
@@ -1261,13 +1265,13 @@
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "Level-06.tmx",
         "Level-05.tmx",
         "Level-04.tmx",
+        "Level-03.tmx",
         "Level-02.tmx",
         "Level-01.tmx",
         "sample.tmx",
-        "Level-03.tmx",
-        "Level-06.tmx",
         "Level-07.tmx",
         "Level-08.tmx",
         "Level-09.tmx",
