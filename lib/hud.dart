@@ -13,13 +13,13 @@ import 'package:flutter/services.dart';
 
 class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference<DualKnights>,HasAncestor<Gameplay> {
   Hud({
-    this.input,
+    
     this.onPausePressed,
     required this.onRestartLevel,
   });
 
   late  JoystickComponent _joystick;
-  final Input? input;
+  
   final VoidCallback? onPausePressed;
   final VoidCallback onRestartLevel;
   LogicalKeyboardKey? lastDirection;

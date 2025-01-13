@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'dart:ui';
 
+import 'package:dual_knights/components/cloud_loading.dart';
 import 'package:dual_knights/components/game_button.dart';
 import 'package:dual_knights/dual_knights.dart';
 import 'package:flame/components.dart';
@@ -103,6 +104,7 @@ class GameLevelComplete extends PositionComponent with HasGameRef<DualKnights>{
       width: 16*64, height: 12*64,
       world: _world,
     );
+
     _camera.moveTo(Vector2(gameLevelComplete.size.x * 0.5, _camera.viewport.virtualSize.y*0.5));
     await add(_camera);
     addConfettiEffect();

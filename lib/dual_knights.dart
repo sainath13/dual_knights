@@ -5,6 +5,8 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:amplify_flutter/amplify_flutter.dart';
+import 'package:dual_knights/components/cloud_loading.dart';
+import 'package:dual_knights/components/cloud_loading_inverse.dart';
 import 'package:dual_knights/model/character_dialogue_model.dart';
 import 'package:dual_knights/model/user_model.dart';
 import 'package:dual_knights/model/user_settings_model.dart';
@@ -48,6 +50,8 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
   var lastGamePlayState = null;
 
   late RectangleComponent background;
+
+  bool _levelCompleteMenuShown = false; // Add a flag
 
   static const bgm = 'bf_music_for_dual_knights.ogg';
   static const explosion = 'explosion.wav';
@@ -157,7 +161,7 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
 
   
   @override
-  Color backgroundColor()  => const Color(0xFF47ABA9);
+  Color backgroundColor()  => const Color.fromRGBO(71, 171, 169, 1);
 
   @override
   FutureOr<void> onLoad() async{
@@ -353,38 +357,51 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
     ));
   }
 
-  void _showLevelCompleteMenu(int nSteps) {
-    nSteps = stepCountNotifier.value;
-    int nStars = 0;
-    if (nSteps < stepCountForStars[3]!)  {
-      nStars = 3;
-    } else if (nSteps < stepCountForStars[2]!) {
-      nStars = 2;
-    } else if (nSteps <  stepCountForStars[1]!){
-      nStars = 1;
-    }
+ void _showLevelCompleteMenu(int nSteps) {
+  // Prevent multiple executions
+  if (_levelCompleteMenuShown) return;
+
+  _levelCompleteMenuShown = true; // Set the flag to true
+
+  nSteps = stepCountNotifier.value;
+  int nStars = 0;
+  if (nSteps < stepCountForStars[3]!) {
+    nStars = 3;
+  } else if (nSteps < stepCountForStars[2]!) {
+    nStars = 2;
+  } else if (nSteps < stepCountForStars[1]!) {
+    nStars = 1;
+  }
 
   final gameplay = findByKeyName<Gameplay>(Gameplay.id);
 
-  int completedLevel = gameplay?.currentLevel ?? lastGamePlayState?.currentLevel ?? 0;
-  
-  saveLevelCompletion(completedLevel, nStars);
+  final cloudLoading = CloudLoadingInverse(
+    onRemoveCallback: () {
+      // Logic to execute after cloud animation is removed
+      int completedLevel = gameplay?.currentLevel ?? lastGamePlayState?.currentLevel ?? 0;
+      saveLevelCompletion(completedLevel, nStars);
 
-   gameplay?.levelCompleted = true;
-   gameplay?.input.movementAllowed = false;
+      gameplay?.levelCompleted = true;
+      gameplay?.input.movementAllowed = false;
 
-  lastGamePlayState = gameplay;
-    _router.pushReplacement(Route(
-      () => GameLevelComplete(
-            nStars: nStars,
-            onNextPressed: _startNextLevel,
-            onRetryPressed: _restartLevel,
-            onExitPressed: _routeToGameMainMenu,
-            onLevelSelectionPressed: _navigateToGameLevelSelectionFromLevelComplete,
-      ),
-    ));
-  
-  }
+      lastGamePlayState = gameplay;
+      _router.pushReplacement(Route(
+        () => GameLevelComplete(
+              nStars: nStars,
+              onNextPressed: _startNextLevel,
+              onRetryPressed: _restartLevel,
+              onExitPressed: _routeToGameMainMenu,
+              onLevelSelectionPressed: _navigateToGameLevelSelectionFromLevelComplete,
+        ),
+      ));
+      _levelCompleteMenuShown = false; 
+    },
+  );
+
+  camera.viewport.add(cloudLoading);
+}
+
+
 
   Future<void> logout() async {
     await storage.delete(key: 'authToken');

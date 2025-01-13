@@ -69,7 +69,7 @@ class Gameplay extends Component with HasGameReference<DualKnights> {
   );
 
   late final World _world;
-  late final CameraComponent _camera;
+  late final CameraComponent camera;
   late final RectangleComponent fader;
   late final Hud _hud;
 
@@ -112,22 +112,20 @@ class Gameplay extends Component with HasGameReference<DualKnights> {
 
 
     fader = RectangleComponent(
-      size: _camera.viewport.virtualSize,
+      size: camera.viewport.virtualSize,
       paint: Paint()..color = game.backgroundColor(),
       children: [OpacityEffect.fadeOut(LinearEffectController(1.5))],
       priority: 1,
     );
 
     _hud = Hud(
-      input: DualKnights.isMobile ? input : null,
       onPausePressed:onPausePressed,
       onRestartLevel:onRestartLevel
     );
 
   var cloudLoadingComponent = CloudLoadingComponent();
-
-
-    await _camera.viewport.addAll([cloudLoadingComponent,fader,_hud]);
+  game.camera.viewport.addAll([cloudLoadingComponent]);
+  await camera.viewport.addAll([fader,_hud]);
 
 
     
@@ -168,12 +166,12 @@ class Gameplay extends Component with HasGameReference<DualKnights> {
     _world = World(children: [level,input]);
     await add(_world);
 
-    _camera = CameraComponent.withFixedResolution(
+    camera = CameraComponent.withFixedResolution(
       width: 16*64, height: 12*64,
       world: _world,
     );
-    _camera.viewfinder.anchor = Anchor.topLeft;
-    await add(_camera);
+    camera.viewfinder.anchor = Anchor.topLeft;
+    await add(camera);
     
   }
 

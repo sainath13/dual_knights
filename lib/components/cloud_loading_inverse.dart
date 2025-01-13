@@ -2,26 +2,30 @@ import 'dart:math';
 import 'package:flame/components.dart';
 import 'package:flutter/material.dart';
 
-class CloudLoadingComponent extends Component with HasGameRef {
+class CloudLoadingInverse extends Component with HasGameRef {
   final int numberOfClouds;
   final double duration;
   final List<_CloudSprite> clouds = [];
   final Random _random = Random();
-  
+  final VoidCallback? onRemoveCallback;
+
+
+
   double _elapsedTime = 0;
-  double _overlayOpacity = 1;
+  double _overlayOpacity = 0;
   bool _isAnimating = false;
   late List<Sprite> _cloudSprites;
 
-  CloudLoadingComponent({
+  CloudLoadingInverse({
     this.numberOfClouds = 200,
     this.duration = 1.7,
+    this.onRemoveCallback
   });
 
   @override
   Future<void> onLoad() async {
     await super.onLoad();
-    // Load sprites internally
+    // Load cloud sprites
     _cloudSprites = [
       await Sprite(await game.images.load('clouds/Cloud 1.png')),
       await Sprite(await game.images.load('clouds/Cloud 2.png')),
@@ -43,10 +47,9 @@ class CloudLoadingComponent extends Component with HasGameRef {
       await Sprite(await game.images.load('clouds/Cloud 18.png')),
       await Sprite(await game.images.load('clouds/Cloud 19.png')),
       await Sprite(await game.images.load('clouds/Cloud 20.png')),
-      // await Sprite.load('cloud2.png'),
-      // await Sprite.load('cloud3.png'),
+      // Add more cloud sprites if necessary
     ];
-  _generateClouds();
+    _generateClouds();
     start();
   }
 
@@ -56,23 +59,27 @@ class CloudLoadingComponent extends Component with HasGameRef {
     final screenHeight = gameRef.size.y;
 
     for (int i = 0; i < numberOfClouds; i++) {
-      // final size = _random.nextDouble() * 150 + 50;
+      // Determine the position outside the screen
+      double startX = _random.nextBool()
+          ? (_random.nextDouble() < 0.5 ? -100 : screenWidth + 100) // Left or right
+          : _random.nextDouble() * screenWidth; // Anywhere horizontally
+      double startY = _random.nextBool()
+          ? (_random.nextDouble() < 0.5 ? -100 : screenHeight + 100) // Top or bottom
+          : _random.nextDouble() * screenHeight; // Anywhere vertically
+
       final speedFactor = _random.nextDouble() * 0.5 + 0.5;
       final direction = Vector2(
-        _random.nextBool() ? 1.0 : -1.0,
-        0.0,
-      );
-      
+        (gameRef.size.x / 2 - startX), // X direction toward the center
+        (0.0), // Y direction toward the center
+      )..normalize();
+
       final sprite = _cloudSprites[_random.nextInt(_cloudSprites.length)];
 
       clouds.add(
         _CloudSprite(
           sprite: sprite,
-            size: Vector2(sprite.srcSize.x*1.5, sprite.srcSize.y*1.5),
-          initialPosition: Vector2(
-            _random.nextDouble() * screenWidth,
-            _random.nextDouble() * screenHeight,
-          ),
+          size: Vector2(sprite.srcSize.x * 1.5, sprite.srcSize.y * 1.5),
+          initialPosition: Vector2(startX, startY),
           direction: direction,
           speedFactor: speedFactor,
         ),
@@ -89,9 +96,9 @@ class CloudLoadingComponent extends Component with HasGameRef {
     
     if (progress >= 1.0) {
       // Start fading out the entire component
-      _overlayOpacity = (_overlayOpacity - dt * 2).clamp(0.0, 1.0);
+      _overlayOpacity = (_overlayOpacity + dt ).clamp(0.0, 1.0);
       
-      if (_overlayOpacity <= 0) {
+      if (_overlayOpacity >= 1) {
         _isAnimating = false;
         removeFromParent();
       }
@@ -108,7 +115,7 @@ class CloudLoadingComponent extends Component with HasGameRef {
             cloud.direction.y * progress * cloud.speedFactor * screenHeight,
       );
       
-      cloud.opacity = (1.0 - progress) * _overlayOpacity;
+      cloud.opacity = (0.0 + progress) * _overlayOpacity;
     }
   }
 
@@ -116,7 +123,7 @@ class CloudLoadingComponent extends Component with HasGameRef {
   void render(Canvas canvas) {
     if (!_isAnimating && _overlayOpacity <= 0) return;
 
-    // Draw background overlay with fading opacity
+    // Draw background overlay
     canvas.drawRect(
       Rect.fromLTWH(0, 0, gameRef.size.x, gameRef.size.y),
       Paint()..color = Color.fromRGBO(0, 0, 0, 0.1 * _overlayOpacity),
@@ -128,10 +135,20 @@ class CloudLoadingComponent extends Component with HasGameRef {
         canvas,
         position: cloud.position,
         size: cloud.size,
-        overridePaint: Paint()..color = Colors.white.withOpacity(cloud.opacity),
+        overridePaint: Paint()..color = const Color.fromARGB(71, 171, 169, 1).withOpacity(cloud.opacity),
       );
     }
   }
+
+
+
+  @override
+  void onRemove() {
+    super.onRemove();
+    // Trigger the callback when the component is removed
+    onRemoveCallback?.call();
+  }
+
 
   void start() {
     _elapsedTime = 0;
