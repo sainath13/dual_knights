@@ -278,6 +278,7 @@ void _updateMovement(double dt) {
     // developer.log("current state is $currentState");
     if (knightRangeStatus == KnightRangeStatus.readyToExplode) {
       // developer.log("Moving barrel is ready to explode");
+      ancestor.input.movementAllowed = false;
       if(knightRangeResult.triggeredBy == "player") {
         // developer.log("Moving barrel triggered by player");
         if (player.parent != null) {
