@@ -797,10 +797,10 @@
         },
         "Level-Completed-Menu.tmx": {
             "scale": 0.5293,
-            "selectedLayer": 6,
+            "selectedLayer": 17,
             "viewCenter": {
-                "x": 526.1666351785377,
-                "y": 230.49310409975442
+                "x": 545.0595125637635,
+                "y": 228.60381636123185
             }
         },
         "Level-for-Manish-2.tmx": {
@@ -1220,11 +1220,11 @@
             "scaleInEditor": 1
         },
         "basic_level_background.tmx": {
-            "scale": 0.3216145833333333,
+            "scale": 0.32,
             "selectedLayer": 12,
             "viewCenter": {
-                "x": 576.7773279352227,
-                "y": 401.1012145748989
+                "x": 760.9375,
+                "y": 400
             }
         },
         "basic_level_background_original.tmx": {
@@ -1234,7 +1234,7 @@
             "scale": 0.3216145833333333,
             "selectedLayer": 10,
             "viewCenter": {
-                "x": 499.0445344129555,
+                "x": 682.493927125506,
                 "y": 401.1012145748989
             }
         },
@@ -1389,6 +1389,9 @@
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "basic_level_background.tmx",
+        "basic_level_background_original.tmx",
+        "Level-Completed-Menu.tmx",
         "Level-05.tmx",
         "Level-07-copy.tmx",
         "Level-06.tmx",
@@ -1397,10 +1400,7 @@
         "Level-13.tmx",
         "Level-20.tmx",
         "Level-25.tmx",
-        "Level-28.tmx",
-        "Level-31.tmx",
-        "Level-32.tmx",
-        "Level-38.tmx"
+        "Level-28.tmx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
