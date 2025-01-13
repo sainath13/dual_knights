@@ -3,6 +3,7 @@ import 'package:dual_knights/components/anti_player.dart';
 import 'package:dual_knights/components/experiments/arrow.dart';
 import 'package:dual_knights/components/player.dart';
 import 'package:dual_knights/dual_knights.dart';
+import 'package:dual_knights/routes/gameplay.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
@@ -40,7 +41,7 @@ enum ArcherState {
   shootDown,
 }
 
-class Archer extends SpriteAnimationComponent with HasGameRef<DualKnights>, CollisionCallbacks, TapCallbacks {
+class Archer extends SpriteAnimationComponent with HasGameRef<DualKnights>, CollisionCallbacks, TapCallbacks,HasAncestor<Gameplay> {
   static const double frameWidth = 192;
   static const double frameHeight = 192;
   static const double gridSize = 64.0;
@@ -228,6 +229,7 @@ class Archer extends SpriteAnimationComponent with HasGameRef<DualKnights>, Coll
   void _shoot() {
     if (!_canShoot || targetPosition == null) return;
 
+  
     final arrowSpawnPos = _calculateArrowSpawnPosition();
     // developer.log("Arrow spawn position: $arrowSpawnPos, Target position: $targetPosition", name: "Archer");
 
@@ -299,6 +301,8 @@ class Archer extends SpriteAnimationComponent with HasGameRef<DualKnights>, Coll
   ) {
     super.onCollisionStart(intersectionPoints, other);
     developer.log("COllision is detected");
+
+    
     if (other is AntiPlayer || other is Player) {
       hasCollided = true;
       targetPosition = other.position.clone();
@@ -319,6 +323,7 @@ class Archer extends SpriteAnimationComponent with HasGameRef<DualKnights>, Coll
     }
     
     if (_canShoot && hasCollided && targetPosition != null) {
+      ancestor.input.movementAllowed = false;
       ArcherState newState = state;
       if (animationTicker?.isLastFrame ?? false) {
         switch (newState) {
