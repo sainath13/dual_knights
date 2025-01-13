@@ -135,7 +135,7 @@ class CloudLoadingInverse extends Component with HasGameRef {
         canvas,
         position: cloud.position,
         size: cloud.size,
-        overridePaint: Paint()..color = const Color.fromARGB(71, 171, 169, 1).withOpacity(cloud.opacity),
+        overridePaint: Paint()..color = Colors.white.withOpacity(cloud.opacity),
       );
     }
   }
