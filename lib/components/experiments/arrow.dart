@@ -1,4 +1,5 @@
 import 'dart:math' as math;
+import 'package:dual_knights/routes/gameplay.dart';
 import 'package:flame/components.dart';
 import 'package:flame/collisions.dart';
 import 'package:dual_knights/components/player.dart';
@@ -112,7 +113,7 @@ import 'package:dual_knights/dual_knights.dart';
 
 
 
-class Arrow extends SpriteAnimationComponent with HasGameRef<DualKnights>, CollisionCallbacks {
+class Arrow extends SpriteAnimationComponent with HasGameRef<DualKnights>,HasAncestor<Gameplay>, CollisionCallbacks {
   static const double arrowSpeed = 700.0;
   static const double frameWidth = 64;
   static const double frameHeight = 64;
@@ -187,6 +188,7 @@ class Arrow extends SpriteAnimationComponent with HasGameRef<DualKnights>, Colli
       if (position.x < -100 || position.x > gameRef.size.x + 100 ||
           position.y < -100 || position.y > gameRef.size.y + 100) {
         removeFromParent();
+        
       }
     }
   }
@@ -201,7 +203,12 @@ class Arrow extends SpriteAnimationComponent with HasGameRef<DualKnights>, Colli
     if (!_hasHit && (other is Player || other is AntiPlayer)) {
       _hasHit = true;
       animation = stuckAnimation;
-      
+       final timer = TimerComponent(
+          period: 2,
+          onTick: () => ancestor.onGameOver(),
+          removeOnFinish: true,
+          );
+          ancestor.add(timer);
       // // Remove arrow after a delay
       // Future.delayed(const Duration(seconds: 1), () {
       //   removeFromParent();

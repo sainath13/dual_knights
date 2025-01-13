@@ -469,7 +469,6 @@ Future<String?> getJwtToken() async {
         selectedRequest['characterName'],
       );
 
-      print(characterDialogue);
 
       // Notify dialogue system with the result
       dialogueNotifier.value = {
