@@ -90,9 +90,9 @@ class GameMainMenu extends PositionComponent with HasGameRef<DualKnights> {
               onTapSprite: onTapSprite,
               onClick: onPlayPressed!,
               size: Vector2(button.width, button.height),
-              position: Vector2(button.x, playButtonPositionY),
-              buttonTextSize:35,
-              buttonText: 'Play',
+              position: Vector2(button.x, playButtonPositionY-4),
+              buttonTextSize:50,
+              buttonText: 'PLAY',
             );
             _world.add(gameButton);
             break;

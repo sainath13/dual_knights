@@ -229,7 +229,7 @@ class GameTutorial extends PositionComponent
             final style = DocumentStyle(
               text: InlineTextStyle(
                 fontSize: 30.0, // Adjust font size
-                color: Color(0xFFFFFFFF), // White color
+                color: Colors.brown, // White color
                 fontFamily: 'DualKnights', // Use your custom font family
               ),
               paragraph:
@@ -255,7 +255,7 @@ class GameTutorial extends PositionComponent
             final style = DocumentStyle(
               text: InlineTextStyle(
                 fontSize: 30.0, // Adjust font size
-                color: Color(0xFFFFFFFF), // White color
+                color: Colors.brown, // White color
                 fontFamily: 'DualKnights', // Use your custom font family
               ),
               paragraph:
