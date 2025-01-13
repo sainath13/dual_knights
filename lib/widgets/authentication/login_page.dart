@@ -63,7 +63,7 @@ class LoginPage extends StatelessWidget {
                 // Medieval emblem or logo
                
                 const Text(
-                  'Welcome to the Realm!',
+                  'Welcome to the Dualaria!',
                   style: TextStyle(
                     fontSize: 28,
                     fontFamily: 'DualKnights',
