@@ -5,6 +5,7 @@ import 'package:dual_knights/components/cloud_loading.dart';
 import 'package:dual_knights/components/game_button.dart';
 import 'package:dual_knights/dual_knights.dart';
 import 'package:flame/components.dart';
+import 'package:flame/effects.dart';
 import 'package:flame/particles.dart';
 import 'package:flame_tiled/flame_tiled.dart';
 import 'package:flame/text.dart';
@@ -104,6 +105,15 @@ class GameLevelComplete extends PositionComponent with HasGameRef<DualKnights>{
       width: 16*64, height: 12*64,
       world: _world,
     );
+
+    late final RectangleComponent fader = RectangleComponent(
+      size: _camera.viewport.virtualSize,
+      paint: Paint()..color = game.backgroundColor(),
+      children: [OpacityEffect.fadeOut(LinearEffectController(1.5))],
+      priority: 1,
+    );
+
+    _camera.viewport.addAll([fader]);
 
     _camera.moveTo(Vector2(gameLevelComplete.size.x * 0.5, _camera.viewport.virtualSize.y*0.5));
     await add(_camera);

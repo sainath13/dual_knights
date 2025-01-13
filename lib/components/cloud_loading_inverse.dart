@@ -9,17 +9,19 @@ class CloudLoadingInverse extends Component with HasGameRef {
   final Random _random = Random();
   final VoidCallback? onRemoveCallback;
 
-
-
   double _elapsedTime = 0;
   double _overlayOpacity = 0;
   bool _isAnimating = false;
   late List<Sprite> _cloudSprites;
 
+  // Colors for background transition
+  final Color _startColor = Colors.blue.shade900;
+  final Color _endColor = Colors.white;
+
   CloudLoadingInverse({
     this.numberOfClouds = 200,
     this.duration = 1.7,
-    this.onRemoveCallback
+    this.onRemoveCallback,
   });
 
   @override
@@ -36,18 +38,6 @@ class CloudLoadingInverse extends Component with HasGameRef {
       await Sprite(await game.images.load('clouds/Cloud 7.png')),
       await Sprite(await game.images.load('clouds/Cloud 8.png')),
       await Sprite(await game.images.load('clouds/Cloud 9.png')),
-      await Sprite(await game.images.load('clouds/Cloud 10.png')),
-      await Sprite(await game.images.load('clouds/Cloud 11.png')),
-      await Sprite(await game.images.load('clouds/Cloud 12.png')),
-      await Sprite(await game.images.load('clouds/Cloud 13.png')),
-      await Sprite(await game.images.load('clouds/Cloud 14.png')),
-      await Sprite(await game.images.load('clouds/Cloud 15.png')),
-      await Sprite(await game.images.load('clouds/Cloud 16.png')),
-      await Sprite(await game.images.load('clouds/Cloud 17.png')),
-      await Sprite(await game.images.load('clouds/Cloud 18.png')),
-      await Sprite(await game.images.load('clouds/Cloud 19.png')),
-      await Sprite(await game.images.load('clouds/Cloud 20.png')),
-      // Add more cloud sprites if necessary
     ];
     _generateClouds();
     start();
@@ -67,10 +57,10 @@ class CloudLoadingInverse extends Component with HasGameRef {
           ? (_random.nextDouble() < 0.5 ? -100 : screenHeight + 100) // Top or bottom
           : _random.nextDouble() * screenHeight; // Anywhere vertically
 
-      final speedFactor = _random.nextDouble() * 0.5 + 0.5;
+      final speedFactor = _random.nextDouble() * 1 + 0.5;
       final direction = Vector2(
         (gameRef.size.x / 2 - startX), // X direction toward the center
-        (0.0), // Y direction toward the center
+        0.0, // Y direction toward the center
       )..normalize();
 
       final sprite = _cloudSprites[_random.nextInt(_cloudSprites.length)];
@@ -93,11 +83,11 @@ class CloudLoadingInverse extends Component with HasGameRef {
 
     _elapsedTime += dt;
     final progress = (_elapsedTime / duration).clamp(0.0, 1.0);
-    
+
     if (progress >= 1.0) {
       // Start fading out the entire component
-      _overlayOpacity = (_overlayOpacity + dt ).clamp(0.0, 1.0);
-      
+      _overlayOpacity = (_overlayOpacity + dt).clamp(0.0, 1.0);
+
       if (_overlayOpacity >= 1) {
         _isAnimating = false;
         removeFromParent();
@@ -109,12 +99,12 @@ class CloudLoadingInverse extends Component with HasGameRef {
 
     for (final cloud in clouds) {
       cloud.position = Vector2(
-        cloud.initialPosition.x + 
+        cloud.initialPosition.x +
             cloud.direction.x * progress * cloud.speedFactor * screenWidth,
         cloud.initialPosition.y +
             cloud.direction.y * progress * cloud.speedFactor * screenHeight,
       );
-      
+
       cloud.opacity = (0.0 + progress) * _overlayOpacity;
     }
   }
@@ -123,10 +113,14 @@ class CloudLoadingInverse extends Component with HasGameRef {
   void render(Canvas canvas) {
     if (!_isAnimating && _overlayOpacity <= 0) return;
 
-    // Draw background overlay
+    // Interpolate background color
+    final progress = (_elapsedTime / duration).clamp(0.0, 1.0);
+    final backgroundColor = Color.lerp(Color.fromRGBO(71, 171, 169, 0), Color.fromRGBO(71, 171, 169, 1), progress)!;
+
+    // Draw background with dynamic color
     canvas.drawRect(
       Rect.fromLTWH(0, 0, gameRef.size.x, gameRef.size.y),
-      Paint()..color = Color.fromRGBO(0, 0, 0, 0.1 * _overlayOpacity),
+      Paint()..color = backgroundColor,
     );
 
     // Draw clouds
@@ -140,15 +134,12 @@ class CloudLoadingInverse extends Component with HasGameRef {
     }
   }
 
-
-
   @override
   void onRemove() {
     super.onRemove();
     // Trigger the callback when the component is removed
     onRemoveCallback?.call();
   }
-
 
   void start() {
     _elapsedTime = 0;
