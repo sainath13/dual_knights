@@ -23,8 +23,6 @@
  <tileset firstgid="278" source="07.tsx"/>
  <tileset firstgid="279" source="10.tsx"/>
  <tileset firstgid="280" source="TX Props.tsx"/>
- <tileset firstgid="344" source="11.tsx"/>
- <tileset firstgid="345" source="Bridge_All.tsx"/>
  <group id="26" name="Common">
   <layer id="13" name="Water" width="16" height="12">
    <data encoding="csv">
@@ -192,7 +190,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,277,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,179,179,0,0,0,0,0,0,0,0,
@@ -201,7 +199,23 @@
 </data>
   </layer>
  </group>
- <objectgroup id="5" name="Collisionblocks">
+ <layer id="13" name="CollisionblockTileLayer" width="16" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,192,0,0,0,0,
+0,0,0,0,0,158,0,0,190,0,190,193,0,0,0,0,
+0,0,0,0,158,0,0,0,279,0,0,0,0,0,0,0,
+0,0,0,0,190,0,191,0,191,0,191,0,0,0,0,0,
+0,0,0,0,0,0,0,191,192,0,0,0,0,0,0,0,
+0,0,0,0,158,190,0,0,193,0,0,180,0,0,0,0,
+0,0,0,0,0,0,0,0,158,180,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="5" name="Collisionblocks" visible="0">
   <object id="1" name="Block" type="Block" x="320" y="192" width="64" height="64"/>
   <object id="3" name="Block" type="Block" x="512" y="192" width="64" height="64"/>
   <object id="5" name="Block" type="Block" x="640" y="192" width="64" height="64"/>
