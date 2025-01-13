@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "Level-25.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -569,10 +569,10 @@
                 26
             ],
             "scale": 0.63,
-            "selectedLayer": 17,
+            "selectedLayer": 7,
             "viewCenter": {
-                "x": 900.7936507936507,
-                "y": 387.3015873015873
+                "x": 403.968253968254,
+                "y": 417.46031746031747
             }
         },
         "Level-26.tmx": {
@@ -592,11 +592,14 @@
             }
         },
         "Level-28.tmx": {
+            "expandedGroupLayers": [
+                26
+            ],
             "scale": 0.637353515625,
-            "selectedLayer": 8,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 511.4900789090631,
-                "y": 384.4020531678541
+                "x": 510.7055849230063,
+                "y": 384.40205316785415
             }
         },
         "Level-29.tmx": {
@@ -619,19 +622,22 @@
             }
         },
         "Level-31.tmx": {
+            "expandedGroupLayers": [
+                26
+            ],
             "scale": 0.75,
-            "selectedLayer": 13,
+            "selectedLayer": 12,
             "viewCenter": {
-                "x": 588,
-                "y": 446.6666666666666
+                "x": 588.6666666666666,
+                "y": 446.66666666666674
             }
         },
         "Level-32.tmx": {
             "scale": 0.63,
-            "selectedLayer": 13,
+            "selectedLayer": 12,
             "viewCenter": {
-                "x": 511.11111111111103,
-                "y": 384.1269841269842
+                "x": 510.31746031746036,
+                "y": 384.12698412698415
             }
         },
         "Level-33.tmx": {
@@ -690,18 +696,18 @@
         },
         "Level-38.tmx": {
             "scale": 0.637353515625,
-            "selectedLayer": 13,
+            "selectedLayer": 12,
             "viewCenter": {
-                "x": 512.27457289512,
-                "y": 384.4020531678541
+                "x": 512.2745728951198,
+                "y": 384.40205316785415
             }
         },
         "Level-39.tmx": {
             "scale": 0.637353515625,
             "selectedLayer": 13,
             "viewCenter": {
-                "x": 511.4900789090631,
-                "y": 384.4020531678541
+                "x": 510.7055849230063,
+                "y": 384.40205316785415
             }
         },
         "Level-40.tmx": {
@@ -1325,22 +1331,23 @@
     "map.tileWidth": 64,
     "map.width": 50,
     "openFiles": [
+        "Level-25.tmx"
     ],
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "Level-39.tmx",
+        "Level-38.tmx",
+        "Level-32.tmx",
+        "Level-31.tmx",
         "Level-25.tmx",
+        "Level-28.tmx",
         "Archer_Purlple.tsx",
         "Level-02-Copy.tmx",
         "Level-43.tmx",
-        "Level-38.tmx",
         "Level-27.tmx",
         "Level-29.tmx",
-        "Level-30.tmx",
-        "Level-20.tmx",
-        "Level-26.tmx",
-        "Level-02.tmx",
-        "02.tsx"
+        "Level-30.tmx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",

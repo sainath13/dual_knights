@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="64" tileheight="64" infinite="0" nextlayerid="30" nextobjectid="11">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="64" tileheight="64" infinite="0" nextlayerid="29" nextobjectid="14">
  <tileset firstgid="1" source="Terrain.tsx"/>
  <tileset firstgid="41" source="Castle_Red.tsx"/>
  <tileset firstgid="61" source="Tree.tsx"/>
@@ -23,6 +23,9 @@
  <tileset firstgid="278" source="07.tsx"/>
  <tileset firstgid="279" source="10.tsx"/>
  <tileset firstgid="280" source="TX Props.tsx"/>
+ <tileset firstgid="344" source="13.tsx"/>
+ <tileset firstgid="345" source="11.tsx"/>
+ <tileset firstgid="346" source="Bridge_All.tsx"/>
  <group id="26" name="Common">
   <layer id="13" name="Water" width="16" height="12">
    <data encoding="csv">
@@ -44,16 +47,16 @@
    <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,235,235,235,235,235,0,235,235,235,0,235,0,0,0,
-235,235,0,0,0,235,235,235,0,0,0,235,235,235,0,0,
-235,0,0,0,0,0,0,0,0,0,0,0,0,235,0,0,
-235,0,0,0,0,0,0,0,0,0,0,0,0,235,0,0,
-235,0,0,0,0,0,0,0,0,0,0,0,235,235,0,0,
-235,0,0,0,0,0,0,0,0,0,0,0,235,0,0,0,
-235,0,0,0,0,0,0,0,0,0,0,0,0,235,0,0,
-0,235,0,0,0,0,0,0,0,0,0,0,0,235,0,0,
-0,235,0,0,0,0,0,0,0,0,0,0,235,235,0,0,
-0,0,235,235,235,235,235,235,235,235,235,235,235,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
   </layer>
   <layer id="19" name="layerforedge" width="16" height="12">
@@ -69,136 +72,60 @@
 0,0,251,0,0,0,0,0,0,0,0,0,0,0,253,0,
 0,0,0,252,252,252,0,252,252,252,252,252,252,253,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+12,12,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
   </layer>
   <layer id="15" name="new game bg" width="16" height="12">
    <data encoding="csv">
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,1,2,2,2,3,0,1,2,3,0,34,0,0,
-0,1,2,12,12,12,12,12,2,12,12,12,2,2,3,0,
-0,11,12,12,12,12,12,12,12,12,12,12,12,12,13,0,
-0,11,12,12,12,12,12,12,12,12,12,12,12,12,23,0,
-0,11,12,12,12,12,12,12,12,12,12,12,12,13,0,0,
-0,21,12,12,12,12,12,12,12,12,12,12,12,13,0,0,
-0,256,11,12,12,12,12,12,12,12,12,12,12,12,3,0,
-0,0,21,12,12,12,12,12,12,12,12,12,12,12,23,0,
-0,0,256,21,22,22,22,22,22,22,22,22,22,23,257,0,
-0,0,0,256,256,256,256,256,256,256,256,256,256,257,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-</data>
-  </layer>
-  <layer id="24" name="eat" width="16" height="12">
-   <data encoding="csv">
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,191,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,191,0,0,0,279,279,0,0,275,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,13,
+11,12,12,12,12,12,12,12,12,12,12,12,12,12,12,13,
+11,12,12,12,12,12,12,12,12,12,12,12,12,12,12,13,
+11,12,12,12,12,12,12,12,12,12,12,12,12,12,12,13,
+11,12,12,12,12,12,12,12,12,12,12,12,12,12,12,13,
+11,12,12,12,12,12,12,12,12,12,12,12,12,12,12,13,
+11,12,12,12,12,12,12,12,12,12,12,12,12,12,12,13,
+11,12,12,12,12,12,12,12,12,12,12,12,12,12,12,13,
+11,12,12,12,12,12,12,12,12,12,12,12,12,12,12,13,
+11,12,12,12,12,12,12,12,12,12,12,12,12,12,12,13,
+11,12,12,12,12,12,12,12,12,12,12,12,12,12,12,13,
+12,12,12,22,22,22,22,22,22,22,22,22,22,22,22,23
 </data>
   </layer>
   <layer id="27" name="grass" width="16" height="12">
    <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,
+0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,
+0,5,0,0,0,0,5,0,0,0,0,5,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,
+0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,
+5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,
-0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,
+0,0,0,0,0,5,0,0,5,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0
 </data>
   </layer>
-  <layer id="17" name="props" width="16" height="12" offsetx="0" offsety="32">
+  <objectgroup id="21" name="TreesOutSideGameGrid" class="TreesOutSideGameGrid"/>
+  <layer id="28" name="ArcherTowers" width="16" height="12">
    <data encoding="csv">
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,180,0,180,279,279,0,180,278,0,0,0,
-0,0,179,180,0,0,0,0,0,0,0,0,0,0,276,0,
-0,179,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,278,0,0,0,0,0,0,0,0,0,0,0,180,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,278,0,0,
-0,0,0,277,0,0,0,0,0,0,0,0,0,277,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,214,0,0,0,0,214,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-</data>
-  </layer>
-  <layer id="18" name="propsLayer2" width="16" height="12">
-   <data encoding="csv">
-0,0,0,0,0,0,0,0,0,0,181,182,183,0,0,0,
-0,0,0,0,0,0,0,0,0,0,184,185,186,0,0,0,
-0,0,0,0,0,0,0,0,0,191,187,188,189,0,0,0,
-0,0,190,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,190,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,191,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,190,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,279,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-</data>
-  </layer>
-  <objectgroup id="21" name="TreesOutSideGameGrid" class="TreesOutSideGameGrid">
-   <object id="3" name="Tree" type="Tree" x="192" y="128" width="64" height="64"/>
-   <object id="5" name="Tree" type="Tree" x="256" y="128" width="64" height="64"/>
-   <object id="6" name="Tree" type="Tree" x="384" y="128" width="64" height="64"/>
-   <object id="7" name="Tree" type="Tree" x="832" y="192" width="64" height="64"/>
-   <object id="8" name="Tree" type="Tree" x="640" y="128" width="64" height="64"/>
-   <object id="9" name="Tree" type="Tree" x="192" y="320" width="64" height="64"/>
-  </objectgroup>
-  <layer id="22" name="AheadOfTreesProps" width="16" height="12">
-   <data encoding="csv">
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,169,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,170,0,0,
-0,0,0,192,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,193,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,191,0,0,0,0,0,0,0,0,0,190,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-</data>
-  </layer>
-  <objectgroup id="30" name="CollisionblocksForGrid">
-   <object id="101" name="Block" type="Block" x="256" y="128" width="576" height="64"/>
-   <object id="102" name="Block" type="Block" x="256" y="576" width="576" height="64"/>
-   <object id="103" name="Block" type="Block" x="192" y="192" width="64" height="384"/>
-   <object id="104" name="Block" type="Block" x="831" y="192" width="64" height="384"/>
-  </objectgroup>
-  <layer id="25" name="BottomEdge" width="16" height="12">
-   <data encoding="csv">
+173,174,0,0,0,0,0,0,0,0,0,0,0,0,173,174,
+175,176,0,0,0,0,0,0,0,0,0,0,0,0,175,176,
+177,178,0,0,0,0,0,0,0,0,0,0,0,0,177,178,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,179,179,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,171,172,
+171,172,0,0,0,0,0,0,0,0,0,0,0,0,173,174,
+173,174,0,0,0,0,0,0,0,0,0,0,0,0,175,176,
+175,176,0,0,0,0,0,0,0,0,0,0,0,0,177,178
 </data>
   </layer>
  </group>
+
  <layer id="29" name="CollisionblockTileLayer" width="16" height="12">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -239,31 +166,37 @@
   <object id="3" name="Player" type="Player" x="704" y="192" width="64" height="64"/>
   <object id="7" name="AntiPlayer" type="AntiPlayer" x="256" y="320" width="64" height="64"/>
   <object id="9991" name="MovingBarrel" type="MovingBarrel" x="256" y="448" width="64" height="64">
-         <properties>
-          <property name="downOffset" type="int" value="0"/>
-          <property name="isVertical" type="bool" value="true"/>
-          <property name="leftOffset" type="int" value="0"/>
-          <property name="rightOffset" type="int" value="0"/>
-          <property name="upOffset" type="int" value="2"/>
-         </properties>
+   <properties>
+    <property name="downOffset" type="int" value="0"/>
+    <property name="isVertical" type="bool" value="true"/>
+    <property name="leftOffset" type="int" value="0"/>
+    <property name="rightOffset" type="int" value="0"/>
+    <property name="upOffset" type="int" value="2"/>
+   </properties>
   </object>
   <object id="9992" name="MovingBarrel" type="MovingBarrel" x="576" y="512" width="64" height="64">
-           <properties>
-            <property name="downOffset" type="int" value="0"/>
-            <property name="isVertical" type="bool" value="true"/>
-            <property name="leftOffset" type="int" value="0"/>
-            <property name="rightOffset" type="int" value="0"/>
-            <property name="upOffset" type="int" value="2"/>
-           </properties>
-    </object>
-    <object id="9993" name="MovingBarrel" type="MovingBarrel" x="448" y="256" width="64" height="64">
-             <properties>
-              <property name="downOffset" type="int" value="0"/>
-              <property name="isVertical" type="bool" value="false"/>
-              <property name="leftOffset" type="int" value="0"/>
-              <property name="rightOffset" type="int" value="4"/>
-              <property name="upOffset" type="int" value="0"/>
-             </properties>
-      </object>
+   <properties>
+    <property name="downOffset" type="int" value="0"/>
+    <property name="isVertical" type="bool" value="true"/>
+    <property name="leftOffset" type="int" value="0"/>
+    <property name="rightOffset" type="int" value="0"/>
+    <property name="upOffset" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="9993" name="MovingBarrel" type="MovingBarrel" x="448" y="256" width="64" height="64">
+   <properties>
+    <property name="downOffset" type="int" value="0"/>
+    <property name="isVertical" type="bool" value="false"/>
+    <property name="leftOffset" type="int" value="0"/>
+    <property name="rightOffset" type="int" value="4"/>
+    <property name="upOffset" type="int" value="0"/>
+   </properties>
+  </object>
+ </objectgroup>
+<objectgroup id="14" name="ArcherSpawnPoints">
+  <object id="3" name="ArcherRightBottom" type="ArcherRightBottom" x="960" y="576" width="64" height="64"/>
+  <object id="11" name="ArcherRightTop" type="ArcherRightTop" x="942.603" y="-8.19048" width="64" height="64"/>
+  <object id="12" name="ArcherLeftBottom" type="ArcherLeftBottom" x="64" y="640" width="64" height="64"/>
+  <object id="13" name="ArcherLeftTop" type="ArcherLeftTop" x="64" y="0" width="64" height="64"/>
  </objectgroup>
 </map>
