@@ -260,7 +260,7 @@ if (navigationButtons != null) {
       case 'StageOne':
         final textPaint = TextPaint(
           style: TextStyle(
-            fontSize: 48.0,
+            fontSize: 40.0,
             color: Color(0xFFFFFFFF), // White color
             fontFamily: 'DualKnights', // Customize the font family
           ),
@@ -269,7 +269,7 @@ if (navigationButtons != null) {
         final textComponent = TextComponent(
           text: 'STAGE ONE',
           textRenderer: textPaint,
-          position: Vector2(button.x+64+64+16, button.y+24), // Position from the Tiled object
+          position: Vector2(button.x+64+64+16, button.y+22),
           anchor: Anchor.center, // Align the text to the center
         );
         _world.add(textComponent);
@@ -277,7 +277,7 @@ if (navigationButtons != null) {
       case 'StageTwo':
         final textPaint = TextPaint(
           style: TextStyle(
-            fontSize: 48.0,
+            fontSize: 40.0,
             color: Color(0xFFFFFFFF), // White color
             fontFamily: 'DualKnights', // Customize the font family
           ),
@@ -286,7 +286,7 @@ if (navigationButtons != null) {
         final textComponent = TextComponent(
           text: 'STAGE TWO',
           textRenderer: textPaint,
-          position: Vector2(button.x+64+64+16, button.y+24), // Position from the Tiled object
+          position: Vector2(button.x+64+64+16, button.y+22),
           anchor: Anchor.center, // Align the text to the center
         );
         _world.add(textComponent);
@@ -294,7 +294,7 @@ if (navigationButtons != null) {
       case 'StageThree':
         final textPaint = TextPaint(
           style: TextStyle(
-            fontSize: 48.0,
+            fontSize: 40.0,
             color: Color(0xFFFFFFFF), // White color
             fontFamily: 'DualKnights', // Customize the font family
           ),
@@ -303,7 +303,7 @@ if (navigationButtons != null) {
         final textComponent = TextComponent(
           text: 'STAGE THREE',
           textRenderer: textPaint,
-          position: Vector2(button.x+64+64+16, button.y+24), // Position from the Tiled object
+          position: Vector2(button.x+64+64+16, button.y+22),
           anchor: Anchor.center, // Align the text to the center
         );
         _world.add(textComponent);
@@ -311,14 +311,14 @@ if (navigationButtons != null) {
       case 'DevelopedFor':
         final document = DocumentRoot([
           ParagraphNode.simple(
-            'This game is developed for AWS Game Builder Challenge hosted on Devpost.',
+            'This game is developed for "AWS Game Builder Challenge" hosted on devpost.com',
           ),
         ]);
         // Define the document style with the custom font
         final style = DocumentStyle(
           text: InlineTextStyle(
             fontSize: 32.0, // Adjust font size
-            color: Color(0xFFFFFFFF), // White color
+            color: Colors.brown, // White color
             fontFamily: 'DualKnights', // Use your custom font family
           ),
           paragraph: BlockStyle(margin: EdgeInsets.all(10)), // Optional spacing

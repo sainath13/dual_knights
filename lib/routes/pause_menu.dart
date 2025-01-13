@@ -41,7 +41,7 @@ class PauseMenu extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              'Game Paused',
+              'Time Stands Still - Your journey awaits',
               style: TextStyle(
                 fontSize: 40,
                 fontFamily: "DualKnights",

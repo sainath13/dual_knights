@@ -209,7 +209,7 @@ class GameLevelComplete extends PositionComponent with HasGameRef<DualKnights>{
             );
 
             final textComponent = TextComponent(
-              text: 'Level Completed',
+              text: 'Sigils Claimed!',
               textRenderer: textPaint,
               position: Vector2(button.x+64+32+16+8, button.y+20), // Position from the Tiled object
               anchor: Anchor.center, // Align the text to the center

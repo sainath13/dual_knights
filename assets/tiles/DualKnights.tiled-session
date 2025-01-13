@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "Level-25.tmx",
+    "activeFile": "Level-45.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -758,10 +758,10 @@
         },
         "Level-45.tmx": {
             "scale": 0.637353515625,
-            "selectedLayer": 14,
+            "selectedLayer": 9,
             "viewCenter": {
-                "x": 322.42702826936335,
-                "y": 270.6504251896115
+                "x": 607.982839194055,
+                "y": 269.86593120355474
             }
         },
         "Level-Completed-Menu.tmx": {
@@ -1331,23 +1331,24 @@
     "map.tileWidth": 64,
     "map.width": 50,
     "openFiles": [
-        "Level-25.tmx"
+        "Level-28.tmx",
+        "Level-45.tmx"
     ],
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "Level-28.tmx",
+        "Level-45.tmx",
         "Level-39.tmx",
         "Level-38.tmx",
         "Level-32.tmx",
         "Level-31.tmx",
         "Level-25.tmx",
-        "Level-28.tmx",
         "Archer_Purlple.tsx",
         "Level-02-Copy.tmx",
         "Level-43.tmx",
         "Level-27.tmx",
-        "Level-29.tmx",
-        "Level-30.tmx"
+        "Level-29.tmx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
