@@ -569,10 +569,10 @@
                 26
             ],
             "scale": 0.63,
-            "selectedLayer": 10,
+            "selectedLayer": 17,
             "viewCenter": {
-                "x": 748.4126984126983,
-                "y": 384.1269841269842
+                "x": 900.7936507936507,
+                "y": 387.3015873015873
             }
         },
         "Level-26.tmx": {
@@ -1329,6 +1329,9 @@
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "Level-25.tmx",
+        "Archer_Purlple.tsx",
+        "Level-02-Copy.tmx",
         "Level-43.tmx",
         "Level-38.tmx",
         "Level-27.tmx",
@@ -1337,10 +1340,7 @@
         "Level-20.tmx",
         "Level-26.tmx",
         "Level-02.tmx",
-        "02.tsx",
-        "Background-test-02.tmx",
-        "Background-test-03.tmx",
-        "aws_icon.tsx"
+        "02.tsx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",

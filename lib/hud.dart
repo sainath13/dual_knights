@@ -332,7 +332,7 @@ class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference<D
 
 
 Future<void> _updateDialogue(Map<String, String> dialogue) async {
-  print("Updating dialogue: $dialogue");
+  // print("Updating dialogue: $dialogue");
   final characterName = dialogue['characterName'] ?? '';
   final characterDialogue = dialogue['dialogue'] ?? '';
   final priority = int.tryParse(dialogue['priority'] ?? '0') ?? 0;

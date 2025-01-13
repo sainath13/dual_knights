@@ -208,9 +208,67 @@ class Level extends PositionComponent with HasGameRef<DualKnights>, HasCollision
 
       for(final archerBlock in archerSpawnBlockLayer.objects){
         switch(archerBlock.class_){
-          case 'ArcherYellow' :
+          case 'ArcherRightBottom' :
             log("Found an archer in here");
             final archer = Archer(
+              leftOffset: 2,
+              rightOffset: 2,
+              upOffset: 8,
+              downOffset: 4 ,
+              position: Vector2(getExactCoOrdinate(archerBlock.x), getExactCoOrdinate(archerBlock.y)),
+              // size: Vector2(archerBlock.width, archerBlock.height),
+            );//..debugColor = Colors.blue
+              //..debugMode = true;
+            add(archer);
+            // collisionBlocks.add(block);
+            // final gold = Gold();//..debugMode = true;
+            // gold.position = Vector2(archerBlock.x, archerBlock.y);
+            // add(gold);
+            //create a new block.
+            break;
+          case 'ArcherRightTop' :
+            log("Found an archer in here");
+            final archer = Archer(
+              leftOffset: 12,
+              rightOffset: 2,
+              upOffset: 1,
+              downOffset: 2 ,
+              position: Vector2(getExactCoOrdinate(archerBlock.x), getExactCoOrdinate(archerBlock.y)),
+              // size: Vector2(archerBlock.width, archerBlock.height),
+            );//..debugColor = Colors.blue
+              // ..debugMode = true;
+            add(archer);
+            // collisionBlocks.add(block);
+            // final gold = Gold();//..debugMode = true;
+            // gold.position = Vector2(archerBlock.x, archerBlock.y);
+            // add(gold);
+            //create a new block.
+            break;
+          case 'ArcherLeftTop' :
+            log("Found an archer in here");
+            final archer = Archer(
+              leftOffset: 2,
+              rightOffset: 2,
+              upOffset: 4,
+              downOffset: 9 ,
+              position: Vector2(getExactCoOrdinate(archerBlock.x), getExactCoOrdinate(archerBlock.y)),
+              // size: Vector2(archerBlock.width, archerBlock.height),
+            );//..debugColor = Colors.blue
+              //..debugMode = true;
+            add(archer);
+            // collisionBlocks.add(block);
+            // final gold = Gold();//..debugMode = true;
+            // gold.position = Vector2(archerBlock.x, archerBlock.y);
+            // add(gold);
+            //create a new block.
+            break;
+          case 'ArcherLeftBottom' :
+            log("Found an archer in here");
+            final archer = Archer(
+              leftOffset: 2,
+              rightOffset: 12,
+              upOffset: 1,
+              downOffset: 2 ,
               position: Vector2(getExactCoOrdinate(archerBlock.x), getExactCoOrdinate(archerBlock.y)),
               // size: Vector2(archerBlock.width, archerBlock.height),
             );//..debugColor = Colors.blue

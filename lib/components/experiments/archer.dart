@@ -19,6 +19,7 @@ class ArcherRangeVisualizer extends PositionComponent {
     Color color = const Color(0x44FF0000),
   }) : _paint = Paint()..color = color {
     this.position = position;
+    this.priority = 2;
   }
 
   @override
@@ -43,6 +44,10 @@ class Archer extends SpriteAnimationComponent with HasGameRef<DualKnights>, Coll
   static const double frameWidth = 192;
   static const double frameHeight = 192;
   static const double gridSize = 64.0;
+  final int leftOffset;
+  final int  rightOffset;
+  final int upOffset;
+  final int downOffset;
 
   static const double shootCooldown = 2.0;
 
@@ -53,8 +58,14 @@ class Archer extends SpriteAnimationComponent with HasGameRef<DualKnights>, Coll
   double _timeSinceLastShot = 0;
   bool _canShoot = true;
 
-  Archer({required Vector2 position}) : super(position: position,size: Vector2(frameWidth, frameHeight), priority: 5) {
+  Archer({required Vector2 position,
+    this.leftOffset = 0,
+    this.rightOffset = 0,
+    this.upOffset = 0,
+    this.downOffset = 0}) : super(position: position,size: Vector2(frameWidth, frameHeight), priority: 5) {
     anchor = Anchor.center;
+    currentPosition = position.clone();
+    developer.log("current postion is $currentPosition");
   }
 
   late SpriteAnimation idleAnimation;
@@ -71,21 +82,28 @@ class Archer extends SpriteAnimationComponent with HasGameRef<DualKnights>, Coll
 
   @override
   bool onTapDown(TapDownEvent event) {
+    developer.log("received on tap event");
     _toggleRangeVisualizer();
     return true;
   }
 
   void _toggleRangeVisualizer() {
     if (isRangeVisible) {
+      developer.log("Range was already visible");
       rangeVisualizer?.removeFromParent();
       rangeVisualizer = null;
     } else {
+      developer.log("WIll try to show range with currX = ${currentPosition.x}");
+      developer.log("WIll try to show range with currY = ${currentPosition.y}");
+
       rangeVisualizer = ArcherRangeVisualizer(
-        sizeXY: Vector2(gridSize * 7.5, gridSize * 7),
-        position: Vector2(-gridSize * 2, -gridSize * 2),
+        sizeXY: Vector2((leftOffset + rightOffset)*64, (upOffset+downOffset)*64),
+        position: Vector2( currentPosition.x - (leftOffset*64) + 32,
+            currentPosition.y - upOffset*64
+        ),
         color: const Color(0x44FF0000) // Semi-transparent red
       );
-      add(rangeVisualizer!);
+      parent?.add(rangeVisualizer!);
     }
     isRangeVisible = !isRangeVisible;
   }
@@ -95,10 +113,13 @@ class Archer extends SpriteAnimationComponent with HasGameRef<DualKnights>, Coll
     super.onLoad();
 
     final newHitbox = RectangleHitbox(
-      size: Vector2(gridSize * 7.25, gridSize * 6.75),
-      position: Vector2(-gridSize * 2, -gridSize * 2),
+      size: Vector2((leftOffset + rightOffset)*64, (upOffset+downOffset)*64),
+      position: Vector2( -leftOffset*64 +64+32+32,
+          -upOffset*64 +64+32+32
+      ),
     );//..debugColor = Colors.red
       //..debugMode = true;
+    //
     add(newHitbox);
 
     final spriteSheet = await gameRef.images.load('Factions/Knights/Troops/Archer/Purple/Archer_Purple.png');
@@ -277,7 +298,7 @@ class Archer extends SpriteAnimationComponent with HasGameRef<DualKnights>, Coll
     PositionComponent other,
   ) {
     super.onCollisionStart(intersectionPoints, other);
-
+    developer.log("COllision is detected");
     if (other is AntiPlayer || other is Player) {
       hasCollided = true;
       targetPosition = other.position.clone();

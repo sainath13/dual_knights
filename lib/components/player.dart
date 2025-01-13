@@ -216,6 +216,7 @@ class Player extends SpriteAnimationComponent with HasGameRef<DualKnights>, Keyb
     PositionComponent other,
   ) {
     super.onCollisionStart(intersectionPoints, other);
+    log("Player detected collsion with $other");
     if (other is AntiPlayer) {
       log("Player collided with AntiPlayer");
       ancestor.input.movementAllowed = false;

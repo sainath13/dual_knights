@@ -455,12 +455,12 @@ Future<String?> getJwtToken() async {
     dialogueApiCallActive = true;
 
     try {
-      print('Dialogue queue length: ${dialogueQueue.length}');
+      // print('Dialogue queue length: ${dialogueQueue.length}');
       // Randomly select a dialogue request from the queue
       final randomIndex = Random().nextInt(dialogueQueue.length);
       final selectedRequest = dialogueQueue.removeAt(randomIndex);
       dialogueQueue.clear();
-      print('Dialogue queue length: ${dialogueQueue.length}');
+      // print('Dialogue queue length: ${dialogueQueue.length}');
 
       final jwtToken = await getJwtToken();
       final characterDialogue = await gameRepository.getCharacterDialogues(
