@@ -14,9 +14,7 @@ class CloudLoadingInverse extends Component with HasGameRef {
   bool _isAnimating = false;
   late List<Sprite> _cloudSprites;
 
-  // Colors for background transition
-  final Color _startColor = Colors.blue.shade900;
-  final Color _endColor = Colors.white;
+
 
   CloudLoadingInverse({
     this.numberOfClouds = 200,
@@ -38,6 +36,17 @@ class CloudLoadingInverse extends Component with HasGameRef {
       await Sprite(await game.images.load('clouds/Cloud 7.png')),
       await Sprite(await game.images.load('clouds/Cloud 8.png')),
       await Sprite(await game.images.load('clouds/Cloud 9.png')),
+      await Sprite(await game.images.load('clouds/Cloud 10.png')),
+      await Sprite(await game.images.load('clouds/Cloud 11.png')),
+      await Sprite(await game.images.load('clouds/Cloud 12.png')),
+      await Sprite(await game.images.load('clouds/Cloud 13.png')),
+      await Sprite(await game.images.load('clouds/Cloud 14.png')),
+      await Sprite(await game.images.load('clouds/Cloud 15.png')),
+      await Sprite(await game.images.load('clouds/Cloud 16.png')),
+      await Sprite(await game.images.load('clouds/Cloud 17.png')),
+      await Sprite(await game.images.load('clouds/Cloud 18.png')),
+      await Sprite(await game.images.load('clouds/Cloud 19.png')),
+      await Sprite(await game.images.load('clouds/Cloud 20.png')),
     ];
     _generateClouds();
     start();
@@ -90,6 +99,7 @@ class CloudLoadingInverse extends Component with HasGameRef {
 
       if (_overlayOpacity >= 1) {
         _isAnimating = false;
+
         removeFromParent();
       }
     }
