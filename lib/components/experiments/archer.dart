@@ -194,7 +194,7 @@ class Archer extends SpriteAnimationComponent with HasGameRef<DualKnights>, Coll
   }
 
   Vector2 _calculateArrowSpawnPosition() {
-    developer.log("Archer position: $position", name: "Archer");
+    // developer.log("Archer position: $position", name: "Archer");
     final spawnPos = position.clone();
     final offset = Vector2.zero();
 
@@ -229,7 +229,7 @@ class Archer extends SpriteAnimationComponent with HasGameRef<DualKnights>, Coll
     if (!_canShoot || targetPosition == null) return;
 
     final arrowSpawnPos = _calculateArrowSpawnPosition();
-    developer.log("Arrow spawn position: $arrowSpawnPos, Target position: $targetPosition", name: "Archer");
+    // developer.log("Arrow spawn position: $arrowSpawnPos, Target position: $targetPosition", name: "Archer");
 
     final arrow = Arrow(
       startPosition: arrowSpawnPos,

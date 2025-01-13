@@ -360,6 +360,9 @@
             "expandedGroupLayers": [
                 26
             ],
+            "expandedObjectLayers": [
+                26
+            ],
             "scale": 0.5002,
             "selectedLayer": 14,
             "viewCenter": {
@@ -368,10 +371,6 @@
             }
         },
         "Level-04.tmx": {
-            "expandedObjectLayers": [
-                6,
-                5
-            ],
             "scale": 0.7335286458333332,
             "selectedLayer": 12,
             "viewCenter": {
@@ -383,6 +382,9 @@
             "expandedGroupLayers": [
                 26
             ],
+            "expandedObjectLayers": [
+                26
+            ],
             "scale": 0.58,
             "selectedLayer": 15,
             "viewCenter": {
@@ -392,6 +394,9 @@
         },
         "Level-06.tmx": {
             "expandedGroupLayers": [
+                26
+            ],
+            "expandedObjectLayers": [
                 26
             ],
             "scale": 0.75,
@@ -408,12 +413,15 @@
             "scale": 0.77,
             "selectedLayer": 6,
             "viewCenter": {
-                "x": 554.5454545454545,
-                "y": 312.987012987013
+                "x": 555.1948051948052,
+                "y": 312.9870129870129
             }
         },
         "Level-07.tmx": {
             "expandedGroupLayers": [
+                26
+            ],
+            "expandedObjectLayers": [
                 26
             ],
             "scale": 0.43,
@@ -467,11 +475,14 @@
             }
         },
         "Level-13.tmx": {
-            "scale": 0.637353515625,
-            "selectedLayer": 8,
+            "expandedGroupLayers": [
+                26
+            ],
+            "scale": 0.63,
+            "selectedLayer": 14,
             "viewCenter": {
-                "x": 512.2745728951198,
-                "y": 384.40205316785415
+                "x": 511.90476190476187,
+                "y": 384.1269841269841
             }
         },
         "Level-14.tmx": {
@@ -500,6 +511,9 @@
         },
         "Level-17.tmx": {
             "expandedGroupLayers": [
+                26
+            ],
+            "expandedObjectLayers": [
                 26
             ],
             "scale": 0.637353515625,
@@ -536,7 +550,7 @@
             "scale": 0.63,
             "selectedLayer": 16,
             "viewCenter": {
-                "x": 665.8730158730158,
+                "x": 551.5873015873016,
                 "y": 476.19047619047615
             }
         },
@@ -580,10 +594,10 @@
                 26
             ],
             "scale": 0.63,
-            "selectedLayer": 7,
+            "selectedLayer": 6,
             "viewCenter": {
-                "x": 403.9682539682539,
-                "y": 417.4603174603174
+                "x": 845.2380952380952,
+                "y": 425.39682539682536
             }
         },
         "Level-26.tmx": {
@@ -607,7 +621,7 @@
                 26
             ],
             "scale": 0.637353515625,
-            "selectedLayer": 0,
+            "selectedLayer": 6,
             "viewCenter": {
                 "x": 510.7055849230062,
                 "y": 384.40205316785415
@@ -637,15 +651,18 @@
                 26
             ],
             "scale": 0.75,
-            "selectedLayer": 12,
+            "selectedLayer": 6,
             "viewCenter": {
-                "x": 588.6666666666667,
+                "x": 243.33333333333331,
                 "y": 446.6666666666667
             }
         },
         "Level-32.tmx": {
+            "expandedGroupLayers": [
+                26
+            ],
             "scale": 0.63,
-            "selectedLayer": 12,
+            "selectedLayer": 6,
             "viewCenter": {
                 "x": 510.31746031746025,
                 "y": 384.1269841269841
@@ -706,8 +723,11 @@
             }
         },
         "Level-38.tmx": {
+            "expandedGroupLayers": [
+                26
+            ],
             "scale": 0.637353515625,
-            "selectedLayer": 12,
+            "selectedLayer": 6,
             "viewCenter": {
                 "x": 512.2745728951198,
                 "y": 384.40205316785415
@@ -771,7 +791,7 @@
             "scale": 0.637353515625,
             "selectedLayer": 9,
             "viewCenter": {
-                "x": 596.9999233892592,
+                "x": 107.47567608978778,
                 "y": 257.3140274266452
             }
         },
@@ -946,6 +966,10 @@
             "scaleInEditor": 1
         },
         "Tower_Blue.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Tower_Purple.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
@@ -1335,7 +1359,7 @@
         }
     },
     "last.externalTilesetPath": "/Users/sainathlatkar/personal/flame/dual_knights/assets/tiles",
-    "last.imagePath": "/Users/sainathlatkar/personal/flame/dual_knights/assets/images",
+    "last.imagePath": "/Users/sainathlatkar/personal/flame/dual_knights/assets/images/Factions/Knights/Buildings/Tower",
     "map.height": 19,
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 64,
@@ -1348,18 +1372,18 @@
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
-        "Level-28.tmx",
-        "Level-45.tmx",
-        "Level-39.tmx",
-        "Level-38.tmx",
-        "Level-32.tmx",
-        "Level-31.tmx",
+        "Level-13.tmx",
+        "Level-20.tmx",
         "Level-25.tmx",
-        "Archer_Purlple.tsx",
-        "Level-02-Copy.tmx",
-        "Level-43.tmx",
-        "Level-27.tmx",
-        "Level-29.tmx"
+        "Level-28.tmx",
+        "Level-31.tmx",
+        "Level-32.tmx",
+        "Level-38.tmx",
+        "Level-45.tmx",
+        "Tower_Purple.tsx",
+        "Level-07-copy.tmx",
+        "Level-01.tmx",
+        "Level-02.tmx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",

@@ -216,7 +216,7 @@ class Player extends SpriteAnimationComponent with HasGameRef<DualKnights>, Keyb
     PositionComponent other,
   ) {
     super.onCollisionStart(intersectionPoints, other);
-    log("Player detected collsion with $other");
+    // log("Player detected collsion with $other");
     if (other is AntiPlayer) {
       log("Player collided with AntiPlayer");
       ancestor.input.movementAllowed = false;
@@ -226,7 +226,7 @@ class Player extends SpriteAnimationComponent with HasGameRef<DualKnights>, Keyb
       });
     }
     if(other is Arrow){
-      log("I am dead by arrow");
+      // log("I am dead by arrow");
       removeFromParent();
       DyingKnight dyingKnight = DyingKnight(position: Vector2(position.x-64, position.y-64));
       parent?.add(dyingKnight);
