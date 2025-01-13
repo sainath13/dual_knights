@@ -76,7 +76,7 @@ class Barrel extends SpriteAnimationComponent with HasGameRef<DualKnights>, Coll
           amount: 6,
           textureSize: Vector2(frameWidth, frameHeight),
           stepTime: 0.1,
-          loop: true,
+          loop: false,
           texturePosition: Vector2(0, frameHeight+16),
         ),
       ),
