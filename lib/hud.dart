@@ -99,9 +99,9 @@ class Hud extends PositionComponent with ParentIsA<Viewport>, HasGameReference<D
     characterAnimations['Moving Barrel'] = await game.loadSpriteAnimation(
       'Factions/Goblins/Troops/Barrel/Blue/Barrel_Blue.png',
       SpriteAnimationData.sequenced(
-        texturePosition: Vector2(0,16),
+        texturePosition: Vector2(0, 128*4+16),
         amount: 3,
-        textureSize: Vector2(0, 128*4+16),
+        textureSize: Vector2(128,128),
         stepTime: 0.1,
         loop: true,
       ),

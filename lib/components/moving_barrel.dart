@@ -347,6 +347,7 @@ void _updateMovement(double dt) {
         newState = MovingBarrelState.awakeWaiting;
       }
       else if (currentState == MovingBarrelState.readyToExplode) {
+        game.addDialogueRequest('Moving Barrel', 'knights are playing the level where Barrels are moving', 1);
         newState = MovingBarrelState.awakeWaiting;
       }
       else if (currentState != MovingBarrelState.awakeWaiting) {
