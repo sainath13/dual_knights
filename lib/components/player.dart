@@ -165,9 +165,9 @@ class Player extends SpriteAnimationComponent with HasGameRef<DualKnights>, Keyb
 
   void startGridMove(Vector2 dir) {
     if (!isMoving) {
-      if (game.sfxValueNotifier.value) {
-        FlameAudio.play(DualKnights.move, volume: 0.1);
-      }
+      // if (game.sfxValueNotifier.value) {
+      //   FlameAudio.play(DualKnights.move, volume: 0.05);
+      // }
       direction = dir;
       Vector2 potentialTarget = position + (direction * gridSize);
       if (!wouldCollide(potentialTarget)) {
@@ -185,9 +185,9 @@ class Player extends SpriteAnimationComponent with HasGameRef<DualKnights>, Keyb
         }
       }
       else{
-        if (game.sfxValueNotifier.value) {
-          FlameAudio.play(DualKnights.blocked, volume: 0.05);
-        }
+        // if (game.sfxValueNotifier.value) {
+        //   FlameAudio.play(DualKnights.blocked, volume: 0.02);
+        // }
       }
     }
   }

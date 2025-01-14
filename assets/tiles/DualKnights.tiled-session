@@ -796,10 +796,13 @@
             }
         },
         "Level-Completed-Menu.tmx": {
+            "expandedGroupLayers": [
+                26
+            ],
             "scale": 0.5293,
-            "selectedLayer": 17,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 545.0595125637635,
+                "x": 837.8991120347628,
                 "y": 228.60381636123185
             }
         },
@@ -1389,9 +1392,9 @@
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "Level-Completed-Menu.tmx",
         "basic_level_background.tmx",
         "basic_level_background_original.tmx",
-        "Level-Completed-Menu.tmx",
         "Level-05.tmx",
         "Level-07-copy.tmx",
         "Level-06.tmx",

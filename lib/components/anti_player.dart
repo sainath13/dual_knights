@@ -161,9 +161,9 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef<DualKnights>, 
       direction = dir;
       Vector2 potentialTarget = position + (direction * gridSize);
       if (!wouldCollide(potentialTarget)) {
-        if (game.sfxValueNotifier.value) {
-          FlameAudio.play(DualKnights.move,volume: 0.1);
-        }
+        // if (game.sfxValueNotifier.value) {
+        //   FlameAudio.play(DualKnights.move,volume: 0.05);
+        // }
         targetPosition = potentialTarget;
         isMoving = true;
         if (direction.y < 0) {
@@ -177,9 +177,9 @@ class AntiPlayer extends SpriteAnimationComponent with HasGameRef<DualKnights>, 
         }
       }
       else{
-        if (game.sfxValueNotifier.value) {
-          FlameAudio.play(DualKnights.blocked, volume: 0.05);
-        }
+        // if (game.sfxValueNotifier.value) {
+        //   FlameAudio.play(DualKnights.blocked, volume: 0.02);
+        // }
       }
     }
   }
