@@ -365,11 +365,11 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
 
   nSteps = stepCountNotifier.value;
   int nStars = 0;
-  if (nSteps < stepCountForStars[3]!) {
+  if (nSteps <= stepCountForStars[3]!) {
     nStars = 3;
-  } else if (nSteps < stepCountForStars[2]!) {
+  } else if (nSteps <= stepCountForStars[2]!) {
     nStars = 2;
-  } else if (nSteps < stepCountForStars[1]!) {
+  } else if (nSteps <= stepCountForStars[1]!) {
     nStars = 1;
   }
 
