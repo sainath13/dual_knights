@@ -16,7 +16,7 @@ void main() async {
   await Flame.device.setLandscape();
   await _configureAmplify();
   final dio = Dio();
-  const baseUrl = 'http://dual-knight-v1.us-east-1.elasticbeanstalk.com'; // Replace with your actual API URL
+  const baseUrl = 'https://api.dualknight.in'; // Replace with your actual API URL
   LocalStorageService localStorageService = LocalStorageService();
   final gameRepository = GameRepository(dio: dio, baseUrl: baseUrl,localStorageService: localStorageService);
   DualKnights game = DualKnights(gameRepository: gameRepository);//..debugMode = true;
