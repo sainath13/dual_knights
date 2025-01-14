@@ -27,6 +27,7 @@ import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flame_audio/flame_audio.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'package:flutter/widgets.dart' hide Route,OverlayRoute;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -45,11 +46,13 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
   Map<int, int> stepCountForStars = {};
   bool isDialogueActive = false;
   bool dialogueApiCallActive = false;
+  final int lastLevel = 45;
   final List<Map<String, dynamic>> dialogueQueue = [];
 
   var lastGamePlayState = null;
 
   late RectangleComponent background;
+
 
   bool _levelCompleteMenuShown = false; // Add a flag
 
@@ -295,9 +298,17 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
   void _startNextLevel() {
     final gameplay = findByKeyName<Gameplay>(Gameplay.id);
 
+    if(gameplay != null && gameplay.currentLevel == lastLevel){
+      openLink('https://luxuriant-title-564.notion.site/A-Message-from-the-Realm-of-Dualaria-17a8a752df9380cfa001f4a20e441886');
+      return;
+    }
     if (gameplay != null) {
       _startLevel(gameplay.currentLevel + 1);
     }else if(lastGamePlayState!=null){
+       if(lastGamePlayState != null && lastGamePlayState.currentLevel == lastLevel){
+        openLink('https://luxuriant-title-564.notion.site/A-Message-from-the-Realm-of-Dualaria-17a8a752df9380cfa001f4a20e441886');
+        return;
+      }
       _router.pushOverlay(MainMenu.id);
       _startLevel(lastGamePlayState.currentLevel + 1);
     }
@@ -512,5 +523,17 @@ Future<String?> getJwtToken() async {
     }
    
   }
+
+  void openLink(String url) async {
+  final uri = Uri.parse(url);
+  if (await canLaunchUrl(uri)) {
+    await launchUrl(
+      uri,
+      mode: LaunchMode.externalApplication,
+    );
+  } else {
+    throw 'Could not launch $url';
+  }
+}
 
 }
