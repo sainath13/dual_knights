@@ -74,14 +74,14 @@ class MovingBarrel extends SpriteAnimationComponent with HasGameRef<DualKnights>
     final explosionSheet = await gameRef.images.load('Effects/Explosion/Explosions.png');
     
     final hitbox = RectangleHitbox(
-      size: Vector2(64-4, 64-4),
+      size: Vector2(64-4, 64-15),
       collisionType: CollisionType.passive,
       position: Vector2(
         32,
         32
       ),
-    );//..debugColor = Colors.red
-      // ..debugMode = true;
+    )..debugColor = Colors.red
+       ..debugMode = true;
     add(hitbox);
     // Load all animations
     animations = {

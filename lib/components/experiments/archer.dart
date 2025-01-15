@@ -98,7 +98,7 @@ class Archer extends SpriteAnimationComponent with HasGameRef<DualKnights>, Coll
       developer.log("WIll try to show range with currY = ${currentPosition.y}");
 
       rangeVisualizer = ArcherRangeVisualizer(
-        sizeXY: Vector2((leftOffset + rightOffset)*64, (upOffset+downOffset)*64),
+        sizeXY: Vector2((leftOffset + rightOffset)*64, (upOffset+downOffset)*64+64),
         position: Vector2( currentPosition.x - (leftOffset*64) + 32,
             currentPosition.y - upOffset*64
         ),
