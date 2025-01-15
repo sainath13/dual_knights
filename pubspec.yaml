@@ -43,6 +43,7 @@ dependencies:
   dio: ^5.7.0
   shared_preferences: ^2.0.15
   flutter_secure_storage: ^9.2.3
+  url_launcher: ^6.1.7
 
 
 dev_dependencies:

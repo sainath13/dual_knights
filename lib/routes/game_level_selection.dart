@@ -39,15 +39,15 @@ class GameLevelSelection extends PositionComponent with HasGameRef<DualKnights>,
   Future<void> onLoad() async {
     game.updateBackgroundColor(Color(0xFFC9AA8D));
     await loadGameLevelSelection();
-    GameButton backButton = GameButton(
-        onClick: () => onBackPressed?.call(),
-        size: Vector2(40, 40),
-        position: Vector2(30, 15),
-        normalSprite: Sprite(await game.images.load('Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Buttons/Square/ArrowLeft-Thin/Default@2x-1.png')),
-        onTapSprite: Sprite(await game.images.load('Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Buttons/Square/ArrowLeft-Thin/Hover@2x-1.png')),
-        buttonText: '',
-    );
-    _camera.viewport.add(backButton);
+    // GameButton backButton = GameButton(
+    //     onClick: () => onBackPressed?.call(),
+    //     size: Vector2(40, 40),
+    //     position: Vector2(30, 15),
+    //     normalSprite: Sprite(await game.images.load('Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Buttons/Square/ArrowLeft-Thin/Default@2x-1.png')),
+    //     onTapSprite: Sprite(await game.images.load('Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Buttons/Square/ArrowLeft-Thin/Hover@2x-1.png')),
+    //     buttonText: '',
+    // );
+    // _camera.viewport.add(backButton);
     super.onLoad();
     // Load your assets and initialize your component here
   }
@@ -143,7 +143,7 @@ Future<void> loadGameLevelSelection() async {
 
     
     var lastLevelUnlocked  = 25;
-    gameLevelSelection = await TiledComponent.load('level-selection-final.tmx', Vector2(64, 64),atlasMaxX: 5000,atlasMaxY: 5000);
+    gameLevelSelection = await TiledComponent.load('level-selection-final.tmx', Vector2(64, 64));
 
     // 1408
     _world = World(children: [gameLevelSelection]);
@@ -165,10 +165,10 @@ if (buttonsLayer != null) {
     final levelName = button.name; // E.g., 'Level-01', 'Level-02', etc.
     if (levelName != null && levelName.startsWith('Level-')) {
       final levelIndex = int.parse(levelName.split('-')[1]); // Extract level index (e.g., 1, 2, etc.)
-      
+
       // Assuming you have some level data like this:
-      
-      LevelProgress levelInfo = levelData[levelIndex] ?? LevelProgress(locked: true, stars: 0); 
+
+      LevelProgress levelInfo = levelData[levelIndex] ?? LevelProgress(locked: true, stars: 0);
       final isLocked = levelInfo.locked ?? true;
       final stars = levelInfo.stars ?? 0;
 
@@ -176,7 +176,7 @@ if (buttonsLayer != null) {
       final buttonSize = Vector2(button.width, button.height);
       final buttonPosition = Vector2(button.x, button.y+6);
 
-      
+
 
       if (isLocked==true) {
         // Locked level: Display a lock icon
@@ -228,7 +228,7 @@ if (buttonsLayer != null) {
       }
     }
   }
-} 
+}
 
 
 final navigationButtons = gameLevelSelection.tileMap.getLayer<ObjectGroup>('NavigationButtons');
@@ -311,7 +311,7 @@ if (navigationButtons != null) {
       case 'DevelopedFor':
         final document = DocumentRoot([
           ParagraphNode.simple(
-            'This game is developed for "AWS Game Builder Challenge" hosted on devpost.com',
+            'This game is developed for "AWS Game Builder Challenge" hosted on devpost.com. \n More levels are coming soon',
           ),
         ]);
         // Define the document style with the custom font
