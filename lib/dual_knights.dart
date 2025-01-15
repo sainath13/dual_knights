@@ -53,10 +53,10 @@ class DualKnights extends FlameGame with HasKeyboardHandlerComponents, TapDetect
 
   bool _levelCompleteMenuShown = false; // Add a flag
 
-  static const bgm = 'bf_music_for_dual_knights.ogg';
+  static const bgm = 'bf_music_for_dual_knights.wav';
   static const explosion = 'explosion.wav';
-  static const blocked = 'impactWood_medium_000.ogg';
-  static const move = 'footstep_concrete_003.ogg';
+  static const blocked = 'impactWood_medium_000.wav';
+  static const move = 'footstep_concrete_003.wav';
   static const crashEachother = 'crash.wav';
   static const completeLevel = 'level-complete.wav';
   static const beep = 'beep.ogg';

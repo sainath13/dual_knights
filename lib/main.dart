@@ -23,7 +23,7 @@ void main() async {
   runApp(
       MouseRegion(
         onHover: (event) {
-          html.document.body?.style.cursor = 'url(assets/images/UI/Pointers/01.png), auto';
+          html.document.body?.style.cursor = 'url(assets/assets/images/UI/Pointers/01.png), auto';
         },
         onExit: (event) {
           html.document.body?.style.cursor = 'auto';
