@@ -39,15 +39,15 @@ class GameLevelSelection extends PositionComponent with HasGameRef<DualKnights>,
   Future<void> onLoad() async {
     game.updateBackgroundColor(Color(0xFFC9AA8D));
     await loadGameLevelSelection();
-    // GameButton backButton = GameButton(
-    //     onClick: () => onBackPressed?.call(),
-    //     size: Vector2(40, 40),
-    //     position: Vector2(30, 15),
-    //     normalSprite: Sprite(await game.images.load('Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Buttons/Square/ArrowLeft-Thin/Default@2x-1.png')),
-    //     onTapSprite: Sprite(await game.images.load('Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Buttons/Square/ArrowLeft-Thin/Hover@2x-1.png')),
-    //     buttonText: '',
-    // );
-    // _camera.viewport.add(backButton);
+    GameButton backButton = GameButton(
+        onClick: () => onBackPressed?.call(),
+        size: Vector2(40, 40),
+        position: Vector2(30, 15),
+        normalSprite: Sprite(await game.images.load('Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Buttons/Square/ArrowLeft-Thin/Default@2x-1.png')),
+        onTapSprite: Sprite(await game.images.load('Prinbles_Asset_Robin (v 1.1) (9_5_2023)/png/Buttons/Square/ArrowLeft-Thin/Hover@2x-1.png')),
+        buttonText: '',
+    );
+    _camera.viewport.add(backButton);
     super.onLoad();
     // Load your assets and initialize your component here
   }

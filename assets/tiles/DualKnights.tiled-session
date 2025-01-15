@@ -1309,11 +1309,11 @@
             "expandedObjectLayers": [
                 13
             ],
-            "scale": 0.86,
-            "selectedLayer": 9,
+            "scale": 0.5662,
+            "selectedLayer": 7,
             "viewCenter": {
-                "x": 2935.4651162790697,
-                "y": 284.3023255813954
+                "x": 2225.362062875309,
+                "y": 486.57718120805373
             }
         },
         "new_game_logo_correct.tsx": {
@@ -1392,6 +1392,7 @@
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "level-selection-final.tmx",
         "Level-12.tmx",
         "Level-28.tmx",
         "Level-45.tmx",
@@ -1402,8 +1403,7 @@
         "Level-40.tmx",
         "Level-39.tmx",
         "Level-38.tmx",
-        "Level-37.tmx",
-        "Level-36.tmx"
+        "Level-37.tmx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
