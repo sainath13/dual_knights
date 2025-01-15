@@ -81,8 +81,8 @@ class MovingBarrel extends SpriteAnimationComponent with HasGameRef<DualKnights>
         32,
         32
       ),
-    )..debugColor = Colors.red
-       ..debugMode = true;
+    );//..debugColor = Colors.red
+       // ..debugMode = true;
     add(hitbox);
     // Load all animations
     animations = {
