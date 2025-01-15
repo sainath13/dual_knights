@@ -6,6 +6,7 @@ import 'package:dual_knights/dual_knights.dart';
 import 'package:dual_knights/routes/gameplay.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
+import 'package:flame_audio/flame_audio.dart';
 
 import 'dart:developer' as developer;
 
@@ -307,6 +308,9 @@ void _updateMovement(double dt) {
             break;
 
           case MovingBarrelState.exploding:
+            if (game.sfxValueNotifier.value) {
+              FlameAudio.play(DualKnights.explosion);
+            }
             ancestor.input.movementAllowed = false;
             currentState = MovingBarrelState.dying;
             animation = animations[MovingBarrelState.dying];
