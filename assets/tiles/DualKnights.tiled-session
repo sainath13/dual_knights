@@ -791,8 +791,8 @@
             "scale": 0.637353515625,
             "selectedLayer": 9,
             "viewCenter": {
-                "x": 105.9066881176741,
-                "y": 257.3140274266452
+                "x": 640.1470926223857,
+                "y": 344.392859878955
             }
         },
         "Level-Completed-Menu.tmx": {
@@ -1307,13 +1307,15 @@
         },
         "level-selection-final.tmx": {
             "expandedObjectLayers": [
-                13
+                13,
+                8,
+                18
             ],
             "scale": 0.5662,
             "selectedLayer": 7,
             "viewCenter": {
-                "x": 2225.362062875309,
-                "y": 486.57718120805373
+                "x": 2451.4305898975626,
+                "y": 627.8700105969622
             }
         },
         "new_game_logo_correct.tsx": {
@@ -1393,17 +1395,17 @@
     "property.type": "int",
     "recentFiles": [
         "level-selection-final.tmx",
+        "Castle_Red.tsx",
+        "Level-45.tmx",
         "Level-12.tmx",
         "Level-28.tmx",
-        "Level-45.tmx",
         "Level-44.tmx",
         "Level-43.tmx",
         "Level-42.tmx",
         "Level-41.tmx",
         "Level-40.tmx",
         "Level-39.tmx",
-        "Level-38.tmx",
-        "Level-37.tmx"
+        "Level-38.tmx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
