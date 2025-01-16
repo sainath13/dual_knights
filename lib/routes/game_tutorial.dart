@@ -79,7 +79,8 @@ class GameTutorial extends PositionComponent
 
     gameTutorial = await TiledComponent.load(
         'tutorial.tmx', Vector2(64, 64),
-        atlasMaxX: 5000, atlasMaxY: 5000);
+        // atlasMaxX: 5000, atlasMaxY: 5000
+    );
 
     // 1408
     _world = World(children: [gameTutorial]);

@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "tutorial.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -1371,10 +1371,10 @@
                 20
             ],
             "scale": 0.75,
-            "selectedLayer": 7,
+            "selectedLayer": 8,
             "viewCenter": {
-                "x": 1344,
-                "y": 244.66666666666669
+                "x": 2583.333333333333,
+                "y": 258.66666666666663
             }
         },
         "ui spritesheet.tsx": {
@@ -1390,10 +1390,12 @@
     "map.tileWidth": 64,
     "map.width": 50,
     "openFiles": [
+        "tutorial.tmx"
     ],
     "project": "DualKnights.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "tutorial.tmx",
         "level-selection-final.tmx",
         "Castle_Red.tsx",
         "Level-45.tmx",
@@ -1404,8 +1406,7 @@
         "Level-42.tmx",
         "Level-41.tmx",
         "Level-40.tmx",
-        "Level-39.tmx",
-        "Level-38.tmx"
+        "Level-39.tmx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
