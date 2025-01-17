@@ -166,7 +166,6 @@ Future<TiledComponent> loadTmxFromS3(String bucketUrl,String tmxFileName) async 
   }
 
   Future<CharacterDialogue> getCharacterDialogues(String? jwtToken,String event,String character) async {
-    if (jwtToken != null) {
       
       final response = await dio.post(
         '$baseUrl/api/v1/bedrock/ask',
@@ -180,11 +179,7 @@ Future<TiledComponent> loadTmxFromS3(String bucketUrl,String tmxFileName) async 
 
       
       return characterDialogue;
-    } else {
-      // Fetch from local storage
-      
-      return CharacterDialogue.fromJson({});
-    }
+    
   }
 
 }
